@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="1791949880">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="load" lineNumber="15"/>
+    <functiondecl functionName="playMusic" lineNumber="44"/>
+    <functiondecl functionName="playSound" lineNumber="49"/>
+    <functioncall functionName="AUDIO_S16"/>
+    <functioncall functionName="Mix_CloseAudio"/>
+    <functioncall functionName="Mix_GetError"/>
+    <functioncall functionName="Mix_LoadMUS"/>
+    <functioncall functionName="Mix_LoadWAV"/>
+    <functioncall functionName="Mix_OpenAudio"/>
+    <functioncall functionName="Mix_PlayChannel"/>
+    <functioncall functionName="Mix_PlayMusic"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="c_str"/>
+    <functioncall functionName="id"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="loop"/>
+    <functioncall functionName="pChunk"/>
+    <functioncall functionName="pMusic"/>
+  </FileInfo>
+</analyzerinfo>

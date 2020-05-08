@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="2971542720">
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Mine.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="draw" lineNumber="23"/>
+    <functiondecl functionName="update" lineNumber="32"/>
+    <functiondecl functionName="clean" lineNumber="36"/>
+    <functiondecl functionName="getTile" lineNumber="42"/>
+    <functiondecl functionName="setTile" lineNumber="47"/>
+    <functiondecl functionName="getParent" lineNumber="52"/>
+    <functiondecl functionName="setParent" lineNumber="57"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="Mine"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getRenderer"/>
+    <functioncall functionName="getTextureSize"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="load"/>
+    <functioncall functionName="newTile"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="scene"/>
+    <functioncall functionName="setHeight"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setType"/>
+    <functioncall functionName="setVelocity"/>
+    <functioncall functionName="setWidth"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="xComponent"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="yComponent"/>
+  </FileInfo>
+</analyzerinfo>

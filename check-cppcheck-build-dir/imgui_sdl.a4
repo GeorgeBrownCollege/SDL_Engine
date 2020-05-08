@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="3421312691">
+        <error id="uninitMemberVar" severity="warning" msg="Member variable &apos;Device::Clip&apos; is not initialized in the constructor." verbose="Member variable &apos;Device::Clip&apos; is not initialized in the constructor." cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\include\IMGUI_SDL\imgui_sdl.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\include\IMGUI_SDL\imgui_sdl.cpp" line="173"/>
+            <symbol>Device::Clip</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Struct &apos;Device&apos; has a constructor with 1 argument that is not explicit." verbose="Struct &apos;Device&apos; has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons. Using the explicit keyword in the constructor means some mistakes when using the class can be avoided." cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\include\IMGUI_SDL\imgui_sdl.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\include\IMGUI_SDL\imgui_sdl.cpp" line="173"/>
+            <symbol>Device</symbol>
+        </error>
+  <FileInfo check="Null pointer">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/IMGUI_SDL/imgui_sdl.cpp:503:7" my-argnr="2" my-argname="texture" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/IMGUI_SDL/imgui_sdl.cpp" linenr="505" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/IMGUI_SDL/imgui_sdl.h:16:7" my-argnr="1" my-argname="drawData" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/IMGUI_SDL/imgui_sdl.cpp" linenr="561" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="Hash" lineNumber="39"/>
+    <functiondecl functionName="Hash" lineNumber="48"/>
+    <functiondecl functionName="ToInt" lineNumber="124"/>
+    <functiondecl functionName="UseAsDrawColor" lineNumber="132"/>
+    <functiondecl functionName="SetClipRect" lineNumber="175"/>
+    <functiondecl functionName="EnableClip" lineNumber="182"/>
+    <functiondecl functionName="DisableClip" lineNumber="183"/>
+    <functiondecl functionName="SetAt" lineNumber="185"/>
+    <functiondecl functionName="MakeTexture" lineNumber="191"/>
+    <functiondecl functionName="UseAsRenderTarget" lineNumber="198"/>
+    <functiondecl functionName="Sample" lineNumber="220"/>
+    <functiondecl functionName="IsOnExtreme" lineNumber="264"/>
+    <functiondecl functionName="UsesOnlyColor" lineNumber="269"/>
+    <functiondecl functionName="CalculateBoundingBox" lineNumber="276"/>
+    <functiondecl functionName="CalculateFixedPointTriangleInfo" lineNumber="296"/>
+    <functiondecl functionName="DrawTriangleWithColorFunction" lineNumber="317"/>
+    <functiondecl functionName="DrawCachedTriangle" lineNumber="389"/>
+    <functiondecl functionName="DrawTriangle" lineNumber="395"/>
+    <functiondecl functionName="DrawUniformColorTriangle" lineNumber="438"/>
+    <functiondecl functionName="DrawRectangle" lineNumber="468"/>
+    <functiondecl functionName="DrawRectangle" lineNumber="503"/>
+    <functiondecl functionName="DrawRectangle" lineNumber="508"/>
+    <functiondecl functionName="Initialize" lineNumber="518"/>
+    <functiondecl functionName="Deinitialize" lineNumber="543"/>
+    <functiondecl functionName="Render" lineNumber="553"/>
+    <functiondecl functionName="Evaluate" lineNumber="239"/>
+    <functiondecl functionName="Evaluate" lineNumber="239"/>
+    <functiondecl functionName="Contains" lineNumber="68"/>
+    <functiondecl functionName="At" lineNumber="73"/>
+    <functiondecl functionName="Insert" lineNumber="82"/>
+    <functiondecl functionName="Clean" lineNumber="97"/>
+    <functiondecl functionName="Contains" lineNumber="68"/>
+    <functiondecl functionName="At" lineNumber="73"/>
+    <functiondecl functionName="Insert" lineNumber="82"/>
+    <functiondecl functionName="Clean" lineNumber="97"/>
+    <functioncall functionName="A"/>
+    <functioncall functionName="At"/>
+    <functioncall functionName="B"/>
+    <functioncall functionName="CalculateBoundingBox"/>
+    <functioncall functionName="CalculateFixedPointTriangleInfo"/>
+    <functioncall functionName="Clean"/>
+    <functioncall functionName="Clip"/>
+    <functioncall functionName="CmdListsCount"/>
+    <functioncall functionName="Color"/>
+    <functioncall functionName="CombineHash"/>
+    <functioncall functionName="Contains"/>
+    <functioncall functionName="Data"/>
+    <functioncall functionName="Device"/>
+    <functioncall functionName="DisableClip"/>
+    <functioncall functionName="Divisor"/>
+    <functioncall functionName="DrawCachedTriangle"/>
+    <functioncall functionName="DrawRectangle"/>
+    <functioncall functionName="DrawTriangle"/>
+    <functioncall functionName="DrawTriangleWithColorFunction"/>
+    <functioncall functionName="DrawUniformColorTriangle"/>
+    <functioncall functionName="ElemCount"/>
+    <functioncall functionName="EnableClip"/>
+    <functioncall functionName="Evaluate"/>
+    <functioncall functionName="G"/>
+    <functioncall functionName="GetIO"/>
+    <functioncall functionName="GetStyle"/>
+    <functioncall functionName="GetTexDataAsRGBA32"/>
+    <functioncall functionName="Hash"/>
+    <functioncall functionName="Hash &lt; std :: tuple &lt; std :: tuple &lt; int , int , double , double , uint32_t &gt; , std :: tuple &lt; int , int , double , double , uint32_t &gt; , std :: tuple &lt; int , int , double , double , uint32_t &gt; &gt; &gt;"/>
+    <functioncall functionName="Hash &lt; std :: tuple &lt; uint32_t , int , int , int , int , int , int &gt; &gt;"/>
+    <functioncall functionName="Height"/>
+    <functioncall functionName="Insert"/>
+    <functioncall functionName="IsOnExtreme"/>
+    <functioncall functionName="MakeTexture"/>
+    <functioncall functionName="MaxX"/>
+    <functioncall functionName="MaxY"/>
+    <functioncall functionName="MinU"/>
+    <functioncall functionName="MinV"/>
+    <functioncall functionName="MinX"/>
+    <functioncall functionName="MinY"/>
+    <functioncall functionName="Order"/>
+    <functioncall functionName="R"/>
+    <functioncall functionName="Renderer"/>
+    <functioncall functionName="SDL_BLENDMODE_BLEND"/>
+    <functioncall functionName="SDL_CreateRGBSurfaceFrom"/>
+    <functioncall functionName="SDL_CreateTexture"/>
+    <functioncall functionName="SDL_CreateTextureFromSurface"/>
+    <functioncall functionName="SDL_DestroyTexture"/>
+    <functioncall functionName="SDL_FLIP_HORIZONTAL"/>
+    <functioncall functionName="SDL_FLIP_VERTICAL"/>
+    <functioncall functionName="SDL_FreeSurface"/>
+    <functioncall functionName="SDL_GetRenderDrawBlendMode"/>
+    <functioncall functionName="SDL_PIXELFORMAT_RGBA32"/>
+    <functioncall functionName="SDL_QueryTexture"/>
+    <functioncall functionName="SDL_RenderClear"/>
+    <functioncall functionName="SDL_RenderCopy"/>
+    <functioncall functionName="SDL_RenderCopyEx"/>
+    <functioncall functionName="SDL_RenderDrawPoint"/>
+    <functioncall functionName="SDL_RenderFillRect"/>
+    <functioncall functionName="SDL_RenderSetClipRect"/>
+    <functioncall functionName="SDL_SetRenderDrawBlendMode"/>
+    <functioncall functionName="SDL_SetRenderDrawColor"/>
+    <functioncall functionName="SDL_SetRenderTarget"/>
+    <functioncall functionName="SDL_SetTextureBlendMode"/>
+    <functioncall functionName="SDL_SetTextureColorMod"/>
+    <functioncall functionName="SDL_TEXTUREACCESS_TARGET"/>
+    <functioncall functionName="Sample"/>
+    <functioncall functionName="SetAt"/>
+    <functioncall functionName="SetClipRect"/>
+    <functioncall functionName="Size"/>
+    <functioncall functionName="Source"/>
+    <functioncall functionName="Surface"/>
+    <functioncall functionName="T"/>
+    <functioncall functionName="TexID"/>
+    <functioncall functionName="TexUvWhitePixel"/>
+    <functioncall functionName="Texture"/>
+    <functioncall functionName="TextureId"/>
+    <functioncall functionName="UseAsDrawColor"/>
+    <functioncall functionName="UseAsRenderTarget"/>
+    <functioncall functionName="UserCallback"/>
+    <functioncall functionName="UsesOnlyColor"/>
+    <functioncall functionName="V0"/>
+    <functioncall functionName="V1"/>
+    <functioncall functionName="V2"/>
+    <functioncall functionName="Value0"/>
+    <functioncall functionName="Value1"/>
+    <functioncall functionName="Value2"/>
+    <functioncall functionName="VtxBuffer"/>
+    <functioncall functionName="Width"/>
+    <functioncall functionName="X"/>
+    <functioncall functionName="X1"/>
+    <functioncall functionName="X2"/>
+    <functioncall functionName="X3"/>
+    <functioncall functionName="Y"/>
+    <functioncall functionName="Y1"/>
+    <functioncall functionName="Y2"/>
+    <functioncall functionName="Y3"/>
+    <functioncall functionName="a"/>
+    <functioncall functionName="amask"/>
+    <functioncall functionName="assert"/>
+    <functioncall functionName="b"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="blendMode"/>
+    <functioncall functionName="bmask"/>
+    <functioncall functionName="bounding"/>
+    <functioncall functionName="cache"/>
+    <functioncall functionName="cached"/>
+    <functioncall functionName="clip"/>
+    <functioncall functionName="clipRect"/>
+    <functioncall functionName="cmd_i"/>
+    <functioncall functionName="col"/>
+    <functioncall functionName="color"/>
+    <functioncall functionName="colorFunction"/>
+    <functioncall functionName="commandList"/>
+    <functioncall functionName="continue"/>
+    <functioncall functionName="decltype"/>
+    <functioncall functionName="destination"/>
+    <functioncall functionName="doHorizontalFlip"/>
+    <functioncall functionName="doVerticalFlip"/>
+    <functioncall functionName="double"/>
+    <functioncall functionName="drawCommand"/>
+    <functioncall functionName="edge1"/>
+    <functioncall functionName="edgeStart1"/>
+    <functioncall functionName="edgeStart2"/>
+    <functioncall functionName="edgeStart3"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="erase"/>
+    <functioncall functionName="existingLocation"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="find"/>
+    <functioncall functionName="first"/>
+    <functioncall functionName="flip"/>
+    <functioncall functionName="float"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="g"/>
+    <functioncall functionName="get"/>
+    <functioncall functionName="gmask"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="hash"/>
+    <functioncall functionName="height"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="insert"/>
+    <functioncall functionName="int"/>
+    <functioncall functionName="isWrappedTexture"/>
+    <functioncall functionName="key"/>
+    <functioncall functionName="location"/>
+    <functioncall functionName="make_pair"/>
+    <functioncall functionName="make_tuple"/>
+    <functioncall functionName="make_unique"/>
+    <functioncall functionName="max"/>
+    <functioncall functionName="maxX"/>
+    <functioncall functionName="maxY"/>
+    <functioncall functionName="min"/>
+    <functioncall functionName="minX"/>
+    <functioncall functionName="minY"/>
+    <functioncall functionName="move"/>
+    <functioncall functionName="n"/>
+    <functioncall functionName="nullptr"/>
+    <functioncall functionName="pixels"/>
+    <functioncall functionName="pop_back"/>
+    <functioncall functionName="pos"/>
+    <functioncall functionName="push_front"/>
+    <functioncall functionName="r"/>
+    <functioncall functionName="rect"/>
+    <functioncall functionName="renderInfo"/>
+    <functioncall functionName="renderer"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="rmask"/>
+    <functioncall functionName="round"/>
+    <functioncall functionName="second"/>
+    <functioncall functionName="seed"/>
+    <functioncall functionName="shadeColor"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="source"/>
+    <functioncall functionName="splice"/>
+    <functioncall functionName="static_cast"/>
+    <functioncall functionName="surface"/>
+    <functioncall functionName="texture"/>
+    <functioncall functionName="textureU"/>
+    <functioncall functionName="textureV"/>
+    <functioncall functionName="tuple"/>
+    <functioncall functionName="u"/>
+    <functioncall functionName="uint32_t"/>
+    <functioncall functionName="v"/>
+    <functioncall functionName="v0"/>
+    <functioncall functionName="v1"/>
+    <functioncall functionName="v2"/>
+    <functioncall functionName="value"/>
+    <functioncall functionName="value0"/>
+    <functioncall functionName="value1"/>
+    <functioncall functionName="value2"/>
+    <functioncall functionName="w"/>
+    <functioncall functionName="w2"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="width"/>
+    <functioncall functionName="windowHeight"/>
+    <functioncall functionName="windowWidth"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="x1"/>
+    <functioncall functionName="x2"/>
+    <functioncall functionName="x3"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="y1"/>
+    <functioncall functionName="y2"/>
+    <functioncall functionName="y3"/>
+  </FileInfo>
+</analyzerinfo>

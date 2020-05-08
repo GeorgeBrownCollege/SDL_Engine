@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="651220891">
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/CollisionManager.h:16:14" my-argnr="1" my-argname="object1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/CollisionManager.cpp" linenr="16" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/CollisionManager.h:16:14" my-argnr="2" my-argname="object2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/CollisionManager.cpp" linenr="17" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="squaredDistance" lineNumber="5"/>
+    <functiondecl functionName="squaredRadiusCheck" lineNumber="14"/>
+    <functiondecl functionName="lineLineCheck" lineNumber="49"/>
+    <functiondecl functionName="lineRectCheck" lineNumber="73"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CollisionManager"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="P1"/>
+    <functioncall functionName="P2"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="getHeight"/>
+    <functioncall functionName="getIsColliding"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getType"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="lineLineCheck"/>
+    <functioncall functionName="playSound"/>
+    <functioncall functionName="recHeight"/>
+    <functioncall functionName="recWidth"/>
+    <functioncall functionName="rh"/>
+    <functioncall functionName="rw"/>
+    <functioncall functionName="rx"/>
+    <functioncall functionName="ry"/>
+    <functioncall functionName="setIsColliding"/>
+    <functioncall functionName="squaredDistance"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="x1"/>
+    <functioncall functionName="x2"/>
+    <functioncall functionName="x3"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="y1"/>
+    <functioncall functionName="y2"/>
+    <functioncall functionName="y3"/>
+  </FileInfo>
+</analyzerinfo>

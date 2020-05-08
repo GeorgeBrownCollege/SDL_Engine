@@ -1,0 +1,14 @@
+[02.07.2019]
+1562085362008
+cppcheck-error:5
+cppcheck-warning:13
+cppcheck-style:202
+cppcheck-performance:11
+cppcheck-portability:3
+[02.07.2019]
+1562085488994
+cppcheck-error:5
+cppcheck-warning:9
+cppcheck-style:85
+cppcheck-performance:9
+cppcheck-portability:3

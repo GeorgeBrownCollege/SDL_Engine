@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="699799471">
+        <error id="unreadVariable" severity="style" msg="Variable &apos;pTexture&apos; is assigned a value that is never used." verbose="Variable &apos;pTexture&apos; is assigned a value that is never used." cwe="563">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\TextureManager.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\TextureManager.cpp" line="257"/>
+            <symbol>pTexture</symbol>
+        </error>
+        <error id="unreadVariable" severity="style" msg="Variable &apos;pTexture&apos; is assigned a value that is never used." verbose="Variable &apos;pTexture&apos; is assigned a value that is never used." cwe="563">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\TextureManager.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\TextureManager.cpp" line="265"/>
+            <symbol>pTexture</symbol>
+        </error>
+  <FileInfo check="ctu">
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="46" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="46" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="46" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="46" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="&textureWidth" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="textureWidth" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="&textureHeight" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="59" call-argexpr="textureHeight" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="75" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="75" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="75" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="75" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="90" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="90" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="90" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="&textureWidth" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="textureWidth" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="&textureHeight" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="103" call-argexpr="textureHeight" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="120" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="120" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="120" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="134" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="134" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="134" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="134" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="&textureWidth" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="textureWidth" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="&textureHeight" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="144" call-argexpr="textureHeight" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="162" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="162" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="162" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="162" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="178" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="178" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="178" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="&textureWidth" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="textureWidth" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="&textureHeight" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="188" call-argexpr="textureHeight" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="207" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="207" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="207" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="&textureWidth" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="textureWidth" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="&textureHeight" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="220" call-argexpr="textureHeight" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="237" call-argexpr="&srcRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="237" call-argexpr="&destRect" call-argvaluetype="7" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="6" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="237" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="2" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="3" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="0" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="&width" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="4" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="width" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="&height" call-argvaluetype="7" call-argvalue="4"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:275:29" call-funcname="SDL_QueryTexture" call-argnr="5" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="243" call-argexpr="height" call-argvaluetype="4" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:260:39" call-funcname="SDL_CreateTextureFromSurface" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="21" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:32:7" my-argnr="3"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="46" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:34:7" my-argnr="6"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="75" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:35:7" my-argnr="4"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="90" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:36:7" my-argnr="6"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="120" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:37:7" my-argnr="4"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="134" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:39:7" my-argnr="8"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="162" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:40:7" my-argnr="6"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="178" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:41:7" my-argnr="8"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="207" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:42:7" my-argnr="6"/>
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_render.h:830:29" call-funcname="SDL_RenderCopyEx" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.cpp" linenr="237" my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TextureManager.h:44:7" my-argnr="4"/>
+  </FileInfo>
+  <FileInfo check="Null pointer">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h:73:27" my-argnr="1" my-argname="p" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h" linenr="75" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h:73:27" my-argnr="2" my-argname="r" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h" linenr="75" value="0"/>
+  </FileInfo>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h:73:27" my-argnr="1" my-argname="p" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h" linenr="75" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h:73:27" my-argnr="2" my-argname="r" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/include/SDL/include/SDL_rect.h" linenr="75" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="load" lineNumber="13"/>
+    <functiondecl functionName="draw" lineNumber="36"/>
+    <functiondecl functionName="draw" lineNumber="49"/>
+    <functiondecl functionName="draw" lineNumber="78"/>
+    <functiondecl functionName="draw" lineNumber="93"/>
+    <functiondecl functionName="drawFrame" lineNumber="123"/>
+    <functiondecl functionName="drawFrame" lineNumber="137"/>
+    <functiondecl functionName="drawFrame" lineNumber="165"/>
+    <functiondecl functionName="drawFrame" lineNumber="181"/>
+    <functiondecl functionName="drawText" lineNumber="210"/>
+    <functiondecl functionName="getTextureSize" lineNumber="240"/>
+    <functiondecl functionName="setAlpha" lineNumber="252"/>
+    <functiondecl functionName="setColour" lineNumber="260"/>
+    <functiondecl functionName="addTexture" lineNumber="268"/>
+    <functiondecl functionName="getTexture" lineNumber="273"/>
+    <functiondecl functionName="clean" lineNumber="278"/>
+    <functioncall functionName="DUMMY_ENUM_VALUE"/>
+    <functioncall functionName="IMG_Load"/>
+    <functioncall functionName="N"/>
+    <functioncall functionName="P"/>
+    <functioncall functionName="Q"/>
+    <functioncall functionName="Result"/>
+    <functioncall functionName="SDL_ADDEVENT"/>
+    <functioncall functionName="SDL_APP_DIDENTERBACKGROUND"/>
+    <functioncall functionName="SDL_APP_DIDENTERFOREGROUND"/>
+    <functioncall functionName="SDL_APP_LOWMEMORY"/>
+    <functioncall functionName="SDL_APP_TERMINATING"/>
+    <functioncall functionName="SDL_APP_WILLENTERBACKGROUND"/>
+    <functioncall functionName="SDL_APP_WILLENTERFOREGROUND"/>
+    <functioncall functionName="SDL_ARRAYORDER_ABGR"/>
+    <functioncall functionName="SDL_ARRAYORDER_ARGB"/>
+    <functioncall functionName="SDL_ARRAYORDER_BGR"/>
+    <functioncall functionName="SDL_ARRAYORDER_BGRA"/>
+    <functioncall functionName="SDL_ARRAYORDER_NONE"/>
+    <functioncall functionName="SDL_ARRAYORDER_RGB"/>
+    <functioncall functionName="SDL_ARRAYORDER_RGBA"/>
+    <functioncall functionName="SDL_ASSERTION_ABORT"/>
+    <functioncall functionName="SDL_ASSERTION_ALWAYS_IGNORE"/>
+    <functioncall functionName="SDL_ASSERTION_BREAK"/>
+    <functioncall functionName="SDL_ASSERTION_IGNORE"/>
+    <functioncall functionName="SDL_ASSERTION_RETRY"/>
+    <functioncall functionName="SDL_AUDIODEVICEREMOVED"/>
+    <functioncall functionName="SDL_AUDIO_PAUSED"/>
+    <functioncall functionName="SDL_AUDIO_PLAYING"/>
+    <functioncall functionName="SDL_BITMAPORDER_1234"/>
+    <functioncall functionName="SDL_BITMAPORDER_4321"/>
+    <functioncall functionName="SDL_BITMAPORDER_NONE"/>
+    <functioncall functionName="SDL_CONTROLLERBUTTONDOWN"/>
+    <functioncall functionName="SDL_CONTROLLERBUTTONUP"/>
+    <functioncall functionName="SDL_CONTROLLERDEVICEADDED"/>
+    <functioncall functionName="SDL_CONTROLLERDEVICEREMAPPED"/>
+    <functioncall functionName="SDL_CONTROLLERDEVICEREMOVED"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_LEFTX"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_LEFTY"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_MAX"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_RIGHTX"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_RIGHTY"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_TRIGGERLEFT"/>
+    <functioncall functionName="SDL_CONTROLLER_AXIS_TRIGGERRIGHT"/>
+    <functioncall functionName="SDL_CONTROLLER_BINDTYPE_AXIS"/>
+    <functioncall functionName="SDL_CONTROLLER_BINDTYPE_BUTTON"/>
+    <functioncall functionName="SDL_CONTROLLER_BINDTYPE_HAT"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_A"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_B"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_BACK"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_DPAD_DOWN"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_DPAD_LEFT"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_DPAD_RIGHT"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_DPAD_UP"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_GUIDE"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_LEFTSHOULDER"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_LEFTSTICK"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_MAX"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_RIGHTSHOULDER"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_RIGHTSTICK"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_START"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_X"/>
+    <functioncall functionName="SDL_CONTROLLER_BUTTON_Y"/>
+    <functioncall functionName="SDL_CreateTextureFromSurface"/>
+    <functioncall functionName="SDL_DOLLARRECORD"/>
+    <functioncall functionName="SDL_DROPBEGIN"/>
+    <functioncall functionName="SDL_DROPCOMPLETE"/>
+    <functioncall functionName="SDL_DROPTEXT"/>
+    <functioncall functionName="SDL_DestroyTexture"/>
+    <functioncall functionName="SDL_EFREAD"/>
+    <functioncall functionName="SDL_EFSEEK"/>
+    <functioncall functionName="SDL_EFWRITE"/>
+    <functioncall functionName="SDL_ENOMEM"/>
+    <functioncall functionName="SDL_FALSE"/>
+    <functioncall functionName="SDL_FINGERMOTION"/>
+    <functioncall functionName="SDL_FINGERUP"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SDL_FreeSurface"/>
+    <functioncall functionName="SDL_GETEVENT"/>
+    <functioncall functionName="SDL_GL_ACCELERATED_VISUAL"/>
+    <functioncall functionName="SDL_GL_ACCUM_ALPHA_SIZE"/>
+    <functioncall functionName="SDL_GL_ACCUM_BLUE_SIZE"/>
+    <functioncall functionName="SDL_GL_ACCUM_GREEN_SIZE"/>
+    <functioncall functionName="SDL_GL_ACCUM_RED_SIZE"/>
+    <functioncall functionName="SDL_GL_ALPHA_SIZE"/>
+    <functioncall functionName="SDL_GL_BLUE_SIZE"/>
+    <functioncall functionName="SDL_GL_BUFFER_SIZE"/>
+    <functioncall functionName="SDL_GL_CONTEXT_EGL"/>
+    <functioncall functionName="SDL_GL_CONTEXT_FLAGS"/>
+    <functioncall functionName="SDL_GL_CONTEXT_MAJOR_VERSION"/>
+    <functioncall functionName="SDL_GL_CONTEXT_MINOR_VERSION"/>
+    <functioncall functionName="SDL_GL_CONTEXT_NO_ERROR"/>
+    <functioncall functionName="SDL_GL_CONTEXT_PROFILE_MASK"/>
+    <functioncall functionName="SDL_GL_CONTEXT_RELEASE_BEHAVIOR"/>
+    <functioncall functionName="SDL_GL_CONTEXT_RESET_NOTIFICATION"/>
+    <functioncall functionName="SDL_GL_DEPTH_SIZE"/>
+    <functioncall functionName="SDL_GL_DOUBLEBUFFER"/>
+    <functioncall functionName="SDL_GL_FRAMEBUFFER_SRGB_CAPABLE"/>
+    <functioncall functionName="SDL_GL_GREEN_SIZE"/>
+    <functioncall functionName="SDL_GL_MULTISAMPLEBUFFERS"/>
+    <functioncall functionName="SDL_GL_MULTISAMPLESAMPLES"/>
+    <functioncall functionName="SDL_GL_RED_SIZE"/>
+    <functioncall functionName="SDL_GL_RETAINED_BACKING"/>
+    <functioncall functionName="SDL_GL_SHARE_WITH_CURRENT_CONTEXT"/>
+    <functioncall functionName="SDL_GL_STENCIL_SIZE"/>
+    <functioncall functionName="SDL_GL_STEREO"/>
+    <functioncall functionName="SDL_HINT_DEFAULT"/>
+    <functioncall functionName="SDL_HINT_NORMAL"/>
+    <functioncall functionName="SDL_HINT_OVERRIDE"/>
+    <functioncall functionName="SDL_HITTEST_DRAGGABLE"/>
+    <functioncall functionName="SDL_HITTEST_NORMAL"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_BOTTOM"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_BOTTOMLEFT"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_BOTTOMRIGHT"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_LEFT"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_RIGHT"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_TOP"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_TOPLEFT"/>
+    <functioncall functionName="SDL_HITTEST_RESIZE_TOPRIGHT"/>
+    <functioncall functionName="SDL_JOYBALLMOTION"/>
+    <functioncall functionName="SDL_JOYBUTTONDOWN"/>
+    <functioncall functionName="SDL_JOYBUTTONUP"/>
+    <functioncall functionName="SDL_JOYDEVICEADDED"/>
+    <functioncall functionName="SDL_JOYDEVICEREMOVED"/>
+    <functioncall functionName="SDL_JOYHATMOTION"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_EMPTY"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_FULL"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_LOW"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_MAX"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_MEDIUM"/>
+    <functioncall functionName="SDL_JOYSTICK_POWER_WIRED"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_ARCADE_PAD"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_ARCADE_STICK"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_DANCE_PAD"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_DRUM_KIT"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_FLIGHT_STICK"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_GAMECONTROLLER"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_GUITAR"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_THROTTLE"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_UNKNOWN"/>
+    <functioncall functionName="SDL_JOYSTICK_TYPE_WHEEL"/>
+    <functioncall functionName="SDL_KEYMAPCHANGED"/>
+    <functioncall functionName="SDL_KEYUP"/>
+    <functioncall functionName="SDL_LASTERROR"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_APPLICATION"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_ASSERT"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_AUDIO"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_CUSTOM"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_ERROR"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_INPUT"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RENDER"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED1"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED10"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED2"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED3"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED4"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED5"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED6"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED7"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED8"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_RESERVED9"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_SYSTEM"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_TEST"/>
+    <functioncall functionName="SDL_LOG_CATEGORY_VIDEO"/>
+    <functioncall functionName="SDL_LOG_PRIORITY_CRITICAL"/>
+    <functioncall functionName="SDL_LOG_PRIORITY_DEBUG"/>
+    <functioncall functionName="SDL_LOG_PRIORITY_ERROR"/>
+    <functioncall functionName="SDL_LOG_PRIORITY_INFO"/>
+    <functioncall functionName="SDL_LOG_PRIORITY_WARN"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_BACKGROUND"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_BUTTON_BORDER"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_MAX"/>
+    <functioncall functionName="SDL_MESSAGEBOX_COLOR_TEXT"/>
+    <functioncall functionName="SDL_MOUSEBUTTONDOWN"/>
+    <functioncall functionName="SDL_MOUSEBUTTONUP"/>
+    <functioncall functionName="SDL_MOUSEWHEEL"/>
+    <functioncall functionName="SDL_MOUSEWHEEL_FLIPPED"/>
+    <functioncall functionName="SDL_MOUSEWHEEL_NORMAL"/>
+    <functioncall functionName="SDL_MULTIGESTURE"/>
+    <functioncall functionName="SDL_NUM_LOG_PRIORITIES"/>
+    <functioncall functionName="SDL_NUM_SYSTEM_CURSORS"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_1010102"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_1555"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_2101010"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_332"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_4444"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_5551"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_565"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_8888"/>
+    <functioncall functionName="SDL_PACKEDLAYOUT_NONE"/>
+    <functioncall functionName="SDL_PACKEDORDER_ABGR"/>
+    <functioncall functionName="SDL_PACKEDORDER_ARGB"/>
+    <functioncall functionName="SDL_PACKEDORDER_BGRA"/>
+    <functioncall functionName="SDL_PACKEDORDER_BGRX"/>
+    <functioncall functionName="SDL_PACKEDORDER_NONE"/>
+    <functioncall functionName="SDL_PACKEDORDER_RGBA"/>
+    <functioncall functionName="SDL_PACKEDORDER_RGBX"/>
+    <functioncall functionName="SDL_PACKEDORDER_XBGR"/>
+    <functioncall functionName="SDL_PACKEDORDER_XRGB"/>
+    <functioncall functionName="SDL_PEEKEVENT"/>
+    <functioncall functionName="SDL_PIXELFORMAT_ABGR8888"/>
+    <functioncall functionName="SDL_PIXELFORMAT_ARGB8888"/>
+    <functioncall functionName="SDL_PIXELFORMAT_BGRA8888"/>
+    <functioncall functionName="SDL_PIXELFORMAT_RGBA8888"/>
+    <functioncall functionName="SDL_PIXELFORMAT_UNKNOWN"/>
+    <functioncall functionName="SDL_PIXELTYPE_ARRAYF16"/>
+    <functioncall functionName="SDL_PIXELTYPE_ARRAYF32"/>
+    <functioncall functionName="SDL_PIXELTYPE_ARRAYU16"/>
+    <functioncall functionName="SDL_PIXELTYPE_ARRAYU32"/>
+    <functioncall functionName="SDL_PIXELTYPE_ARRAYU8"/>
+    <functioncall functionName="SDL_PIXELTYPE_INDEX1"/>
+    <functioncall functionName="SDL_PIXELTYPE_INDEX4"/>
+    <functioncall functionName="SDL_PIXELTYPE_INDEX8"/>
+    <functioncall functionName="SDL_PIXELTYPE_PACKED16"/>
+    <functioncall functionName="SDL_PIXELTYPE_PACKED32"/>
+    <functioncall functionName="SDL_PIXELTYPE_PACKED8"/>
+    <functioncall functionName="SDL_PIXELTYPE_UNKNOWN"/>
+    <functioncall functionName="SDL_POWERSTATE_CHARGED"/>
+    <functioncall functionName="SDL_POWERSTATE_CHARGING"/>
+    <functioncall functionName="SDL_POWERSTATE_NO_BATTERY"/>
+    <functioncall functionName="SDL_POWERSTATE_ON_BATTERY"/>
+    <functioncall functionName="SDL_POWERSTATE_UNKNOWN"/>
+    <functioncall functionName="SDL_QueryTexture"/>
+    <functioncall functionName="SDL_RENDER_DEVICE_RESET"/>
+    <functioncall functionName="SDL_RenderCopyEx"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_ARROW"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_CROSSHAIR"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_HAND"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_IBEAM"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_NO"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_SIZEALL"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_SIZENESW"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_SIZENS"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_SIZENWSE"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_SIZEWE"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_WAIT"/>
+    <functioncall functionName="SDL_SYSTEM_CURSOR_WAITARROW"/>
+    <functioncall functionName="SDL_SYSWMEVENT"/>
+    <functioncall functionName="SDL_SetTextureAlphaMod"/>
+    <functioncall functionName="SDL_SetTextureColorMod"/>
+    <functioncall functionName="SDL_Swap32"/>
+    <functioncall functionName="SDL_TEXTEDITING"/>
+    <functioncall functionName="SDL_TEXTINPUT"/>
+    <functioncall functionName="SDL_TEXTUREACCESS_STATIC"/>
+    <functioncall functionName="SDL_TEXTUREACCESS_STREAMING"/>
+    <functioncall functionName="SDL_TEXTUREACCESS_TARGET"/>
+    <functioncall functionName="SDL_THREAD_PRIORITY_HIGH"/>
+    <functioncall functionName="SDL_THREAD_PRIORITY_LOW"/>
+    <functioncall functionName="SDL_THREAD_PRIORITY_NORMAL"/>
+    <functioncall functionName="SDL_TRUE"/>
+    <functioncall functionName="SDL_UNSUPPORTED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_CLOSE"/>
+    <functioncall functionName="SDL_WINDOWEVENT_ENTER"/>
+    <functioncall functionName="SDL_WINDOWEVENT_EXPOSED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_FOCUS_GAINED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_FOCUS_LOST"/>
+    <functioncall functionName="SDL_WINDOWEVENT_HIDDEN"/>
+    <functioncall functionName="SDL_WINDOWEVENT_HIT_TEST"/>
+    <functioncall functionName="SDL_WINDOWEVENT_LEAVE"/>
+    <functioncall functionName="SDL_WINDOWEVENT_MAXIMIZED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_MINIMIZED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_MOVED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_NONE"/>
+    <functioncall functionName="SDL_WINDOWEVENT_RESIZED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_RESTORED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_SHOWN"/>
+    <functioncall functionName="SDL_WINDOWEVENT_SIZE_CHANGED"/>
+    <functioncall functionName="SDL_WINDOWEVENT_TAKE_FOCUS"/>
+    <functioncall functionName="SDL_YUV_CONVERSION_AUTOMATIC"/>
+    <functioncall functionName="SDL_YUV_CONVERSION_BT601"/>
+    <functioncall functionName="SDL_YUV_CONVERSION_BT709"/>
+    <functioncall functionName="SDL_YUV_CONVERSION_JPEG"/>
+    <functioncall functionName="SDL_memcpy"/>
+    <functioncall functionName="ShapeModeBinarizeAlpha"/>
+    <functioncall functionName="ShapeModeColorKey"/>
+    <functioncall functionName="ShapeModeDefault"/>
+    <functioncall functionName="ShapeModeReverseBinarizeAlpha"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="_In_bytecount_"/>
+    <functioncall functionName="_Inout_z_cap_"/>
+    <functioncall functionName="_Out_bytecap_"/>
+    <functioncall functionName="_Out_z_cap_"/>
+    <functioncall functionName="_val"/>
+    <functioncall functionName="a"/>
+    <functioncall functionName="alpha"/>
+    <functioncall functionName="angle"/>
+    <functioncall functionName="assert"/>
+    <functioncall functionName="b"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="blue"/>
+    <functioncall functionName="c_str"/>
+    <functioncall functionName="centered"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="ctor"/>
+    <functioncall functionName="destRect"/>
+    <functioncall functionName="dst"/>
+    <functioncall functionName="dst_bytes"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="erase"/>
+    <functioncall functionName="f"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="flip"/>
+    <functioncall functionName="green"/>
+    <functioncall functionName="h"/>
+    <functioncall functionName="height"/>
+    <functioncall functionName="hi"/>
+    <functioncall functionName="highp"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="id"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="int"/>
+    <functioncall functionName="int16"/>
+    <functioncall functionName="int32"/>
+    <functioncall functionName="int64"/>
+    <functioncall functionName="int8"/>
+    <functioncall functionName="len"/>
+    <functioncall functionName="length"/>
+    <functioncall functionName="lo"/>
+    <functioncall functionName="maxlen"/>
+    <functioncall functionName="newAlpha"/>
+    <functioncall functionName="pRenderer"/>
+    <functioncall functionName="pTempSurface"/>
+    <functioncall functionName="pTexture"/>
+    <functioncall functionName="packed_highp"/>
+    <functioncall functionName="packed_lowp"/>
+    <functioncall functionName="packed_mediump"/>
+    <functioncall functionName="r"/>
+    <functioncall functionName="red"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="s1"/>
+    <functioncall functionName="s2"/>
+    <functioncall functionName="scalar"/>
+    <functioncall functionName="second"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="sizeof"/>
+    <functioncall functionName="src"/>
+    <functioncall functionName="srcRect"/>
+    <functioncall functionName="static_assert"/>
+    <functioncall functionName="static_cast"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="texture"/>
+    <functioncall functionName="textureHeight"/>
+    <functioncall functionName="textureWidth"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="tvec2"/>
+    <functioncall functionName="ui32"/>
+    <functioncall functionName="uint16"/>
+    <functioncall functionName="uint32"/>
+    <functioncall functionName="uint64"/>
+    <functioncall functionName="uint8"/>
+    <functioncall functionName="uninitialize"/>
+    <functioncall functionName="val"/>
+    <functioncall functionName="w"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="width"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="xOffset"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="yOffset"/>
+  </FileInfo>
+</analyzerinfo>

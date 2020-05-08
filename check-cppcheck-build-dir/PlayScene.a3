@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="2936185590">
+        <error id="virtualCallInConstructor" severity="warning" msg="Virtual function &apos;start&apos; is called from constructor &apos;PlayScene()&apos; at line 749. Dynamic binding is not used." verbose="Virtual function &apos;start&apos; is called from constructor &apos;PlayScene()&apos; at line 749. Dynamic binding is not used.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.h" line="28" info="start is a virtual function"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" line="749" info="Calling start"/>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\PlayScene.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h:10:7" my-argnr="1" my-argname="tileA" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h" linenr="12" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h:10:7" my-argnr="2" my-argname="tileB" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h" linenr="12" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="getTargetPosition" lineNumber="11"/>
+    <functiondecl functionName="setTargetPosition" lineNumber="16"/>
+    <functiondecl functionName="getTile" lineNumber="21"/>
+    <functiondecl functionName="getGoalLocation" lineNumber="26"/>
+    <functiondecl functionName="setGoalLocation" lineNumber="31"/>
+    <functiondecl functionName="findShortestPath" lineNumber="44"/>
+    <functiondecl functionName="resetClosedAndOpen" lineNumber="137"/>
+    <functiondecl functionName="m_createShips" lineNumber="158"/>
+    <functiondecl functionName="m_drawShips" lineNumber="164"/>
+    <functiondecl functionName="m_updateShips" lineNumber="169"/>
+    <functiondecl functionName="m_respawnShips" lineNumber="175"/>
+    <functiondecl functionName="m_moveShipsAlongPath" lineNumber="208"/>
+    <functiondecl functionName="m_createPlanet" lineNumber="227"/>
+    <functiondecl functionName="m_respawnPlanet" lineNumber="233"/>
+    <functiondecl functionName="m_createMines" lineNumber="255"/>
+    <functiondecl functionName="m_drawMines" lineNumber="267"/>
+    <functiondecl functionName="m_updateMines" lineNumber="275"/>
+    <functiondecl functionName="m_respawnMines" lineNumber="283"/>
+    <functiondecl functionName="m_assignNeighbours" lineNumber="302"/>
+    <functiondecl functionName="m_createGrid" lineNumber="347"/>
+    <functiondecl functionName="m_drawGrid" lineNumber="363"/>
+    <functiondecl functionName="m_updateGrid" lineNumber="374"/>
+    <functiondecl functionName="m_getRandomEmptyTile" lineNumber="385"/>
+    <functiondecl functionName="m_ImGuiKeyMap" lineNumber="399"/>
+    <functiondecl functionName="m_ImGuiSetStyle" lineNumber="428"/>
+    <functiondecl functionName="m_updateUI" lineNumber="473"/>
+    <functiondecl functionName="m_resetAll" lineNumber="727"/>
+    <functiondecl functionName="start" lineNumber="734"/>
+    <functiondecl functionName="draw" lineNumber="756"/>
+    <functiondecl functionName="update" lineNumber="780"/>
+    <functiondecl functionName="clean" lineNumber="802"/>
+    <functiondecl functionName="handleEvents" lineNumber="828"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="AddInputCharactersUTF8"/>
+    <functioncall functionName="Begin"/>
+    <functioncall functionName="BeginMenu"/>
+    <functioncall functionName="BeginMenuBar"/>
+    <functioncall functionName="Button"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="CollapsingHeader"/>
+    <functioncall functionName="ComparatorByValue"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="End"/>
+    <functioncall functionName="EndMenu"/>
+    <functioncall functionName="EndMenuBar"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="GetDrawData"/>
+    <functioncall functionName="GetIO"/>
+    <functioncall functionName="GetStyle"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="IM_ARRAYSIZE"/>
+    <functioncall functionName="IM_ASSERT"/>
+    <functioncall functionName="ImGuiCol_Border"/>
+    <functioncall functionName="ImGuiCol_BorderShadow"/>
+    <functioncall functionName="ImGuiCol_Button"/>
+    <functioncall functionName="ImGuiCol_ButtonActive"/>
+    <functioncall functionName="ImGuiCol_ButtonHovered"/>
+    <functioncall functionName="ImGuiCol_CheckMark"/>
+    <functioncall functionName="ImGuiCol_ChildWindowBg"/>
+    <functioncall functionName="ImGuiCol_Column"/>
+    <functioncall functionName="ImGuiCol_ColumnActive"/>
+    <functioncall functionName="ImGuiCol_ColumnHovered"/>
+    <functioncall functionName="ImGuiCol_FrameBg"/>
+    <functioncall functionName="ImGuiCol_FrameBgActive"/>
+    <functioncall functionName="ImGuiCol_FrameBgHovered"/>
+    <functioncall functionName="ImGuiCol_Header"/>
+    <functioncall functionName="ImGuiCol_HeaderActive"/>
+    <functioncall functionName="ImGuiCol_HeaderHovered"/>
+    <functioncall functionName="ImGuiCol_MenuBarBg"/>
+    <functioncall functionName="ImGuiCol_ModalWindowDarkening"/>
+    <functioncall functionName="ImGuiCol_PlotHistogram"/>
+    <functioncall functionName="ImGuiCol_PlotHistogramHovered"/>
+    <functioncall functionName="ImGuiCol_PlotLinesHovered"/>
+    <functioncall functionName="ImGuiCol_PopupBg"/>
+    <functioncall functionName="ImGuiCol_ResizeGrip"/>
+    <functioncall functionName="ImGuiCol_ResizeGripActive"/>
+    <functioncall functionName="ImGuiCol_ResizeGripHovered"/>
+    <functioncall functionName="ImGuiCol_ScrollbarBg"/>
+    <functioncall functionName="ImGuiCol_ScrollbarGrab"/>
+    <functioncall functionName="ImGuiCol_ScrollbarGrabActive"/>
+    <functioncall functionName="ImGuiCol_ScrollbarGrabHovered"/>
+    <functioncall functionName="ImGuiCol_SliderGrab"/>
+    <functioncall functionName="ImGuiCol_SliderGrabActive"/>
+    <functioncall functionName="ImGuiCol_Text"/>
+    <functioncall functionName="ImGuiCol_TextSelectedBg"/>
+    <functioncall functionName="ImGuiCol_TitleBg"/>
+    <functioncall functionName="ImGuiCol_TitleBgActive"/>
+    <functioncall functionName="ImGuiCol_TitleBgCollapsed"/>
+    <functioncall functionName="ImGuiCol_WindowBg"/>
+    <functioncall functionName="ImGuiInputTextFlags_ReadOnly"/>
+    <functioncall functionName="ImGuiKey_A"/>
+    <functioncall functionName="ImGuiKey_Backspace"/>
+    <functioncall functionName="ImGuiKey_C"/>
+    <functioncall functionName="ImGuiKey_Delete"/>
+    <functioncall functionName="ImGuiKey_DownArrow"/>
+    <functioncall functionName="ImGuiKey_End"/>
+    <functioncall functionName="ImGuiKey_Enter"/>
+    <functioncall functionName="ImGuiKey_Escape"/>
+    <functioncall functionName="ImGuiKey_Home"/>
+    <functioncall functionName="ImGuiKey_Insert"/>
+    <functioncall functionName="ImGuiKey_LeftArrow"/>
+    <functioncall functionName="ImGuiKey_PageDown"/>
+    <functioncall functionName="ImGuiKey_PageUp"/>
+    <functioncall functionName="ImGuiKey_RightArrow"/>
+    <functioncall functionName="ImGuiKey_Space"/>
+    <functioncall functionName="ImGuiKey_Tab"/>
+    <functioncall functionName="ImGuiKey_UpArrow"/>
+    <functioncall functionName="ImGuiKey_V"/>
+    <functioncall functionName="ImGuiKey_X"/>
+    <functioncall functionName="ImGuiKey_Y"/>
+    <functioncall functionName="ImGuiKey_Z"/>
+    <functioncall functionName="ImGuiWindowFlags_AlwaysAutoResize"/>
+    <functioncall functionName="ImGuiWindowFlags_MenuBar"/>
+    <functioncall functionName="ImVec2"/>
+    <functioncall functionName="ImVec4"/>
+    <functioncall functionName="InputFloat2"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="KMOD_ALT"/>
+    <functioncall functionName="KMOD_CTRL"/>
+    <functioncall functionName="KMOD_GUI"/>
+    <functioncall functionName="KMOD_SHIFT"/>
+    <functioncall functionName="KeysDown"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="Label"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="MenuItem"/>
+    <functioncall functionName="Mine"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="NewFrame"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="Planet"/>
+    <functioncall functionName="PlayScene"/>
+    <functioncall functionName="PopItemWidth"/>
+    <functioncall functionName="PushItemWidth"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="Render"/>
+    <functioncall functionName="SDL_BUTTON"/>
+    <functioncall functionName="SDL_BUTTON_LEFT"/>
+    <functioncall functionName="SDL_BUTTON_RIGHT"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SDL_GetModState"/>
+    <functioncall functionName="SDL_GetMouseState"/>
+    <functioncall functionName="SDL_PollEvent"/>
+    <functioncall functionName="SDL_SCANCODE_A"/>
+    <functioncall functionName="SDL_SCANCODE_BACKSPACE"/>
+    <functioncall functionName="SDL_SCANCODE_C"/>
+    <functioncall functionName="SDL_SCANCODE_DELETE"/>
+    <functioncall functionName="SDL_SCANCODE_DOWN"/>
+    <functioncall functionName="SDL_SCANCODE_END"/>
+    <functioncall functionName="SDL_SCANCODE_ESCAPE"/>
+    <functioncall functionName="SDL_SCANCODE_HOME"/>
+    <functioncall functionName="SDL_SCANCODE_INSERT"/>
+    <functioncall functionName="SDL_SCANCODE_LEFT"/>
+    <functioncall functionName="SDL_SCANCODE_PAGEDOWN"/>
+    <functioncall functionName="SDL_SCANCODE_PAGEUP"/>
+    <functioncall functionName="SDL_SCANCODE_RETURN"/>
+    <functioncall functionName="SDL_SCANCODE_RIGHT"/>
+    <functioncall functionName="SDL_SCANCODE_SPACE"/>
+    <functioncall functionName="SDL_SCANCODE_TAB"/>
+    <functioncall functionName="SDL_SCANCODE_UP"/>
+    <functioncall functionName="SDL_SCANCODE_V"/>
+    <functioncall functionName="SDL_SCANCODE_X"/>
+    <functioncall functionName="SDL_SCANCODE_Y"/>
+    <functioncall functionName="SDL_SCANCODE_Z"/>
+    <functioncall functionName="SDL_SetRenderDrawColor"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="SameLine"/>
+    <functioncall functionName="Separator"/>
+    <functioncall functionName="SetWindowPos"/>
+    <functioncall functionName="Ship"/>
+    <functioncall functionName="SliderFloat"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="Target"/>
+    <functioncall functionName="Text"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="Tile"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="addChild"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="blue"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="c_str"/>
+    <functioncall functionName="changeSceneState"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="col"/>
+    <functioncall functionName="colPosition"/>
+    <functioncall functionName="count"/>
+    <functioncall functionName="currentTile"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="down"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="empty"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="event"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="findShortestPath"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="getEuclideanFactor"/>
+    <functioncall functionName="getFrames"/>
+    <functioncall functionName="getGridPosition"/>
+    <functioncall functionName="getManhanttanFactor"/>
+    <functioncall functionName="getMineFactor"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getRenderer"/>
+    <functioncall functionName="getTargetPosition"/>
+    <functioncall functionName="getTile"/>
+    <functioncall functionName="getTileState"/>
+    <functioncall functionName="getTileValue"/>
+    <functioncall functionName="getVelocity"/>
+    <functioncall functionName="i"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="key"/>
+    <functioncall functionName="left"/>
+    <functioncall functionName="m_ImGuiKeyMap"/>
+    <functioncall functionName="m_ImGuiSetStyle"/>
+    <functioncall functionName="m_assignNeighbours"/>
+    <functioncall functionName="m_createGrid"/>
+    <functioncall functionName="m_createMines"/>
+    <functioncall functionName="m_createPlanet"/>
+    <functioncall functionName="m_createShips"/>
+    <functioncall functionName="m_debugMode"/>
+    <functioncall functionName="m_displayAbout"/>
+    <functioncall functionName="m_displayUI"/>
+    <functioncall functionName="m_drawGrid"/>
+    <functioncall functionName="m_drawMines"/>
+    <functioncall functionName="m_drawShips"/>
+    <functioncall functionName="m_exitApp"/>
+    <functioncall functionName="m_getRandomEmptyTile"/>
+    <functioncall functionName="m_goalLocation"/>
+    <functioncall functionName="m_moveAlongPath"/>
+    <functioncall functionName="m_moveShipsAlongPath"/>
+    <functioncall functionName="m_pClosed"/>
+    <functioncall functionName="m_pMines"/>
+    <functioncall functionName="m_pOpen"/>
+    <functioncall functionName="m_pathLength"/>
+    <functioncall functionName="m_resetAll"/>
+    <functioncall functionName="m_respawnMines"/>
+    <functioncall functionName="m_respawnPlanet"/>
+    <functioncall functionName="m_respawnShips"/>
+    <functioncall functionName="m_updateGrid"/>
+    <functioncall functionName="m_updateMines"/>
+    <functioncall functionName="m_updateShips"/>
+    <functioncall functionName="m_updateUI"/>
+    <functioncall functionName="mine_index"/>
+    <functioncall functionName="mouseX"/>
+    <functioncall functionName="mouseY"/>
+    <functioncall functionName="newFactor"/>
+    <functioncall functionName="newLocation"/>
+    <functioncall functionName="newMine"/>
+    <functioncall functionName="newPosition"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="push_back"/>
+    <functioncall functionName="quit"/>
+    <functioncall functionName="rand"/>
+    <functioncall functionName="randomCol"/>
+    <functioncall functionName="randomRow"/>
+    <functioncall functionName="removeAllChildren"/>
+    <functioncall functionName="resetClosedAndOpen"/>
+    <functioncall functionName="resize"/>
+    <functioncall functionName="right"/>
+    <functioncall functionName="row"/>
+    <functioncall functionName="rowPosition"/>
+    <functioncall functionName="scancode"/>
+    <functioncall functionName="setDown"/>
+    <functioncall functionName="setEuclideanFactor"/>
+    <functioncall functionName="setGoalLocation"/>
+    <functioncall functionName="setLeft"/>
+    <functioncall functionName="setManhanttanFactor"/>
+    <functioncall functionName="setMineFactor"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setRight"/>
+    <functioncall functionName="setTarget"/>
+    <functioncall functionName="setTargetDistance"/>
+    <functioncall functionName="setTargetPosition"/>
+    <functioncall functionName="setTile"/>
+    <functioncall functionName="setTileState"/>
+    <functioncall functionName="setTileStateLabel"/>
+    <functioncall functionName="setUp"/>
+    <functioncall functionName="setVelocity"/>
+    <functioncall functionName="setprecision"/>
+    <functioncall functionName="shrink_to_fit"/>
+    <functioncall functionName="size"/>
+    <functioncall functionName="sort"/>
+    <functioncall functionName="start"/>
+    <functioncall functionName="static_cast"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="sym"/>
+    <functioncall functionName="targetPosition"/>
+    <functioncall functionName="text"/>
+    <functioncall functionName="tile"/>
+    <functioncall functionName="to_string"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="type"/>
+    <functioncall functionName="up"/>
+    <functioncall functionName="update"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="wheel"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="y"/>
+  </FileInfo>
+</analyzerinfo>

@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="3653653651">
+        <error id="unusedPrivateFunction" severity="style" msg="Unused private function: &apos;Ship::m_checkState&apos;" verbose="Unused private function: &apos;Ship::m_checkState&apos;" cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.h" line="46"/>
+            <symbol>Ship::m_checkState</symbol>
+        </error>
+        <error id="unusedPrivateFunction" severity="style" msg="Unused private function: &apos;Ship::m_checkBounds&apos;" verbose="Unused private function: &apos;Ship::m_checkBounds&apos;" cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.h" line="47"/>
+            <symbol>Ship::m_checkBounds</symbol>
+        </error>
+        <error id="unusedPrivateFunction" severity="style" msg="Unused private function: &apos;Ship::m_reset&apos;" verbose="Unused private function: &apos;Ship::m_reset&apos;" cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.h" line="49"/>
+            <symbol>Ship::m_reset</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\ship.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+  <FileInfo check="ctu">
+<function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/GameObject.h:59:7" call-funcname="setIsColliding" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/ship.cpp" linenr="20" call-argexpr="false" call-argvaluetype="0" call-argvalue="0"/><function-call call-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/GameObject.h:59:7" call-funcname="setIsColliding" call-argnr="1" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/ship.cpp" linenr="166" call-argexpr="false" call-argvaluetype="0" call-argvalue="0"/>  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="draw" lineNumber="36"/>
+    <functiondecl functionName="m_checkState" lineNumber="45"/>
+    <functiondecl functionName="update" lineNumber="65"/>
+    <functiondecl functionName="clean" lineNumber="70"/>
+    <functiondecl functionName="turnRight" lineNumber="76"/>
+    <functiondecl functionName="turnLeft" lineNumber="86"/>
+    <functiondecl functionName="move" lineNumber="95"/>
+    <functiondecl functionName="getTile" lineNumber="109"/>
+    <functiondecl functionName="setTile" lineNumber="114"/>
+    <functiondecl functionName="getTarget" lineNumber="119"/>
+    <functiondecl functionName="setTarget" lineNumber="124"/>
+    <functiondecl functionName="getParent" lineNumber="129"/>
+    <functiondecl functionName="setParent" lineNumber="134"/>
+    <functiondecl functionName="m_checkBounds" lineNumber="139"/>
+    <functiondecl functionName="m_reset" lineNumber="164"/>
+    <functiondecl functionName="m_seek" lineNumber="173"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="Ship"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="desired"/>
+    <functioncall functionName="distance"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="getHeight"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getRenderer"/>
+    <functioncall functionName="getState"/>
+    <functioncall functionName="getTextureSize"/>
+    <functioncall functionName="getVelocity"/>
+    <functioncall functionName="getWidth"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="limitMagnitude"/>
+    <functioncall functionName="load"/>
+    <functioncall functionName="m_currentDirection"/>
+    <functioncall functionName="m_seek"/>
+    <functioncall functionName="m_steerForce"/>
+    <functioncall functionName="m_target"/>
+    <functioncall functionName="move"/>
+    <functioncall functionName="newPosition"/>
+    <functioncall functionName="newTile"/>
+    <functioncall functionName="normalize"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="position"/>
+    <functioncall functionName="rand"/>
+    <functioncall functionName="scene"/>
+    <functioncall functionName="setAcceleration"/>
+    <functioncall functionName="setHeight"/>
+    <functioncall functionName="setIsColliding"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setState"/>
+    <functioncall functionName="setType"/>
+    <functioncall functionName="setVelocity"/>
+    <functioncall functionName="setWidth"/>
+    <functioncall functionName="steer"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="xComponent"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="yComponent"/>
+  </FileInfo>
+</analyzerinfo>

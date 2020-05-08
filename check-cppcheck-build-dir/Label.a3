@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="330412780">
+        <error id="useInitializationList" severity="performance" msg="Variable &apos;m_fontPath&apos; is assigned in constructor body. Consider performing initialization in initialization list." verbose="When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don&apos;t explicitly write them to the initialization list. You could avoid assigning &apos;m_fontPath&apos; a value by passing the value to the constructor in the initialization list." cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" line="8"/>
+            <symbol>m_fontPath</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+        <error id="passedByValue" severity="performance" msg="Function parameter &apos;fontName&apos; should be passed by const reference." verbose="Parameter &apos;fontName&apos; is passed by value. It could be passed as a const reference which is usually faster and recommended in C++." cwe="398">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Label.cpp" line="5"/>
+            <symbol>fontName</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="draw" lineNumber="28"/>
+    <functiondecl functionName="update" lineNumber="36"/>
+    <functiondecl functionName="clean" lineNumber="40"/>
+    <functiondecl functionName="setText" lineNumber="46"/>
+    <functiondecl functionName="setColour" lineNumber="61"/>
+    <functiondecl functionName="setSize" lineNumber="67"/>
+    <functiondecl functionName="getParent" lineNumber="82"/>
+    <functiondecl functionName="setParent" lineNumber="87"/>
+    <functiondecl functionName="m_buildFontID" lineNumber="92"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="Label"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="colour"/>
+    <functioncall functionName="drawText"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="fontName"/>
+    <functioncall functionName="fontSize"/>
+    <functioncall functionName="fontStyle"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getRenderer"/>
+    <functioncall functionName="getTextureSize"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="isCentered"/>
+    <functioncall functionName="load"/>
+    <functioncall functionName="m_buildFontID"/>
+    <functioncall functionName="m_fontColour"/>
+    <functioncall functionName="m_fontID"/>
+    <functioncall functionName="m_fontName"/>
+    <functioncall functionName="m_fontPath"/>
+    <functioncall functionName="m_fontSize"/>
+    <functioncall functionName="m_fontStyle"/>
+    <functioncall functionName="m_isCentered"/>
+    <functioncall functionName="m_text"/>
+    <functioncall functionName="newColour"/>
+    <functioncall functionName="newSize"/>
+    <functioncall functionName="newText"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="position"/>
+    <functioncall functionName="scene"/>
+    <functioncall functionName="setHeight"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setWidth"/>
+    <functioncall functionName="text"/>
+    <functioncall functionName="textToTexture"/>
+    <functioncall functionName="to_string"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="xComponent"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="yComponent"/>
+  </FileInfo>
+</analyzerinfo>

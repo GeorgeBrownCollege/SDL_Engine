@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="3361143100">
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Game.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+  <FileInfo check="Uninitialized variables">
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h:10:7" my-argnr="1" my-argname="tileA" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h" linenr="12" value="0"/>
+    <unsafe-usage my-id="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h:10:7" my-argnr="2" my-argname="tileB" filename="C:/Users/Tom/OneDrive/Documents/Courses/GAME3001 - Artificial Intelligence/Week 5/Session2/Template v5/src/TileComparators.h" linenr="12" value="0"/>
+  </FileInfo>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="init" lineNumber="24"/>
+    <functiondecl functionName="start" lineNumber="94"/>
+    <functiondecl functionName="getRenderer" lineNumber="101"/>
+    <functiondecl functionName="getMousePosition" lineNumber="106"/>
+    <functiondecl functionName="setFrames" lineNumber="111"/>
+    <functiondecl functionName="getFrames" lineNumber="116"/>
+    <functiondecl functionName="changeSceneState" lineNumber="121"/>
+    <functiondecl functionName="quit" lineNumber="159"/>
+    <functiondecl functionName="render" lineNumber="164"/>
+    <functiondecl functionName="update" lineNumber="173"/>
+    <functiondecl functionName="clean" lineNumber="178"/>
+    <functiondecl functionName="handleEvents" lineNumber="193"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="CreateContext"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="DestroyContext"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="EndScene"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Initialize"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NO_SCENE"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="PlayScene"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="SDL_CreateRenderer"/>
+    <functioncall functionName="SDL_CreateWindow"/>
+    <functioncall functionName="SDL_DestroyRenderer"/>
+    <functioncall functionName="SDL_DestroyWindow"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SDL_INIT_EVERYTHING"/>
+    <functioncall functionName="SDL_Init"/>
+    <functioncall functionName="SDL_PollEvent"/>
+    <functioncall functionName="SDL_Quit"/>
+    <functioncall functionName="SDL_RENDERER_PRESENTVSYNC"/>
+    <functioncall functionName="SDL_RenderClear"/>
+    <functioncall functionName="SDL_RenderPresent"/>
+    <functioncall functionName="SDL_SetRenderDrawColor"/>
+    <functioncall functionName="SDL_WINDOW_FULLSCREEN"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="StartScene"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_GetError"/>
+    <functioncall functionName="TTF_Init"/>
+    <functioncall functionName="TTF_Quit"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="break"/>
+    <functioncall functionName="changeSceneState"/>
+    <functioncall functionName="clean"/>
+    <functioncall functionName="default"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="event"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="flags"/>
+    <functioncall functionName="frames"/>
+    <functioncall functionName="fullscreen"/>
+    <functioncall functionName="getTileValue"/>
+    <functioncall functionName="handleEvents"/>
+    <functioncall functionName="height"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="int"/>
+    <functioncall functionName="m_bRunning"/>
+    <functioncall functionName="m_currentFrame"/>
+    <functioncall functionName="m_currentScene"/>
+    <functioncall functionName="m_currentSceneState"/>
+    <functioncall functionName="m_pRenderer"/>
+    <functioncall functionName="m_pWindow"/>
+    <functioncall functionName="newState"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="printf"/>
+    <functioncall functionName="srand"/>
+    <functioncall functionName="start"/>
+    <functioncall functionName="switch"/>
+    <functioncall functionName="sym"/>
+    <functioncall functionName="time"/>
+    <functioncall functionName="title"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="type"/>
+    <functioncall functionName="update"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="width"/>
+    <functioncall functionName="xpos"/>
+    <functioncall functionName="ypos"/>
+  </FileInfo>
+</analyzerinfo>

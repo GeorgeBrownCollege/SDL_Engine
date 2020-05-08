@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="1735602147">
+        <error id="missingOverride" severity="style" msg="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;draw&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="27" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="34" info="Virtual function in base class"/>
+            <symbol>draw</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;update&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="28" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="37" info="Virtual function in base class"/>
+            <symbol>update</symbol>
+        </error>
+        <error id="missingOverride" severity="style" msg="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;clean&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier.">
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Scene.h" line="29" info="Function in derived class"/>
+            <location file0="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\Tile.cpp" file="C:\Users\Tom\OneDrive\Documents\Courses\GAME3001 - Artificial Intelligence\Week 5\Session2\Template v5\src\GameObject.h" line="40" info="Virtual function in base class"/>
+            <symbol>clean</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="draw" lineNumber="42"/>
+    <functiondecl functionName="update" lineNumber="54"/>
+    <functiondecl functionName="clean" lineNumber="58"/>
+    <functiondecl functionName="up" lineNumber="62"/>
+    <functiondecl functionName="down" lineNumber="67"/>
+    <functiondecl functionName="right" lineNumber="72"/>
+    <functiondecl functionName="left" lineNumber="77"/>
+    <functiondecl functionName="setUp" lineNumber="82"/>
+    <functiondecl functionName="setDown" lineNumber="88"/>
+    <functiondecl functionName="setRight" lineNumber="94"/>
+    <functiondecl functionName="setLeft" lineNumber="100"/>
+    <functiondecl functionName="setTileState" lineNumber="106"/>
+    <functiondecl functionName="getTileState" lineNumber="115"/>
+    <functiondecl functionName="setTargetDistance" lineNumber="120"/>
+    <functiondecl functionName="getGridPosition" lineNumber="193"/>
+    <functiondecl functionName="getTileValue" lineNumber="198"/>
+    <functiondecl functionName="setTileStateLabel" lineNumber="203"/>
+    <functiondecl functionName="getManhanttanFactor" lineNumber="211"/>
+    <functiondecl functionName="setManhanttanFactor" lineNumber="216"/>
+    <functiondecl functionName="getEuclideanFactor" lineNumber="222"/>
+    <functiondecl functionName="setEuclideanFactor" lineNumber="227"/>
+    <functiondecl functionName="getMineFactor" lineNumber="233"/>
+    <functiondecl functionName="setMineFactor" lineNumber="238"/>
+    <functiondecl functionName="getParent" lineNumber="244"/>
+    <functiondecl functionName="setParent" lineNumber="249"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="CLOSED"/>
+    <functioncall functionName="COL_NUM"/>
+    <functioncall functionName="DOWN"/>
+    <functioncall functionName="END_SCENE"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="FontManager"/>
+    <functioncall functionName="GOAL"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="Instance"/>
+    <functioncall functionName="LEFT"/>
+    <functioncall functionName="Label"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="NUM_OF_NEIGHBOURS"/>
+    <functioncall functionName="NUM_OF_SCENES"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TILE_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="OPEN"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="PLAY_SCENE"/>
+    <functioncall functionName="RIGHT"/>
+    <functioncall functionName="ROW_NUM"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="START"/>
+    <functioncall functionName="START_SCENE"/>
+    <functioncall functionName="SoundManager"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="TILE_COST"/>
+    <functioncall functionName="TILE_SIZE"/>
+    <functioncall functionName="TTF_STYLE_NORMAL"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="Tile"/>
+    <functioncall functionName="UNDEFINED"/>
+    <functioncall functionName="UP"/>
+    <functioncall functionName="abs"/>
+    <functioncall functionName="black"/>
+    <functioncall functionName="blue"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="closedOpen"/>
+    <functioncall functionName="closedOpenLabelPosition"/>
+    <functioncall functionName="count"/>
+    <functioncall functionName="down"/>
+    <functioncall functionName="draw"/>
+    <functioncall functionName="dy"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="getPosition"/>
+    <functioncall functionName="getRenderer"/>
+    <functioncall functionName="getTextureSize"/>
+    <functioncall functionName="getTileState"/>
+    <functioncall functionName="goalLocation"/>
+    <functioncall functionName="gridPosition"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="labelstring"/>
+    <functioncall functionName="left"/>
+    <functioncall functionName="load"/>
+    <functioncall functionName="m_goalLocation"/>
+    <functioncall functionName="m_gridPosition"/>
+    <functioncall functionName="m_pParentScene"/>
+    <functioncall functionName="m_targetDist"/>
+    <functioncall functionName="newFactor"/>
+    <functioncall functionName="override"/>
+    <functioncall functionName="position"/>
+    <functioncall functionName="push_back"/>
+    <functioncall functionName="resize"/>
+    <functioncall functionName="right"/>
+    <functioncall functionName="scene"/>
+    <functioncall functionName="setColour"/>
+    <functioncall functionName="setHeight"/>
+    <functioncall functionName="setPosition"/>
+    <functioncall functionName="setTargetDistance"/>
+    <functioncall functionName="setText"/>
+    <functioncall functionName="setTileState"/>
+    <functioncall functionName="setTileStateLabel"/>
+    <functioncall functionName="setWidth"/>
+    <functioncall functionName="setprecision"/>
+    <functioncall functionName="shrink_to_fit"/>
+    <functioncall functionName="sqrt"/>
+    <functioncall functionName="state"/>
+    <functioncall functionName="str"/>
+    <functioncall functionName="tile"/>
+    <functioncall functionName="true"/>
+    <functioncall functionName="up"/>
+    <functioncall functionName="valueLabelPosition"/>
+    <functioncall functionName="vec2"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="x2"/>
+    <functioncall functionName="xComponent"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="y2"/>
+    <functioncall functionName="yComponent"/>
+  </FileInfo>
+</analyzerinfo>

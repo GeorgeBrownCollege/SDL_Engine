@@ -1,0 +1,45 @@
+{
+
+"images": [
+    "atlas2.png"
+],
+
+"framerate": 20,
+"frames": [
+    [1, 1, 16, 16, 0, 0, 0],
+    [19, 1, 226, 178, 0, 0, 0],
+    [1, 181, 62, 62, 0, 0, 0],
+    [65, 181, 45, 58, 0, -19, 0],
+    [112, 181, 46, 58, 0, -17, 0],
+    [160, 181, 46, 58, 0, -16, 0],
+    [1, 245, 43, 58, 0, -17, 0],
+    [46, 245, 53, 55, 0, -14, -3],
+    [101, 245, 38, 58, 0, -17, 0],
+    [141, 245, 40, 57, 0, -17, -1],
+    [183, 245, 47, 56, 0, -13, -2],
+    [1, 305, 62, 51, 0, -3, -9],
+    [65, 305, 62, 51, 0, -3, -9],
+    [129, 305, 62, 51, 0, -3, -9],
+    [1, 358, 150, 50, 0, 0, 0],
+    [1, 410, 150, 50, 0, 0, 0]
+],
+
+"animations": {
+    "bullet": { "frames": [0] },
+    "cloud": { "frames": [1] },
+    "island": { "frames": [2] },
+    "megaman-idle": { "frames": [3, 4, 5, 6] },
+    "megaman-run": { "frames": [7, 8, 9, 10] },
+    "plane1": { "frames": [11] },
+    "plane2": { "frames": [12] },
+    "plane3": { "frames": [13] },
+    "restartButton": { "frames": [14] },
+    "startButton": { "frames": [15] }
+},
+
+"texturepacker": [
+        "SmartUpdateHash: $TexturePacker:SmartUpdate:b72c9740af24f8bd34d3eee0ce949cb9:87bbb86b98b581eb3de3c0d5272d7332:d2928af382b1462a4e1e9d203dd4c4a5$",
+        "Created with TexturePacker (https://www.codeandweb.com/texturepacker) for EaselJS"
+]
+
+}

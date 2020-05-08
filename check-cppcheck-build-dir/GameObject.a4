@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="2695245">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="getPosition" lineNumber="15"/>
+    <functiondecl functionName="getRotation" lineNumber="20"/>
+    <functiondecl functionName="getScale" lineNumber="25"/>
+    <functiondecl functionName="getVelocity" lineNumber="30"/>
+    <functiondecl functionName="getAcceleration" lineNumber="35"/>
+    <functiondecl functionName="getWidth" lineNumber="40"/>
+    <functiondecl functionName="getHeight" lineNumber="45"/>
+    <functiondecl functionName="getIsColliding" lineNumber="50"/>
+    <functiondecl functionName="getType" lineNumber="55"/>
+    <functiondecl functionName="getState" lineNumber="60"/>
+    <functiondecl functionName="setPosition" lineNumber="66"/>
+    <functiondecl functionName="setWidth" lineNumber="73"/>
+    <functiondecl functionName="setHeight" lineNumber="78"/>
+    <functiondecl functionName="setVelocity" lineNumber="83"/>
+    <functiondecl functionName="setIsColliding" lineNumber="88"/>
+    <functiondecl functionName="setType" lineNumber="93"/>
+    <functiondecl functionName="setState" lineNumber="98"/>
+    <functiondecl functionName="setAcceleration" lineNumber="103"/>
+    <functioncall functionName="ARRIVE"/>
+    <functioncall functionName="AVOID"/>
+    <functioncall functionName="FLEE"/>
+    <functioncall functionName="GameObject"/>
+    <functioncall functionName="IDLE"/>
+    <functioncall functionName="MINE"/>
+    <functioncall functionName="NONE"/>
+    <functioncall functionName="NO_STATE"/>
+    <functioncall functionName="NUM_OF_STATES"/>
+    <functioncall functionName="NUM_OF_TYPES"/>
+    <functioncall functionName="PLANET"/>
+    <functioncall functionName="SEEK"/>
+    <functioncall functionName="SHIP"/>
+    <functioncall functionName="TARGET"/>
+    <functioncall functionName="TILE"/>
+    <functioncall functionName="collision"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="m_acceleration"/>
+    <functioncall functionName="m_currentFrame"/>
+    <functioncall functionName="m_currentRow"/>
+    <functioncall functionName="m_height"/>
+    <functioncall functionName="m_isColliding"/>
+    <functioncall functionName="m_numFrames"/>
+    <functioncall functionName="m_position"/>
+    <functioncall functionName="m_rotation"/>
+    <functioncall functionName="m_scale"/>
+    <functioncall functionName="m_state"/>
+    <functioncall functionName="m_type"/>
+    <functioncall functionName="m_velocity"/>
+    <functioncall functionName="m_width"/>
+    <functioncall functionName="newAcceleration"/>
+    <functioncall functionName="newHeight"/>
+    <functioncall functionName="newPosition"/>
+    <functioncall functionName="newState"/>
+    <functioncall functionName="newType"/>
+    <functioncall functionName="newVelocity"/>
+    <functioncall functionName="newWidth"/>
+    <functioncall functionName="vec2"/>
+  </FileInfo>
+</analyzerinfo>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="1791128621">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="sign" lineNumber="23"/>
+    <functiondecl functionName="clamp" lineNumber="32"/>
+    <functiondecl functionName="clamp01" lineNumber="47"/>
+    <functiondecl functionName="distance" lineNumber="65"/>
+    <functiondecl functionName="squaredDistance" lineNumber="76"/>
+    <functiondecl functionName="magnitude" lineNumber="87"/>
+    <functiondecl functionName="squaredMagnitude" lineNumber="98"/>
+    <functiondecl functionName="limitMagnitude" lineNumber="105"/>
+    <functiondecl functionName="lerp" lineNumber="125"/>
+    <functiondecl functionName="lerpUnclamped" lineNumber="134"/>
+    <functiondecl functionName="lerpAngle" lineNumber="143"/>
+    <functiondecl functionName="repeat" lineNumber="156"/>
+    <functiondecl functionName="RandomRange" lineNumber="161"/>
+    <functiondecl functionName="Sanitize" lineNumber="170"/>
+    <functiondecl functionName="min" lineNumber="183"/>
+    <functiondecl functionName="max" lineNumber="196"/>
+    <functiondecl functionName="negate" lineNumber="208"/>
+    <functiondecl functionName="inverse" lineNumber="220"/>
+    <functiondecl functionName="normalize" lineNumber="233"/>
+    <functiondecl functionName="angle" lineNumber="250"/>
+    <functiondecl functionName="dot" lineNumber="258"/>
+    <functioncall functionName="EPSILON"/>
+    <functioncall functionName="Util"/>
+    <functioncall functionName="a"/>
+    <functioncall functionName="acos"/>
+    <functioncall functionName="clamp"/>
+    <functioncall functionName="clamp01"/>
+    <functioncall functionName="dot"/>
+    <functioncall functionName="floor"/>
+    <functioncall functionName="from"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="length"/>
+    <functioncall functionName="magnitude"/>
+    <functioncall functionName="max"/>
+    <functioncall functionName="min"/>
+    <functioncall functionName="normalize"/>
+    <functioncall functionName="num"/>
+    <functioncall functionName="rand"/>
+    <functioncall functionName="repeat"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="sqrt"/>
+    <functioncall functionName="static_cast"/>
+    <functioncall functionName="t"/>
+    <functioncall functionName="to"/>
+    <functioncall functionName="value"/>
+    <functioncall functionName="vector"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="y"/>
+  </FileInfo>
+</analyzerinfo>

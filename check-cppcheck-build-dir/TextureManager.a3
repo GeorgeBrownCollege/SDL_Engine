@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="27013409">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="load" lineNumber="13"/>
+    <functiondecl functionName="draw" lineNumber="36"/>
+    <functiondecl functionName="draw" lineNumber="49"/>
+    <functiondecl functionName="draw" lineNumber="78"/>
+    <functiondecl functionName="draw" lineNumber="93"/>
+    <functiondecl functionName="drawFrame" lineNumber="123"/>
+    <functiondecl functionName="drawFrame" lineNumber="137"/>
+    <functiondecl functionName="drawFrame" lineNumber="165"/>
+    <functiondecl functionName="drawFrame" lineNumber="181"/>
+    <functiondecl functionName="drawText" lineNumber="210"/>
+    <functiondecl functionName="getTextureSize" lineNumber="240"/>
+    <functiondecl functionName="setAlpha" lineNumber="252"/>
+    <functiondecl functionName="setColour" lineNumber="260"/>
+    <functiondecl functionName="addTexture" lineNumber="268"/>
+    <functiondecl functionName="getTexture" lineNumber="273"/>
+    <functiondecl functionName="clean" lineNumber="278"/>
+    <functioncall functionName="IMG_Load"/>
+    <functioncall functionName="NULL"/>
+    <functioncall functionName="SDL_CreateTextureFromSurface"/>
+    <functioncall functionName="SDL_DestroyTexture"/>
+    <functioncall functionName="SDL_FLIP_NONE"/>
+    <functioncall functionName="SDL_FreeSurface"/>
+    <functioncall functionName="SDL_QueryTexture"/>
+    <functioncall functionName="SDL_RenderCopyEx"/>
+    <functioncall functionName="SDL_SetTextureAlphaMod"/>
+    <functioncall functionName="SDL_SetTextureColorMod"/>
+    <functioncall functionName="TextureManager"/>
+    <functioncall functionName="alpha"/>
+    <functioncall functionName="angle"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="blue"/>
+    <functioncall functionName="c_str"/>
+    <functioncall functionName="centered"/>
+    <functioncall functionName="clear"/>
+    <functioncall functionName="destRect"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="erase"/>
+    <functioncall functionName="false"/>
+    <functioncall functionName="flip"/>
+    <functioncall functionName="green"/>
+    <functioncall functionName="height"/>
+    <functioncall functionName="id"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="newAlpha"/>
+    <functioncall functionName="pRenderer"/>
+    <functioncall functionName="pTempSurface"/>
+    <functioncall functionName="pTexture"/>
+    <functioncall functionName="red"/>
+    <functioncall functionName="second"/>
+    <functioncall functionName="srcRect"/>
+    <functioncall functionName="texture"/>
+    <functioncall functionName="textureHeight"/>
+    <functioncall functionName="textureWidth"/>
+    <functioncall functionName="while"/>
+    <functioncall functionName="width"/>
+    <functioncall functionName="x"/>
+    <functioncall functionName="xOffset"/>
+    <functioncall functionName="y"/>
+    <functioncall functionName="yOffset"/>
+  </FileInfo>
+</analyzerinfo>
