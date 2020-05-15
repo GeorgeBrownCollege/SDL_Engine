@@ -4,9 +4,10 @@
 
 #include "Scene.h"
 
-
 #include "PlaneSprite.h"
 #include "Player.h"
+
+#include "Button.h"
 
 
 
@@ -27,7 +28,10 @@ private:
 
 	PlaneSprite* m_pPlaneSprite;
 	Player* m_pPlayer;
+	bool m_playerFacingRight;
 
+	Button* m_pBackButton;
+	Button* m_pNextButton;
 };
 
 #endif /* defined (__LEVEL1_SCENE__) */

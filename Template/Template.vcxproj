@@ -171,6 +171,7 @@
     <ClCompile Include="..\src\Scene.cpp" />
     <ClCompile Include="..\src\ship.cpp" />
     <ClCompile Include="..\src\SoundManager.cpp" />
+    <ClCompile Include="..\src\EventManager.cpp" />
     <ClCompile Include="..\src\SpriteSheet.cpp" />
     <ClCompile Include="..\src\StartScene.cpp" />
     <ClCompile Include="..\src\Target.cpp" />
@@ -186,12 +187,14 @@
     <ClInclude Include="..\src\DisplayObject.h" />
     <ClInclude Include="..\src\EndScene.h" />
     <ClInclude Include="..\src\Event.h" />
+    <ClInclude Include="..\src\EventManager.h" />
     <ClInclude Include="..\src\FontManager.h" />
     <ClInclude Include="..\src\Frame.h" />
     <ClInclude Include="..\src\Game.h" />
     <ClInclude Include="..\src\GameObject.h" />
     <ClInclude Include="..\src\GameObjectType.h" />
     <ClInclude Include="..\src\Label.h" />
+    <ClInclude Include="..\src\MouseButtons.h" />
     <ClInclude Include="..\src\PlayScene.h" />
     <ClInclude Include="..\src\PlaneSprite.h" />
     <ClInclude Include="..\src\Player.h" />

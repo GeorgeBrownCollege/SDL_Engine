@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "Game.h"
 #include "glm/gtx/string_cast.hpp"
+#include "EventManager.h"
 
 StartScene::StartScene()
 {
@@ -42,40 +43,20 @@ void StartScene::clean()
 
 void StartScene::handleEvents()
 {
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
+	EventManager::Instance().update();
+	
+	// Keyboard Events
+	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		if(m_pStartButton != nullptr)
-		{
-			m_pStartButton->handleMouseEvents(&event);
-			m_pSecondStartButton->handleMouseEvents(&event);
-		}
-		
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			TheGame::Instance()->quit();
-			break;
-		
-		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_ESCAPE:
-				TheGame::Instance()->quit();
-				break;
-			case SDLK_1:
-				TheGame::Instance()->changeSceneState(PLAY_SCENE);
-				break;
-			case SDLK_2:
-				//TheGame::Instance()->changeSceneState(SceneState::END_SCENE);
-				break;
-			}
-			break;
-
-		default:
-			break;
-		}
+		TheGame::Instance()->quit();
 	}
+
+	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
+	{
+		TheGame::Instance()->changeSceneState(PLAY_SCENE);
+	}
+
+	
 }
 
 void StartScene::start()
@@ -93,6 +74,7 @@ void StartScene::start()
 	m_pShip->getTransform()->position = glm::vec2(400.0f, 300.0f);
 	addChild(m_pShip);
 
+	// Start Button
 	m_pStartButton = new Button();
 	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f);
 	m_pStartButton->addEventListener(CLICK, [&](Button* button)-> void
@@ -112,24 +94,6 @@ void StartScene::start()
 	});
 	addChild(m_pStartButton);
 
-	m_pSecondStartButton = new Button("../Assets/textures/RestartButton.png", "restartButton", RESTART_BUTTON);
-	m_pSecondStartButton->getTransform()->position = glm::vec2(400.0f, 500.0f);
-	m_pSecondStartButton->addEventListener(CLICK, [&](Button* button)-> void
-	{
-		button->setActive(false);
-		TheGame::Instance()->changeSceneState(END_SCENE);
-	});
-
-	m_pSecondStartButton->addEventListener(MOUSE_OVER, [&](Button* button)->void
-	{
-		button->setAlpha(128);
-	});
-
-	m_pSecondStartButton->addEventListener(MOUSE_OUT, [&](Button* button)->void
-	{
-		button->setAlpha(255);
-	});
 	
-	addChild(m_pSecondStartButton);
 }
 

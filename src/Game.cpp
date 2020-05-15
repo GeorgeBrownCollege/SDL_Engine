@@ -4,6 +4,7 @@
 #include <iomanip>
 #include "glm/gtx/string_cast.hpp"
 #include "Renderer.h"
+#include "EventManager.h"
 
 
 Game* Game::s_pInstance = nullptr;
@@ -136,7 +137,9 @@ void Game::changeSceneState(const SceneState new_state)
 		m_currentScene = nullptr;
 
 		m_currentSceneState = new_state;
-		
+
+		EventManager::Instance().reset();
+
 		switch (m_currentSceneState)
 		{
 		case START_SCENE:
@@ -190,25 +193,4 @@ void Game::clean() const
 void Game::handleEvents()
 {
 	m_currentScene->handleEvents();
-
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
-		case SDL_KEYDOWN:
-			switch (event.key.keysym.sym) 
-			{
-				case SDLK_ESCAPE:
-					m_bRunning = false;
-					break;
-			}
-			break;
-		default:
-			break;
-		}
-	}
 }

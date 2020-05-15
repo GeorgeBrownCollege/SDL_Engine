@@ -27,9 +27,6 @@ private:
 	Ship* m_pShip{};
 
 	Button* m_pStartButton;
-
-	Button* m_pSecondStartButton;
-
 };
 
 #endif /* defined (__START_SCENE__) */

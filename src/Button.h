@@ -21,22 +21,21 @@ public:
 	void draw() override;
 	void update() override;
 	void clean() override;
-	
-	// setters
-	void setMousePosition(glm::vec2 mouse_position);
-	void setMouseButtonClicked(bool clicked);
-
-	void handleMouseEvents(SDL_Event* event);
 
 	typedef std::function<void(Button*)> EventHandler;
 	bool addEventListener(Event event, EventHandler handler);
 
 	EventHandler getEventHandler(Event event);
 
+	// button setters
 	void setAlpha(Uint8 alpha);
 	void setActive(bool value);
 	
 private:
+	void m_checkMouseOverAndOut();
+
+
+	
 	Uint8 m_alpha;
 	std::string m_name;
 	bool m_isCentered;

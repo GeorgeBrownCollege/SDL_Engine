@@ -2,6 +2,7 @@
 #include <utility>
 #include "CollisionManager.h"
 #include "TextureManager.h"
+#include "EventManager.h"
 
 
 /**
@@ -42,31 +43,63 @@ void Button::draw()
 
 void Button::update()
 {
-	
+	m_mousePosition = EventManager::Instance().getMousePosition();
+
+	//check mouse position
+	m_checkMouseOverAndOut();
+
+	// check if left mouse is clicked
+	if (EventManager::Instance().getMouseButton(LEFT))
+	{
+		if ((m_events[CLICK]) && (m_mouseOver) && !m_mouseButtonClicked)
+		{
+			m_mouseButtonClicked = true;
+			m_events[CLICK](this); // call click event
+		}
+	}
+	else
+	{
+		m_mouseButtonClicked = false;
+	}
 }
 
 void Button::clean()
 {
 }
 
-/**
- * @brief sets the mouse position
- * 
- * @param mouse_position 
- */
-void Button::setMousePosition(const glm::vec2 mouse_position)
+void Button::m_checkMouseOverAndOut()
 {
-	m_mousePosition = mouse_position;
-}
+	if (CollisionManager::pointRectCheck(m_mousePosition, getTransform()->position, getWidth(), getHeight()))
+	{
+		m_mouseOver = true;
+	}
+	else
+	{
+		m_mouseOver = false;
+	}
 
-/**
- * @brief sets boolean value of MouseButtonClicked flag
- * 
- * @param clicked 
- */
-void Button::setMouseButtonClicked(const bool clicked)
-{
-	m_mouseButtonClicked = clicked;
+	if ((m_events[MOUSE_OVER]) && (!m_mouseOverActive))
+	{
+		if (m_mouseOver)
+		{
+			m_events[MOUSE_OVER](this);
+			m_mouseOverActive = true;
+		}
+	}
+	else if ((m_events[MOUSE_OVER]) && (!m_mouseOver))
+	{
+		m_mouseOverActive = false;
+	}
+
+	if ((m_events[MOUSE_OUT]) && (m_mouseOutActive) && (!m_mouseOver))
+	{
+		m_events[MOUSE_OUT](this);
+		m_mouseOutActive = false;
+	}
+	else if ((m_events[MOUSE_OUT]) && (m_mouseOver))
+	{
+		m_mouseOutActive = true;
+	}
 }
 
 /**
@@ -81,83 +114,6 @@ bool Button::m_eventExists(const Event id)
 	return m_events.find(id) != m_events.end();
 }
 
-
-void Button::handleMouseEvents(SDL_Event* event)
-{
-
-		auto wheel = 0;
-		if (event)
-		{
-			switch (event->type)
-			{
-			case SDL_MOUSEMOTION:
-				m_mousePosition.x = event->motion.x;
-				m_mousePosition.y = event->motion.y;
-
-				if (CollisionManager::pointRectCheck(m_mousePosition, getTransform()->position, getWidth(), getHeight()))
-				{
-					m_mouseOver = true;
-				}
-				else
-				{
-					m_mouseOver = false;
-				}
-
-
-				if ((m_events[MOUSE_OVER]) && (!m_mouseOverActive))
-				{
-					if (m_mouseOver)
-					{
-						m_events[MOUSE_OVER](this);
-						m_mouseOverActive = true;
-					}
-				}
-				else if ((m_events[MOUSE_OVER]) && (!m_mouseOver))
-				{
-					m_mouseOverActive = false;
-				}
-
-				if ((m_events[MOUSE_OUT]) && (m_mouseOutActive) && (!m_mouseOver))
-				{
-					m_events[MOUSE_OUT](this);
-					m_mouseOutActive = false;
-				}
-				else if ((m_events[MOUSE_OUT]) && (m_mouseOver))
-				{
-					m_mouseOutActive = true;
-				}
-
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-
-				switch (event->button.button)
-				{
-				case SDL_BUTTON_LEFT:
-					if ((m_events[CLICK]) && (m_mouseOver))
-					{
-						m_mouseButtonClicked = true;
-						m_events[CLICK](this); // call click event
-					}
-					break;
-				}
-
-				break;
-			case SDL_MOUSEBUTTONUP:
-				switch (event->button.button)
-				{
-				case SDL_BUTTON_LEFT:
-					m_mouseButtonClicked = false;
-					break;
-				}
-				break;
-			case SDL_MOUSEWHEEL:
-				wheel = event->wheel.y;
-				break;
-			default:
-				break;
-			}
-		}
-}
 
 /**
  * @brief registers a new event listener for the button

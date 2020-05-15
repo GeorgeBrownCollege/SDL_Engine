@@ -95,6 +95,9 @@
     <ClCompile Include="..\src\Game.cpp">
       <Filter>Singletons</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\EventManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\GameObject.h">
@@ -189,6 +192,12 @@
     </ClInclude>
     <ClInclude Include="..\src\Game.h">
       <Filter>Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EventManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MouseButtons.h">
+      <Filter>Enums</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
