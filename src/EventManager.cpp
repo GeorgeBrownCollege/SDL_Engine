@@ -13,6 +13,14 @@ void EventManager::update()
 {
 	if(m_isActive)
 	{
+		for (auto controller : m_pGameControllers)
+		{
+			if(SDL_GameControllerGetAttached(controller->handle))
+			{
+                controller->update();
+			}
+		}
+		
 		SDL_Event event;
 	    while (SDL_PollEvent(&event))
 	    {
@@ -21,18 +29,6 @@ void EventManager::update()
 	        case SDL_QUIT:
 	            TheGame::Instance()->quit();
 	            break;
-
-	        //case SDL_JOYAXISMOTION:
-	        //    //onJoystickAxisMove(event);
-	        //    break;
-
-	        //case SDL_JOYBUTTONDOWN:
-	        //    //onJoystickButtonDown(event);
-	        //    break;
-
-	        //case SDL_JOYBUTTONUP:
-	        //    //onJoystickButtonUp(event);
-	        //    break;
 
 	        case SDL_MOUSEMOTION:
 	            onMouseMove(event);
@@ -56,6 +52,17 @@ void EventManager::update()
 	        case SDL_KEYUP:
 	            onKeyUp();
 	            break;
+
+            case SDL_CONTROLLERDEVICEADDED:
+                std::cout << "Controller Added " << std::endl;
+                m_initializeControllers();
+                break;
+
+            case SDL_CONTROLLERDEVICEREMOVED:
+                std::cout << "Controller Removed " << std::endl;
+                m_initializeControllers();
+                break;
+	        	
 
 	        default:
 	            break;
@@ -159,6 +166,17 @@ void EventManager::onMouseWheel(SDL_Event& event)
     m_mouseWheel = event.wheel.y;
 }
 
+void EventManager::m_initializeControllers()
+{
+    m_pGameControllers.clear();
+	
+	for (auto count = 0; count < SDL_NumJoysticks(); ++count)
+	{
+		auto controller = new GameController(SDL_GameControllerOpen(count));
+        m_pGameControllers.push_back(controller);
+	}
+}
+
 bool EventManager::getMouseButton(const int button_number) const
 {
     return m_mouseButtons[button_number];
@@ -174,6 +192,16 @@ int EventManager::getMouseWheel() const
     return m_mouseWheel;
 }
 
+GameController* EventManager::getGameController(const int controller_number)
+{
+    if(SDL_GameControllerGetAttached(m_pGameControllers[controller_number]->handle))
+    {
+        return m_pGameControllers[controller_number];
+    }
+	
+    return nullptr;
+}
+
 EventManager::EventManager():
     m_keyStates(nullptr), m_mouseWheel(0), m_isActive(true)
 {
@@ -185,6 +213,8 @@ EventManager::EventManager():
     {
 	    mouseButtonState = false;
     }
+
+    m_initializeControllers();
 }
 
 EventManager::~EventManager()

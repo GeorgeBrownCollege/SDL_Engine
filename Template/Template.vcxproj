@@ -161,6 +161,7 @@
     <ClCompile Include="..\src\EndScene.cpp" />
     <ClCompile Include="..\src\FontManager.cpp" />
     <ClCompile Include="..\src\Game.cpp" />
+    <ClCompile Include="..\src\GameController.cpp" />
     <ClCompile Include="..\src\GameObject.cpp" />
     <ClCompile Include="..\src\Label.cpp" />
     <ClCompile Include="..\src\PlayScene.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="..\src\FontManager.h" />
     <ClInclude Include="..\src\Frame.h" />
     <ClInclude Include="..\src\Game.h" />
+    <ClInclude Include="..\src\GameController.h" />
     <ClInclude Include="..\src\GameObject.h" />
     <ClInclude Include="..\src\GameObjectType.h" />
     <ClInclude Include="..\src\Label.h" />

@@ -44,7 +44,7 @@ void StartScene::clean()
 void StartScene::handleEvents()
 {
 	EventManager::Instance().update();
-	
+
 	// Keyboard Events
 	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
 	{

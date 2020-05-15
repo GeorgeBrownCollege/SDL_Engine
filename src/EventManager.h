@@ -6,6 +6,7 @@
 #include <vector>
 #include "glm/vec2.hpp"
 #include "MouseButtons.h"
+#include "GameController.h"
 
 /* singleton with magic static */
 class EventManager
@@ -31,6 +32,9 @@ public:
 	bool getMouseButton(int button_number) const;
 	glm::vec2 getMousePosition() const;
 	int getMouseWheel() const;
+
+	// gamecontroller events
+	GameController* getGameController(int controller_number);
 	
 private:
 	// Hide Constructor and Destructor 
@@ -51,6 +55,9 @@ private:
 	void onMouseButtonUp(SDL_Event& event);
 	void onMouseWheel(SDL_Event& event);
 
+	// game controller functions
+	void m_initializeControllers();
+
 	/*------- PRIVATE MEMBER VARIABLES -------*/
 	
 	// keyboard states array
@@ -61,7 +68,10 @@ private:
 	glm::vec2 m_mousePosition;
 	int m_mouseWheel;
 
-
+	// GameControllers
+	std::vector<GameController*> m_pGameControllers;
+	
+	// is the Event Manager active
 	bool m_isActive;
 
 };
