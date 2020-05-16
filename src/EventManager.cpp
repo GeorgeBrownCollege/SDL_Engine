@@ -73,6 +73,15 @@ void EventManager::update()
 
 void EventManager::clean()
 {
+	for (auto count = 0; count < m_pGameControllers.size(); ++count)
+	{
+		if(m_pGameControllers[count] != nullptr)
+		{
+            SDL_GameControllerClose(m_pGameControllers[count]->handle);
+		}
+	}
+
+    m_pGameControllers.clear();
 }
 
 bool EventManager::isKeyDown(const SDL_Scancode key) const
