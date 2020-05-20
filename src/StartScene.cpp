@@ -55,8 +55,6 @@ void StartScene::handleEvents()
 	{
 		TheGame::Instance()->changeSceneState(PLAY_SCENE);
 	}
-
-	
 }
 
 void StartScene::start()
@@ -77,20 +75,21 @@ void StartScene::start()
 	// Start Button
 	m_pStartButton = new Button();
 	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f);
-	m_pStartButton->addEventListener(CLICK, [&](Button* button)-> void
+
+	m_pStartButton->addEventListener(CLICK, [&]()-> void
 	{
-		button->setActive(false);
+		m_pStartButton->setActive(false);
 		TheGame::Instance()->changeSceneState(PLAY_SCENE);
 	});
 	
-	m_pStartButton->addEventListener(MOUSE_OVER, [&](Button* button)->void
+	m_pStartButton->addEventListener(MOUSE_OVER, [&]()->void
 	{
-		button->setAlpha(128);
+		m_pStartButton->setAlpha(128);
 	});
 
-	m_pStartButton->addEventListener(MOUSE_OUT, [&](Button* button)->void
+	m_pStartButton->addEventListener(MOUSE_OUT, [&]()->void
 	{
-		button->setAlpha(255);
+		m_pStartButton->setAlpha(255);
 	});
 	addChild(m_pStartButton);
 

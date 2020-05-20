@@ -124,40 +124,40 @@ void PlayScene::start()
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
 	m_pBackButton->getTransform()->position = glm::vec2(300.0f, 400.0f);
-	m_pBackButton->addEventListener(CLICK, [&](Button* button)-> void
+	m_pBackButton->addEventListener(CLICK, [&]()-> void
 	{
-		button->setActive(false);
+		m_pBackButton->setActive(false);
 		TheGame::Instance()->changeSceneState(START_SCENE);
 	});
 
-	m_pBackButton->addEventListener(MOUSE_OVER, [&](Button* button)->void
+	m_pBackButton->addEventListener(MOUSE_OVER, [&]()->void
 	{
-		button->setAlpha(128);
+		m_pBackButton->setAlpha(128);
 	});
 
-	m_pBackButton->addEventListener(MOUSE_OUT, [&](Button* button)->void
+	m_pBackButton->addEventListener(MOUSE_OUT, [&]()->void
 	{
-		button->setAlpha(255);
+		m_pBackButton->setAlpha(255);
 	});
 	addChild(m_pBackButton);
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
 	m_pNextButton->getTransform()->position = glm::vec2(500.0f, 400.0f);
-	m_pNextButton->addEventListener(CLICK, [&](Button* button)-> void
+	m_pNextButton->addEventListener(CLICK, [&]()-> void
 	{
-		button->setActive(false);
+		m_pNextButton->setActive(false);
 		TheGame::Instance()->changeSceneState(END_SCENE);
 	});
 
-	m_pNextButton->addEventListener(MOUSE_OVER, [&](Button* button)->void
+	m_pNextButton->addEventListener(MOUSE_OVER, [&]()->void
 	{
-		button->setAlpha(128);
+		m_pNextButton->setAlpha(128);
 	});
 
-	m_pNextButton->addEventListener(MOUSE_OUT, [&](Button* button)->void
+	m_pNextButton->addEventListener(MOUSE_OUT, [&]()->void
 	{
-		button->setAlpha(255);
+		m_pNextButton->setAlpha(255);
 	});
 
 	addChild(m_pNextButton);

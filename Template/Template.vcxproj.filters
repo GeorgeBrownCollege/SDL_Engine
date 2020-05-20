@@ -96,6 +96,9 @@
     <ClCompile Include="..\src\SpriteSheet.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\UIControl.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -198,6 +201,9 @@
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Util.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\UIControl.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>

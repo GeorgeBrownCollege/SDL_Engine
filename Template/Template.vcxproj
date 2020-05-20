@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\Button.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
+    <ClCompile Include="..\src\UIControl.cpp" />
     <ClCompile Include="..\src\DisplayObject.cpp" />
     <ClCompile Include="..\src\EndScene.cpp" />
     <ClCompile Include="..\src\FontManager.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="..\src\CollisionManager.h" />
     <ClInclude Include="..\src\CollisionShape.h" />
     <ClInclude Include="..\src\Config.h" />
+    <ClInclude Include="..\src\UIControl.h" />
     <ClInclude Include="..\src\DisplayObject.h" />
     <ClInclude Include="..\src\EndScene.h" />
     <ClInclude Include="..\src\Event.h" />
