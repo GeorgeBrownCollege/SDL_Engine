@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __PLANE_SPRITE__
-#define __PLANE_SPRITE__
+#ifndef __PLANE__
+#define __PLANE__
 
 #include "Sprite.h"
 
@@ -19,4 +19,4 @@ private:
 	void m_buildAnimations();
 };
 
-#endif /* defined (__PLANE__SPRITE__) */
+#endif /* defined (__PLANE__) */

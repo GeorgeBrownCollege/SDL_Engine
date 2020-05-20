@@ -1,21 +1,18 @@
 #pragma once
-#ifndef __SoundManager__
-#define __SoundManager__
+#ifndef __SOUND_MANAGER__
+#define __SOUND_MANAGER__
 
 // Core Libraries
 #include <iostream>
 #include <string>
 #include <map> 
 
+#include "SoundType.h"
 #include <SDL_mixer.h>
 
-enum sound_type
+/* Singleton */
+class SoundManager
 {
-	SOUND_MUSIC = 0,
-	SOUND_SFX = 1
-};
-
-class SoundManager {
 public:
 	static SoundManager& Instance()
 	{
@@ -24,13 +21,13 @@ public:
 	}
 	
 	void allocateChannels(const int channels) const;
-	bool load(std::string fileName, std::string id, sound_type type);
-	void unload(std::string id, sound_type type);
-	void playMusic(std::string id, int loop = -1, int fadeIn = 0);
-	void stopMusic(int fadeOut = 0) const;
+	bool load(const std::string& file_name, const std::string& id, SoundType type);
+	void unload(const std::string& id, SoundType type);
+	void playMusic(const std::string& id, int loop = -1, int fade_in = 0);
+	void stopMusic(int fade_out = 0) const;
 	void pauseMusic() const;
 	void resumeMusic() const;
-	void playSound(std::string id, int loop = 0, int channel = -1);
+	void playSound(const std::string& id, int loop = 0, int channel = -1);
 	void setMusicVolume(const int vol) const;
 	void setSoundVolume(const int vol) const;
 	void setAllVolume(const int vol) const;
@@ -54,4 +51,4 @@ private: // Properties.
 	int m_pan; // A slider value from 0 to 100. 0 = full left, 100 = full right.
 };
 
-#endif /* defined (__SoundManager__) */
+#endif /* defined (__SOUND_MANAGER__) */

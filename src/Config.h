@@ -1,6 +1,7 @@
 #pragma once
 #ifndef __CONFIG__
 #define __CONFIG__
+
 #include <SDL_ttf.h>
 #include <memory>
 #include "glm/vec2.hpp"

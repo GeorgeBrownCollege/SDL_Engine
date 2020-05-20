@@ -1,15 +1,11 @@
 #pragma once
-#ifndef __LEVEL1_SCENE__
-#define __LEVEL1_SCENE__
+#ifndef __PLAY_SCENE__
+#define __PLAY_SCENE__
 
 #include "Scene.h"
-
 #include "Plane.h"
 #include "Player.h"
-
 #include "Button.h"
-
-
 
 class PlayScene : public Scene
 {
@@ -34,4 +30,4 @@ private:
 	Button* m_pNextButton;
 };
 
-#endif /* defined (__LEVEL1_SCENE__) */
+#endif /* defined (__PLAY_SCENE__) */

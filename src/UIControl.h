@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __CONTROL__
-#define __CONTROL__
+#ifndef __UI_CONTROL__
+#define __UI_CONTROL__
 
 #include "DisplayObject.h"
 #include <SDL.h>
@@ -42,5 +42,5 @@ private:
 	std::unordered_map<Event, EventHandler> m_events;
 };
 
-#endif /* defined (__CONTROL__) */
+#endif /* defined (__UI_CONTROL__) */
 
