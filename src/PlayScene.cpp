@@ -113,7 +113,7 @@ void PlayScene::handleEvents()
 void PlayScene::start()
 {
 	// Plane Sprite
-	m_pPlaneSprite = new PlaneSprite();
+	m_pPlaneSprite = new Plane();
 	addChild(m_pPlaneSprite);
 
 	// Player Sprite

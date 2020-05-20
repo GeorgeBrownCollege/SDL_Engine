@@ -48,9 +48,6 @@
     <ClCompile Include="..\src\Player.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\PlaneSprite.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\PlayScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
@@ -99,6 +96,12 @@
     <ClCompile Include="..\src\UIControl.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Sprite.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Plane.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -130,9 +133,6 @@
     </ClInclude>
     <ClInclude Include="..\src\PlayerAnimationState.h">
       <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\PlaneSprite.h">
-      <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\CollisionShape.h">
       <Filter>Enums</Filter>
@@ -205,6 +205,12 @@
     </ClInclude>
     <ClInclude Include="..\src\UIControl.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Sprite.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Plane.h">
+      <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

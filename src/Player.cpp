@@ -3,12 +3,12 @@
 
 Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
 {
-	TheTextureManager::Instance()->loadSpriteSheet(
+	TextureManager::Instance()->loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
 		"../Assets/sprites/atlas.png", 
 		"spritesheet");
 
-	m_pSpriteSheet = TheTextureManager::Instance()->getSpriteSheet("spritesheet");
+	setSpriteSheet(TheTextureManager::Instance()->getSpriteSheet("spritesheet"));
 	
 	// set frame width
 	setWidth(53);
@@ -38,19 +38,19 @@ void Player::draw()
 	switch(m_currentAnimationState)
 	{
 	case PLAYER_IDLE_RIGHT:
-		TheTextureManager::Instance()->playAnimation("spritesheet", m_pAnimations["idle"],
+		TheTextureManager::Instance()->playAnimation("spritesheet", getAnimation("idle"),
 			x, y, 0.12f, 0, 255, true);
 		break;
 	case PLAYER_IDLE_LEFT:
-		TheTextureManager::Instance()->playAnimation("spritesheet", m_pAnimations["idle"],
+		TheTextureManager::Instance()->playAnimation("spritesheet", getAnimation("idle"),
 			x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
 	case PLAYER_RUN_RIGHT:
-		TheTextureManager::Instance()->playAnimation("spritesheet", m_pAnimations["run"],
+		TheTextureManager::Instance()->playAnimation("spritesheet", getAnimation("run"),
 			x, y, 0.25f, 0, 255, true);
 		break;
 	case PLAYER_RUN_LEFT:
-		TheTextureManager::Instance()->playAnimation("spritesheet", m_pAnimations["run"],
+		TheTextureManager::Instance()->playAnimation("spritesheet", getAnimation("run"),
 			x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
 	default:
@@ -72,31 +72,25 @@ void Player::setAnimationState(const PlayerAnimationState new_state)
 	m_currentAnimationState = new_state;
 }
 
-void Player::setAnimation(const Animation& animation)
-{
-	m_pAnimations[animation.name] = animation;
-}
-
-
 void Player::m_buildAnimations()
 {
 	Animation idleAnimation = Animation();
 
 	idleAnimation.name = "idle";
-	idleAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-idle-0"));
-	idleAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-idle-1"));
-	idleAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-idle-2"));
-	idleAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-idle-3"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-0"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-1"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-2"));
+	idleAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-idle-3"));
 
-	m_pAnimations["idle"] = idleAnimation;
+	setAnimation(idleAnimation);
 
 	Animation runAnimation = Animation();
 
 	runAnimation.name = "run";
-	runAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-run-0"));
-	runAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-run-1"));
-	runAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-run-2"));
-	runAnimation.frames.push_back(m_pSpriteSheet->getFrame("megaman-run-3"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-0"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-1"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-2"));
+	runAnimation.frames.push_back(getSpriteSheet()->getFrame("megaman-run-3"));
 
-	m_pAnimations["run"] = runAnimation;
+	setAnimation(runAnimation);
 }

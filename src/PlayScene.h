@@ -4,7 +4,7 @@
 
 #include "Scene.h"
 
-#include "PlaneSprite.h"
+#include "Plane.h"
 #include "Player.h"
 
 #include "Button.h"
@@ -26,7 +26,7 @@ public:
 private:
 	glm::vec2 m_mousePosition;
 
-	PlaneSprite* m_pPlaneSprite;
+	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
 	bool m_playerFacingRight;
 

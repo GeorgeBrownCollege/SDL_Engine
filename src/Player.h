@@ -2,13 +2,10 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#include "DisplayObject.h"
 #include "PlayerAnimationState.h"
-#include "Animation.h"
-#include "SpriteSheet.h"
-#include <unordered_map>
+#include "Sprite.h"
 
-class Player : public DisplayObject
+class Player final : public Sprite
 {
 public:
 	Player();
@@ -21,15 +18,11 @@ public:
 
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);
-	void setAnimation(const Animation& animation);
 
 private:
 	void m_buildAnimations();
 
-	SpriteSheet* m_pSpriteSheet;
-
 	PlayerAnimationState m_currentAnimationState;
-	std::unordered_map<std::string, Animation> m_pAnimations;
 };
 
 #endif /* defined (__PLAYER__) */
