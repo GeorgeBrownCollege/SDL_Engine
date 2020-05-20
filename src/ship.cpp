@@ -6,9 +6,9 @@
 
 Ship::Ship() : m_maxSpeed(10.0f)
 {
-	TheTextureManager::Instance()->load("../Assets/textures/ship3.png","ship");
+	TextureManager::Instance()->load("../Assets/textures/ship3.png","ship");
 
-	auto size = TheTextureManager::Instance()->getTextureSize("ship");
+	auto size = TextureManager::Instance()->getTextureSize("ship");
 	setWidth(size.x);
 	setHeight(size.y);
 
@@ -34,7 +34,7 @@ void Ship::draw()
 	const auto y = getTransform()->position.y;
 
 	// draw the ship
-	TheTextureManager::Instance()->draw("ship", x, y, m_currentHeading, 255, true);
+	TextureManager::Instance()->draw("ship", x, y, m_currentHeading, 255, true);
 }
 
 
@@ -158,6 +158,6 @@ void Ship::m_changeDirection()
 	const auto y = sin(m_currentHeading * Util::Deg2Rad);
 	m_currentDirection = glm::vec2(x, y);
 
-	glm::vec2 size = TheTextureManager::Instance()->getTextureSize("ship");
+	glm::vec2 size = TextureManager::Instance()->getTextureSize("ship");
 }
 

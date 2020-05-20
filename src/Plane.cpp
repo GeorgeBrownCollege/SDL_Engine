@@ -8,7 +8,7 @@ Plane::Plane()
 		"../Assets/sprites/atlas.png", 
 		"spritesheet");
 
-	setSpriteSheet(TheTextureManager::Instance()->getSpriteSheet("spritesheet"));
+	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("spritesheet"));
 
 	// set frame width
 	setWidth(65);

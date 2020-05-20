@@ -19,7 +19,7 @@ class FontManager
 public:
 	static FontManager* Instance()
 	{
-		if (s_pInstance == 0)
+		if (s_pInstance == nullptr)
 		{
 			s_pInstance = new FontManager();
 		}
@@ -42,7 +42,6 @@ private:
 	std::unordered_map<std::string, std::shared_ptr<TTF_Font>> m_fontMap;
 
 	static FontManager* s_pInstance;
-	
 };
 
 

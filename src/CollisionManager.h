@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __CollisionManager__
-#define __CollisionManager__
+#ifndef __COLLISION_MANAGER__
+#define __COLLISION_MANAGER__
 
 // core libraries
 #include <iostream>
@@ -33,6 +33,4 @@ private:
 	~CollisionManager();
 };
 
-typedef CollisionManager Collision;
-
-#endif /* defined (__CollisionManager__) */
+#endif /* defined (__COLLISION_MANAGER__) */

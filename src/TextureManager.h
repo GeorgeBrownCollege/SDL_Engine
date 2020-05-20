@@ -74,6 +74,4 @@ private:
 	static TextureManager* s_pInstance;
 };
 
-typedef TextureManager TheTextureManager;
-
 #endif /* defined(__TEXTURE_MANAGER__) */

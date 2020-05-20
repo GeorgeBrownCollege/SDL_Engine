@@ -73,8 +73,6 @@ private:
 	
 	// is the Event Manager active
 	bool m_isActive;
-
 };
-
 
 #endif /* defined (__EVENT_MANAGER__) */
