@@ -93,12 +93,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FREEGLUT_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\IMGU_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGU_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EntryPointSymbol>
@@ -126,14 +126,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FREEGLUT_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\IMGUI_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;SDL2_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
