@@ -156,6 +156,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Button.cpp" />
+    <ClCompile Include="..\src\Collider.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />
@@ -184,8 +185,11 @@
   <ItemGroup>
     <ClInclude Include="..\src\Animation.h" />
     <ClInclude Include="..\src\Button.h" />
+    <ClInclude Include="..\src\Collider.h" />
+    <ClInclude Include="..\src\ColliderAABB.h" />
+    <ClInclude Include="..\src\ColliderCircle.h" />
     <ClInclude Include="..\src\CollisionManager.h" />
-    <ClInclude Include="..\src\CollisionShape.h" />
+    <ClInclude Include="..\src\ColliderShape.h" />
     <ClInclude Include="..\src\Config.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\Sprite.h" />

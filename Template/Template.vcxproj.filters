@@ -25,6 +25,9 @@
     <Filter Include="Core">
       <UniqueIdentifier>{21657abb-080f-4d0e-bc26-e9581cebc5a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Collision">
+      <UniqueIdentifier>{d41aa7a8-0281-4a03-842e-e6cc141b294f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\StartScene.cpp">
@@ -32,9 +35,6 @@
     </ClCompile>
     <ClCompile Include="..\src\EndScene.cpp">
       <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\CollisionManager.cpp">
-      <Filter>Managers</Filter>
     </ClCompile>
     <ClCompile Include="..\src\FontManager.cpp">
       <Filter>Managers</Filter>
@@ -102,6 +102,12 @@
     <ClCompile Include="..\src\Plane.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\CollisionManager.cpp">
+      <Filter>Core\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Collider.cpp">
+      <Filter>Core\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -109,9 +115,6 @@
     </ClInclude>
     <ClInclude Include="..\src\EndScene.h">
       <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\CollisionManager.h">
-      <Filter>Managers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\FontManager.h">
       <Filter>Managers</Filter>
@@ -132,9 +135,6 @@
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PlayerAnimationState.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\CollisionShape.h">
       <Filter>Enums</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ShapeType.h">
@@ -214,6 +214,21 @@
     </ClInclude>
     <ClInclude Include="..\src\SoundType.h">
       <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CollisionManager.h">
+      <Filter>Core\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ColliderShape.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Collider.h">
+      <Filter>Core\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ColliderCircle.h">
+      <Filter>Core\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ColliderAABB.h">
+      <Filter>Core\Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

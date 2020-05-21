@@ -15,7 +15,6 @@ Ship::Ship() : m_maxSpeed(10.0f)
 	getTransform()->position = glm::vec2(400.0f, 300.0f);
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
-	getRigidBody()->isColliding = false;
 	setType(SHIP);
 	
 	m_currentHeading = 0.0f; // current facing angle
@@ -145,7 +144,6 @@ void Ship::m_checkBounds()
 
 void Ship::m_reset()
 {
-	getRigidBody()->isColliding = false;
 	const int halfWidth = getWidth() * 0.5f;
 	const auto xComponent = rand() % (640 - getWidth()) + halfWidth + 1;
 	const auto yComponent = -getHeight();
