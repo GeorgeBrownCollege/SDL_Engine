@@ -5,6 +5,7 @@
 #include "glm/gtx/string_cast.hpp"
 #include "Renderer.h"
 #include "EventManager.h"
+#include "SceneManager.h"
 
 
 Game* Game::s_pInstance = nullptr;
@@ -12,7 +13,7 @@ Game* Game::s_pInstance = nullptr;
 // Game functions - DO NOT REMOVE ***********************************************
 
 Game::Game() :
-	m_pWindow(nullptr), m_bRunning(true), m_frames(0), m_currentScene(nullptr), m_currentSceneState(NO_SCENE)
+	m_pWindow(nullptr), m_bRunning(true), m_frames(0)
 {
 	srand(unsigned(time(nullptr)));  // random seed
 }
@@ -93,9 +94,10 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 
 void Game::start()
 {
-	m_currentSceneState = NO_SCENE;
+	SceneManager::Instance().init();
+	SceneManager::Instance().loadScene(SceneState::START_SCENE);
 
-	changeSceneState(START_SCENE);
+	// changeSceneState(START_SCENE);
 }
 
 bool Game::isRunning() const
@@ -121,12 +123,13 @@ Uint32 Game::getFrames() const
 
 void Game::changeSceneState(const SceneState new_state)
 {
-	if (new_state != m_currentSceneState) {
+	if (new_state != SceneManager::Instance().getCurrentSceneState()) {
 
 		// scene clean up
-		if (m_currentSceneState != NO_SCENE) 
+		if (SceneManager::Instance().getCurrentSceneState() != NO_SCENE)
 		{
-			m_currentScene->clean();
+			SceneManager::Instance().clean();
+			// m_currentScene->clean();
 			std::cout << "cleaning previous scene" << std::endl;
 			FontManager::Instance()->clean();
 			std::cout << "cleaning FontManager" << std::endl;
@@ -134,30 +137,9 @@ void Game::changeSceneState(const SceneState new_state)
 			std::cout << "cleaning TextureManager" << std::endl;
 		}
 
-		m_currentScene = nullptr;
-
-		m_currentSceneState = new_state;
-
 		EventManager::Instance().reset();
 
-		switch (m_currentSceneState)
-		{
-		case START_SCENE:
-			m_currentScene = new StartScene();
-			std::cout << "start scene activated" << std::endl;
-			break;
-		case PLAY_SCENE:
-			m_currentScene = new PlayScene();
-			std::cout << "play scene activated" << std::endl;
-			break;
-		case END_SCENE:
-			m_currentScene = new EndScene();
-			std::cout << "end scene activated" << std::endl;
-			break;
-		default:
-			std::cout << "default case activated" << std::endl;
-			break;
-		}
+		SceneManager::Instance().loadScene(new_state);
 	}
 	
 }
@@ -171,14 +153,14 @@ void Game::render() const
 {
 	SDL_RenderClear(Renderer::Instance()->getRenderer()); // clear the renderer to the draw colour
 
-	m_currentScene->draw();
+	SceneManager::Instance().draw();
 
 	SDL_RenderPresent(Renderer::Instance()->getRenderer()); // draw to the screen
 }
 
 void Game::update() const
 {
-	m_currentScene->update();
+	SceneManager::Instance().update();
 }
 
 void Game::clean() const
@@ -192,5 +174,5 @@ void Game::clean() const
 
 void Game::handleEvents()
 {
-	m_currentScene->handleEvents();
+	SceneManager::Instance().handleEvents();
 }

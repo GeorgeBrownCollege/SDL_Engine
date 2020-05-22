@@ -13,10 +13,7 @@
 // Game Managers
 #include "CollisionManager.h"
 
-// Scenes
-#include "StartScene.h"
-#include "PlayScene.h"
-#include "EndScene.h"
+
 
 #include "Config.h"
 
@@ -62,8 +59,6 @@ private:
 	glm::vec2 m_mousePosition;
 
 	// scene variables
-	Scene* m_currentScene;
-	SceneState m_currentSceneState;
 
 	// storage structures
 	std::shared_ptr<SDL_Window> m_pWindow;

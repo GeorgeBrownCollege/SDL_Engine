@@ -102,7 +102,7 @@
     <ClCompile Include="..\src\Plane.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
+    <ClCompile Include="..\src\SceneManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -218,7 +218,7 @@
     <ClInclude Include="..\src\SoundType.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="..\src\SceneManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
