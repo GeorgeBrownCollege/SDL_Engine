@@ -18,15 +18,17 @@ public:
 	// The CollisionManager takes advantage of polymorphism which automatically choose which collision detection function to call - (http://www.cplusplus.com/doc/tutorial/polymorphism/) 
 
 	//Circle-Circle
-	static bool isColliding(ColliderCircle* object1, ColliderCircle* object2);
+	static bool isColliding(ColliderCircle* collider1, ColliderCircle* collider2);
 
 	//Circle-AABB
-	static bool isColliding(ColliderCircle* object1, ColliderAABB* object2);
-	static bool isColliding(ColliderAABB* object1, ColliderCircle* object2);
+	static bool isColliding(ColliderCircle* collider1, ColliderAABB* collider2);
+	static bool isColliding(ColliderAABB* collider1, ColliderCircle* collider2);
 
 	//AABB-AABB
-	static bool isColliding(ColliderAABB* object1, ColliderAABB* object2);
+	static bool isColliding(ColliderAABB* collider1, ColliderAABB* collider2);
 
+	static bool isContained(glm::vec2 point, ColliderAABB* collider);
+	static bool isContained(glm::vec2 point, ColliderCircle* collider);
 
 
 
@@ -59,11 +61,12 @@ public:
 	// other utilities
 	static inline float squaredDistance(glm::vec2 p1, glm::vec2 p2);
 	static int minSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec2 line1_end, glm::vec2 line2_start, glm::vec2 line2_end);
-	static int circleAABBsquaredDistance(glm::vec2 circle_centre, float circle_radius, glm::vec2 box_start, const float box_width, const float box_height);
 
-
+	//Returns separation vector, the shortest vector FROM the the line segment TO the point.
 	static glm::vec2 separationVector(const glm::vec2& point, const glm::vec2& line_start, const glm::vec2& line_end);
+
 	static float distanceToLine(const glm::vec2& point, const glm::vec2& line_start, const glm::vec2& line_end);
+	
 	static float distanceToLineSq(const glm::vec2& point, const glm::vec2& line_start, const glm::vec2& line_end);
 
 private:

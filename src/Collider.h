@@ -34,8 +34,9 @@ public:
 	//returns a reference to the actual transform
 	Transform& const getTransformRef() const { return *m_pTransform; }
 
-	//returns collider position (offset by anchor and then transformed)
+	//returns collider position (offset by anchor, then scaled)
 	glm::vec2 getPosition() const { return (m_pTransform->position + m_anchor) * m_pTransform->scale; }
+	glm::vec2 getScale() const { return m_pTransform->scale; }
 
 protected:
 	// Each Collider holds a pointer to the Transform of the object it belongs to

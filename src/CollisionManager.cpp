@@ -7,37 +7,78 @@
 #include "ColliderCircle.h"
 #include "ColliderAABB.h"
 
+//Todo: make this work with non-uniform scaling
 bool CollisionManager::isColliding(ColliderCircle* object1, ColliderCircle* object2)
 {
-	float radii = object1->m_radius + object2->m_radius;
+	float radii = object1->m_radius * object1->getScale().x + object2->m_radius * object2->getScale().x;
 	float radiiSquared = radii * radii;
 
 	if (CollisionManager::squaredDistance(object1->getPosition(), object2->getPosition()) < (radiiSquared))
 	{
 		return true;
-	} 
+	}
 	else return false;
 }
 
-bool CollisionManager::isColliding(ColliderCircle* object1, ColliderAABB* object2)
+bool CollisionManager::isColliding(ColliderCircle* circle, ColliderAABB* aabb)
 {
+	//First, we express the position of the circle relative to the
+
 	// circle
-	const glm::vec2 circleCentre = object1->getPosition();
-	const int circleRadius = object1->m_radius;
+	const glm::vec2 circlePos = circle->getPosition();
+	const float radiusSq = circle->m_radius * circle->m_radius;
 
-	// aabb
-	const float boxWidth = object2->m_size.x;
-	const float boxHeight = object2->m_size.y;
-	const glm::vec2 boxStart = object2->getPosition();
+	// get corners of aabb
+	const float boxWidth = aabb->m_size.x * aabb->getScale().x;
+	const float boxHeight = aabb->m_size.y * aabb->getScale().y;
+	const glm::vec2 topLeft = aabb->getPosition();
+	const glm::vec2 botLeft = glm::vec2(topLeft.x, topLeft.y + boxHeight);
+	const glm::vec2 topRight = glm::vec2(topLeft.x + boxWidth, topLeft.y);
+	const glm::vec2 botRight = glm::vec2(topLeft.x + boxWidth, topLeft.y + boxHeight);
 
-	if (circleAABBsquaredDistance(circleCentre, circleRadius, boxStart, boxWidth, boxHeight) <= (circleRadius * circleRadius))
+	//To detect collision between any rectangle (not just an AABB) and a circle, we do 2 checks:
+
+	//1. is the Circle's origin contained within the rectangle?
+	if (isContained(circlePos, aabb)) return true;
+
+	//2. find the minimum distance from each edge of the rectangle to the circle. If at any point this distance is less than the radius of the circle, it is colliding
+
+	//The condition we usually use for circle checks is "length(separationVector) < radius ==> colliding" 
+	//But we want to allow scaling so we have something like "length(separationVector) < x*radius ==> colliding" where x is some scale, and these are all scalar quantities
+	//But if we scale the circle in a non-uniform way we now have to think about distance on x and y, and the radius is different in different directions!
+	//But we can't scale a radius on x and y separately... so we move the scale to the other side instead "length(scale * separationVector) < radius ==> colliding" where scale and displacement are both vectorsm but length() converts to scalar to compare with the radius
+
+	//// left side
+	glm::vec2 toLeft = separationVector(circlePos, topLeft, topLeft);
+	//We divide the separation vector by the scale to apply the non-uniform scaling of the circle. This way, if the circle is 2x taller, the separation vector is halved before being compared to the radius of the circle
+	toLeft /= circle->getScale();
+
+	// do the same for the other sides...
+
+	//// top
+	glm::vec2 toTop = separationVector(circlePos, topLeft, topRight);
+	toTop /= circle->getScale();
+
+	//// right
+	glm::vec2 toRight = separationVector(circlePos, topRight, botRight);
+	toRight /= circle->getScale();
+
+	//// bottom
+	glm::vec2 toBottom = separationVector(circlePos, botLeft, botRight);
+	toBottom /= circle->getScale();
+
+	//Then we can perform the same distance check we would do with a normal unscaled circle-AABB
+
+	if (Util::squaredMagnitude(toTop) < radiusSq ||
+		Util::squaredMagnitude(toRight) < radiusSq ||
+		Util::squaredMagnitude(toBottom) < radiusSq ||
+		Util::squaredMagnitude(toLeft) < radiusSq)
 	{
 		return true;
 	}
-	else
-	{
-		return false;
-	}
+
+	// If we passed all those checks, they are not colliding
+	return false;
 }
 
 bool CollisionManager::isColliding(ColliderAABB* object1, ColliderCircle* object2)
@@ -50,20 +91,39 @@ bool CollisionManager::isColliding(ColliderAABB* object1, ColliderAABB* object2)
 	const auto p1 = object1->getPosition();
 	const auto p2 = object2->getPosition();
 
-	const float p1Width = object1->m_size.x;
-	const float p1Height = object1->m_size.y;
-	const float p2Width = object2->m_size.x;
-	const float p2Height = object2->m_size.y;
+	const float p1Width = object1->m_size.x * object1->getScale().x;
+	const float p1Height = object1->m_size.y * object1->getScale().y;
+	const float p2Width = object2->m_size.x * object1->getScale().x;
+	const float p2Height = object2->m_size.y * object1->getScale().y;
 
 	if (
 		p1.x < p2.x + p2Width &&
-		p1.x + p1Width > p2.x &&
+		p1.x + p1Width > p2.x&&
 		p1.y < p2.y + p2Height &&
 		p1.y + p1Height > p2.y
 		)
 	{
 		return true;
-	} else return false;
+	}
+	else return false;
+}
+
+bool CollisionManager::isContained(glm::vec2 point, ColliderAABB* collider)
+{
+	return pointAABBCheck(point, collider->getPosition(), collider->m_size.x * collider->getScale().x, collider->m_size.y * collider->getScale().y);
+}
+
+bool CollisionManager::isContained(glm::vec2 point, ColliderCircle* collider)
+{
+	glm::vec2 circleToPoint = point - collider->getPosition();
+	circleToPoint /= collider->getScale(); // transform/distort into a common space so that we can do the usual circle check on this scaled circle (which may be an oval due to scaling)
+
+	if (isnan(circleToPoint)) // check if divide by zero
+	{
+		return false; // cannot collide with a zero-scale collider
+	}
+
+	return Util::squaredMagnitude(circleToPoint) < collider->m_radius * collider->m_radius;
 }
 
 bool CollisionManager::lineLineCheck(const glm::vec2 line1_start, const glm::vec2 line1_end, const glm::vec2 line2_start, const glm::vec2 line2_end)
@@ -144,9 +204,9 @@ bool CollisionManager::pointAABBCheck(const glm::vec2 point, const glm::vec2 rec
 	const auto width = rect_width;
 	const auto height = rect_height;
 
-	if (point.x > rect_start.x &&
+	if (point.x > rect_start.x&&
 		point.x < rect_start.x + width &&
-		point.y > rect_start.y &&
+		point.y > rect_start.y&&
 		point.y < rect_start.y + height)
 	{
 		return true;
@@ -157,8 +217,8 @@ bool CollisionManager::pointAABBCheck(const glm::vec2 point, const glm::vec2 rec
 
 bool CollisionManager::pointAABBCheckCentered(const glm::vec2 point, const glm::vec2 rect_start, const float rect_width, const float rect_height)
 {
-	const auto width = rect_width/2;
-	const auto height = rect_height/2;
+	const auto width = rect_width / 2;
+	const auto height = rect_height / 2;
 
 	if (point.x > rect_start.x - width &&
 		point.x < rect_start.x + width &&
@@ -210,17 +270,6 @@ int CollisionManager::minSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec
 	return norm;
 }
 
-int CollisionManager::circleAABBsquaredDistance(const glm::vec2 circle_centre, float circle_radius, const glm::vec2 box_start, const float box_width, const float box_height)
-{
-	auto dx = std::max(box_start.x - circle_centre.x, 0.0f);
-	dx = std::max(dx, circle_centre.x - (box_start.x + box_width));
-	auto dy = std::max(box_start.y - circle_centre.y, 0.0f);
-	dy = std::max(dy, circle_centre.y - (box_start.y + box_height));
-
-	return (dx * dx) + (dy * dy);
-}
-
-
 glm::vec2 CollisionManager::separationVector(const glm::vec2& point, const glm::vec2& line_start, const glm::vec2& line_end)
 {
 	glm::vec2 segment = line_end - line_start;
@@ -232,7 +281,7 @@ glm::vec2 CollisionManager::separationVector(const glm::vec2& point, const glm::
 
 	//produce a point from the projection and see how far it is away from the actual point
 	glm::vec2 separation = (segment * proj) - point;
-	
+
 	return separation;
 }
 
