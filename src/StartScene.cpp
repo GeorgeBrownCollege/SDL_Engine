@@ -24,20 +24,6 @@ void StartScene::update()
 
 void StartScene::clean()
 {
-	std::cout << "Clean called on StartScene" << std::endl;
-	
-	delete m_pStartLabel;
-	m_pStartLabel = nullptr;
-	
-	delete m_pInstructionsLabel;
-	m_pInstructionsLabel = nullptr;
-
-	delete m_pShip;
-	m_pShip = nullptr;
-
-	delete m_pStartButton;
-	m_pStartButton = nullptr;
-
 	removeAllChildren();
 }
 
@@ -68,13 +54,14 @@ void StartScene::start()
 	m_pInstructionsLabel->setParent(this);
 	addChild(m_pInstructionsLabel);
 
+
 	m_pShip = new Ship();
-	m_pShip->getTransform()->position = glm::vec2(400.0f, 300.0f);
-	addChild(m_pShip);
+	m_pShip->getTransform()->position = glm::vec2(400.0f, 300.0f); 
+	addChild(m_pShip); 
 
 	// Start Button
 	m_pStartButton = new Button();
-	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f);
+	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f); 
 
 	m_pStartButton->addEventListener(CLICK, [&]()-> void
 	{

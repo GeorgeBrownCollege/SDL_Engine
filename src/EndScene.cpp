@@ -24,11 +24,6 @@ void EndScene::update()
 
 void EndScene::clean()
 {
-	delete m_label;
-
-	delete m_pRestartButton;
-	m_pRestartButton = nullptr;
-	
 	removeAllChildren();
 }
 

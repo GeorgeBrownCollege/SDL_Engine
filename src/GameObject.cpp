@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 GameObject::GameObject():
-	m_width(0), m_height(0), m_type(NONE)
+	m_width(0), m_height(0), m_type(NONE), m_enabled(true)
 {
 }
 
@@ -46,4 +46,14 @@ void GameObject::setHeight(const int new_height)
 void GameObject::setType(const GameObjectType new_type)
 {
 	m_type = new_type;
+}
+
+void GameObject::setEnabled(const bool state)
+{
+	m_enabled = state;
+}
+
+bool GameObject::isEnabled() const
+{
+	return m_enabled;
 }
