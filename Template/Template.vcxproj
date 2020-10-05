@@ -93,7 +93,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FREEGLUT_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGU_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;$(SolutionDir)include\IMGUI\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FREEGLUT_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;$(SolutionDir)include\IMGUI\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,6 +156,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\include\IMGUI\imgui.cpp" />
+    <ClCompile Include="..\include\IMGUI\imgui_demo.cpp" />
+    <ClCompile Include="..\include\IMGUI\imgui_draw.cpp" />
+    <ClCompile Include="..\include\IMGUI\imgui_widgets.cpp" />
+    <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp" />
     <ClCompile Include="..\src\Button.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
@@ -183,6 +188,13 @@
     <ClCompile Include="..\src\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\IMGUI\imconfig.h" />
+    <ClInclude Include="..\include\IMGUI\imgui.h" />
+    <ClInclude Include="..\include\IMGUI\imgui_internal.h" />
+    <ClInclude Include="..\include\IMGUI\imstb_rectpack.h" />
+    <ClInclude Include="..\include\IMGUI\imstb_textedit.h" />
+    <ClInclude Include="..\include\IMGUI\imstb_truetype.h" />
+    <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h" />
     <ClInclude Include="..\src\Animation.h" />
     <ClInclude Include="..\src\Button.h" />
     <ClInclude Include="..\src\CollisionManager.h" />
