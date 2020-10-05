@@ -22,7 +22,7 @@ public:
 	virtual void start() override;
 private:
 	// IMGUI Function
-	void m_GUI_Function() const;
+	void GUI_Function() const;
 	std::string m_guiTitle;
 	
 	glm::vec2 m_mousePosition;

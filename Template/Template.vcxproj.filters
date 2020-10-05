@@ -28,6 +28,9 @@
     <Filter Include="IMGUI">
       <UniqueIdentifier>{c2c3b1d2-add5-45c2-af91-b66dda24fa0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DOCS">
+      <UniqueIdentifier>{a44d29c3-2835-4901-a310-0039121b84b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\StartScene.cpp">
@@ -254,5 +257,10 @@
     <ClInclude Include="..\include\IMGUI\imstb_truetype.h">
       <Filter>IMGUI</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Filter>DOCS</Filter>
+    </None>
   </ItemGroup>
 </Project>

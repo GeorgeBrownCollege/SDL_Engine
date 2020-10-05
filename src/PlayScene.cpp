@@ -19,7 +19,7 @@ void PlayScene::draw()
 {
 	if(EventManager::Instance().isIMGUIActive())
 	{
-		m_GUI_Function();
+		GUI_Function();
 	}
 
 	drawDisplayList();
@@ -176,7 +176,7 @@ void PlayScene::start()
 	addChild(m_pInstructionsLabel);
 }
 
-void PlayScene::m_GUI_Function() const
+void PlayScene::GUI_Function() const
 {
 	// Always open with a NewFrame
 	ImGui::NewFrame();
