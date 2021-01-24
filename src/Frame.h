@@ -3,9 +3,9 @@
 #define __FRAME__
 #include <string>
 
-struct Frame
-{
-	std::string name;
+struct Frame {
+
+	std::string m_name;
 	int x;
 	int y;
 	int w;

@@ -20,14 +20,12 @@
 
 #include "Config.h"
 
-class Game
-{
-public:
-	
-	static Game* Instance()
-	{
-		if (s_pInstance == nullptr)
-		{
+class Game {
+
+	public:
+
+	static Game *Instance() {
+		if (s_pInstance == nullptr) {
 			s_pInstance = new Game();
 		}
 		return s_pInstance;
@@ -35,7 +33,7 @@ public:
 
 	// simply set the isRunning variable to true
 	void init();
-	bool init(const char* title, int x, int y, int width, int height, bool fullscreen);
+	bool init(const char *title, int x, int y, int width, int height, bool fullscreen);
 
 	// public life cycle functions
 	void render() const;
@@ -51,8 +49,8 @@ public:
 	Uint32 getFrames() const;
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
-	
-private:
+
+	private:
 	Game();
 	~Game();
 
@@ -62,12 +60,12 @@ private:
 	glm::vec2 m_mousePosition;
 
 	// scene variables
-	Scene* m_currentScene;
+	Scene *m_currentScene;
 	SceneState m_currentSceneState;
 
 	// storage structures
 	std::shared_ptr<SDL_Window> m_pWindow;
-	static Game* s_pInstance;
+	static Game *s_pInstance;
 };
 
 typedef Game TheGame;

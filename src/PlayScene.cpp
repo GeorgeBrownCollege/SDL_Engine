@@ -9,34 +9,34 @@
 
 PlayScene::PlayScene()
 {
-	PlayScene::start();
+	PlayScene::Start();
 }
 
 PlayScene::~PlayScene()
 = default;
 
-void PlayScene::draw()
+void PlayScene::Draw()
 {
 	if(EventManager::Instance().isIMGUIActive())
 	{
 		GUI_Function();
 	}
 
-	drawDisplayList();
+	DrawDisplayList();
 	SDL_SetRenderDrawColor(Renderer::Instance()->getRenderer(), 255, 255, 255, 255);
 }
 
-void PlayScene::update()
+void PlayScene::Update()
 {
-	updateDisplayList();
+	UpdateDisplayList();
 }
 
-void PlayScene::clean()
+void PlayScene::Clean()
 {
-	removeAllChildren();
+	RemoveAllChildren();
 }
 
-void PlayScene::handleEvents()
+void PlayScene::HandleEvents()
 {
 	EventManager::Instance().update();
 
@@ -114,66 +114,66 @@ void PlayScene::handleEvents()
 	}
 }
 
-void PlayScene::start()
+void PlayScene::Start()
 {
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 	
 	// Plane Sprite
 	m_pPlaneSprite = new Plane();
-	addChild(m_pPlaneSprite);
+	AddChild(m_pPlaneSprite);
 
 	// Player Sprite
 	m_pPlayer = new Player();
-	addChild(m_pPlayer);
+	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
-	m_pBackButton->getTransform()->position = glm::vec2(300.0f, 400.0f);
-	m_pBackButton->addEventListener(CLICK, [&]()-> void
+	m_pBackButton->GetTransform()->position = glm::vec2(300.0f, 400.0f);
+	m_pBackButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pBackButton->setActive(false);
 		TheGame::Instance()->changeSceneState(START_SCENE);
 	});
 
-	m_pBackButton->addEventListener(MOUSE_OVER, [&]()->void
+	m_pBackButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
 		m_pBackButton->setAlpha(128);
 	});
 
-	m_pBackButton->addEventListener(MOUSE_OUT, [&]()->void
+	m_pBackButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
 		m_pBackButton->setAlpha(255);
 	});
-	addChild(m_pBackButton);
+	AddChild(m_pBackButton);
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
-	m_pNextButton->getTransform()->position = glm::vec2(500.0f, 400.0f);
-	m_pNextButton->addEventListener(CLICK, [&]()-> void
+	m_pNextButton->GetTransform()->position = glm::vec2(500.0f, 400.0f);
+	m_pNextButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pNextButton->setActive(false);
 		TheGame::Instance()->changeSceneState(END_SCENE);
 	});
 
-	m_pNextButton->addEventListener(MOUSE_OVER, [&]()->void
+	m_pNextButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
 		m_pNextButton->setAlpha(128);
 	});
 
-	m_pNextButton->addEventListener(MOUSE_OUT, [&]()->void
+	m_pNextButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
 		m_pNextButton->setAlpha(255);
 	});
 
-	addChild(m_pNextButton);
+	AddChild(m_pNextButton);
 
 	/* Instructions Label */
 	m_pInstructionsLabel = new Label("Press the backtick (`) character to toggle Debug View", "Consolas");
-	m_pInstructionsLabel->getTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
+	m_pInstructionsLabel->GetTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
 
-	addChild(m_pInstructionsLabel);
+	AddChild(m_pInstructionsLabel);
 }
 
 void PlayScene::GUI_Function() const

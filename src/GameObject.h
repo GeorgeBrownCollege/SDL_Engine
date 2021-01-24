@@ -11,40 +11,42 @@
 
 
 class GameObject {
-public:
+
+	public:
+
 	GameObject();
 	virtual ~GameObject();
 
 	// Draw the object
-	virtual void draw() = 0;
+	virtual void Draw() = 0;
 
 	// Update the object
-	virtual void update() = 0;
+	virtual void Update() = 0;
 
 	// remove anything that needs to be deleted
-	virtual void clean() = 0;
+	virtual void Clean() = 0;
 
 	// getters for common variables
-	Transform* getTransform();
+	Transform *GetTransform();
 
 	// getters and setters for physics properties
-	RigidBody* getRigidBody();
-	
+	RigidBody *GetRigidBody();
+
 	// getters and setters for game object properties
-	int getWidth() const;
-	int getHeight() const;
-	void setWidth(int new_width);
-	void setHeight(int new_height);
-	GameObjectType getType() const;
-	void setType(GameObjectType new_type);
+	int GetWidth() const;
+	int GetHeight() const;
+	void SetWidth(int new_width);
+	void SetHeight(int new_height);
+	GameObjectType GetType() const;
+	void SetType(GameObjectType new_type);
 
-	void setEnabled(bool state);
-	bool isEnabled() const;
+	void SetEnabled(bool state);
+	bool IsEnabled() const;
 
-private:
+	private:
 	// transform component
 	Transform m_transform;
-	
+
 	// rigid body component
 	RigidBody m_rigidBody;
 

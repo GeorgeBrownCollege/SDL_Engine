@@ -6,33 +6,33 @@
 
 EndScene::EndScene()
 {
-	EndScene::start();
+	EndScene::Start();
 }
 
 EndScene::~EndScene()
 = default;
 
-void EndScene::draw()
+void EndScene::Draw()
 {
-	drawDisplayList();
+	DrawDisplayList();
 }
 
-void EndScene::update()
+void EndScene::Update()
 {
-	updateDisplayList();
+	UpdateDisplayList();
 }
 
-void EndScene::clean()
+void EndScene::Clean()
 {
-	removeAllChildren();
+	RemoveAllChildren();
 }
 
-void EndScene::handleEvents()
+void EndScene::HandleEvents()
 {
 	EventManager::Instance().update();
 
 	// Button Events
-	m_pRestartButton->update();
+	m_pRestartButton->Update();
 
 	// Keyboard Events
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
@@ -46,31 +46,31 @@ void EndScene::handleEvents()
 	}
 }
 
-void EndScene::start()
+void EndScene::Start()
 {
 	const SDL_Color blue = { 0, 0, 255, 255 };
 	m_label = new Label("END SCENE", "Dock51", 80, blue, glm::vec2(400.0f, 40.0f));
-	m_label->setParent(this);
-	addChild(m_label);
+	m_label->SetParent(this);
+	AddChild(m_label);
 
 	// Restart Button
 	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", RESTART_BUTTON);
-	m_pRestartButton->getTransform()->position = glm::vec2(400.0f, 400.0f);
-	m_pRestartButton->addEventListener(CLICK, [&]()-> void
+	m_pRestartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f);
+	m_pRestartButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pRestartButton->setActive(false);
 		TheGame::Instance()->changeSceneState(PLAY_SCENE);
 	});
 
-	m_pRestartButton->addEventListener(MOUSE_OVER, [&]()->void
+	m_pRestartButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
 		m_pRestartButton->setAlpha(128);
 	});
 
-	m_pRestartButton->addEventListener(MOUSE_OUT, [&]()->void
+	m_pRestartButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
 		m_pRestartButton->setAlpha(255);
 	});
 
-	addChild(m_pRestartButton);
+	AddChild(m_pRestartButton);
 }

@@ -3,11 +3,12 @@
 #define __RIGID_BODY__
 #include <glm/vec2.hpp>
 
-struct RigidBody
-{
-	float mass;
+struct RigidBody {
+
 	glm::vec2 velocity;
 	glm::vec2 acceleration;
+
+	float mass;
 	bool isColliding;
 };
 #endif /* defined (__RIGID_BODY__) */

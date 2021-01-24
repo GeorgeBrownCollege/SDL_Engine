@@ -4,11 +4,11 @@
 #include "Frame.h"
 #include <vector>
 
-struct Animation
-{
-	std::string name;
-	std::vector<Frame> frames;
-	int current_frame = 0;
+struct Animation {
+
+	std::string m_name;
+	std::vector<Frame> m_frames;
+	int m_currFrame = 0;
 };
 
 #endif /* defined (__ANIMATION__) */

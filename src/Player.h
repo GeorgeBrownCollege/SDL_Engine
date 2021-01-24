@@ -5,21 +5,20 @@
 #include "PlayerAnimationState.h"
 #include "Sprite.h"
 
-class Player final : public Sprite
-{
-public:
+class Player final : public Sprite {
+	public:
 	Player();
 	~Player();
 
 	// Life Cycle Methods
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
 
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);
 
-private:
+	private:
 	void m_buildAnimations();
 
 	PlayerAnimationState m_currentAnimationState;

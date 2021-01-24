@@ -8,7 +8,7 @@
 #include <iterator>
 #include "Renderer.h"
 
-TextureManager* TextureManager::s_pInstance = nullptr;
+TextureManager *TextureManager::s_pInstance = nullptr;
 
 TextureManager::TextureManager()
 = default;
@@ -16,36 +16,30 @@ TextureManager::TextureManager()
 TextureManager::~TextureManager()
 = default;
 
-inline bool TextureManager::m_textureExists(const std::string & id)
-{
+inline bool TextureManager::m_textureExists(const std::string & id) {
 	return m_textureMap.find(id) != m_textureMap.end();
 }
 
-bool TextureManager::m_spriteSheetExists(const std::string& sprite_sheet_name)
-{
+bool TextureManager::m_spriteSheetExists(const std::string & sprite_sheet_name) {
 	return m_spriteSheetMap.find(sprite_sheet_name) != m_spriteSheetMap.end();
 }
 
-bool TextureManager::load(const std::string& file_name, const std::string& id)
-{
-	if(m_textureExists(id))
-	{
+bool TextureManager::load(const std::string & file_name, const std::string & id) {
+
+	if (m_textureExists(id)) {
 		return true;
 	}
 
 	const auto pTempSurface(Config::make_resource(IMG_Load(file_name.c_str())));
-	
 
-	if (pTempSurface == nullptr)
-	{
+	if (pTempSurface == nullptr) {
 		return false;
 	}
 
 	const auto pTexture(Config::make_resource(SDL_CreateTextureFromSurface(Renderer::Instance()->getRenderer(), pTempSurface.get())));
 
 	// everything went ok, add the texture to our list
-	if (pTexture != nullptr)
-	{
+	if (pTexture != nullptr) {
 		m_textureMap[id] = pTexture;
 		return true;
 	}
@@ -54,10 +48,10 @@ bool TextureManager::load(const std::string& file_name, const std::string& id)
 }
 
 bool TextureManager::loadSpriteSheet(
-	const std::string& data_file_name, 
-	const std::string& texture_file_name, 
-	const std::string& sprite_sheet_name)
-{
+	const std::string & data_file_name,
+	const std::string & texture_file_name,
+	const std::string & sprite_sheet_name) {
+
 	std::string inputLine;
 	std::fstream dataFile; // create file stream object
 	std::string delimeter = " ";
@@ -69,23 +63,20 @@ bool TextureManager::loadSpriteSheet(
 	auto spriteSheet = new SpriteSheet(sprite_sheet_name);
 
 	// if the file successfully opened
-	if(dataFile) 
-	{
+	if (dataFile) {
 		// read one line at a time
-		while(std::getline(dataFile, inputLine))
-		{
+		while (std::getline(dataFile, inputLine)) {
 			Frame frame;
 			size_t linePosition = 0;
 			std::vector<std::string> tokens;
 
-			for (auto i = 0; i < 5; ++i)
-			{
+			for (auto i = 0; i < 5; ++i) {
 				linePosition = inputLine.find(delimeter);
 				tokens.push_back(inputLine.substr(0, linePosition));
 				inputLine.erase(0, linePosition + 1);
 			}
 
-			frame.name = tokens[0];
+			frame.m_name = tokens[0];
 			frame.x = std::stoi(tokens[1]);
 			frame.y = std::stoi(tokens[2]);
 			frame.w = std::stoi(tokens[3]);
@@ -94,9 +85,7 @@ bool TextureManager::loadSpriteSheet(
 			// add the new frame to the spritesheet
 			spriteSheet->addFrame(frame);
 		}
-	}
-	else
-	{
+	} else {
 		std::cout << "error opening file" << std::endl;
 		return false;
 	}
@@ -118,8 +107,10 @@ bool TextureManager::loadSpriteSheet(
 	return true;
 }
 
-void TextureManager::draw(const std::string& id, const int x, const int y, const double angle, const int alpha, const bool centered, const SDL_RendererFlip flip)
-{
+void TextureManager::draw(
+	const std::string & id, const int x, const int y, const double angle,
+	const int alpha, const bool centered, const SDL_RendererFlip flip) {
+
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
@@ -138,8 +129,7 @@ void TextureManager::draw(const std::string& id, const int x, const int y, const
 		const int yOffset = textureHeight * 0.5;
 		destRect.x = x - xOffset;
 		destRect.y = y - yOffset;
-	}
-	else {
+	} else {
 		destRect.x = x;
 		destRect.y = y;
 	}
@@ -148,14 +138,14 @@ void TextureManager::draw(const std::string& id, const int x, const int y, const
 	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
-void TextureManager::drawFrame(const std::string& id, const int x, const int y, const int frame_width, 
-							   const int frame_height, int &current_row,
-                               int &current_frame, int frame_number, int row_number, 
-							   float speed_factor, const double angle, 
-							   const int alpha, const bool centered, const SDL_RendererFlip flip)
-{
+void TextureManager::drawFrame(
+	const std::string & id, const int x, const int y, const int frame_width,
+	const int frame_height, int &current_row, int &current_frame, int frame_number,
+	int row_number, float speed_factor, const double angle, const int alpha,
+	const bool centered, const SDL_RendererFlip flip) {
+
 	animateFrames(frame_width, frame_height, frame_number, row_number, speed_factor, current_frame, current_row);
-	
+
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
@@ -169,7 +159,7 @@ void TextureManager::drawFrame(const std::string& id, const int x, const int y, 
 	// starting point of the where we are looking
 	srcRect.x = textureWidth * current_frame;
 	srcRect.y = textureHeight * current_row;
-	
+
 	srcRect.w = textureWidth;
 	srcRect.h = textureHeight;
 
@@ -181,8 +171,7 @@ void TextureManager::drawFrame(const std::string& id, const int x, const int y, 
 		const int yOffset = textureHeight * 0.5;
 		destRect.x = x - xOffset;
 		destRect.y = y - yOffset;
-	}
-	else {
+	} else {
 		destRect.x = x;
 		destRect.y = y;
 	}
@@ -191,24 +180,22 @@ void TextureManager::drawFrame(const std::string& id, const int x, const int y, 
 	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
-void TextureManager::animateFrames(int frame_width, int frame_height, const int frame_number, const int row_number, const float speed_factor, int &current_frame, int &current_row)
-{
+void TextureManager::animateFrames(
+	int frame_width, int frame_height, const int frame_number,
+	const int row_number, const float speed_factor, int &current_frame, int &current_row) {
+
 	const auto totalFrames = frame_number * row_number;
-	const int animationRate =  round(totalFrames / 2 / speed_factor);
+	const int animationRate = round(totalFrames / 2 / speed_factor);
 
 
-	if(frame_number > 1)
-	{
-		if (TheGame::Instance()->getFrames() % animationRate == 0)
-		{
+	if (frame_number > 1) {
+		if (TheGame::Instance()->getFrames() % animationRate == 0) {
 			current_frame++;
-			if (current_frame > frame_number - 1)
-			{
+			if (current_frame > frame_number - 1) {
 				current_frame = 0;
 				current_row++;
 			}
-			if (current_row > row_number - 1)
-			{
+			if (current_row > row_number - 1) {
 				current_row = 0;
 			}
 		}
@@ -217,21 +204,18 @@ void TextureManager::animateFrames(int frame_width, int frame_height, const int 
 }
 
 void TextureManager::playAnimation(
-	const std::string& sprite_sheet_name, Animation& animation, 
-	int x, int y, float speed_factor, 
-	double angle, int alpha, bool centered, SDL_RendererFlip flip)
-{
-	const auto totalFrames = animation.frames.size();
+	const std::string & sprite_sheet_name, Animation & animation,
+	int x, int y, float speed_factor,
+	double angle, int alpha, bool centered, SDL_RendererFlip flip) {
+
+	const auto totalFrames = animation.m_frames.size();
 	const int animationRate = round(totalFrames / 2 / speed_factor);
 
-	if (totalFrames > 1)
-	{
-		if (TheGame::Instance()->getFrames() % animationRate == 0)
-		{
-			animation.current_frame++;
-			if (animation.current_frame > totalFrames - 1)
-			{
-				animation.current_frame = 0;
+	if (totalFrames > 1) {
+		if (TheGame::Instance()->getFrames() % animationRate == 0) {
+			animation.m_currFrame++;
+			if (animation.m_currFrame > totalFrames - 1) {
+				animation.m_currFrame = 0;
 			}
 		}
 	}
@@ -243,15 +227,15 @@ void TextureManager::playAnimation(
 	srcRect.y = 0;
 
 	// frame_height size
-	const auto textureWidth = animation.frames[animation.current_frame].w;
-	const auto textureHeight = animation.frames[animation.current_frame].h;
+	const auto textureWidth = animation.m_frames[animation.m_currFrame].w;
+	const auto textureHeight = animation.m_frames[animation.m_currFrame].h;
 
 	// starting point of the where we are looking
-	srcRect.x = animation.frames[animation.current_frame].x;
-	srcRect.y = animation.frames[animation.current_frame].y;
+	srcRect.x = animation.m_frames[animation.m_currFrame].x;
+	srcRect.y = animation.m_frames[animation.m_currFrame].y;
 
-	srcRect.w = animation.frames[animation.current_frame].w;
-	srcRect.h = animation.frames[animation.current_frame].h;
+	srcRect.w = animation.m_frames[animation.m_currFrame].w;
+	srcRect.h = animation.m_frames[animation.m_currFrame].h;
 
 	destRect.w = textureWidth;
 	destRect.h = textureHeight;
@@ -261,8 +245,7 @@ void TextureManager::playAnimation(
 		const int yOffset = textureHeight * 0.5;
 		destRect.x = x - xOffset;
 		destRect.y = y - yOffset;
-	}
-	else {
+	} else {
 		destRect.x = x;
 		destRect.y = y;
 	}
@@ -271,8 +254,10 @@ void TextureManager::playAnimation(
 	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[sprite_sheet_name].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
-void TextureManager::drawText(const std::string& id, const int x, const int y, const double angle, const int alpha, const bool centered, const SDL_RendererFlip flip)
-{
+void TextureManager::drawText(
+	const std::string & id, const int x, const int y, const double angle,
+	const int alpha, const bool centered, const SDL_RendererFlip flip) {
+
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
@@ -291,8 +276,7 @@ void TextureManager::drawText(const std::string& id, const int x, const int y, c
 		const int yOffset = textureHeight * 0.5;
 		destRect.x = x - xOffset;
 		destRect.y = y - yOffset;
-	}
-	else {
+	} else {
 		destRect.x = x;
 		destRect.y = y;
 	}
@@ -301,8 +285,8 @@ void TextureManager::drawText(const std::string& id, const int x, const int y, c
 	SDL_RenderCopyEx(Renderer::Instance()->getRenderer(), m_textureMap[id].get(), &srcRect, &destRect, angle, nullptr, flip);
 }
 
-glm::vec2 TextureManager::getTextureSize(const std::string& id)
-{
+glm::vec2 TextureManager::getTextureSize(const std::string & id) {
+
 	int width, height;
 	SDL_QueryTexture(m_textureMap[id].get(), nullptr, nullptr, &width, &height);
 	glm::vec2 size;
@@ -313,49 +297,45 @@ glm::vec2 TextureManager::getTextureSize(const std::string& id)
 	return size;
 }
 
-void TextureManager::setAlpha(const std::string& id, const Uint8 new_alpha)
-{
+void TextureManager::setAlpha(const std::string & id, const Uint8 new_alpha) {
+
 	auto pTexture = m_textureMap[id];
 	SDL_SetTextureAlphaMod(pTexture.get(), new_alpha);
 	pTexture = nullptr;
 }
 
-void TextureManager::setColour(const std::string& id, const Uint8 red, const Uint8 green, const Uint8 blue)
-{
+void TextureManager::setColour(const std::string & id, const Uint8 red, const Uint8 green, const Uint8 blue) {
+
 	auto pTexture = m_textureMap[id];
 	SDL_SetTextureColorMod(pTexture.get(), red, green, blue);
 	pTexture = nullptr;
 }
 
-bool TextureManager::addTexture(const std::string& id, std::shared_ptr<SDL_Texture> texture)
-{
-	if(m_textureExists(id))
-	{
+bool TextureManager::addTexture(const std::string & id, std::shared_ptr<SDL_Texture> texture) {
+
+	if (m_textureExists(id)) {
 		return true;
 	}
-	
+
 	m_textureMap[id] = std::move(texture);
-	
+
 	return true;
 }
 
-SDL_Texture * TextureManager::getTexture(const std::string& id)
-{
+SDL_Texture *TextureManager::getTexture(const std::string & id) {
 	return m_textureMap[id].get();
 }
 
-void TextureManager::removeTexture(const std::string& id)
-{
+void TextureManager::removeTexture(const std::string & id) {
 	m_textureMap.erase(id);
 }
 
-int TextureManager::getTextureMapSize() const
-{
+int TextureManager::getTextureMapSize() const {
 	return m_textureMap.size();
 }
 
-void TextureManager::clean()
-{
+void TextureManager::clean() {
+
 	m_textureMap.clear();
 	std::cout << "TextureMap Cleared,  TextureMap Size: " << m_textureMap.size() << std::endl;
 
@@ -363,20 +343,18 @@ void TextureManager::clean()
 	std::cout << "Existing SpriteSheets Cleared" << std::endl;
 }
 
-void TextureManager::displayTextureMap()
-{
+void TextureManager::displayTextureMap() {
+
 	std::cout << "------------ Displaying Texture Map -----------" << std::endl;
 	std::cout << "Texture Map size: " << m_textureMap.size() << std::endl;
 	auto it = m_textureMap.begin();
-	while (it != m_textureMap.end())
-	{
+	while (it != m_textureMap.end()) {
 		std::cout << it->first << std::endl;
 		++it;
 	}
 }
 
-SpriteSheet* TextureManager::getSpriteSheet(const std::string& name)
-{
+SpriteSheet *TextureManager::getSpriteSheet(const std::string & name) {
 	return m_spriteSheetMap[name];
 }
 
