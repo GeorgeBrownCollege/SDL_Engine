@@ -75,6 +75,9 @@ void Scene::UpdateDisplayList() {
 			if (!count->IsEnabled())
 				break;
 			count->Update();
+
+			if (count->GetRigidBody()->hasGravity)
+				count->GetRigidBody()->velocity.y += m_gravityForce;
 		}
 	}
 }

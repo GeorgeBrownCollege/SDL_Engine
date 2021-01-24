@@ -10,5 +10,6 @@ struct RigidBody {
 
 	float mass;
 	bool isColliding;
+	bool hasGravity;
 };
 #endif /* defined (__RIGID_BODY__) */
