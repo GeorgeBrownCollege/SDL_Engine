@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
+#include "EventManager.h"
 
 Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	TextureManager::Instance()->loadSpriteSheet(
@@ -56,7 +58,20 @@ void Player::Draw() {
 
 }
 
-void Player::Update() { }
+
+
+void Player::Update() {
+
+	EventManager::Instance().update();
+	SoundManager::Instance().setSoundVolume(32);
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q))
+	{
+		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
+		SoundManager::Instance().playSound("barkSound1", 1, 0);
+		std::cout << "arf" << std::endl;
+	}
+}
 
 void Player::Clean() { }
 

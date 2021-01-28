@@ -12,6 +12,7 @@ class Player final : public Sprite {
 
 	// Life Cycle Methods
 	virtual void Draw() override;
+	void HandleEvents();
 	virtual void Update() override;
 	virtual void Clean() override;
 

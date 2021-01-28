@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "Game.h"
 #include "EventManager.h"
+#include "SoundManager.h"
 
 // required for IMGUI
 #include "imgui.h"
@@ -69,8 +70,7 @@ void PlayScene::HandleEvents()
 			}
 		}
 	}
-
-
+	
 	// handle player movement if no Game Controllers found
 	if (SDL_NumJoysticks() < 1)
 	{
