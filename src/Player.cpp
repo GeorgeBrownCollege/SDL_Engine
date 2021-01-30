@@ -1,4 +1,6 @@
 #include "Player.h"
+
+#include "EventManager.h"
 #include "TextureManager.h"
 
 Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
@@ -57,7 +59,19 @@ void Player::Draw() {
 
 }
 
-void Player::Update() { }
+void Player::Update() {
+	
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
+		Move(1);
+	}
+	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
+		Move(-1);
+	}
+	else {
+		Decelerate();
+	}
+	
+}
 
 void Player::Clean() { }
 
@@ -85,4 +99,29 @@ void Player::m_buildAnimations() {
 	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-3"));
 
 	setAnimation(runAnimation);
+}
+
+// This will update		
+void Player::Move(int _direction) {
+
+	if (GetRigidBody()->velocity.x < M_MAX_SPEED || GetRigidBody()->velocity.x > -M_MAX_SPEED)
+		GetRigidBody()->velocity.x += (M_MAX_SPEED * 0.075f) * _direction;
+	else
+		GetRigidBody()->velocity.x = (M_MAX_SPEED * _direction);
+	
+	GetTransform()->position.x += GetRigidBody()->velocity.x;
+}
+
+void Player::Decelerate() {
+	
+	if (GetRigidBody()->velocity.x < -0.40 || GetRigidBody()->velocity.x > 0.40) {
+		if (GetRigidBody()->velocity.x < 0)
+			GetRigidBody()->velocity.x += 0.55f;
+
+		else if (GetRigidBody()->velocity.x > 0)
+			GetRigidBody()->velocity.x -= 0.55f;
+
+
+		GetTransform()->position.x += GetRigidBody()->velocity.x;
+	}
 }
