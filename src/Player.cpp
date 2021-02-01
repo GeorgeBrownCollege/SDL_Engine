@@ -1,18 +1,18 @@
 #include "Player.h"
-
+#include <iostream>
 #include "EventManager.h"
 #include "TextureManager.h"
 
 Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	TextureManager::Instance()->loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
-		"../Assets/sprites/atlas.png",
-		"spritesheet");
+		"../Assets/sprites/dog-spritesheet.png",
+		"dogsprite");
 
-	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("spritesheet"));
+	setSpriteSheet(TextureManager::Instance()->getSpriteSheet("dogsprite"));
 
 	// set frame width
-	SetWidth(53);
+	SetWidth(87);
 
 	// set frame height
 	SetHeight(58);
@@ -21,7 +21,9 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
-	GetRigidBody()->hasGravity = true;
+	SetAccelerationRate(1.0f);
+	SetMaxSpeed(8.25f);
+
 	SetType(PLAYER);
 
 	m_buildAnimations();
@@ -38,20 +40,20 @@ void Player::Draw() {
 	// draw the player according to animation state
 	switch (m_currentAnimationState) {
 		case PLAYER_IDLE_RIGHT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
-													  x, y, 0.12f, 0, 255, true);
-			break;
-		case PLAYER_IDLE_LEFT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
+			TextureManager::Instance()->playAnimation("dogsprite", GetAnimation("idle"),
 													  x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 			break;
+		case PLAYER_IDLE_LEFT:
+			TextureManager::Instance()->playAnimation("dogsprite", GetAnimation("idle"),
+													  x, y, 0.12f, 0, 255, true);
+			break;
 		case PLAYER_RUN_RIGHT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
-													  x, y, 0.25f, 0, 255, true);
+			TextureManager::Instance()->playAnimation("dogsprite", GetAnimation("run"),
+													  x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 			break;
 		case PLAYER_RUN_LEFT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
-													  x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
+			TextureManager::Instance()->playAnimation("dogsprite", GetAnimation("run"),
+													  x, y, 0.25f, 0, 255, true);
 			break;
 		default:
 			break;
@@ -60,68 +62,96 @@ void Player::Draw() {
 }
 
 void Player::Update() {
-	
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
-		Move(1);
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+	{
+		Move(false);
 	}
-	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
-		Move(-1);
+	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+	{
+		Move(true);
 	}
-	else {
-		Decelerate();
+	else
+	{
+		Decellerate();
 	}
 	
 }
 
 void Player::Clean() { }
 
+// Setters
 void Player::setAnimationState(const PlayerAnimationState new_state) {
 	m_currentAnimationState = new_state;
 }
+
 
 void Player::m_buildAnimations() {
 	Animation idleAnimation = Animation();
 
 	idleAnimation.m_name = "idle";
-	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-0"));
-	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-1"));
-	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-2"));
-	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-3"));
-
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-0"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-1"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-2"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-3"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-4"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-5"));
+	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-6"));
 	setAnimation(idleAnimation);
 
 	Animation runAnimation = Animation();
 
 	runAnimation.m_name = "run";
-	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-0"));
-	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-1"));
-	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-2"));
-	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-3"));
+	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-dash-0"));
+	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-dash-1"));
+	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-dash-2"));
+	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-dash-3"));
+	runAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-dash-4"));
 
 	setAnimation(runAnimation);
 }
 
-// This will update		
-void Player::Move(int _direction) {
+void Player::Move(bool _direction) {
 
-	if (GetRigidBody()->velocity.x < M_MAX_SPEED || GetRigidBody()->velocity.x > -M_MAX_SPEED)
-		GetRigidBody()->velocity.x += (M_MAX_SPEED * 0.075f) * _direction;
+	GetRigidBody()->acceleration.x = m_accelerationRate;
+
+	if (GetRigidBody()->velocity.x != 0)
+		GetRigidBody()->velocity.x = abs(GetRigidBody()->velocity.x) + 0.5f * GetRigidBody()->acceleration.x;
 	else
-		GetRigidBody()->velocity.x = (M_MAX_SPEED * _direction);
+		GetRigidBody()->velocity.x = 0.5f * GetRigidBody()->acceleration.x;
+
+	// If the player wants to move left the velocity will be turned into a negative
+	if (_direction == false)
+		GetRigidBody()->velocity.x *= -1;
 	
-	GetTransform()->position.x += GetRigidBody()->velocity.x;
+	// if the absolute value of the new velocity is greater than the max speed the velocity will be set to the max speed in the proper direction
+	abs(GetRigidBody()->velocity.x) < m_maxSpeed ? GetRigidBody()->velocity.x = GetRigidBody()->velocity.x :
+		_direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed : GetRigidBody()->velocity.x = m_maxSpeed;
+	
+	GetTransform()->position += GetRigidBody()->velocity;
 }
 
-void Player::Decelerate() {
+void Player::Decellerate() {
+
+	float decellerateRate = 0.2f;
 	
-	if (GetRigidBody()->velocity.x < -0.40 || GetRigidBody()->velocity.x > 0.40) {
-		if (GetRigidBody()->velocity.x < 0)
-			GetRigidBody()->velocity.x += 0.55f;
+	if (GetRigidBody()->velocity.x != 0)
+	{
+		if (GetRigidBody()->velocity.x < 1.0f && GetRigidBody()->velocity.x > -1.0f)
+			GetRigidBody()->velocity.x = 0.0f;
 
-		else if (GetRigidBody()->velocity.x > 0)
-			GetRigidBody()->velocity.x -= 0.55f;
+		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
+		GetRigidBody()->velocity.x == 0 ? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x :
+			GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) : GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
-
-		GetTransform()->position.x += GetRigidBody()->velocity.x;
+		GetTransform()->position += GetRigidBody()->velocity;
 	}
 }
+
+// Setters
+void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
+void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
+
+// Getters
+float Player::GetAcceleration() { return m_accelerationRate; }
+float Player::GetMaxSpeed() { return m_maxSpeed; }

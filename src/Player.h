@@ -7,9 +7,9 @@
 
 class Player final : public Sprite {
 	private:
-	const int M_MAX_SPEED = 4.75f;
-	float m_xAcceleration; // This will hold the acceleration for the player in the x direction 
-	
+	float m_accelerationRate;
+	float m_maxSpeed;
+
 	public:
 	Player();
 	~Player();
@@ -21,12 +21,17 @@ class Player final : public Sprite {
 
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);
-	void SetMaxSpeed(int _speed);
+	void SetAccelerationRate(float _accel);
+	void SetMaxSpeed(float _speed);
 
-	private:	
+	// Getters
+	float GetAcceleration();
+	float GetMaxSpeed();
+
+	private:
+	void Decellerate();
 	void m_buildAnimations();
-	void Move(int _direction); // This will move the player
-	void Decelerate(); // This will bring the player to a stop when the function is called
+	void Move(bool _direction);
 
 	PlayerAnimationState m_currentAnimationState;
 };
