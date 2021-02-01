@@ -2,8 +2,8 @@
 #include "../src/SoundManager.h"
 #include "../src/TextureManager.h"
 
-Pressureplate::Pressureplate()
-{
+PressurePlate::PressurePlate() {
+
 	TextureManager::Instance()->load("../Assets/textures/pressureplate.png", "Pressureplate");
 	auto size = TextureManager::Instance()->getTextureSize("Pressureplate");
 	SetWidth(size.x);
@@ -15,21 +15,18 @@ Pressureplate::Pressureplate()
 	//SoundManager::Instance().load();
 }
 
-Pressureplate::~Pressureplate()
+PressurePlate::~PressurePlate()
 = default;
 
-void Pressureplate::Draw()
-{
+void PressurePlate::Draw() {
 	TextureManager::Instance()->draw("Pressureplate", GetTransform()->position.x, GetTransform()->position.y, 0, 100, false);
 }
 
-void Pressureplate::Update()
-{
-	
+void PressurePlate::Update() {
+
 }
 
-void Pressureplate::Clean()
-{
+void PressurePlate::Clean() {
 
 }
 

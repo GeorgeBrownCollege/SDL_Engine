@@ -1,14 +1,16 @@
 #pragma once
 #ifndef __PRESSUREPLATE__
 #define __PRESSUREPLATE__
-#include "../src/DisplayObject.h"
+
+#include "DisplayObject.h"
+
 using namespace std;
 
-class Pressureplate final : public DisplayObject
+class PressurePlate final : public DisplayObject
 {
 public:
-	Pressureplate();   // Constructor
-	~Pressureplate();  // Destructor
+	PressurePlate();   // Constructor
+	~PressurePlate();  // Destructor
 
 	void Draw() override;
 	void Update() override;
