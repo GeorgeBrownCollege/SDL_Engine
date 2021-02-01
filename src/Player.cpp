@@ -97,6 +97,11 @@ void Player::m_buildAnimations() {
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-4"));
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-5"));
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-6"));
+
+	//std::string tmp_str = "dog-idle-";
+	//for (int i = 0; i < 7; i++) 
+	//	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame(tmp_str + std::to_string(i)));
+
 	setAnimation(idleAnimation);
 
 	Animation runAnimation = Animation();
