@@ -6,6 +6,10 @@
 #include "Sprite.h"
 
 class Player final : public Sprite {
+	private:
+	float m_accelerationRate;
+	float m_maxSpeed;
+
 	public:
 	Player();
 	~Player();
@@ -17,9 +21,17 @@ class Player final : public Sprite {
 
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);
+	void SetAccelerationRate(float _accel);
+	void SetMaxSpeed(float _speed);
+
+	// Getters
+	float GetAcceleration();
+	float GetMaxSpeed();
 
 	private:
+	void Decellerate();
 	void m_buildAnimations();
+	void Move(bool _direction);
 
 	PlayerAnimationState m_currentAnimationState;
 };
