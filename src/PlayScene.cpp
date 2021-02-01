@@ -26,7 +26,10 @@ void PlayScene::Draw() {
 }
 
 void PlayScene::Update() {
+	
 	UpdateDisplayList();
+
+	CollisionManager::AABBCheck(m_pPlayer, m_pEnemy);
 }
 
 void PlayScene::Clean() {
@@ -100,6 +103,10 @@ void PlayScene::Start() {
 	m_pPlayer = new Player();
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
+
+	//Enemy Sprite (cat)
+	m_pEnemy = new Enemy();
+	AddChild(m_pEnemy);
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);

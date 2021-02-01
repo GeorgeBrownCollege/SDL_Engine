@@ -126,6 +126,9 @@
     <ClCompile Include="..\src\PressurePlate.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Enemy.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -261,6 +264,12 @@
       <Filter>IMGUI</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PressurePlate.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EnemyAnimationState.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Enemy.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Plane.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "Button.h"
 #include "Label.h"
 
@@ -29,6 +30,7 @@ private:
 
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
+	Enemy* m_pEnemy;
 	bool m_playerFacingRight;
 
 	// UI Items
