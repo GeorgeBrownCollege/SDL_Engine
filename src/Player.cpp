@@ -63,19 +63,19 @@ void Player::Draw() {
 
 void Player::Update() {
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
-	{
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
+
 		Move(false);
-	}
-	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
-	{
+
+	} else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
+
 		Move(true);
-	}
-	else
-	{
+
+	} else {
+
 		Decellerate();
 	}
-	
+
 }
 
 void Player::Clean() { }
@@ -128,27 +128,27 @@ void Player::Move(bool _direction) {
 	// If the player wants to move left the velocity will be turned into a negative
 	if (_direction == false)
 		GetRigidBody()->velocity.x *= -1;
-	
+
 	// if the absolute value of the new velocity is greater than the max speed the velocity will be set to the max speed in the proper direction
 	abs(GetRigidBody()->velocity.x) < m_maxSpeed ? GetRigidBody()->velocity.x = GetRigidBody()->velocity.x :
 		_direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed : GetRigidBody()->velocity.x = m_maxSpeed;
-	
+
 	GetTransform()->position += GetRigidBody()->velocity;
 }
 
 void Player::Decellerate() {
 
 	float decellerateRate = 0.2f;
-	
-	if (GetRigidBody()->velocity.x != 0)
-	{
+
+	if (GetRigidBody()->velocity.x != 0) {
 		if (GetRigidBody()->velocity.x < 1.0f && GetRigidBody()->velocity.x > -1.0f)
 			GetRigidBody()->velocity.x = 0.0f;
 
 		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
 		GetRigidBody()->velocity.x == 0
-			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x 
-			: GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) 
+			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x
+			: GetRigidBody()->velocity.x < 0
+			? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate)
 			: GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
 		GetTransform()->position += GetRigidBody()->velocity;

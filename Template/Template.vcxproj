@@ -207,6 +207,7 @@
     <ClInclude Include="..\src\Enemy.h" />
     <ClInclude Include="..\src\EnemyAnimationState.h" />
     <ClInclude Include="..\src\Level1Background.h" />
+    <ClInclude Include="..\src\Platform.h" />
     <ClInclude Include="..\src\PressurePlate.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\Sprite.h" />
