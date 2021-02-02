@@ -146,8 +146,10 @@ void Player::Decellerate() {
 			GetRigidBody()->velocity.x = 0.0f;
 
 		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
-		GetRigidBody()->velocity.x == 0 ? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x :
-			GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) : GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
+		GetRigidBody()->velocity.x == 0
+			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x 
+			: GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) 
+			: GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
 		GetTransform()->position += GetRigidBody()->velocity;
 	}
