@@ -97,6 +97,11 @@ void Player::m_buildAnimations() {
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-4"));
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-5"));
 	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame("dog-idle-6"));
+
+	//std::string tmp_str = "dog-idle-";
+	//for (int i = 0; i < 7; i++) 
+	//	idleAnimation.m_frames.push_back(GetSpriteSheet()->GetFrame(tmp_str + std::to_string(i)));
+
 	setAnimation(idleAnimation);
 
 	Animation runAnimation = Animation();
@@ -141,8 +146,10 @@ void Player::Decellerate() {
 			GetRigidBody()->velocity.x = 0.0f;
 
 		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
-		GetRigidBody()->velocity.x == 0 ? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x :
-			GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) : GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
+		GetRigidBody()->velocity.x == 0
+			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x 
+			: GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) 
+			: GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
 		GetTransform()->position += GetRigidBody()->velocity;
 	}
