@@ -104,8 +104,10 @@ void Player::Update() {
 		}
 	}
 
-	if (GetTransform()->position.y > 540)
-		GetTransform()->position.y = 539;
+	if (GetTransform()->position.y > 475.0f) {
+		GetTransform()->position.y = 473.5f;
+		SetIsJumping(false);
+	}
 
 }
 
