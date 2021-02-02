@@ -98,7 +98,10 @@ void PlayScene::HandleEvents() {
 void PlayScene::Start() {
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
-
+	
+	//Background
+	m_pBackground = new Background();
+	AddChild(m_pBackground);
 	// Plane Sprite
 	m_pPlaneSprite = new Plane();
 	AddChild(m_pPlaneSprite);

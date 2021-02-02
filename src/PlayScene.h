@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "PressurePlate.h"
 #include "Enemy.h"
+#include "Level1Background.h"
 #include "Button.h"
 #include "Label.h"
 
@@ -29,6 +30,7 @@ private:
 	
 	glm::vec2 m_mousePosition;
 
+	Background* m_pBackground;
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
 	PressurePlate* m_pPressurePlate;

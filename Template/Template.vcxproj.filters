@@ -129,6 +129,9 @@
     <ClCompile Include="..\src\Enemy.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Level1Background.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -270,6 +273,9 @@
       <Filter>Enums</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Enemy.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Level1Background.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
   </ItemGroup>
