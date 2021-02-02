@@ -62,20 +62,20 @@ void Player::Draw() {
 }
 
 void Player::Update() {
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_SPACE)) {
+		Jump();
+	}
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
-	{
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
 		Move(false);
 	}
-	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
-	{
+	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
 		Move(true);
 	}
-	else
-	{
+	else if (!(EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) && !(EventManager::Instance().isKeyDown(SDL_SCANCODE_A))) {
 		Decellerate();
 	}
-	
+
 }
 
 void Player::Clean() { }
@@ -131,6 +131,15 @@ void Player::Move(bool _direction) {
 	GetTransform()->position += GetRigidBody()->velocity;
 }
 
+void Player::Jump() {
+
+	if (GetIsJumping() != true) {
+		GetRigidBody()->velocity.y = -10.0f;
+		SetIsJumping(true);
+	}
+	GetTransform()->position.y += GetRigidBody()->velocity.y;
+}
+
 void Player::Decellerate() {
 
 	float decellerateRate = 0.2f;
@@ -141,17 +150,21 @@ void Player::Decellerate() {
 			GetRigidBody()->velocity.x = 0.0f;
 
 		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
-		GetRigidBody()->velocity.x == 0 ? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x :
-			GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) : GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
+		GetRigidBody()->velocity.x == 0 ? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x
+			: GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate)
+			: GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
-		GetTransform()->position += GetRigidBody()->velocity;
+		GetTransform()->position.x += GetRigidBody()->velocity.x;
 	}
 }
 
 // Setters
 void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
 void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
+void Player::SetIsJumping(bool _jump) { m_isJumping = _jump; }
 
 // Getters
 float Player::GetAcceleration() { return m_accelerationRate; }
 float Player::GetMaxSpeed() { return m_maxSpeed; }
+
+bool Player::GetIsJumping() { return m_isJumping; }

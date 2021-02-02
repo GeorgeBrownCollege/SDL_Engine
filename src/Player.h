@@ -10,6 +10,8 @@ class Player final : public Sprite {
 	float m_accelerationRate;
 	float m_maxSpeed;
 
+	bool m_isJumping; // This will track whether or not the player is jumping 
+
 	public:
 	Player();
 	~Player();
@@ -23,12 +25,16 @@ class Player final : public Sprite {
 	void setAnimationState(PlayerAnimationState new_state);
 	void SetAccelerationRate(float _accel);
 	void SetMaxSpeed(float _speed);
+	void SetIsJumping(bool _jump);
 
 	// Getters
 	float GetAcceleration();
 	float GetMaxSpeed();
 
+	bool GetIsJumping();
+
 	private:
+	void Jump();
 	void Decellerate();
 	void m_buildAnimations();
 	void Move(bool _direction);
