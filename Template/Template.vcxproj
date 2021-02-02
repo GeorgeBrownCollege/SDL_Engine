@@ -165,6 +165,7 @@
     <ClCompile Include="..\src\CollisionManager.cpp" />
     <ClCompile Include="..\src\Enemy.cpp" />
     <ClCompile Include="..\src\Level1Background.cpp" />
+    <ClCompile Include="..\src\Platform.cpp" />
     <ClCompile Include="..\src\PressurePlate.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />

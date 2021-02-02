@@ -12,7 +12,7 @@
 
 # Build results
 #[Dd]ebug/
-[Tt]emplate/*
+Template/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
