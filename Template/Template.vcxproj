@@ -163,6 +163,8 @@
     <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp" />
     <ClCompile Include="..\src\Button.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
+    <ClCompile Include="..\src\Enemy.cpp" />
+    <ClCompile Include="..\src\Level1Background.cpp" />
     <ClCompile Include="..\src\PressurePlate.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />
@@ -201,6 +203,9 @@
     <ClInclude Include="..\src\CollisionManager.h" />
     <ClInclude Include="..\src\CollisionShape.h" />
     <ClInclude Include="..\src\Config.h" />
+    <ClInclude Include="..\src\Enemy.h" />
+    <ClInclude Include="..\src\EnemyAnimationState.h" />
+    <ClInclude Include="..\src\Level1Background.h" />
     <ClInclude Include="..\src\PressurePlate.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\Sprite.h" />

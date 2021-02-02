@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\User\Documents\Dog Game\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+=======
+      <FullPath>C:\Users\geo_g\source\repos\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+>>>>>>> master
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

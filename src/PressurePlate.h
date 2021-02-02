@@ -3,10 +3,11 @@
 #define __PRESSUREPLATE__
 
 #include "DisplayObject.h"
+#include "Sprite.h"
 
 using namespace std;
 
-class PressurePlate final : public DisplayObject
+class PressurePlate final : public Sprite
 {
 public:
 	PressurePlate();   // Constructor
