@@ -7,29 +7,32 @@
 #include <unordered_map>
 #include "SpriteSheet.h"
 
-class Sprite : public DisplayObject
-{
-public:
+class Sprite : public DisplayObject {
+
+	public:
+
 	Sprite();
 	virtual ~Sprite();
-	
+
 	// Life Cycle Functions
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	virtual void clean() = 0;
+	virtual void Draw() = 0;
+	virtual void Update() = 0;
+	virtual void Clean() = 0;
 
 	// getters
-	SpriteSheet* getSpriteSheet();
-	Animation& getAnimation(const std::string& name);
-	
-	// setters
-	void setSpriteSheet(SpriteSheet* sprite_sheet);
-	void setAnimation(const Animation& animation);
-private:
-	// private utility functions
-	bool m_animationExists(const std::string& id);
+	SpriteSheet *GetSpriteSheet();
+	Animation &GetAnimation(const std::string &_name);
 
-	SpriteSheet* m_pSpriteSheet;
+	// setters
+	void setSpriteSheet(SpriteSheet *_spriteSheet);
+	void setAnimation(const Animation &_anim);
+
+	private:
+
+	// private utility functions
+	bool m_animationExists(const std::string &_id);
+
+	SpriteSheet *m_pSpriteSheet;
 
 	std::unordered_map<std::string, Animation> m_pAnimations;
 };

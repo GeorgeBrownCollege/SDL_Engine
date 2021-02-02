@@ -14,11 +14,11 @@ public:
 	~StartScene();
 
 	// Inherited via Scene
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
-	virtual void handleEvents() override;
-	virtual void start() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
+	virtual void HandleEvents() override;
+	virtual void Start() override;
 	
 private:
 	Label* m_pStartLabel{};

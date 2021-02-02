@@ -2,8 +2,7 @@
 #ifndef __SHAPE_TYPE__
 #define __SHAPE_TYPE__
 
-enum ShapeType
-{
+enum ShapeType {
 	SEMI_CIRCLE_LEFT,
 	SEMI_CIRCLE_RIGHT,
 	SEMI_CIRCLE_TOP,

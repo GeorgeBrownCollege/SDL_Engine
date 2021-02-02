@@ -5,6 +5,9 @@
 #include "Scene.h"
 #include "Plane.h"
 #include "Player.h"
+#include "PressurePlate.h"
+#include "Enemy.h"
+#include "Level1Background.h"
 #include "Button.h"
 #include "Label.h"
 
@@ -15,11 +18,11 @@ public:
 	~PlayScene();
 
 	// Scene LifeCycle Functions
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
-	virtual void handleEvents() override;
-	virtual void start() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
+	virtual void HandleEvents() override;
+	virtual void Start() override;
 private:
 	// IMGUI Function
 	void GUI_Function() const;
@@ -27,8 +30,11 @@ private:
 	
 	glm::vec2 m_mousePosition;
 
+	Background* m_pBackground;
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
+	PressurePlate* m_pPressurePlate;
+	Enemy* m_pEnemy;
 	bool m_playerFacingRight;
 
 	// UI Items

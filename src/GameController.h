@@ -4,14 +4,14 @@
 
 #include <SDL.h>
 
-struct GameController
-{
-	GameController(SDL_GameController* controller);
+struct GameController {
+
+	GameController(SDL_GameController *controller);
 	~GameController();
 
 	void update();
 
-	SDL_GameController* handle;
+	SDL_GameController *handle;
 
 	// DPAD Buttons
 	bool DPAD_UP;

@@ -1,59 +1,47 @@
 #include "GameObject.h"
 
-GameObject::GameObject():
-	m_width(0), m_height(0), m_type(NONE), m_enabled(true)
-{
-}
+GameObject::GameObject() :
+	m_width(0), m_height(0), m_type(NONE), m_enabled(true) { }
 
 GameObject::~GameObject()
 = default;
 
-Transform* GameObject::getTransform() 
-{
+Transform *GameObject::GetTransform() {
 	return &m_transform;
 }
 
-RigidBody* GameObject::getRigidBody() 
-{
+RigidBody *GameObject::GetRigidBody() {
 	return &m_rigidBody;
 }
 
-int GameObject::getWidth() const
-{
+int GameObject::GetWidth() const {
 	return m_width;
 }
 
-int GameObject::getHeight() const
-{
+int GameObject::GetHeight() const {
 	return m_height;
 }
 
-GameObjectType GameObject::getType() const
-{
+GameObjectType GameObject::GetType() const {
 	return m_type;
 }
 
-void GameObject::setWidth(const int new_width)
-{
+void GameObject::SetWidth(const int new_width) {
 	m_width = new_width;
 }
 
-void GameObject::setHeight(const int new_height)
-{
+void GameObject::SetHeight(const int new_height) {
 	m_height = new_height;
 }
 
-void GameObject::setType(const GameObjectType new_type)
-{
+void GameObject::SetType(const GameObjectType new_type) {
 	m_type = new_type;
 }
 
-void GameObject::setEnabled(const bool state)
-{
+void GameObject::SetEnabled(const bool state) {
 	m_enabled = state;
 }
 
-bool GameObject::isEnabled() const
-{
+bool GameObject::IsEnabled() const {
 	return m_enabled;
 }
