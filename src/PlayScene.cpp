@@ -30,6 +30,10 @@ void PlayScene::Update() {
 	UpdateDisplayList();
 
 	CollisionManager::AABBCheck(m_pPlayer, m_pEnemy);
+	if (CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate)) {
+		m_pPressurePlate->GetTransform()->position = glm::vec2(100.0f, 305.0f);
+	}
+	
 }
 
 void PlayScene::Clean() {
@@ -103,6 +107,11 @@ void PlayScene::Start() {
 	m_pPlayer = new Player();
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
+
+	//Pressureplate Sprite
+	m_pPressurePlate = new PressurePlate();
+	AddChild(m_pPressurePlate);
+
 
 	//Enemy Sprite (cat)
 	m_pEnemy = new Enemy();

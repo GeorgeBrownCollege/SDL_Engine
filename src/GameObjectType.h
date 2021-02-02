@@ -7,6 +7,7 @@ enum GameObjectType {
 	SHIP,
 	TARGET,
 	PLAYER,
+	PRESSUREPLATE,
 	ENEMY,
 	PLANE,
 	START_BUTTON,
