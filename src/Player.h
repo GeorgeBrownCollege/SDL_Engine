@@ -12,6 +12,8 @@ class Player final : public Sprite {
 	
 	bool m_movementEnabled;
 
+	bool m_isJumping; // This will track whether or not the player is jumping 
+
 	public:
 	Player();
 	~Player();
@@ -27,12 +29,16 @@ class Player final : public Sprite {
 	void SetAccelerationRate(float _accel);
 	void SetMaxSpeed(float _speed);
 	void SetMovementEnabled(bool _val);
+	void SetIsJumping(bool _jump);
 
 	// Getters
 	float GetAcceleration();
 	float GetMaxSpeed();
 
+	bool GetIsJumping();
+
 	private:
+	void Jump();
 	void Decellerate();
 	void m_buildAnimations();
 	void Move(bool _direction);
