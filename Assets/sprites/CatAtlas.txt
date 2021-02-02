@@ -1,0 +1,16 @@
+cat-idle-0 0 0 81 64
+cat-idle-1 82 0 81 64
+cat-idle-2 166 0 81 64
+cat-idle-3 246 0 81 64
+cat-idle-4 327 0 81 64
+cat-walk-0 0 69 81 64
+cat-walk-1 82 69 81 64
+cat-walk-2 166 69 81 64
+cat-walk-3 246 69 81 64
+cat-walk-4 327 69 81 64
+cat-run-0 0 141 81 64
+cat-run-1 82 135 81 64
+cat-run-2 169 135 81 64
+cat-run-3 257 135 81 64
+cat-run-4 355 135 81 64
+cat-run-5 451 135 81 64 
