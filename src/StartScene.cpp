@@ -77,4 +77,8 @@ void StartScene::Start() {
 		m_pStartButton->setAlpha(255);
 	});
 	AddChild(m_pStartButton);
+
+	SoundManager::Instance().setMusicVolume(20);
+	SoundManager::Instance().load("../Assets/audio/menuSongReal.mp3", "mainMenuSong", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("mainMenuSong", -1);
 }

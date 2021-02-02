@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>H:\Other\Visual Studio\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+=======
+      <FullPath>C:\Users\Joshu\Desktop\DogFarFromHomeRepo\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+>>>>>>> JumpAudio
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
