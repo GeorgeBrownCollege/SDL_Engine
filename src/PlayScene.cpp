@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "Game.h"
 #include "EventManager.h"
+#include "SoundManager.h"
 
 // required for IMGUI
 #include "imgui.h"
@@ -30,10 +31,15 @@ void PlayScene::Update() {
 	UpdateDisplayList();
 
 	CollisionManager::AABBCheck(m_pPlayer, m_pEnemy);
-	if (CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate)) {
-		m_pPressurePlate->GetTransform()->position = glm::vec2(100.0f, 305.0f);
+	if (CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate))
+	{
+		m_pPressurePlate->GetTransform()->position = glm::vec2(625, 477.0f);
 	}
-	
+
+	if (!CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate))
+	{
+		m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
+	}
 }
 
 void PlayScene::Clean() {
@@ -62,8 +68,7 @@ void PlayScene::HandleEvents() {
 			}
 		}
 	}
-
-
+	
 	// handle player movement if no Game Controllers found
 	if (SDL_NumJoysticks() < 1) {
 		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
@@ -102,27 +107,27 @@ void PlayScene::Start() {
 	//Background
 	m_pBackground = new Background();
 	AddChild(m_pBackground);
-	// Plane Sprite
-	m_pPlaneSprite = new Plane();
-	AddChild(m_pPlaneSprite);
+
+	//Pressure plate Sprite
+	m_pPressurePlate = new PressurePlate();
+	m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
+	AddChild(m_pPressurePlate);
 
 	// Player Sprite
 	m_pPlayer = new Player();
+	m_pPlayer->SetMovementEnabled(true); 
+	m_pPlayer->GetTransform()->position = glm::vec2(150.0f, 475.0f);
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
-	//Pressureplate Sprite
-	m_pPressurePlate = new PressurePlate();
-	AddChild(m_pPressurePlate);
-
-
 	//Enemy Sprite (cat)
-	m_pEnemy = new Enemy();
+	m_pEnemy = new Enemy;
+	m_pEnemy->GetTransform()->position = glm::vec2(700.0f, 285.0f);
 	AddChild(m_pEnemy);
-
+	
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
-	m_pBackButton->GetTransform()->position = glm::vec2(300.0f, 400.0f);
+	m_pBackButton->GetTransform()->position = glm::vec2(5000.0f, 2000.0f);
 	m_pBackButton->AddEventListener(CLICK, [&]()-> void {
 		m_pBackButton->setActive(false);
 		TheGame::Instance()->changeSceneState(START_SCENE);
@@ -139,7 +144,7 @@ void PlayScene::Start() {
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
-	m_pNextButton->GetTransform()->position = glm::vec2(500.0f, 400.0f);
+	m_pNextButton->GetTransform()->position = glm::vec2(5000.0f, 4000.0f);
 	m_pNextButton->AddEventListener(CLICK, [&]()-> void {
 		m_pNextButton->setActive(false);
 		TheGame::Instance()->changeSceneState(END_SCENE);
@@ -152,14 +157,6 @@ void PlayScene::Start() {
 	m_pNextButton->AddEventListener(MOUSE_OUT, [&]()->void {
 		m_pNextButton->setAlpha(255);
 	});
-
-	AddChild(m_pNextButton);
-
-	/* Instructions Label */
-	m_pInstructionsLabel = new Label("Press the backtick (`) character to toggle Debug View", "Consolas");
-	m_pInstructionsLabel->GetTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
-
-	AddChild(m_pInstructionsLabel);
 }
 
 void PlayScene::GUI_Function() const

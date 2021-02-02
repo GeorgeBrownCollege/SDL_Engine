@@ -68,7 +68,8 @@ bool CollisionManager::AABBCheck(GameObject *object1, GameObject *object2) {
 					std::cout << "Hit and Enemy!" << std::endl;
 					SoundManager::Instance().playSound("yay", 0);
 					break;
-				case PRESSUREPLATE:
+				
+				case PRESSURE_PLATE:
 					std::cout << "Stepped on the pressure plate!" << std::endl;
 					SoundManager::Instance().playSound("yay", 0);
 					break;

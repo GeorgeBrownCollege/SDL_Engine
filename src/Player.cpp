@@ -1,7 +1,10 @@
 #include "Player.h"
 #include <iostream>
 #include "EventManager.h"
+#include "Game.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
+#include "EventManager.h"
 
 Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	TextureManager::Instance()->loadSpriteSheet(
@@ -19,8 +22,9 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 
 	GetTransform()->position = glm::vec2(400.0f, 300.0f);
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
-	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
+	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.5f);
 	GetRigidBody()->isColliding = false;
+	SetMovementEnabled(true);
 	SetAccelerationRate(1.0f);
 	SetMaxSpeed(8.25f);
 
@@ -61,21 +65,50 @@ void Player::Draw() {
 
 }
 
+
 void Player::Update() {
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
-	{
-		Move(false);
+	Jump();
+
+	EventManager::Instance().update();
+	SoundManager::Instance().setSoundVolume(32);
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark) {
+		m_barking = true;
+		m_canBark = false;
 	}
-	else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
-	{
-		Move(true);
+	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_Q)) {
+		m_canBark = true;
 	}
-	else
-	{
-		Decellerate();
+	if (m_barking) {
+		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
+		SoundManager::Instance().playSound("barkSound1", 0, 0);
+		std::cout << "arf" << std::endl;
+		m_barking = false;
+		m_canBark = false;
 	}
-	
+
+	// Lets us pause the movement
+	if (m_movementEnabled) {
+
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
+
+			Move(false);
+
+		} else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
+
+			Move(true);
+
+		} else if (!(EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) && !(EventManager::Instance().isKeyDown(SDL_SCANCODE_A))) {
+			Decellerate();
+		}
+	}
+
+	if (GetTransform()->position.y > 475.0f) {
+		GetTransform()->position.y = 473.5f;
+		SetIsJumping(false);
+	}
+
 }
 
 void Player::Clean() { }
@@ -128,37 +161,57 @@ void Player::Move(bool _direction) {
 	// If the player wants to move left the velocity will be turned into a negative
 	if (_direction == false)
 		GetRigidBody()->velocity.x *= -1;
-	
+
 	// if the absolute value of the new velocity is greater than the max speed the velocity will be set to the max speed in the proper direction
 	abs(GetRigidBody()->velocity.x) < m_maxSpeed ? GetRigidBody()->velocity.x = GetRigidBody()->velocity.x :
 		_direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed : GetRigidBody()->velocity.x = m_maxSpeed;
-	
+
 	GetTransform()->position += GetRigidBody()->velocity;
+}
+
+void Player::Jump() {
+
+	float deltaTime = TheGame::Instance()->GetDeltaTime();
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_SPACE) && !GetIsJumping()) {
+		GetRigidBody()->velocity.y = -10.0f;
+		SetIsJumping(true);
+		std::cout << "Jump" << std::endl;
+	}
+
+	GetRigidBody()->velocity.y += GetRigidBody()->acceleration.y;
+
+	GetTransform()->position.y += GetRigidBody()->velocity.y;
+	
 }
 
 void Player::Decellerate() {
 
 	float decellerateRate = 0.2f;
-	
-	if (GetRigidBody()->velocity.x != 0)
-	{
+
+	if (GetRigidBody()->velocity.x != 0) {
 		if (GetRigidBody()->velocity.x < 1.0f && GetRigidBody()->velocity.x > -1.0f)
 			GetRigidBody()->velocity.x = 0.0f;
 
 		// If the player's velocity is not equal to zero, it's velocity will be decreased until it's zero
 		GetRigidBody()->velocity.x == 0
-			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x 
-			: GetRigidBody()->velocity.x < 0 ? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate) 
+			? GetRigidBody()->velocity.x == GetRigidBody()->velocity.x
+			: GetRigidBody()->velocity.x < 0
+			? GetRigidBody()->velocity.x += abs(GetRigidBody()->velocity.x * decellerateRate)
 			: GetRigidBody()->velocity.x -= abs(GetRigidBody()->velocity.x * decellerateRate);
 
-		GetTransform()->position += GetRigidBody()->velocity;
+		GetTransform()->position.x += GetRigidBody()->velocity.x;
 	}
 }
 
 // Setters
 void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
 void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
+void Player::SetMovementEnabled(bool _val) { m_movementEnabled = _val; }
+void Player::SetIsJumping(bool _jump) { m_isJumping = _jump; }
 
 // Getters
 float Player::GetAcceleration() { return m_accelerationRate; }
 float Player::GetMaxSpeed() { return m_maxSpeed; }
+
+bool Player::GetIsJumping() { return m_isJumping; }

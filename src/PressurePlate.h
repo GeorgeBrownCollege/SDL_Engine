@@ -5,19 +5,16 @@
 #include "DisplayObject.h"
 #include "Sprite.h"
 
-using namespace std;
+class PressurePlate final : public Sprite {
 
-class PressurePlate final : public Sprite
-{
-public:
+	public:
 	PressurePlate();   // Constructor
 	~PressurePlate();  // Destructor
 
 	void Draw() override;
 	void Update() override;
 	void Clean() override;
-	
+
 };
 #endif
 
- 

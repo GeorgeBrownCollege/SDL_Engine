@@ -46,6 +46,10 @@ class Game {
 	// getter and setter functions
 	glm::vec2 getMousePosition() const;
 	void setFrames(Uint32 frames);
+
+	float GetDeltaTime() const;
+	void SetDeltaTime(float _time);
+	
 	Uint32 getFrames() const;
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
@@ -57,6 +61,7 @@ class Game {
 	// game properties
 	bool m_bRunning;
 	Uint32 m_frames;
+	float m_deltaTime;
 	glm::vec2 m_mousePosition;
 
 	// scene variables
