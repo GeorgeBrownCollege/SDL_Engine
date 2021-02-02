@@ -67,21 +67,19 @@ void Player::Draw() {
 
 
 void Player::Update() {
-	
+
 	Jump();
 
 	EventManager::Instance().update();
 	SoundManager::Instance().setSoundVolume(32);
-	
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark)
-	{
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark) {
 		m_barking = true;
 		m_canBark = false;
 	}
-	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_Q))
-	{
+	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_Q)) {
 		m_canBark = true;
-	} 
+	}
 	if (m_barking) {
 		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
 		SoundManager::Instance().playSound("barkSound1", 0, 0);
@@ -101,10 +99,14 @@ void Player::Update() {
 
 			Move(true);
 
-	else if (!(EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) && !(EventManager::Instance().isKeyDown(SDL_SCANCODE_A))) {
-		Decellerate();
+		} else if (!(EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) && !(EventManager::Instance().isKeyDown(SDL_SCANCODE_A))) {
+			Decellerate();
+		}
 	}
-	
+
+	if (GetTransform()->position.y > 540)
+		GetTransform()->position.y = 539;
+
 }
 
 void Player::Clean() { }
@@ -174,10 +176,11 @@ void Player::Jump() {
 		SetIsJumping(true);
 		std::cout << "Jump" << std::endl;
 	}
-	
+
 	GetRigidBody()->velocity.y += GetRigidBody()->acceleration.y;
-	
+
 	GetTransform()->position.y += GetRigidBody()->velocity.y;
+	
 }
 
 void Player::Decellerate() {
@@ -202,7 +205,7 @@ void Player::Decellerate() {
 // Setters
 void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
 void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
-void Player::SetMovementEnabled(bool _val) { m_movementEnabled = _val;  }
+void Player::SetMovementEnabled(bool _val) { m_movementEnabled = _val; }
 void Player::SetIsJumping(bool _jump) { m_isJumping = _jump; }
 
 // Getters
