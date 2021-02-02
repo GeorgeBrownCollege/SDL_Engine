@@ -36,27 +36,28 @@ void Player::Draw() {
 
 	// draw the player according to animation state
 	switch (m_currentAnimationState) {
-		case PLAYER_IDLE_RIGHT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
-													  x, y, 0.12f, 0, 255, true);
-			break;
-		case PLAYER_IDLE_LEFT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
-													  x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
-			break;
-		case PLAYER_RUN_RIGHT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
-													  x, y, 0.25f, 0, 255, true);
-			break;
-		case PLAYER_RUN_LEFT:
-			TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
-													  x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
-			break;
-		default:
-			break;
+	case PLAYER_IDLE_RIGHT:
+		TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
+			x, y, 0.12f, 0, 255, true);
+		break;
+	case PLAYER_IDLE_LEFT:
+		TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("idle"),
+			x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
+		break;
+	case PLAYER_RUN_RIGHT:
+		TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
+			x, y, 0.25f, 0, 255, true);
+		break;
+	case PLAYER_RUN_LEFT:
+		TextureManager::Instance()->playAnimation("spritesheet", GetAnimation("run"),
+			x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
+		break;
+	default:
+		break;
 	}
 
 }
+
 
 
 
@@ -65,13 +66,27 @@ void Player::Update() {
 	EventManager::Instance().update();
 	SoundManager::Instance().setSoundVolume(32);
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q))
+
+	
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark)
 	{
+		m_barking = true;
+		m_canBark = false;
+	}
+	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_Q))
+	{
+		m_canBark = true;
+	} 
+	if (m_barking) {
 		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
-		SoundManager::Instance().playSound("barkSound1", 1, 0);
+		SoundManager::Instance().playSound("barkSound1", 0, 0);
 		std::cout << "arf" << std::endl;
+		m_barking = false;
+		m_canBark = false;
 	}
 }
+
+
 
 void Player::Clean() { }
 

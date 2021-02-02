@@ -22,6 +22,8 @@ class Player final : public Sprite {
 	private:
 	void m_buildAnimations();
 
+	bool m_barking, m_canBark;
+	
 	PlayerAnimationState m_currentAnimationState;
 };
 
