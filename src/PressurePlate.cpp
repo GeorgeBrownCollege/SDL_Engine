@@ -8,8 +8,9 @@ PressurePlate::PressurePlate() {
 	auto size = TextureManager::Instance()->getTextureSize("Pressureplate");
 	SetWidth(size.x);
 	SetHeight(size.y);
-	GetTransform()->position = glm::vec2(100.0f, 100.0f);
+	GetTransform()->position = glm::vec2(100.0f, 300.0f);
 	GetRigidBody()->isColliding = false;
+	SetType(PRESSUREPLATE);
 
 	//For Joshi
 	//SoundManager::Instance().load();
