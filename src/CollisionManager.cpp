@@ -26,7 +26,7 @@ bool CollisionManager::squaredRadiusCheck(GameObject *object1, GameObject *objec
 			switch (object2->GetType()) {
 				case TARGET:
 					std::cout << "Collision with Target!" << std::endl;
-					SoundManager::Instance().playSound("yay", 0);
+					SoundManager::Instance().playSound("defaultSound", 0);
 
 
 					break;
@@ -65,13 +65,13 @@ bool CollisionManager::AABBCheck(GameObject *object1, GameObject *object2) {
 
 			switch (object2->GetType()) {
 				case ENEMY:
-					std::cout << "Hit and Enemy!" << std::endl;
-					SoundManager::Instance().playSound("yay", 0);
+					std::cout << "Hit an Enemy!" << std::endl;
+					SoundManager::Instance().playSound("enemyCollision", 0);
 					break;
 				
 				case PRESSURE_PLATE:
 					std::cout << "Stepped on the pressure plate!" << std::endl;
-					SoundManager::Instance().playSound("yay", 0);
+					SoundManager::Instance().playSound("pressurePlateCollision", 0);
 					break;
 				default:
 
@@ -179,7 +179,7 @@ bool CollisionManager::lineAABBCheck(Ship *object1, GameObject *object2) {
 		switch (object2->GetType()) {
 			case TARGET:
 				std::cout << "Collision with Obstacle!" << std::endl;
-				SoundManager::Instance().playSound("yay", 0);
+				SoundManager::Instance().playSound("defaultSound", 0);
 
 				break;
 			default:
@@ -228,7 +228,7 @@ bool CollisionManager::circleAABBCheck(GameObject *object1, GameObject *object2)
 			switch (object2->GetType()) {
 				case TARGET:
 					std::cout << "Collision with Planet!" << std::endl;
-					SoundManager::Instance().playSound("yay", 0);
+					SoundManager::Instance().playSound("defaultSound", 0);
 					break;
 				case SHIP:
 				{

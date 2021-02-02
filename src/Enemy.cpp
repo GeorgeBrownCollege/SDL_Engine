@@ -25,7 +25,7 @@ Enemy::Enemy() : m_currentAnimationState(ENEMY_IDLE_RIGHT) {
 	SetType(ENEMY);
 
 	m_buildAnimations();
-	SoundManager::Instance().load("../Assets/audio/yay.ogg", "yay", SOUND_SFX);
+	
 }
 
 Enemy::~Enemy()
