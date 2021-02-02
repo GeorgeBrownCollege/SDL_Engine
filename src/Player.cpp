@@ -185,7 +185,7 @@ void Player::Decellerate() {
 // Setters
 void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
 void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
-void Player::SetMovementEnabled(bool _val) { }
+void Player::SetMovementEnabled(bool _val) { m_movementEnabled = _val;  }
 
 // Getters
 float Player::GetAcceleration() { return m_accelerationRate; }

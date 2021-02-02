@@ -105,7 +105,7 @@ void PlayScene::Start() {
 
 	// Player Sprite
 	m_pPlayer = new Player();
-
+	m_pPlayer->SetMovementEnabled(true); 
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
