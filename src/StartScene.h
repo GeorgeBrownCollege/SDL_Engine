@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Label.h"
 #include "Button.h"
+#include "Enemy.h"
 #include "PressurePlate.h"
 #include "Player.h"
 
@@ -27,7 +28,7 @@ private:
 
 	Player *m_pPlayer;
 	PressurePlate *m_pPressurePlate;
-
+	Enemy* m_pEnemy;
 	Button* m_pStartButton;
 };
 
