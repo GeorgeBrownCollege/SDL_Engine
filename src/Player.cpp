@@ -69,6 +69,9 @@ void Player::BuildSoundIndex(){
 	SoundManager::Instance().load("../Assets/audio/plateSound1.wav", "pressurePlateCollision", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/dogWhine1.mp3", "enemyCollision", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/arf.wav", "defaultSound", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/jumpSound1.wav", "jumpSound", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/landFromJump1.mp3", "landSound", SOUND_SFX); // do this later
+
 }
 
 void Player::Update() {
@@ -111,9 +114,13 @@ void Player::Update() {
 
 	if (GetTransform()->position.y > 475.0f) {
 		GetTransform()->position.y = 473.5f;
+		if (GetIsJumping())
+		{
+			SoundManager::Instance().playSound("landSound", 0);
+		}
 		SetIsJumping(false);
-	}
 
+	}
 }
 
 void Player::Clean() { }
@@ -182,6 +189,7 @@ void Player::Jump() {
 		GetRigidBody()->velocity.y = -10.0f;
 		SetIsJumping(true);
 		std::cout << "Jump" << std::endl;
+		SoundManager::Instance().playSound("jumpSound", 0);
 	}
 
 	GetRigidBody()->velocity.y += GetRigidBody()->acceleration.y;

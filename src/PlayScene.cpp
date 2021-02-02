@@ -157,6 +157,9 @@ void PlayScene::Start() {
 	m_pNextButton->AddEventListener(MOUSE_OUT, [&]()->void {
 		m_pNextButton->setAlpha(255);
 	});
+	SoundManager::Instance().setMusicVolume(5);
+	SoundManager::Instance().load("../Assets/audio/menuSongTest.mp3", "forestSong", SOUND_MUSIC);
+	SoundManager::Instance().playMusic("forestSong", -1);
 }
 
 void PlayScene::GUI_Function() const
