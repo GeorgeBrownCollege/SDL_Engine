@@ -9,6 +9,8 @@ class Player final : public Sprite {
 	private:
 	float m_accelerationRate;
 	float m_maxSpeed;
+	
+	bool m_movementEnabled;
 
 	public:
 	Player();
@@ -23,6 +25,7 @@ class Player final : public Sprite {
 	void setAnimationState(PlayerAnimationState new_state);
 	void SetAccelerationRate(float _accel);
 	void SetMaxSpeed(float _speed);
+	void SetMovementEnabled(bool _val);
 
 	// Getters
 	float GetAcceleration();

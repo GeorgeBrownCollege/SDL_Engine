@@ -21,6 +21,7 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
+	SetMovementEnabled(true);
 	SetAccelerationRate(1.0f);
 	SetMaxSpeed(8.25f);
 
@@ -63,17 +64,21 @@ void Player::Draw() {
 
 void Player::Update() {
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
+	// Lets us pause the movement
+	if (m_movementEnabled) {
 
-		Move(false);
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A)) {
 
-	} else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
+			Move(false);
 
-		Move(true);
+		} else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D)) {
 
-	} else {
+			Move(true);
 
-		Decellerate();
+		} else {
+
+			Decellerate();
+		}
 	}
 
 }
@@ -158,6 +163,7 @@ void Player::Decellerate() {
 // Setters
 void Player::SetAccelerationRate(float _accel) { m_accelerationRate = _accel; }
 void Player::SetMaxSpeed(float _speed) { m_maxSpeed = _speed; }
+void Player::SetMovementEnabled(bool _val) { }
 
 // Getters
 float Player::GetAcceleration() { return m_accelerationRate; }

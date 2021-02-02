@@ -102,12 +102,10 @@ void PlayScene::Start() {
 	//Background
 	m_pBackground = new Background();
 	AddChild(m_pBackground);
-	// Plane Sprite
-	m_pPlaneSprite = new Plane();
-	AddChild(m_pPlaneSprite);
 
 	// Player Sprite
 	m_pPlayer = new Player();
+
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
