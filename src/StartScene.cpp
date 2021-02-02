@@ -44,6 +44,7 @@ void StartScene::Start() {
 	m_pStartLabel->SetParent(this);
 	AddChild(m_pStartLabel);
 
+	//Player Sprite
 	m_pPlayer = new Player();
 	m_pPlayer->GetTransform()->position = glm::vec2(350.0f, 475.0f);
 	m_pPlayer->SetMovementEnabled(false);
@@ -53,6 +54,11 @@ void StartScene::Start() {
 	m_pPressurePlate = new PressurePlate();
 	m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
 	AddChild(m_pPressurePlate);
+
+	//Enemy Sprite
+	m_pEnemy = new Enemy();
+	m_pEnemy->GetTransform()->position = glm::vec2(742.0f, 445.0f);
+	AddChild(m_pEnemy);
 
 	// StartButton
 	m_pStartButton = new Button();

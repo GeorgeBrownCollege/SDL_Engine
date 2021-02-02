@@ -121,7 +121,7 @@ void PlayScene::Start() {
 	m_playerFacingRight = true;
 
 	//Enemy Sprite (cat)
-	m_pEnemy = new Enemy;
+	m_pEnemy = new Enemy();
 	m_pEnemy->GetTransform()->position = glm::vec2(700.0f, 285.0f);
 	AddChild(m_pEnemy);
 	
