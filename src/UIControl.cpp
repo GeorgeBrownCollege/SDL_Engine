@@ -57,6 +57,9 @@ void UIControl::OnLeftMouseButtonClick() {
 		if ((m_events[CLICK]) && (m_mouseOver) && !m_leftMouseButtonClicked) {
 			m_leftMouseButtonClicked = true;
 			m_events[CLICK](); // call click event
+			SoundManager::Instance().load("../Assets/audio/buttonClick1.wav", "buttonClick", SOUND_SFX);
+			SoundManager::Instance().playSound("buttonClick", 0, 0);
+			std::cout << "Button has been clicked." << std::endl;
 		}
 	} else {
 		m_leftMouseButtonClicked = false;

@@ -18,6 +18,7 @@ class Player final : public Sprite {
 
 	// Life Cycle Methods
 	virtual void Draw() override;
+	void HandleEvents();
 	virtual void Update() override;
 	virtual void Clean() override;
 
@@ -36,6 +37,8 @@ class Player final : public Sprite {
 	void m_buildAnimations();
 	void Move(bool _direction);
 
+	bool m_barking, m_canBark;
+	
 	PlayerAnimationState m_currentAnimationState;
 };
 

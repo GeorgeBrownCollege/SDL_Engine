@@ -2,6 +2,8 @@
 #include <iostream>
 #include "EventManager.h"
 #include "TextureManager.h"
+#include "SoundManager.h"
+#include "EventManager.h"
 
 Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	TextureManager::Instance()->loadSpriteSheet(
@@ -62,7 +64,28 @@ void Player::Draw() {
 
 }
 
+
 void Player::Update() {
+
+	EventManager::Instance().update();
+	SoundManager::Instance().setSoundVolume(32);
+	
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark)
+	{
+		m_barking = true;
+		m_canBark = false;
+	}
+	if (EventManager::Instance().isKeyUp(SDL_SCANCODE_Q))
+	{
+		m_canBark = true;
+	} 
+	if (m_barking) {
+		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
+		SoundManager::Instance().playSound("barkSound1", 0, 0);
+		std::cout << "arf" << std::endl;
+		m_barking = false;
+		m_canBark = false;
+	}
 
 	// Lets us pause the movement
 	if (m_movementEnabled) {
@@ -80,7 +103,6 @@ void Player::Update() {
 			Decellerate();
 		}
 	}
-
 }
 
 void Player::Clean() { }

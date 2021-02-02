@@ -25,7 +25,7 @@ bool SoundManager::load(const std::string & file_name, const std::string & id, c
 		m_music[id] = pMusic;
 		return true;
 	} else if (type == SOUND_SFX) {
-		Mix_Chunk *pChunk = Mix_LoadWAV(file_name.c_str());
+		Mix_Chunk* pChunk = Mix_LoadWAV(file_name.c_str());
 		if (pChunk == nullptr) {
 			std::cout << "Could not load SFX: ERROR - " << Mix_GetError() << std::endl;
 			return false;
