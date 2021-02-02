@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< Updated upstream
       <FullPath>H:\Other\Visual Studio\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+=======
+      <FullPath>C:\Users\david\Desktop\Year 2 - Semester 2\Game Production II\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+>>>>>>> Stashed changes
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

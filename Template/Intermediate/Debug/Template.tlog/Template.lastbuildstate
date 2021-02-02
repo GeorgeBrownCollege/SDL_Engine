@@ -1,2 +1,6 @@
 PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.28.29333:TargetPlatformVersion=10.0.18362.0:
+<<<<<<< Updated upstream
 Debug|Win32|H:\Other\Visual Studio\Dog-FarFromHome-SDL\|
+=======
+Debug|Win32|C:\Users\david\Desktop\Year 2 - Semester 2\Game Production II\Dog-FarFromHome-SDL\|
+>>>>>>> Stashed changes

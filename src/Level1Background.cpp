@@ -1,8 +1,6 @@
 #include "TextureManager.h"
 #include "Level1Background.h"
-
 #include "Target.h"
-
 
 Background::Background() {
 	TextureManager::Instance()->load("../Assets/textures/background_mark_1.png", "background");
@@ -37,4 +35,3 @@ void Background::m_move() {
 void Background::m_checkBounds() { }
 
 void Background::m_reset() { }
-

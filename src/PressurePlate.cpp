@@ -30,6 +30,3 @@ void PressurePlate::Update() {
 void PressurePlate::Clean() {
 
 }
-
-
-
