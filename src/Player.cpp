@@ -31,6 +31,7 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	SetType(PLAYER);
 
 	m_buildAnimations();
+	BuildSoundIndex();
 }
 
 Player::~Player()
@@ -64,7 +65,11 @@ void Player::Draw() {
 	}
 
 }
-
+void Player::BuildSoundIndex(){
+	SoundManager::Instance().load("../Assets/audio/plateSound1.wav", "pressurePlateCollision", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/dogWhine1.mp3", "enemyCollision", SOUND_SFX);
+	SoundManager::Instance().load("../Assets/audio/arf.wav", "defaultSound", SOUND_SFX);
+}
 
 void Player::Update() {
 
@@ -82,7 +87,7 @@ void Player::Update() {
 	}
 	if (m_barking) {
 		SoundManager::Instance().load("../Assets/audio/arf.wav", "barkSound1", SOUND_SFX);
-		SoundManager::Instance().playSound("barkSound1", 0, 0);
+		SoundManager::Instance().playSound("barkSound1", 0, -1);
 		std::cout << "arf" << std::endl;
 		m_barking = false;
 		m_canBark = false;

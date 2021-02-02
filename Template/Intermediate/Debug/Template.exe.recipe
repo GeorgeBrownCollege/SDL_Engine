@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\david\Desktop\Year 2 - Semester 2\Game Production II\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+=======
+      <FullPath>C:\Users\Joshu\Desktop\DogFarFromHomeRepo\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
+>>>>>>> EnemyAndPlateCollisionAudio
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
