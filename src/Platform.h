@@ -9,9 +9,12 @@ class Platform final : public DisplayObject {
 	private:
 
 	public:
-
-	Platform();
+	Platform(int, int);
 	~Platform();
+
+	void Draw() override;
+	void Update() override;
+	void Clean() override;
 };
 
 #endif
