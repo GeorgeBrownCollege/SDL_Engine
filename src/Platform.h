@@ -6,6 +6,12 @@
 
 class Platform final : public DisplayObject { 
 
+	private:
+
+	public:
+
+	Platform();
+	~Platform();
 };
 
 #endif
