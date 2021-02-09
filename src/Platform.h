@@ -9,7 +9,7 @@ class Platform final : public DisplayObject {
 	private:
 
 	public:
-	Platform(int, int);
+	Platform(glm::vec2, int, int);
 	~Platform();
 
 	void Draw() override;
