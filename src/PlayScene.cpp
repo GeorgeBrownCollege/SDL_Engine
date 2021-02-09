@@ -29,6 +29,7 @@ void PlayScene::Draw() {
 void PlayScene::Update() {
 	
 	UpdateDisplayList();
+	TickGravity();
 
 	CollisionManager::AABBCheck(m_pPlayer, m_pEnemy);
 	if (CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate))

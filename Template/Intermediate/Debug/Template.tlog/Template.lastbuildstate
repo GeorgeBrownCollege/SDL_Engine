@@ -2,6 +2,7 @@ PlatformToolSet=v142:VCToolArchitecture=Native32Bit:VCToolsVersion=14.28.29333:T
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Debug|Win32|C:\Users\User\Documents\Dog Game\Dog-FarFromHome-SDL\|
 =======
 Debug|Win32|C:\Users\geo_g\source\repos\Dog-FarFromHome-SDL\|
@@ -14,4 +15,7 @@ Debug|Win32|H:\Other\Visual Studio\Dog-FarFromHome-SDL\|
 =======
 Debug|Win32|C:\Users\Joshu\Desktop\DogFarFromHomeRepo\Dog-FarFromHome-SDL\|
 >>>>>>> JumpAudio
+>>>>>>> master
+=======
+Debug|Win32|H:\Other\Visual Studio\Dog-FarFromHome-SDL\|
 >>>>>>> master
