@@ -2,26 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       <FullPath>C:\Users\User\Documents\Dog Game\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
-=======
-      <FullPath>C:\Users\geo_g\source\repos\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
->>>>>>> master
-=======
-      <FullPath>H:\Other\Visual Studio\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
->>>>>>> master
-=======
-      <FullPath>H:\Other\Visual Studio\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
-=======
-      <FullPath>C:\Users\Joshu\Desktop\DogFarFromHomeRepo\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
->>>>>>> JumpAudio
->>>>>>> master
-=======
-      <FullPath>H:\Other\Visual Studio\Dog-FarFromHome-SDL\bin\Debug\Template.exe</FullPath>
->>>>>>> master
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

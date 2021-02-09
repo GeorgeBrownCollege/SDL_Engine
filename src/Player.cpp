@@ -180,7 +180,7 @@ void Player::Move(bool _direction) {
 		: _direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed
 		: GetRigidBody()->velocity.x = m_maxSpeed;
 
-	GetTransform()->position += GetRigidBody()->velocity;
+	GetTransform()->position.x += GetRigidBody()->velocity.x;
 }
 
 void Player::Jump() {
@@ -188,7 +188,7 @@ void Player::Jump() {
 	float deltaTime = TheGame::Instance()->GetDeltaTime();
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_SPACE) && !GetIsJumping()) {
-		GetRigidBody()->velocity.y = -10.0f;
+		GetRigidBody()->velocity.y = -11.0f;
 		SetIsJumping(true);
 		std::cout << "Jump" << std::endl;
 		SoundManager::Instance().playSound("jumpSound", 0);
@@ -199,7 +199,6 @@ void Player::Jump() {
 
 	// Velocity -> Position
 	GetTransform()->position.y += GetRigidBody()->velocity.y;
-
 }
 
 void Player::Decellerate() {
