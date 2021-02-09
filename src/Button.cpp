@@ -21,7 +21,7 @@ Button::Button(const std::string &image_path, std::string button_name, const Gam
 	const auto size = TextureManager::Instance()->getTextureSize(m_name);
 	SetWidth(size.x);
 	SetHeight(size.y);
-	GetTransform()->position = position;
+	GetTransform()->local_position = position;
 	SetType(type);
 }
 
@@ -31,8 +31,8 @@ Button::~Button()
 void Button::Draw() {
 
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = GetTransform()->local_position.x;
+	const auto y = GetTransform()->local_position.y;
 
 	// draw the button
 	TextureManager::Instance()->draw(m_name, x, y, 0, m_alpha, m_isCentered);

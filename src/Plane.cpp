@@ -15,7 +15,7 @@ Plane::Plane() {
 	// set frame height
 	SetHeight(65);
 
-	GetTransform()->position = glm::vec2(400.0f, 200.0f);
+	GetTransform()->local_position = glm::vec2(400.0f, 200.0f);
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
@@ -29,8 +29,8 @@ Plane::~Plane()
 
 void Plane::Draw() {
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = GetTransform()->local_position.x;
+	const auto y = GetTransform()->local_position.y;
 
 	// draw the plane sprite with simple propeller animation
 	TextureManager::Instance()->playAnimation(

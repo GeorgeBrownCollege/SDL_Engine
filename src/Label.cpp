@@ -17,7 +17,7 @@ Label::Label(
 	const auto size = TextureManager::Instance()->getTextureSize(m_fontID);
 	SetWidth(size.x);
 	SetHeight(size.y);
-	GetTransform()->position = position;
+	GetTransform()->local_position = position;
 }
 
 Label::~Label()
@@ -26,8 +26,8 @@ Label::~Label()
 void Label::Draw() {
 
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = GetTransform()->local_position.x;
+	const auto y = GetTransform()->local_position.y;
 
 	// draw the label
 	TextureManager::Instance()->drawText(m_fontID, x, y, 0, 255, m_isCentered);

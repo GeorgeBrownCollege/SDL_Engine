@@ -8,7 +8,7 @@ Target::Target() {
 	const auto size = TextureManager::Instance()->getTextureSize("circle");
 	SetWidth(size.x);
 	SetHeight(size.y);
-	GetTransform()->position = glm::vec2(100.0f, 100.0f);
+	GetTransform()->local_position = glm::vec2(100.0f, 100.0f);
 	GetRigidBody()->velocity = glm::vec2(0, 0);
 	GetRigidBody()->isColliding = false;
 
@@ -20,8 +20,8 @@ Target::~Target()
 
 void Target::Draw() {
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = GetTransform()->local_position.x;
+	const auto y = GetTransform()->local_position.y;
 
 	// draw the target
 	TextureManager::Instance()->draw("circle", x, y, 0, 255, true);
@@ -35,7 +35,7 @@ void Target::Update() {
 void Target::Clean() { }
 
 void Target::m_move() {
-	GetTransform()->position = GetTransform()->position + GetRigidBody()->velocity * 5.0f;
+	GetTransform()->local_position = GetTransform()->local_position + GetRigidBody()->velocity * 5.0f;
 }
 
 void Target::m_checkBounds() { }

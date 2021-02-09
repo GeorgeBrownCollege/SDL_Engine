@@ -12,7 +12,7 @@ Platform::~Platform()
 = default;
 
 void Platform::Draw()  {
-	Util::DrawRect(GetTransform()->position, GetWidth(), GetHeight());
+	Util::DrawRect(GetTransform()->local_position, GetWidth(), GetHeight());
 }
 
 void Platform::Update()  {

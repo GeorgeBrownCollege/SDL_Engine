@@ -25,7 +25,7 @@ void UIControl::OnMouseOver() {
 
 	const auto mousePosition = EventManager::Instance().getMousePosition();
 
-	if (CollisionManager::pointRectCheck(mousePosition, GetTransform()->position, GetWidth(), GetHeight())) {
+	if (CollisionManager::pointRectCheck(mousePosition, GetTransform()->local_position, GetWidth(), GetHeight())) {
 		m_mouseOver = true;
 	} else {
 		m_mouseOver = false;

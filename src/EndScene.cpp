@@ -55,7 +55,7 @@ void EndScene::Start()
 
 	// Restart Button
 	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", RESTART_BUTTON);
-	m_pRestartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f);
+	m_pRestartButton->GetTransform()->local_position = glm::vec2(400.0f, 400.0f);
 	m_pRestartButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pRestartButton->setActive(false);

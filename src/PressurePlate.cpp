@@ -8,7 +8,7 @@ PressurePlate::PressurePlate() {
 	TextureManager::Instance()->getTextureSize("PressurePlate");
 	SetWidth(140.0f);
 	SetHeight(146.0f);
-	GetTransform()->position = glm::vec2(167.0f, 146.0f);
+	GetTransform()->local_position = glm::vec2(167.0f, 146.0f);
 	GetRigidBody()->isColliding = false;
 	SetType(PRESSURE_PLATE);
 
@@ -20,7 +20,7 @@ PressurePlate::~PressurePlate()
 = default;
 
 void PressurePlate::Draw() {
-	TextureManager::Instance()->draw("PressurePlate", GetTransform()->position.x, GetTransform()->position.y, 0, 250, true);
+	TextureManager::Instance()->draw("PressurePlate", GetTransform()->local_position.x, GetTransform()->local_position.y, 0, 250, true);
 }
 
 void PressurePlate::Update() {

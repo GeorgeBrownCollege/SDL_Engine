@@ -8,7 +8,7 @@ Background::Background() {
 	const auto size = TextureManager::Instance()->getTextureSize("background");
 	SetWidth(1080);
 	SetHeight(584);
-	GetTransform()->position = glm::vec2(0, 0);
+	GetTransform()->local_position = glm::vec2(0, 0);
 	GetRigidBody()->velocity = glm::vec2(0, 0);
 	GetRigidBody()->isColliding = false;
 }
@@ -29,7 +29,7 @@ void Background::Update() {
 void Background::Clean() { }
 
 void Background::m_move() {
-	GetTransform()->position = GetTransform()->position + GetRigidBody()->velocity * 5.0f;
+	GetTransform()->local_position = GetTransform()->local_position + GetRigidBody()->velocity * 5.0f;
 }
 
 void Background::m_checkBounds() { }

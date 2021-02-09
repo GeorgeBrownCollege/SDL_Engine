@@ -46,23 +46,23 @@ void StartScene::Start() {
 
 	//Player Sprite
 	m_pPlayer = new Player();
-	m_pPlayer->GetTransform()->position = glm::vec2(350.0f, 475.0f);
+	m_pPlayer->GetTransform()->local_position = glm::vec2(350.0f, 475.0f);
 	m_pPlayer->SetMovementEnabled(false);
 	AddChild(m_pPlayer);
 
 	//Pressure plate Sprite
 	m_pPressurePlate = new PressurePlate();
-	m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
+	m_pPressurePlate->GetTransform()->local_position = glm::vec2(625, 470.0f);
 	AddChild(m_pPressurePlate);
 
 	//Enemy Sprite
 	m_pEnemy = new Enemy();
-	m_pEnemy->GetTransform()->position = glm::vec2(742.0f, 445.0f);
+	m_pEnemy->GetTransform()->local_position = glm::vec2(742.0f, 445.0f);
 	AddChild(m_pEnemy);
 
 	// StartButton
 	m_pStartButton = new Button();
-	m_pStartButton->GetTransform()->position = glm::vec2(550.0f, 350.0f);
+	m_pStartButton->GetTransform()->local_position = glm::vec2(550.0f, 350.0f);
 
 	m_pStartButton->AddEventListener(CLICK, [&]()-> void {
 		m_pStartButton->setActive(false);

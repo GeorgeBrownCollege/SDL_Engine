@@ -34,12 +34,12 @@ void PlayScene::Update() {
 	CollisionManager::AABBCheck(m_pPlayer, m_pEnemy);
 	if (CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate))
 	{
-		m_pPressurePlate->GetTransform()->position = glm::vec2(625, 477.0f);
+		m_pPressurePlate->GetTransform()->local_position = glm::vec2(625, 477.0f);
 	}
 
 	if (!CollisionManager::AABBCheck(m_pPlayer, m_pPressurePlate))
 	{
-		m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
+		m_pPressurePlate->GetTransform()->local_position = glm::vec2(625, 470.0f);
 	}
 }
 
@@ -111,24 +111,24 @@ void PlayScene::Start() {
 
 	//Pressure plate Sprite
 	m_pPressurePlate = new PressurePlate();
-	m_pPressurePlate->GetTransform()->position = glm::vec2(625, 470.0f);
+	m_pPressurePlate->GetTransform()->local_position = glm::vec2(625, 470.0f);
 	AddChild(m_pPressurePlate);
 
 	// Player Sprite
 	m_pPlayer = new Player();
 	m_pPlayer->SetMovementEnabled(true); 
-	m_pPlayer->GetTransform()->position = glm::vec2(150.0f, 475.0f);
+	m_pPlayer->GetTransform()->local_position = glm::vec2(150.0f, 475.0f);
 	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
 	//Enemy Sprite (cat)
 	m_pEnemy = new Enemy();
-	m_pEnemy->GetTransform()->position = glm::vec2(700.0f, 285.0f);
+	m_pEnemy->GetTransform()->local_position = glm::vec2(700.0f, 285.0f);
 	AddChild(m_pEnemy);
 	
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
-	m_pBackButton->GetTransform()->position = glm::vec2(5000.0f, 2000.0f);
+	m_pBackButton->GetTransform()->local_position = glm::vec2(5000.0f, 2000.0f);
 	m_pBackButton->AddEventListener(CLICK, [&]()-> void {
 		m_pBackButton->setActive(false);
 		TheGame::Instance()->changeSceneState(START_SCENE);
@@ -145,7 +145,7 @@ void PlayScene::Start() {
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
-	m_pNextButton->GetTransform()->position = glm::vec2(5000.0f, 4000.0f);
+	m_pNextButton->GetTransform()->local_position = glm::vec2(5000.0f, 4000.0f);
 	m_pNextButton->AddEventListener(CLICK, [&]()-> void {
 		m_pNextButton->setActive(false);
 		TheGame::Instance()->changeSceneState(END_SCENE);

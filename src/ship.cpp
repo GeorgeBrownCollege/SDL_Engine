@@ -11,7 +11,7 @@ Ship::Ship() : m_maxSpeed(10.0f) {
 	SetWidth(size.x);
 	SetHeight(size.y);
 
-	GetTransform()->position = glm::vec2(400.0f, 300.0f);
+	GetTransform()->local_position = glm::vec2(400.0f, 300.0f);
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
@@ -28,8 +28,8 @@ Ship::~Ship()
 
 void Ship::Draw() {
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = GetTransform()->local_position.x;
+	const auto y = GetTransform()->local_position.y;
 
 	// draw the ship
 	TextureManager::Instance()->draw("ship", x, y, m_currentHeading, 255, true);
@@ -69,7 +69,7 @@ void Ship::moveBack() {
 }
 
 void Ship::move() {
-	GetTransform()->position += GetRigidBody()->velocity;
+	GetTransform()->local_position += GetRigidBody()->velocity;
 	GetRigidBody()->velocity *= 0.9f;
 }
 
@@ -102,20 +102,20 @@ void Ship::setMaxSpeed(float newSpeed) {
 
 void Ship::m_checkBounds() {
 
-	if (GetTransform()->position.x > Config::SCREEN_WIDTH) {
-		GetTransform()->position = glm::vec2(0.0f, GetTransform()->position.y);
+	if (GetTransform()->local_position.x > Config::SCREEN_WIDTH) {
+		GetTransform()->local_position = glm::vec2(0.0f, GetTransform()->local_position.y);
 	}
 
-	if (GetTransform()->position.x < 0) {
-		GetTransform()->position = glm::vec2(800.0f, GetTransform()->position.y);
+	if (GetTransform()->local_position.x < 0) {
+		GetTransform()->local_position = glm::vec2(800.0f, GetTransform()->local_position.y);
 	}
 
-	if (GetTransform()->position.y > Config::SCREEN_HEIGHT) {
-		GetTransform()->position = glm::vec2(GetTransform()->position.x, 0.0f);
+	if (GetTransform()->local_position.y > Config::SCREEN_HEIGHT) {
+		GetTransform()->local_position = glm::vec2(GetTransform()->local_position.x, 0.0f);
 	}
 
-	if (GetTransform()->position.y < 0) {
-		GetTransform()->position = glm::vec2(GetTransform()->position.x, 600.0f);
+	if (GetTransform()->local_position.y < 0) {
+		GetTransform()->local_position = glm::vec2(GetTransform()->local_position.x, 600.0f);
 	}
 
 }
@@ -125,7 +125,7 @@ void Ship::m_reset() {
 	const int halfWidth = GetWidth() * 0.5f;
 	const auto xComponent = rand() % (640 - GetWidth()) + halfWidth + 1;
 	const auto yComponent = -GetHeight();
-	GetTransform()->position = glm::vec2(xComponent, yComponent);
+	GetTransform()->local_position = glm::vec2(xComponent, yComponent);
 }
 
 void Ship::m_changeDirection() {
