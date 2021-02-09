@@ -22,7 +22,7 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 
 	GetTransform()->position = glm::vec2(400.0f, 300.0f);
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
-	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.5f);
+	//GetRigidBody()->acceleration = glm::vec2(0.0f, 0.5f);
 	GetRigidBody()->isColliding = false;
 	GetRigidBody()->hasGravity = true;
 	SetMovementEnabled(true);
@@ -194,8 +194,10 @@ void Player::Jump() {
 		SoundManager::Instance().playSound("jumpSound", 0);
 	}
 
+	// Accelleration -> Velocity
 	GetRigidBody()->velocity.y += GetRigidBody()->acceleration.y;
 
+	// Velocity -> Position
 	GetTransform()->position.y += GetRigidBody()->velocity.y;
 
 }
