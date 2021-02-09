@@ -24,6 +24,7 @@ Player::Player() : m_currentAnimationState(PLAYER_IDLE_RIGHT) {
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.5f);
 	GetRigidBody()->isColliding = false;
+	GetRigidBody()->hasGravity = true;
 	SetMovementEnabled(true);
 	SetAccelerationRate(1.0f);
 	SetMaxSpeed(8.25f);
