@@ -12,8 +12,8 @@ int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2) {
 }
 
 bool CollisionManager::squaredRadiusCheck(GameObject *object1, GameObject *object2) {
-	glm::vec2 P1 = object1->GetTransform()->position;
-	glm::vec2 P2 = object2->GetTransform()->position;
+	glm::vec2 P1 = object1->GetTransform()->local_position;
+	glm::vec2 P2 = object2->GetTransform()->local_position;
 	const int halfHeights = (object1->GetHeight() + object2->GetHeight()) * 0.5f;
 
 	//if (glm::distance(P1, P2) < halfHeights) {
@@ -46,8 +46,8 @@ bool CollisionManager::squaredRadiusCheck(GameObject *object1, GameObject *objec
 
 bool CollisionManager::AABBCheck(GameObject *object1, GameObject *object2) {
 	// prepare relevant variables
-	const auto p1 = object1->GetTransform()->position;
-	const auto p2 = object2->GetTransform()->position;
+	const auto p1 = object1->GetTransform()->local_position;
+	const auto p2 = object2->GetTransform()->local_position;
 	const float p1Width = object1->GetWidth();
 	const float p1Height = object1->GetHeight();
 	const float p2Width = object2->GetWidth();
@@ -166,14 +166,14 @@ int CollisionManager::minSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec
 }
 
 bool CollisionManager::lineAABBCheck(Ship *object1, GameObject *object2) {
-	const auto lineStart = object1->GetTransform()->position;
-	const auto lineEnd = object1->GetTransform()->position + object1->getCurrentDirection() * 100.0f;
+	const auto lineStart = object1->GetTransform()->local_position;
+	const auto lineEnd = object1->GetTransform()->local_position + object1->getCurrentDirection() * 100.0f;
 	// aabb
 	const auto boxWidth = object2->GetWidth();
 	const int halfBoxWidth = boxWidth * 0.5f;
 	const auto boxHeight = object2->GetHeight();
 	const int halfBoxHeight = boxHeight * 0.5f;
-	const auto boxStart = object2->GetTransform()->position - glm::vec2(halfBoxWidth, halfBoxHeight);
+	const auto boxStart = object2->GetTransform()->local_position - glm::vec2(halfBoxWidth, halfBoxHeight);
 
 	if (lineRectCheck(lineStart, lineEnd, boxStart, boxWidth, boxHeight)) {
 		switch (object2->GetType()) {
@@ -204,7 +204,7 @@ int CollisionManager::circleAABBsquaredDistance(const glm::vec2 circle_centre, i
 
 bool CollisionManager::circleAABBCheck(GameObject *object1, GameObject *object2) {
 	// circle
-	const auto circleCentre = object1->GetTransform()->position;
+	const auto circleCentre = object1->GetTransform()->local_position;
 	const int circleRadius = std::max(object1->GetWidth() * 0.5f, object1->GetHeight() * 0.5f);
 	// aabb
 	const auto boxWidth = object2->GetWidth();
@@ -212,14 +212,14 @@ bool CollisionManager::circleAABBCheck(GameObject *object1, GameObject *object2)
 	const auto boxHeight = object2->GetHeight();
 	int halfBoxHeight = boxHeight * 0.5f;
 
-	const auto boxStart = object2->GetTransform()->position - glm::vec2(boxWidth * 0.5f, boxHeight * 0.5f);
+	const auto boxStart = object2->GetTransform()->local_position - glm::vec2(boxWidth * 0.5f, boxHeight * 0.5f);
 
 	if (circleAABBsquaredDistance(circleCentre, circleRadius, boxStart, boxWidth, boxHeight) <= (circleRadius * circleRadius)) {
 		if (!object2->GetRigidBody()->isColliding) {
 
 			object2->GetRigidBody()->isColliding = true;
 
-			const auto attackVector = object1->GetTransform()->position - object2->GetTransform()->position;
+			const auto attackVector = object1->GetTransform()->local_position - object2->GetTransform()->local_position;
 			const auto normal = glm::vec2(0.0f, -1.0f);
 
 			const auto dot = Util::dot(attackVector, normal);
