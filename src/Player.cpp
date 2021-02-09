@@ -66,13 +66,14 @@ void Player::Draw() {
 	}
 
 }
-void Player::BuildSoundIndex(){
+void Player::BuildSoundIndex() {
 	SoundManager::Instance().load("../Assets/audio/plateSound1.wav", "pressurePlateCollision", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/dogWhine1.mp3", "enemyCollision", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/arf.wav", "defaultSound", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/jumpSound1.wav", "jumpSound", SOUND_SFX);
 	SoundManager::Instance().load("../Assets/audio/landFromJump1.mp3", "landSound", SOUND_SFX); // do this later
 
+	SoundManager::Instance().setSoundVolume(32);
 }
 
 void Player::Update() {
@@ -80,7 +81,6 @@ void Player::Update() {
 	Jump();
 
 	EventManager::Instance().update();
-	SoundManager::Instance().setSoundVolume(32);
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_Q) && m_canBark) {
 		m_barking = true;
@@ -115,8 +115,7 @@ void Player::Update() {
 
 	if (GetTransform()->position.y > 475.0f) {
 		GetTransform()->position.y = 473.5f;
-		if (GetIsJumping())
-		{
+		if (GetIsJumping()) {
 			SoundManager::Instance().playSound("landSound", 0);
 		}
 		SetIsJumping(false);
@@ -176,8 +175,10 @@ void Player::Move(bool _direction) {
 		GetRigidBody()->velocity.x *= -1;
 
 	// if the absolute value of the new velocity is greater than the max speed the velocity will be set to the max speed in the proper direction
-	abs(GetRigidBody()->velocity.x) < m_maxSpeed ? GetRigidBody()->velocity.x = GetRigidBody()->velocity.x :
-		_direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed : GetRigidBody()->velocity.x = m_maxSpeed;
+	abs(GetRigidBody()->velocity.x) < m_maxSpeed
+		? GetRigidBody()->velocity.x = GetRigidBody()->velocity.x
+		: _direction == false ? GetRigidBody()->velocity.x = -m_maxSpeed
+		: GetRigidBody()->velocity.x = m_maxSpeed;
 
 	GetTransform()->position += GetRigidBody()->velocity;
 }
@@ -196,7 +197,7 @@ void Player::Jump() {
 	GetRigidBody()->velocity.y += GetRigidBody()->acceleration.y;
 
 	GetTransform()->position.y += GetRigidBody()->velocity.y;
-	
+
 }
 
 void Player::Decellerate() {
