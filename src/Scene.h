@@ -30,6 +30,7 @@ class Scene : public GameObject {
 
 	void UpdateDisplayList();
 	void DrawDisplayList();
+	void TickGravity();
 
 	private:
 

@@ -75,10 +75,6 @@ void Scene::UpdateDisplayList() {
 			if (!count->IsEnabled())
 				break;
 			count->Update();
-
-			//if (count->GetRigidBody()->hasGravity) { 
-			//	count->GetRigidBody()->velocity.y += m_gravityForce;
-			//}
 		}
 	}
 }
@@ -91,6 +87,19 @@ void Scene::DrawDisplayList() {
 			if (!count->IsEnabled())
 				break;
 			count->Draw();
+		}
+	}
+}
+
+void Scene::TickGravity() { 
+
+	std::sort(m_displayList.begin(), m_displayList.end(), sortObjects);
+	for (auto &count : m_displayList) { 
+		if (count != nullptr) { 
+			if (!count->IsEnabled())
+				break;
+			if (count->GetRigidBody()->hasGravity)
+				count->GetTransform()->position.y += m_gravityForce;
 		}
 	}
 }
