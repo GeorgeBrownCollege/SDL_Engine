@@ -6,6 +6,7 @@ enum GameObjectType {
 	NONE = -1,
 	SHIP,
 	TARGET,
+	CAMERA,
 	PLAYER,
 	PRESSURE_PLATE,
 	ENEMY,
