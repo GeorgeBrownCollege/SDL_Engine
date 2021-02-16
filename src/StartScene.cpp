@@ -1,6 +1,7 @@
 #include "StartScene.h"
 #include <algorithm>
 #include "Game.h"
+#include "SettingScene.h"
 #include "glm/gtx/string_cast.hpp"
 #include "EventManager.h"
 #include "PlayScene.h"
@@ -31,6 +32,13 @@ void StartScene::HandleEvents() {
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		TheGame::Instance()->quit();
 	}
+
+	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_2))
+	{
+		TheGame::Instance()->changeSceneState(SETTING_SCENE);
+	}
+
+
 }
 
 void StartScene::Start() {
@@ -77,6 +85,27 @@ void StartScene::Start() {
 		m_pStartButton->setAlpha(255);
 	});
 	AddChild(m_pStartButton);
+
+	// Settings Button 
+
+	m_settingButton = new Button("../Assets/textures/settingsButton.png","settingsButton",SETTINGS_BUTTON);
+	m_settingButton->GetTransform()->local_position = glm::vec2(550.0f, 500.0f);
+
+	m_settingButton->AddEventListener(CLICK, [&]()-> void {
+		m_settingButton->setActive(false);
+		TheGame::Instance()->changeSceneState(SETTING_SCENE);
+	});
+
+	m_settingButton->AddEventListener(MOUSE_OVER, [&]()->void {
+		m_settingButton->setAlpha(128);
+	});
+
+	m_settingButton->AddEventListener(MOUSE_OUT, [&]()->void {
+		m_settingButton->setAlpha(255);
+	});
+	AddChild(m_settingButton);
+
+
 
 	SoundManager::Instance().setMusicVolume(20);
 	SoundManager::Instance().load("../Assets/audio/menuSongReal.mp3", "mainMenuSong", SOUND_MUSIC);

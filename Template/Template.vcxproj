@@ -168,6 +168,7 @@
     <ClCompile Include="..\src\Level1Background.cpp" />
     <ClCompile Include="..\src\Platform.cpp" />
     <ClCompile Include="..\src\PressurePlate.cpp" />
+    <ClCompile Include="..\src\SettingScene.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />
     <ClCompile Include="..\src\DisplayObject.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="..\src\Level1Background.h" />
     <ClInclude Include="..\src\Platform.h" />
     <ClInclude Include="..\src\PressurePlate.h" />
+    <ClInclude Include="..\src\SettingScene.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\Sprite.h" />
     <ClInclude Include="..\src\UIControl.h" />

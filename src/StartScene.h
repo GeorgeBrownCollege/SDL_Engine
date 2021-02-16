@@ -9,6 +9,7 @@
 #include "PressurePlate.h"
 #include "Player.h"
 
+
 class StartScene final : public Scene
 {
 public:
@@ -30,6 +31,7 @@ private:
 	PressurePlate *m_pPressurePlate;
 	Enemy* m_pEnemy;
 	Button* m_pStartButton;
+	Button* m_settingButton;
 };
 
 #endif /* defined (__START_SCENE__) */

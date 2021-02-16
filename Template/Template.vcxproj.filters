@@ -138,6 +138,9 @@
     <ClCompile Include="..\src\Camera.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\SettingScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\StartScene.h">
@@ -289,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="..\src\Camera.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SettingScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
