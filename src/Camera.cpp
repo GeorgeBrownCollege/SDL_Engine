@@ -7,7 +7,7 @@ Camera::Camera() {
 
 void Camera::Update() {
 
-
+	SetGlobalPositions();
 }
 
 void Camera::Draw() { }

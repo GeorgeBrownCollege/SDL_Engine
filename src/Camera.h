@@ -17,6 +17,7 @@ class Camera : public GameObject {
 	// Private functions
 	private:
 	void SetGlobalPositions();
+	void RemoveAllChildren();
 	
 	// Public functions
 	public:
