@@ -8,21 +8,19 @@
 const int FPS = 60;
 const int DELAY_TIME = 1000.0f / FPS;
 
-int main(int argc, char * args[])
-{
+int main(int argc, char *args[]) {
+
 	Uint32 frameStart, frameTime;
 	UINT32 frames = 0;
-
 
 	// show console
 	AllocConsole();
 	freopen("CON", "w", stdout);
 
+	TheGame::Instance()->init("SDLEngine 0.24", 100, 100, 1080, 584, false);
 
-	TheGame::Instance()->init("SDLEngine 0.24", 100, 100, 800, 600, false);
+	while (TheGame::Instance()->isRunning()) {
 
-	while (TheGame::Instance()->isRunning())
-	{
 		frameStart = SDL_GetTicks();
 
 		TheGame::Instance()->handleEvents();
@@ -30,14 +28,16 @@ int main(int argc, char * args[])
 		TheGame::Instance()->render();
 
 		frameTime = SDL_GetTicks() - frameStart;
-		if (frameTime< DELAY_TIME)
-		{
+		if (frameTime < DELAY_TIME) {
 			SDL_Delay(int(DELAY_TIME - frameTime));
 		}
 
+		// Delta time
+		auto deltaTime = float(SDL_GetTicks() - frameStart) / 1000.0f;
+		
 		frames++;
 		TheGame::Instance()->setFrames(frames);
-
+		TheGame::Instance()->SetDeltaTime(deltaTime);
 	}
 
 	TheGame::Instance()->clean();

@@ -5,22 +5,21 @@
 #include "DisplayObject.h"
 #include "TextureManager.h"
 
-class Ship final : public DisplayObject
-{
-public:
+class Ship final : public DisplayObject {
+	public:
 	Ship();
 	~Ship();
 
 	// Inherited via GameObject
-	void draw() override;
-	void update() override;
-	void clean() override;
+	void Draw() override;
+	void Update() override;
+	void Clean() override;
 
 	void turnRight();
 	void turnLeft();
 	void moveForward();
 	void moveBack();
-	
+
 	void move();
 
 	// getters
@@ -33,7 +32,7 @@ public:
 	void setCurrentDirection(glm::vec2 newDirection);
 	void setMaxSpeed(float newSpeed);
 
-private:
+	private:
 	void m_checkBounds();
 	void m_reset();
 

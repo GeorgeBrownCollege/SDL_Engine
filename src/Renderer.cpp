@@ -2,15 +2,13 @@
 
 #include <utility>
 
-Renderer* Renderer::s_pInstance = nullptr;
+Renderer *Renderer::s_pInstance = nullptr;
 
-SDL_Renderer* Renderer::getRenderer()
-{
+SDL_Renderer *Renderer::getRenderer() {
 	return m_pRenderer.get();
 }
 
-void Renderer::setRenderer(std::shared_ptr<SDL_Renderer> renderer)
-{
+void Renderer::setRenderer(std::shared_ptr<SDL_Renderer> renderer) {
 	m_pRenderer = std::move(renderer);
 }
 

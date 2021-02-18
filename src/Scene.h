@@ -7,34 +7,39 @@
 #include "GameObject.h"
 
 
-class Scene : public GameObject
-{
-public:
+class Scene : public GameObject {
+
+	public:
 	friend class DisplayObject;
+
 	Scene();
 	virtual ~Scene();
 
 	// Inherited via GameObject
-	virtual void draw() override = 0;
-	virtual void update() override = 0;
-	virtual void clean() override = 0;
-	virtual void handleEvents() = 0;
-	virtual void start() = 0;
+	virtual void Draw() override = 0;
+	virtual void Update() override = 0;
+	virtual void Clean() override = 0;
+	virtual void HandleEvents() = 0;
+	virtual void Start() = 0;
 
-	void addChild(DisplayObject* child, uint32_t layer_index = 0, std::optional<uint32_t> order_index = std::nullopt);
-	void removeChild(DisplayObject* child);
-	
-	void removeAllChildren();
-	int numberOfChildren() const;
+	void AddChild(DisplayObject *_child, uint32_t _layerIndex = 0, std::optional<uint32_t> _orderIndex = std::nullopt);
+	void RemoveChild(DisplayObject *_child);
 
-	void updateDisplayList();
-	void drawDisplayList();
+	void RemoveAllChildren();
+	int NumberOfChildren() const;
 
-private:
+	void UpdateDisplayList();
+	void DrawDisplayList();
+	void TickGravity();
+
+	private:
+
+	float m_gravityForce = 0.5f;
+
 	uint32_t m_nextLayerIndex = 0;
-	std::vector<DisplayObject*> m_displayList;
+	std::vector<DisplayObject *> m_displayList;
 
-	static bool sortObjects(DisplayObject* left, DisplayObject* right);
+	static bool sortObjects(DisplayObject *left, DisplayObject *right);
 };
 
 #endif /* defined (__SCENE__) */

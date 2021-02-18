@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:a094bc7894f8dccc5a2d569d6bfd6660:929ca61decfb70a0469cf3dd3046a89c:cde709370900f12288f3449eded86f07$ -->
+<!--Format:
+n  => name of the sprite
+x  => sprite x pos in texture
+y  => sprite y pos in texture
+w  => sprite width (may be trimmed)
+h  => sprite height (may be trimmed)
+pX => x pos of the pivot point (relative to sprite width)
+pY => y pos of the pivot point (relative to sprite height)
+oX => sprite's x-corner offset (only available if trimmed)
+oY => sprite's y-corner offset (only available if trimmed)
+oW => sprite's original width (only available if trimmed)
+oH => sprite's original height (only available if trimmed)
+r => 'y' only set if sprite is rotated
+with polygon mode enabled:
+vertices   => points in sprite coordinate system (x0,y0,x1,y1,x2,y2, ...)
+verticesUV => points in sheet coordinate system (x0,y0,x1,y1,x2,y2, ...)
+triangles  => sprite triangulation, 3 vertex indices per triangle
+-->
+<TextureAtlas imagePath="atlas.png" width="228" height="343">
+    <sprite n="bullet.png" x="1" y="1" w="16" h="16"/>
+    <sprite n="cloud.png" x="1" y="164" w="226" h="178"/>
+    <sprite n="island.png" x="17" y="1" w="62" h="62" oX="0" oY="0" oW="62" oH="63"/>
+    <sprite n="plane1.png" x="79" y="1" w="62" h="51" oX="3" oY="9" oW="65" oH="65"/>
+    <sprite n="plane2.png" x="141" y="1" w="62" h="51" oX="3" oY="9" oW="65" oH="65"/>
+    <sprite n="plane3.png" x="1" y="63" w="62" h="51" oX="3" oY="9" oW="65" oH="65"/>
+    <sprite n="restartButton.png" x="63" y="63" w="150" h="50"/>
+    <sprite n="startButton.png" x="1" y="114" w="150" h="50"/>
+</TextureAtlas>

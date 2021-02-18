@@ -8,34 +8,35 @@
 #include <unordered_map>
 #include <functional>
 
-class UIControl : public DisplayObject
-{
-public:
+class UIControl : public DisplayObject {
+
+	public:
+
 	UIControl();
 	virtual ~UIControl();
-	
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	virtual void clean() = 0;
+
+	virtual void Draw() = 0;
+	virtual void Update() = 0;
+	virtual void Clean() = 0;
 
 	typedef std::function<void()> EventHandler;
-	bool addEventListener(Event event, const EventHandler& handler);
+	bool AddEventListener(Event event, const EventHandler &handler);
 
-	EventHandler getEventHandler(Event event);
-	
-protected:
-	void onMouseOver();
-	void onMouseOut();
-	void onLeftMouseButtonClick();
+	EventHandler GetEventHandler(Event event);
 
-private:
-	bool m_eventExists(Event id);
+	protected:
+	void OnMouseOver();
+	void OnMouseOut();
+	void OnLeftMouseButtonClick();
+
+	private:
+	bool m_eventExists(Event _id);
 
 	// mouse events
 	bool m_mouseOver;
 	bool m_mouseOverActive;
 	bool m_mouseOutActive;
-	
+
 	bool m_leftMouseButtonClicked;
 
 	// event structure

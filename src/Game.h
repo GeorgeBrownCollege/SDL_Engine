@@ -17,17 +17,16 @@
 #include "StartScene.h"
 #include "PlayScene.h"
 #include "EndScene.h"
+#include "SettingScene.h"
 
 #include "Config.h"
 
-class Game
-{
-public:
-	
-	static Game* Instance()
-	{
-		if (s_pInstance == nullptr)
-		{
+class Game {
+
+	public:
+
+	static Game *Instance() {
+		if (s_pInstance == nullptr) {
 			s_pInstance = new Game();
 		}
 		return s_pInstance;
@@ -35,7 +34,7 @@ public:
 
 	// simply set the isRunning variable to true
 	void init();
-	bool init(const char* title, int x, int y, int width, int height, bool fullscreen);
+	bool init(const char *title, int x, int y, int width, int height, bool fullscreen);
 
 	// public life cycle functions
 	void render() const;
@@ -48,26 +47,31 @@ public:
 	// getter and setter functions
 	glm::vec2 getMousePosition() const;
 	void setFrames(Uint32 frames);
+
+	float GetDeltaTime() const;
+	void SetDeltaTime(float _time);
+	
 	Uint32 getFrames() const;
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
-	
-private:
+
+	private:
 	Game();
 	~Game();
 
 	// game properties
 	bool m_bRunning;
 	Uint32 m_frames;
+	float m_deltaTime;
 	glm::vec2 m_mousePosition;
 
 	// scene variables
-	Scene* m_currentScene;
+	Scene *m_currentScene;
 	SceneState m_currentSceneState;
 
 	// storage structures
 	std::shared_ptr<SDL_Window> m_pWindow;
-	static Game* s_pInstance;
+	static Game *s_pInstance;
 };
 
 typedef Game TheGame;

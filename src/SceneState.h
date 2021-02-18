@@ -1,10 +1,11 @@
 #pragma once
 #ifndef __SCENE_STATE__
 #define __SCENE_STATE__
-enum SceneState
-{
+
+enum SceneState {
 	NO_SCENE = -1,
 	START_SCENE,
+	SETTING_SCENE,
 	PLAY_SCENE,
 	END_SCENE,
 	NUM_OF_SCENES

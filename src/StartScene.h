@@ -4,8 +4,11 @@
 
 #include "Scene.h"
 #include "Label.h"
-#include "ship.h"
 #include "Button.h"
+#include "Enemy.h"
+#include "PressurePlate.h"
+#include "Player.h"
+
 
 class StartScene final : public Scene
 {
@@ -14,19 +17,21 @@ public:
 	~StartScene();
 
 	// Inherited via Scene
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
-	virtual void handleEvents() override;
-	virtual void start() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
+	virtual void HandleEvents() override;
+	virtual void Start() override;
 	
 private:
 	Label* m_pStartLabel{};
 	Label* m_pInstructionsLabel{};
 
-	Ship* m_pShip{};
-
+	Player *m_pPlayer;
+	PressurePlate *m_pPressurePlate;
+	Enemy* m_pEnemy;
 	Button* m_pStartButton;
+	Button* m_settingButton;
 };
 
 #endif /* defined (__START_SCENE__) */

@@ -7,7 +7,9 @@
 #include "glm/vec2.hpp"
 
 class Config {
-public:
+
+	public:
+
 	static const int SCREEN_WIDTH = 800;
 	static const int SCREEN_HEIGHT = 600;
 	static const int ROW_NUM = 15;
@@ -19,16 +21,16 @@ public:
 	static const int LIVES = 5;
 
 	// Define Custom Deleters for shared_ptr types
-	static void SDL_DelRes(SDL_Window* r) { SDL_DestroyWindow(r); }
-	static void SDL_DelRes(SDL_Renderer* r) { SDL_DestroyRenderer(r); }
-	static void SDL_DelRes(SDL_Texture* r) { SDL_DestroyTexture(r); }
-	static void SDL_DelRes(SDL_Surface* r) { SDL_FreeSurface(r); }
-	static void SDL_DelRes(TTF_Font* r) { TTF_CloseFont(r); }
+	static void SDL_DelRes(SDL_Window *r) { SDL_DestroyWindow(r); }
+	static void SDL_DelRes(SDL_Renderer *r) { SDL_DestroyRenderer(r); }
+	static void SDL_DelRes(SDL_Texture *r) { SDL_DestroyTexture(r); }
+	static void SDL_DelRes(SDL_Surface *r) { SDL_FreeSurface(r); }
+	static void SDL_DelRes(TTF_Font *r) { TTF_CloseFont(r); }
 
 	// template function to create and return shared_ptr instance
 	template <typename T>
-	static std::shared_ptr<T> make_resource(T* t) {
-		return std::shared_ptr<T>(t, [](T* t) { Config::SDL_DelRes(t); });
+	static std::shared_ptr<T> make_resource(T *t) {
+		return std::shared_ptr<T>(t, [](T *t) { Config::SDL_DelRes(t); });
 	}
 
 };

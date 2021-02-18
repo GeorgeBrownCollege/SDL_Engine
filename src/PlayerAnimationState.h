@@ -2,8 +2,7 @@
 #ifndef __PLAYER_ANIMATION_STATE__
 #define __PLAYER_ANIMATION_STATE__
 
-enum PlayerAnimationState
-{
+enum PlayerAnimationState {
 	PLAYER_IDLE_RIGHT,
 	PLAYER_IDLE_LEFT,
 	PLAYER_RUN_RIGHT,
