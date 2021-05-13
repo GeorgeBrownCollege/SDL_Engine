@@ -2,7 +2,7 @@
 
 Latest Changes
 ---------------
--Expanded IMGUI Support so that it works in any scene in a separte window
+-Expanded IMGUI Support so that it works in any scene in a separate window
 -Changed Singletons to Magic Statics (other than FontManager -- still TODO)
 -Added more Collision Check Functions in Collision Manager (e.g. LOSCheck)
 
