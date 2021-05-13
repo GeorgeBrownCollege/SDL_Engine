@@ -1,19 +1,19 @@
 #include "GameObject.h"
 
-GameObject::GameObject():
-	m_width(0), m_height(0), m_type(NONE), m_enabled(true)
+GameObject::GameObject() :
+	m_width(0), m_height(0), m_type(NONE), m_enabled(true), m_visible(true)
 {
 }
 
 GameObject::~GameObject()
 = default;
 
-Transform* GameObject::getTransform() 
+Transform* GameObject::getTransform()
 {
 	return &m_transform;
 }
 
-RigidBody* GameObject::getRigidBody() 
+RigidBody* GameObject::getRigidBody()
 {
 	return &m_rigidBody;
 }
@@ -56,4 +56,14 @@ void GameObject::setEnabled(const bool state)
 bool GameObject::isEnabled() const
 {
 	return m_enabled;
+}
+
+void GameObject::setVisible(const bool state)
+{
+	m_visible = state;
+}
+
+bool GameObject::isVisible() const
+{
+	return m_visible;
 }

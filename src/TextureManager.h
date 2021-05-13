@@ -20,31 +20,28 @@
 class TextureManager
 {
 public:
-	static TextureManager* Instance()
+	static TextureManager& Instance()
 	{
-		if (s_pInstance == nullptr)
-		{
-			s_pInstance = new TextureManager();
-		}
-		return s_pInstance;
+		static TextureManager instance;
+		return instance;
 	}
 
 	// loading functions
 	bool load(const std::string& file_name, const std::string& id);
 	bool loadSpriteSheet(const std::string& data_file_name, const std::string& texture_file_name, const std::string& sprite_sheet_name);
-	
+
 	// drawing functions
 	void draw(const std::string& id, int x, int y, double angle = 0, int alpha = 255, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	void drawFrame(const std::string& id, int x, int y, int frame_width, int frame_height, 
-		int &current_row, int &current_frame, int frame_number, int row_number, float speed_factor,
+	void drawFrame(const std::string& id, int x, int y, int frame_width, int frame_height,
+		int& current_row, int& current_frame, int frame_number, int row_number, float speed_factor,
 		double angle, int alpha, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void drawText(const std::string& id, int x, int y, double angle, int alpha, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	
+
 	// animation functions
-	void animateFrames(int frame_width, int frame_height, int frame_number, int row_number, float speed_factor, int &current_frame, int &current_row);
+	void animateFrames(int frame_width, int frame_height, int frame_number, int row_number, float speed_factor, int& current_frame, int& current_row);
 	void playAnimation(const std::string& sprite_sheet_name, Animation& animation, int x, int y, float speed_factor, double angle, int alpha, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	SpriteSheet* getSpriteSheet(const std::string& name);
-	
+
 	// texture utility functions
 	SDL_Texture* getTexture(const std::string& id);
 	void setColour(const std::string& id, Uint8 red, Uint8 green, Uint8 blue);
@@ -57,7 +54,7 @@ public:
 	int getTextureMapSize() const;
 	void displayTextureMap();
 	void clean();
-	
+
 
 private:
 
@@ -71,7 +68,6 @@ private:
 	// storage structures
 	std::unordered_map<std::string, std::shared_ptr<SDL_Texture>> m_textureMap;
 	std::unordered_map<std::string, SpriteSheet*> m_spriteSheetMap;
-	static TextureManager* s_pInstance;
 };
 
 #endif /* defined(__TEXTURE_MANAGER__) */

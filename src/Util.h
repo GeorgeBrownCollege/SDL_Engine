@@ -18,17 +18,26 @@ public:
 
 	static float sign(float value);
 	static float clamp(float value, float min, float max);
+
+	static glm::vec2 clamp(glm::vec2 vec, float max_length);
+
 	static float clamp01(float value);
 	static float distance(glm::vec2 vecA, glm::vec2 vecB);
 	static float squaredDistance(glm::vec2 vecA, glm::vec2 vecB);
 	static float magnitude(glm::vec2 vec);
 	static float squaredMagnitude(glm::vec2 vec);
 	static glm::vec2 limitMagnitude(glm::vec2 vector, float magnitude);
+
 	static float lerp(float a, float b, float t);
+	static glm::vec2 lerp(glm::vec2 p0, glm::vec2 p1, float t);
+
 	static float lerpUnclamped(float a, float b, float t);
 	static float lerpAngle(float a, float b, float t);
 	static float repeat(float t, float length);
+
 	static float RandomRange(float min, float max);
+	static glm::vec2 RandomRange(glm::vec2 p0, glm::vec2 p1);
+
 	static float Sanitize(float value);
 	static glm::vec2 min(glm::vec2 vecA, glm::vec2 vecB);
 	static float min(float a, float b);

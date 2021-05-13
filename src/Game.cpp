@@ -6,12 +6,8 @@
 #include "Renderer.h"
 #include "EventManager.h"
 
-// IMGUI Includes
-#include "imgui.h"
-#include "imgui_sdl.h"
 
-
-Game* Game::s_pInstance = nullptr;
+//Game* Game::s_pInstance = nullptr;
 
 // Game functions - DO NOT REMOVE ***********************************************
 
@@ -46,7 +42,7 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 
 		// if succeeded create our window
 		m_pWindow = (Config::make_resource(SDL_CreateWindow(title, x, y, width, height, flags)));
-		
+
 		// if window creation successful create our renderer
 		if (m_pWindow != nullptr)
 		{
@@ -54,12 +50,12 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 
 			// create a new SDL Renderer and store it in the Singleton
 			const auto renderer = (Config::make_resource(SDL_CreateRenderer(m_pWindow.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
-			Renderer::Instance()->setRenderer(renderer);
-			
-			if (Renderer::Instance()->getRenderer() != nullptr) // render init success
+			Renderer::Instance().setRenderer(renderer);
+
+			if (Renderer::Instance().getRenderer() != nullptr) // render init success
 			{
 				std::cout << "renderer creation success" << std::endl;
-				SDL_SetRenderDrawColor(Renderer::Instance()->getRenderer(), 255, 255, 255, 255);
+				SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
 			}
 			else
 			{
@@ -68,8 +64,7 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 			}
 
 			// IMGUI 
-			ImGui::CreateContext();
-			ImGuiSDL::Initialize(Renderer::Instance()->getRenderer(), width, height);
+			ImGuiWindowFrame::Instance().Init();
 
 			// Initialize Font Support
 			if (TTF_Init() == -1)
@@ -81,7 +76,7 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 			start();
 
 		}
-		else 
+		else
 		{
 			std::cout << "window init failure" << std::endl;
 			return false; // window init fail
@@ -127,18 +122,28 @@ Uint32 Game::getFrames() const
 	return m_frames;
 }
 
+float Game::getDeltaTime() const
+{
+	return m_deltaTime;
+}
+
+void Game::setDeltaTime(const float time)
+{
+	m_deltaTime = time;
+}
+
 void Game::changeSceneState(const SceneState new_state)
 {
 	if (new_state != m_currentSceneState) {
 
 		// scene clean up
-		if (m_currentSceneState != NO_SCENE) 
+		if (m_currentSceneState != NO_SCENE)
 		{
 			m_currentScene->clean();
 			std::cout << "cleaning previous scene" << std::endl;
 			FontManager::Instance()->clean();
 			std::cout << "cleaning FontManager" << std::endl;
-			TextureManager::Instance()->clean();
+			TextureManager::Instance().clean();
 			std::cout << "cleaning TextureManager" << std::endl;
 		}
 
@@ -167,7 +172,7 @@ void Game::changeSceneState(const SceneState new_state)
 			break;
 		}
 	}
-	
+
 }
 
 void Game::quit()
@@ -177,11 +182,13 @@ void Game::quit()
 
 void Game::render() const
 {
-	SDL_RenderClear(Renderer::Instance()->getRenderer()); // clear the renderer to the draw colour
+	SDL_RenderClear(Renderer::Instance().getRenderer()); // clear the renderer to the draw colour
 
 	m_currentScene->draw();
 
-	SDL_RenderPresent(Renderer::Instance()->getRenderer()); // draw to the screen
+	SDL_RenderPresent(Renderer::Instance().getRenderer()); // draw to the screen
+
+	ImGuiWindowFrame::Instance().Render();
 }
 
 void Game::update() const
@@ -194,14 +201,15 @@ void Game::clean() const
 	std::cout << "cleaning game" << std::endl;
 
 	// Clean Up for IMGUI
-	ImGui::DestroyContext();
-	
+	//ImGui::DestroyContext();
+	ImGuiWindowFrame::Instance().Clean();
+
 	TTF_Quit();
 
 	SDL_Quit();
 }
 
-void Game::handleEvents()
+void Game::handleEvents() const
 {
 	m_currentScene->handleEvents();
 }

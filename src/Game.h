@@ -20,17 +20,15 @@
 
 #include "Config.h"
 
+#include "ImGuiWindowFrame.h"
+
 class Game
 {
 public:
-	
-	static Game* Instance()
+	static Game& Instance()
 	{
-		if (s_pInstance == nullptr)
-		{
-			s_pInstance = new Game();
-		}
-		return s_pInstance;
+		static Game instance;
+		return instance;
 	}
 
 	// simply set the isRunning variable to true
@@ -40,18 +38,23 @@ public:
 	// public life cycle functions
 	void render() const;
 	void update() const;
-	void handleEvents();
+	void handleEvents() const;
 	void clean() const;
 	void start();
 	void quit();
 
 	// getter and setter functions
 	glm::vec2 getMousePosition() const;
+
 	void setFrames(Uint32 frames);
 	Uint32 getFrames() const;
+
+	float getDeltaTime() const;
+	void setDeltaTime(float time);
+
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
-	
+
 private:
 	Game();
 	~Game();
@@ -59,6 +62,7 @@ private:
 	// game properties
 	bool m_bRunning;
 	Uint32 m_frames;
+	float m_deltaTime;
 	glm::vec2 m_mousePosition;
 
 	// scene variables
@@ -67,7 +71,6 @@ private:
 
 	// storage structures
 	std::shared_ptr<SDL_Window> m_pWindow;
-	static Game* s_pInstance;
 };
 
 typedef Game TheGame;

@@ -34,12 +34,12 @@ void StartScene::handleEvents()
 	// Keyboard Events
 	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance()->quit();
+		TheGame::Instance().quit();
 	}
 
 	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
 	{
-		TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		TheGame::Instance().changeSceneState(PLAY_SCENE);
 	}
 }
 
@@ -66,7 +66,7 @@ void StartScene::start()
 	m_pStartButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pStartButton->setActive(false);
-		TheGame::Instance()->changeSceneState(PLAY_SCENE);
+		TheGame::Instance().changeSceneState(PLAY_SCENE);
 	});
 	
 	m_pStartButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -80,6 +80,6 @@ void StartScene::start()
 	});
 	addChild(m_pStartButton);
 
-	
+	ImGuiWindowFrame::Instance().setDefaultGUIFunction();
 }
 

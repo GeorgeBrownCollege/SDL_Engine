@@ -23,12 +23,14 @@ public:
 
 	void addChild(DisplayObject* child, uint32_t layer_index = 0, std::optional<uint32_t> order_index = std::nullopt);
 	void removeChild(DisplayObject* child);
-	
+
 	void removeAllChildren();
 	int numberOfChildren() const;
 
 	void updateDisplayList();
 	void drawDisplayList();
+
+	std::vector<DisplayObject*> getDisplayList() const;
 
 private:
 	uint32_t m_nextLayerIndex = 0;

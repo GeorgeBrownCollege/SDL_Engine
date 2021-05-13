@@ -6,6 +6,7 @@
 #include "imgui.h"
 #include "imgui_sdl.h"
 #include "Renderer.h"
+#include "Util.h"
 
 PlayScene::PlayScene()
 {
@@ -17,13 +18,8 @@ PlayScene::~PlayScene()
 
 void PlayScene::draw()
 {
-	if(EventManager::Instance().isIMGUIActive())
-	{
-		GUI_Function();
-	}
-
 	drawDisplayList();
-	SDL_SetRenderDrawColor(Renderer::Instance()->getRenderer(), 255, 255, 255, 255);
+	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
 }
 
 void PlayScene::update()
@@ -100,17 +96,17 @@ void PlayScene::handleEvents()
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance()->quit();
+		TheGame::Instance().quit();
 	}
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
 	{
-		TheGame::Instance()->changeSceneState(START_SCENE);
+		TheGame::Instance().changeSceneState(START_SCENE);
 	}
 
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_2))
 	{
-		TheGame::Instance()->changeSceneState(END_SCENE);
+		TheGame::Instance().changeSceneState(END_SCENE);
 	}
 }
 
@@ -134,7 +130,7 @@ void PlayScene::start()
 	m_pBackButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pBackButton->setActive(false);
-		TheGame::Instance()->changeSceneState(START_SCENE);
+		TheGame::Instance().changeSceneState(START_SCENE);
 	});
 
 	m_pBackButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -154,7 +150,7 @@ void PlayScene::start()
 	m_pNextButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pNextButton->setActive(false);
-		TheGame::Instance()->changeSceneState(END_SCENE);
+		TheGame::Instance().changeSceneState(END_SCENE);
 	});
 
 	m_pNextButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -174,6 +170,8 @@ void PlayScene::start()
 	m_pInstructionsLabel->getTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
 
 	addChild(m_pInstructionsLabel);
+
+	ImGuiWindowFrame::Instance().setGUIFunction(std::bind(&PlayScene::GUI_Function, this));
 }
 
 void PlayScene::GUI_Function() const
@@ -184,7 +182,7 @@ void PlayScene::GUI_Function() const
 	// See examples by uncommenting the following - also look at imgui_demo.cpp in the IMGUI filter
 	//ImGui::ShowDemoWindow();
 	
-	ImGui::Begin("Your Window Title Goes Here", NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar);
+	ImGui::Begin("Your Window Title Goes Here", NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
 
 	if(ImGui::Button("My Button"))
 	{
@@ -203,9 +201,4 @@ void PlayScene::GUI_Function() const
 	}
 	
 	ImGui::End();
-
-	// Don't Remove this
-	ImGui::Render();
-	ImGuiSDL::Render(ImGui::GetDrawData());
-	ImGui::StyleColorsDark();
 }

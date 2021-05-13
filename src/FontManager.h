@@ -14,7 +14,7 @@
 #include <string>
 #include "Config.h"
 
-class FontManager 
+class FontManager
 {
 public:
 	static FontManager* Instance()

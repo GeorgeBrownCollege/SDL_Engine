@@ -29,7 +29,7 @@ public:
 
 	// getters and setters for physics properties
 	RigidBody* getRigidBody();
-	
+
 	// getters and setters for game object properties
 	int getWidth() const;
 	int getHeight() const;
@@ -41,10 +41,13 @@ public:
 	void setEnabled(bool state);
 	bool isEnabled() const;
 
+	void setVisible(bool state);
+	bool isVisible() const;
+
 private:
 	// transform component
 	Transform m_transform;
-	
+
 	// rigid body component
 	RigidBody m_rigidBody;
 
@@ -54,6 +57,7 @@ private:
 	GameObjectType m_type;
 
 	bool m_enabled;
+	bool m_visible;
 };
 
 #endif /* defined (__GAME_OBJECT__) */

@@ -31,10 +31,10 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 				std::cout << "Collision with Target!" << std::endl;
 				SoundManager::Instance().playSound("yay", 0);
 
-				
+
 				break;
 			default:
-				
+
 				break;
 			}
 
@@ -61,7 +61,7 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 
 	if (
 		p1.x < p2.x + p2Width &&
-		p1.x + p1Width > p2.x&&
+		p1.x + p1Width > p2.x &&
 		p1.y < p2.y + p2Height &&
 		p1.y + p1Height > p2.y
 		)
@@ -75,8 +75,12 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 				std::cout << "Collision with Target!" << std::endl;
 				SoundManager::Instance().playSound("yay", 0);
 				break;
+			case OBSTACLE:
+				std::cout << "Collision with Obstacle!" << std::endl;
+				SoundManager::Instance().playSound("yay", 0);
+				break;
 			default:
-				
+
 				break;
 			}
 
@@ -117,14 +121,14 @@ bool CollisionManager::lineLineCheck(const glm::vec2 line1_start, const glm::vec
 	return false;
 }
 
-bool CollisionManager::lineRectCheck(const glm::vec2 line1_start, const glm::vec2 line1_end, const glm::vec2 rec_start, const float rect_width, const float rect_height)
+bool CollisionManager::lineRectCheck(const glm::vec2 line_start, const glm::vec2 line_end, const glm::vec2 rect_start, const float rect_width, const float rect_height)
 {
-	const auto x1 = line1_start.x;
-	const auto x2 = line1_end.x;
-	const auto y1 = line1_start.y;
-	const auto y2 = line1_end.y;
-	const auto rx = rec_start.x;
-	const auto ry = rec_start.y;
+	const auto x1 = line_start.x;
+	const auto x2 = line_end.x;
+	const auto y1 = line_start.y;
+	const auto y2 = line_end.y;
+	const auto rx = rect_start.x;
+	const auto ry = rect_start.y;
 	const auto rw = rect_width;
 	const auto rh = rect_height;
 
@@ -142,6 +146,54 @@ bool CollisionManager::lineRectCheck(const glm::vec2 line1_start, const glm::vec
 	}
 
 	return false;
+}
+
+bool CollisionManager::lineRectEdgeCheck(const glm::vec2 line_start, const glm::vec2 rect_start, const float rect_width, const float rect_height)
+{
+	bool state = false;
+
+	const auto x1 = line_start.x;
+	const auto y1 = line_start.y;
+
+	const auto rx = rect_start.x;
+	const auto ry = rect_start.y;
+	const auto rw = rect_width;
+	const auto rh = rect_height;
+
+	// configure the left edge
+	const auto leftEdgeStart = glm::vec2(rx, ry);
+	const auto leftEdgeEnd = glm::vec2(rx, ry + rh);
+	const auto leftEdgeMidPoint = Util::lerp(leftEdgeStart, leftEdgeEnd, 0.5f);
+
+	// configure the right edge
+	const auto rightEdgeStart = glm::vec2(rx + rw, ry);
+	const auto rightEdgeEnd = glm::vec2(rx + rw, ry + rh);
+	const auto rightEdgeMidPoint = Util::lerp(rightEdgeStart, rightEdgeEnd, 0.5f);
+
+	// configure the top edge
+	const auto topEdgeStart = glm::vec2(rx, ry);
+	const auto topEdgeEnd = glm::vec2(rx + rw, ry);
+	const auto topEdgeMidPoint = Util::lerp(topEdgeStart, topEdgeEnd, 0.5f);
+
+	// configure the bottom edge
+	const auto bottomEdgeStart = glm::vec2(rx, ry + rh);
+	const auto bottomEdgeEnd = glm::vec2(rx + rw, ry + rh);
+	const auto bottomEdgeMidPoint = Util::lerp(bottomEdgeStart, bottomEdgeEnd, 0.5f);
+
+	// line / line comparisons
+	const auto left = lineLineCheck(glm::vec2(x1, y1), leftEdgeMidPoint, leftEdgeStart, leftEdgeEnd);
+	const auto right = lineLineCheck(glm::vec2(x1, y1), rightEdgeMidPoint, rightEdgeStart, rightEdgeEnd);
+	const auto top = lineLineCheck(glm::vec2(x1, y1), topEdgeMidPoint, topEdgeStart, topEdgeEnd);
+	const auto bottom = lineLineCheck(glm::vec2(x1, y1), bottomEdgeMidPoint, bottomEdgeStart, bottomEdgeEnd);
+
+	// return true if any line collides with the edge
+	if (left || right || top || bottom)
+	{
+		state = true;
+	}
+
+
+	return state;
 }
 
 int CollisionManager::minSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec2 line1_end, glm::vec2 line2_start, glm::vec2 line2_end)
@@ -194,7 +246,7 @@ bool CollisionManager::lineAABBCheck(Ship* object1, GameObject* object2)
 
 			break;
 		default:
-			
+
 			break;
 		}
 
@@ -245,43 +297,43 @@ bool CollisionManager::circleAABBCheck(GameObject* object1, GameObject* object2)
 				SoundManager::Instance().playSound("yay", 0);
 				break;
 			case SHIP:
+			{
+				SoundManager::Instance().playSound("thunder", 0);
+				auto velocityX = object1->getRigidBody()->velocity.x;
+				auto velocityY = object1->getRigidBody()->velocity.y;
+
+				if ((attackVector.x > 0 && attackVector.y < 0) || (attackVector.x < 0 && attackVector.y < 0))
+					// top right or top left
 				{
-					SoundManager::Instance().playSound("thunder", 0);
-					auto velocityX = object1->getRigidBody()->velocity.x;
-					auto velocityY = object1->getRigidBody()->velocity.y;
 
-					if ((attackVector.x > 0 && attackVector.y < 0) || (attackVector.x < 0 && attackVector.y < 0))
-						// top right or top left
+					if (angle <= 45)
 					{
-						
-						if (angle <= 45)
-						{
-							object1->getRigidBody()->velocity = glm::vec2(velocityX, -velocityY);
-						}
-						else
-						{
-							object1->getRigidBody()->velocity = glm::vec2(-velocityX, velocityY);
-						}
+						object1->getRigidBody()->velocity = glm::vec2(velocityX, -velocityY);
 					}
-
-					if ((attackVector.x > 0 && attackVector.y > 0) || (attackVector.x < 0 && attackVector.y > 0))
-						// bottom right or bottom left
+					else
 					{
-						if (angle <= 135)
-						{
-							object1->getRigidBody()->velocity = glm::vec2(-velocityX, velocityY);
-													}
-						else
-						{
-							object1->getRigidBody()->velocity = glm::vec2(velocityX, -velocityY);
-													}
+						object1->getRigidBody()->velocity = glm::vec2(-velocityX, velocityY);
 					}
 				}
-				
 
-				break;
+				if ((attackVector.x > 0 && attackVector.y > 0) || (attackVector.x < 0 && attackVector.y > 0))
+					// bottom right or bottom left
+				{
+					if (angle <= 135)
+					{
+						object1->getRigidBody()->velocity = glm::vec2(-velocityX, velocityY);
+					}
+					else
+					{
+						object1->getRigidBody()->velocity = glm::vec2(velocityX, -velocityY);
+					}
+				}
+			}
+
+
+			break;
 			default:
-				
+
 				break;
 			}
 
@@ -305,13 +357,68 @@ bool CollisionManager::pointRectCheck(const glm::vec2 point, const glm::vec2 rec
 	const auto width = rect_width;
 	const auto height = rect_height;
 
-	if (point.x > topLeftX&&
+	if (point.x > topLeftX &&
 		point.x < topLeftX + width &&
-		point.y > topLeftY&&
+		point.y > topLeftY &&
 		point.y < topLeftY + height)
 	{
 		return true;
 	}
+	return false;
+}
+
+// assumptions - the list of objects are stored so that they are facing the target and the target is loaded last
+bool CollisionManager::LOSCheck(Agent* agent, glm::vec2 end_point, const std::vector<DisplayObject*>& objects, DisplayObject* target)
+{
+	const auto start_point = agent->getTransform()->position;
+
+	for (auto object : objects)
+	{
+		auto objectOffset = glm::vec2(object->getWidth() * 0.5f, object->getHeight() * 0.5f);
+		const auto rect_start = object->getTransform()->position - objectOffset;
+		const auto width = object->getWidth();
+		const auto height = object->getHeight();
+
+		switch (object->getType())
+		{
+		case OBSTACLE:
+			if (lineRectCheck(start_point, end_point, rect_start, width, height))
+			{
+				return false;
+			}
+			break;
+		case TARGET:
+		{
+			switch (agent->getType())
+			{
+			case AGENT:
+				if (lineRectCheck(start_point, end_point, rect_start, width, height))
+				{
+					return true;
+				}
+				break;
+			case PATH_NODE:
+				if (lineRectEdgeCheck(start_point, rect_start, width, height))
+				{
+					return true;
+				}
+				break;
+			default:
+				//error
+				std::cout << "ERROR: " << agent->getType() << std::endl;
+				break;
+			}
+		}
+		break;
+		default:
+			//error
+			std::cout << "ERROR: " << object->getType() << std::endl;
+			break;
+		}
+
+	}
+
+	// if the line does not collide with an object that is the target then LOS is false
 	return false;
 }
 
