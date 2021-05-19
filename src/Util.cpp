@@ -310,7 +310,7 @@ float Util::signedAngle(const glm::vec2 from, const glm::vec2 to)
 	return unsigned_angle * sign;
 }
 
-void Util::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 colour)
+void Util::DrawLine(const glm::vec2 start, const glm::vec2 end, const glm::vec4 colour)
 {
 	int r = floor(colour.r * 255.0f);
 	int g = floor(colour.g * 255.0f);
@@ -324,7 +324,7 @@ void Util::DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 colour)
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawRect(glm::vec2 position, int width, int height, glm::vec4 colour)
+void Util::DrawRect(const glm::vec2 position, const int width, const int height, const glm::vec4 colour, SDL_Renderer* renderer)
 {
 	int r = floor(colour.r * 255.0f);
 	int g = floor(colour.g * 255.0f);
@@ -337,24 +337,47 @@ void Util::DrawRect(glm::vec2 position, int width, int height, glm::vec4 colour)
 	rectangle.w = width;
 	rectangle.h = height;
 
-	const auto renderer = Renderer::Instance().getRenderer();
-
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderDrawRect(renderer, &rectangle);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawCircle(glm::vec2 centre, int radius, glm::vec4 colour, ShapeType type)
+void Util::DrawFilledRect(const glm::vec2 position, const int width, const int height, const glm::vec4 fill_colour, SDL_Renderer* renderer)
+{
+	int r = floor(fill_colour.r * 255.0f);
+	int g = floor(fill_colour.g * 255.0f);
+	int b = floor(fill_colour.b * 255.0f);
+	int a = floor(fill_colour.a * 255.0f);
+
+	SDL_Rect rectangle;
+	rectangle.x = position.x;
+	rectangle.y = position.y;
+	rectangle.w = width;
+	rectangle.h = height;
+
+	/* Declaring the surface. */
+	SDL_Surface* surface;
+
+	/* Creating the surface. */
+	surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
+		
+	SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	SDL_FillRect(surface, nullptr, SDL_MapRGB(surface->format, r, g, b));
+	SDL_RenderDrawRect(renderer, &rectangle);
+	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+}
+
+void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 colour, ShapeType type)
 {
 	int r = floor(colour.r * 255.0f);
 	int g = floor(colour.g * 255.0f);
 	int b = floor(colour.b * 255.0f);
 	int a = floor(colour.a * 255.0f);
 
-	const auto renderer = /* TheGame::Instance()->getRenderer()*/ Renderer::Instance().getRenderer();
+	const auto renderer = Renderer::Instance().getRenderer();
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	int diameter = floor(radius * 2.0f);
+	const int diameter = floor(radius * 2.0f);
 
 	int x = (radius - 1);
 	int y = 0;
@@ -426,12 +449,12 @@ void Util::DrawCircle(glm::vec2 centre, int radius, glm::vec4 colour, ShapeType 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawCapsule(glm::vec2 position, int width, int height, glm::vec4 colour)
+void Util::DrawCapsule(const glm::vec2 position, const int width, const int height, const glm::vec4 colour)
 {
 	int diameter;
 	int radius;
-	int halfWidth = floor(width * 0.5f);
-	int halfHeight = floor(height * 0.5f);
+	const int halfWidth = floor(width * 0.5f);
+	const int halfHeight = floor(height * 0.5f);
 	if (width > height)
 	{
 		// Horizontal Capsule

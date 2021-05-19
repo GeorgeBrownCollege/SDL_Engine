@@ -145,6 +145,8 @@ void Game::changeSceneState(const SceneState new_state)
 			std::cout << "cleaning FontManager" << std::endl;
 			TextureManager::Instance().clean();
 			std::cout << "cleaning TextureManager" << std::endl;
+			ImGuiWindowFrame::Instance().clearWindow();
+			std::cout << "clearing ImGui Window" << std::endl;
 		}
 
 		m_currentScene = nullptr;

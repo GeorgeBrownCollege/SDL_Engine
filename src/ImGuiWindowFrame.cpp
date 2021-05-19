@@ -2,6 +2,7 @@
 #include <iostream>
 #include "imgui.h"
 #include "imgui_sdl.h"
+#include "Util.h"
 
 ImGuiWindowFrame::ImGuiWindowFrame()
 = default;
@@ -72,6 +73,12 @@ void ImGuiWindowFrame::setDefaultGUIFunction()
 	setGUIFunction(std::bind(&ImGuiWindowFrame::m_defaultGUIFunction, this));
 }
 
+void ImGuiWindowFrame::clearWindow() const
+{
+	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
+	SDL_RenderClear(getRenderer());
+}
+
 void ImGuiWindowFrame::m_defaultGUIFunction()
 {
 	// Always open with a NewFrame
@@ -85,8 +92,6 @@ void ImGuiWindowFrame::m_defaultGUIFunction()
 	ImGui::Text("Please add your own GUI Function to the scene");
 
 	ImGui::End();
-
-	
 }
 
 void ImGuiWindowFrame::Start()
@@ -94,12 +99,15 @@ void ImGuiWindowFrame::Start()
 	m_callback();
 
 	// Don't Remove this
+	
 	ImGui::Render();
 	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
 	SDL_RenderClear(getRenderer());
 	ImGuiSDL::Render(ImGui::GetDrawData());
 	ImGui::StyleColorsDark();
-	
+
+	// Hack to remove ghost window error - do not remove
+	Util::DrawRect(glm::vec2(0, 0), 1, 1, glm::vec4(1, 1, 1, 1), getRenderer());
 }
 
 void ImGuiWindowFrame::Clean()

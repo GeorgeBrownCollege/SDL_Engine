@@ -15,7 +15,7 @@ public:
 		return instance;
 	}
 
-	void Init(const char* title = "ImGui Window", int x = 900, int y = 100, int width = 320, int height = 480, int flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
+	void Init(const char* title = "ImGui Window", int x = 900, int y = 100, int width = 320, int height = 480, int flags = SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN | SDL_WINDOW_UTILITY);
 	void Render();
 	void Start();
 	void Clean();
@@ -28,6 +28,8 @@ public:
 	typedef std::function<void()> Callback;
 	void setGUIFunction(const Callback& callback);
 	void setDefaultGUIFunction();
+	void clearWindow() const;
+	
 
 private:
 	ImGuiWindowFrame();
