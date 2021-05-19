@@ -175,6 +175,11 @@ void Game::changeSceneState(const SceneState new_state)
 
 }
 
+SDL_Window* Game::getWindow()
+{
+	return m_pWindow.get();
+}
+
 void Game::quit()
 {
 	m_bRunning = false;

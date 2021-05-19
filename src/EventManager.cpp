@@ -39,11 +39,17 @@ void EventManager::update()
                 break;
 
             case SDL_MOUSEBUTTONDOWN:
-                onMouseButtonDown(event);
+                if(m_mainWindowHasFocus)
+                {
+                    onMouseButtonDown(event);
+                }
                 break;
 
             case SDL_MOUSEBUTTONUP:
-                onMouseButtonUp(event);
+                if (m_mainWindowHasFocus)
+                {
+                    onMouseButtonUp(event);
+                }
                 break;
 
             case SDL_MOUSEWHEEL:
@@ -117,6 +123,11 @@ void EventManager::update()
                     {
                         TheGame::Instance().quit();
                     }
+                    break;
+                case SDL_WINDOWEVENT_FOCUS_GAINED:
+
+                    m_mainWindowHasFocus = (ImGuiWindowFrame::Instance().getWindowID() == event.window.windowID) ? false : true;
+
                     break;
                 }
                 break;
@@ -307,13 +318,18 @@ GameController* EventManager::getGameController(const int controller_number)
     return nullptr;
 }
 
-bool EventManager::isIMGUIActive()
+bool EventManager::isIMGUIActive() const
 {
     return m_isIMGUIActive;
 }
 
+bool EventManager::isMainWindowInFocus() const
+{
+    return m_mainWindowHasFocus;
+}
+
 EventManager::EventManager() :
-    m_isIMGUIActive(false), m_keyStates(nullptr), m_mouseWheel(0), m_isActive(true), m_io(ImGui::GetIO())
+    m_io(ImGui::GetIO()), m_isIMGUIActive(false), m_keyStates(nullptr), m_mouseWheel(0), m_isActive(true), m_mainWindowHasFocus(true)
 {
     // initialize mouse position
     m_mousePosition = glm::vec2(0.0f, 0.0f);

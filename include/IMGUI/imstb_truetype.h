@@ -1,4 +1,4 @@
-// [DEAR IMGUI] 
+// [DEAR IMGUI]
 // This is a slightly modified version of stb_truetype.h 1.20.
 // Mostly fixing for compiler and static analyzer warnings.
 // Grep for [DEAR IMGUI] to find the changes.
@@ -198,10 +198,10 @@
 //
 //  Current point:
 //    Set the current point where the first character will appear. The
-//    first character could extend getLeft of the current point; this is font
+//    first character could extend left of the current point; this is font
 //    dependent. You can either choose a current point that is the leftmost
 //    point and hope, or add some padding, or check the bounding box or
-//    getLeft-side-bearing of the first character to be displayed and set
+//    left-side-bearing of the first character to be displayed and set
 //    the current point based on that.
 //
 //  Displaying a character:
@@ -301,7 +301,7 @@ void my_stbtt_initfont(void)
 
 void my_stbtt_print(float x, float y, char *text)
 {
-   // assume orthographic projection with units = screen pixels, origin at top getLeft
+   // assume orthographic projection with units = screen pixels, origin at top left
    glEnable(GL_TEXTURE_2D);
    glBindTexture(GL_TEXTURE_2D, ftex);
    glBegin(GL_QUADS);
@@ -377,7 +377,7 @@ int main(int arg, char **argv)
 {
    stbtt_fontinfo font;
    int i,j,ascent,baseline,ch=0;
-   float scale, xpos=2; // leave a little padding in case the character extends getLeft
+   float scale, xpos=2; // leave a little padding in case the character extends left
    char *text = "Heljo World!"; // intentionally misspelled to show 'lj' brokenness
 
    fread(buffer, 1, 1000000, fopen("c:/windows/fonts/arialbd.ttf", "rb"));
@@ -543,8 +543,8 @@ STBTT_DEF int stbtt_BakeFontBitmap(const unsigned char *data, int offset,  // fo
 
 typedef struct
 {
-   float x0,y0,s0,t0; // top-getLeft
-   float x1,y1,s1,t1; // bottom-getRight
+   float x0,y0,s0,t0; // top-left
+   float x1,y1,s1,t1; // bottom-right
 } stbtt_aligned_quad;
 
 STBTT_DEF void stbtt_GetBakedQuad(const stbtt_bakedchar *chardata, int pw, int ph,  // same data as above
@@ -598,7 +598,7 @@ STBTT_DEF int  stbtt_PackBegin(stbtt_pack_context *spc, unsigned char *pixels, i
 // Returns 0 on failure, 1 on success.
 
 STBTT_DEF void stbtt_PackEnd  (stbtt_pack_context *spc);
-// Cleans getUp the packing context and frees all memory.
+// Cleans up the packing context and frees all memory.
 
 #define STBTT_POINT_SIZE(x)   (-(x))
 
@@ -669,7 +669,7 @@ STBTT_DEF int  stbtt_PackFontRangesRenderIntoRects(stbtt_pack_context *spc, cons
 // fonts, or if you want to pack custom data into a font texture, take a look
 // at the source to of stbtt_PackFontRanges() and create a custom version 
 // using these functions, e.g. call GatherRects multiple times,
-// building getUp a single array of rects, then call PackRects once,
+// building up a single array of rects, then call PackRects once,
 // then call RenderIntoRects repeatedly. This may result in a
 // better packing than calling PackFontRanges multiple times
 // (or it may not).
@@ -745,7 +745,7 @@ STBTT_DEF int stbtt_InitFont(stbtt_fontinfo *info, const unsigned char *data, in
 
 STBTT_DEF int stbtt_FindGlyphIndex(const stbtt_fontinfo *info, int unicode_codepoint);
 // If you're going to perform multiple operations on the same character
-// and you want a speed-getUp, call this function with the character you're
+// and you want a speed-up, call this function with the character you're
 // going to process, then use glyph-based functions instead of the
 // codepoint-based functions.
 // Returns 0 if the character codepoint is not defined in the font.
@@ -787,7 +787,7 @@ STBTT_DEF void stbtt_GetFontBoundingBox(const stbtt_fontinfo *info, int *x0, int
 // the bounding box around all possible characters
 
 STBTT_DEF void stbtt_GetCodepointHMetrics(const stbtt_fontinfo *info, int codepoint, int *advanceWidth, int *leftSideBearing);
-// leftSideBearing is the offset from the current horizontal position to the getLeft edge of the character
+// leftSideBearing is the offset from the current horizontal position to the left edge of the character
 // advanceWidth is the offset from the current horizontal position to the next horizontal position
 //   these are expressed in unscaled coordinates
 
@@ -859,9 +859,9 @@ STBTT_DEF unsigned char *stbtt_GetCodepointBitmap(const stbtt_fontinfo *info, fl
 // specified character/glyph at the specified scale into it, with
 // antialiasing. 0 is no coverage (transparent), 255 is fully covered (opaque).
 // *width & *height are filled out with the width & height of the bitmap,
-// which is stored getLeft-to-getRight, top-to-bottom.
+// which is stored left-to-right, top-to-bottom.
 //
-// xoff/yoff are the offset it pixel space from the glyph origin to the top-getLeft of the bitmap
+// xoff/yoff are the offset it pixel space from the glyph origin to the top-left of the bitmap
 
 STBTT_DEF unsigned char *stbtt_GetCodepointBitmapSubpixel(const stbtt_fontinfo *info, float scale_x, float scale_y, float shift_x, float shift_y, int codepoint, int *width, int *height, int *xoff, int *yoff);
 // the same as stbtt_GetCodepoitnBitmap, but you can specify a subpixel
@@ -884,9 +884,9 @@ STBTT_DEF void stbtt_MakeCodepointBitmapSubpixelPrefilter(const stbtt_fontinfo *
 STBTT_DEF void stbtt_GetCodepointBitmapBox(const stbtt_fontinfo *font, int codepoint, float scale_x, float scale_y, int *ix0, int *iy0, int *ix1, int *iy1);
 // get the bbox of the bitmap centered around the glyph origin; so the
 // bitmap width is ix1-ix0, height is iy1-iy0, and location to place
-// the bitmap top getLeft is (leftSideBearing*scale,iy0).
-// (Note that the bitmap uses y-increases-getDown, but the shape uses
-// y-increases-getUp, so CodepointBitmapBox and CodepointBox are inverted.)
+// the bitmap top left is (leftSideBearing*scale,iy0).
+// (Note that the bitmap uses y-increases-down, but the shape uses
+// y-increases-up, so CodepointBitmapBox and CodepointBox are inverted.)
 
 STBTT_DEF void stbtt_GetCodepointBitmapBoxSubpixel(const stbtt_fontinfo *font, int codepoint, float scale_x, float scale_y, float shift_x, float shift_y, int *ix0, int *iy0, int *ix1, int *iy1);
 // same as stbtt_GetCodepointBitmapBox, but you can specify a subpixel
@@ -961,7 +961,7 @@ STBTT_DEF unsigned char * stbtt_GetCodepointSDF(const stbtt_fontinfo *info, floa
 //      is greater than or equal to 180/255. (You'll actually want to antialias,
 //      which is beyond the scope of this example.) Additionally, you can compute
 //      offset outlines (e.g. to stroke the character border inside & outside,
-//      or only outside). For example, to fill outside the character getUp to 3 SDF
+//      or only outside). For example, to fill outside the character up to 3 SDF
 //      pixels, you would compare against (180-36.0*3)/255 = 72/255. The above
 //      choice of variables maps a range from 5 pixels outside the shape to
 //      2 pixels inside the shape to 0..255; this is intended primarily for apply
@@ -981,7 +981,7 @@ STBTT_DEF unsigned char * stbtt_GetCodepointSDF(const stbtt_fontinfo *info, floa
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// Finding the getRight font...
+// Finding the right font...
 //
 // You should really just solve this offline, keep your own tables
 // of what font is what, and don't try to get it out of the .ttf file.
@@ -1527,9 +1527,9 @@ STBTT_DEF int stbtt_FindGlyphIndex(const stbtt_fontinfo *info, int unicode_codep
       stbtt_uint32 ngroups = ttULONG(data+index_map+12);
       stbtt_int32 low,high;
       low = 0; high = (stbtt_int32)ngroups;
-      // Binary search the getRight group.
+      // Binary search the right group.
       while (low < high) {
-         stbtt_int32 mid = low + ((high-low) >> 1); // rounds getDown, so low <= mid < high
+         stbtt_int32 mid = low + ((high-low) >> 1); // rounds down, so low <= mid < high
          stbtt_uint32 start_char = ttULONG(data+index_map+16+mid*12);
          stbtt_uint32 end_char = ttULONG(data+index_map+16+mid*12+4);
          if ((stbtt_uint32) unicode_codepoint < start_char)
@@ -1674,7 +1674,7 @@ static int stbtt__GetGlyphShapeTT(const stbtt_fontinfo *info, int glyph_index, s
       // above, shifted to the end of the array so we won't overwrite it when
       // we create our final data starting from the front
 
-      off = m - n; // starting offset for uninterpreted data, regardless of how m ends getUp being calculated
+      off = m - n; // starting offset for uninterpreted data, regardless of how m ends up being calculated
 
       // first load flags
 
@@ -2538,11 +2538,11 @@ static stbtt_int32  stbtt__GetGlyphGPOSInfoAdvance(const stbtt_fontinfo *info, i
                             // There are no other cases.
                             STBTT_assert(0);
                             break;
-                        };
+                        } // [DEAR IMGUI] removed ;
                     }
                 }
                 break;
-            };
+            } // [DEAR IMGUI] removed ;
 
             default:
                 // TODO: Implement other stuff.
@@ -2568,7 +2568,7 @@ STBTT_DEF int  stbtt_GetGlyphKernAdvance(const stbtt_fontinfo *info, int g1, int
 
 STBTT_DEF int  stbtt_GetCodepointKernAdvance(const stbtt_fontinfo *info, int ch1, int ch2)
 {
-   if (!info->kern && !info->gpos) // if no kerning table, don't waste time looking getUp both codepoint->glyphs
+   if (!info->kern && !info->gpos) // if no kerning table, don't waste time looking up both codepoint->glyphs
       return 0;
    return stbtt_GetGlyphKernAdvance(info, stbtt_FindGlyphIndex(info,ch1), stbtt_FindGlyphIndex(info,ch2));
 }
@@ -2747,7 +2747,7 @@ static stbtt__active_edge *stbtt__new_active(stbtt__hheap *hh, stbtt__edge *e, i
    STBTT_assert(z != NULL);
    if (!z) return z;
    
-   // round dx getDown to avoid overshooting
+   // round dx down to avoid overshooting
    if (dxdy < 0)
       z->dx = -STBTT_ifloor(STBTT_FIX * -dxdy);
    else
@@ -3027,7 +3027,7 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
                height = sy1 - sy0;
                STBTT_assert(x >= 0 && x < len);
                scanline[x] += e->direction * (1-((x_top - x) + (x_bottom-x))/2)  * height;
-               scanline_fill[x] += e->direction * height; // everything getRight of this pixel is filled
+               scanline_fill[x] += e->direction * height; // everything right of this pixel is filled
             } else {
                int x,x1,x2;
                float y_crossing, step, sign, area;
@@ -3079,12 +3079,12 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
             for (x=0; x < len; ++x) {
                // cases:
                //
-               // there can be getUp to two intersections with the pixel. any intersection
-               // with getLeft or getRight edges can be handled by splitting into two (or three)
+               // there can be up to two intersections with the pixel. any intersection
+               // with left or right edges can be handled by splitting into two (or three)
                // regions. intersections with top & bottom do not necessitate case-wise logic.
                //
-               // the old way of doing this found the intersections with the getLeft & getRight edges,
-               // then used some simple logic to produce getUp to three segments in sorted order
+               // the old way of doing this found the intersections with the left & right edges,
+               // then used some simple logic to produce up to three segments in sorted order
                // from top-to-bottom. however, this had a problem: if an x edge was epsilon
                // across the x border, then the corresponding y position might not be distinct
                // from the other y segment, and it might ignored as an empty segment. to avoid
@@ -3103,24 +3103,24 @@ static void stbtt__fill_active_edges_new(float *scanline, float *scanline_fill, 
                float y1 = (x - x0) / dx + y_top;
                float y2 = (x+1 - x0) / dx + y_top;
 
-               if (x0 < x1 && x3 > x2) {         // three segments descending getDown-getRight
+               if (x0 < x1 && x3 > x2) {         // three segments descending down-right
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x1,y1);
                   stbtt__handle_clipped_edge(scanline,x,e, x1,y1, x2,y2);
                   stbtt__handle_clipped_edge(scanline,x,e, x2,y2, x3,y3);
-               } else if (x3 < x1 && x0 > x2) {  // three segments descending getDown-getLeft
+               } else if (x3 < x1 && x0 > x2) {  // three segments descending down-left
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x2,y2);
                   stbtt__handle_clipped_edge(scanline,x,e, x2,y2, x1,y1);
                   stbtt__handle_clipped_edge(scanline,x,e, x1,y1, x3,y3);
-               } else if (x0 < x1 && x3 > x1) {  // two segments across x, getDown-getRight
+               } else if (x0 < x1 && x3 > x1) {  // two segments across x, down-right
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x1,y1);
                   stbtt__handle_clipped_edge(scanline,x,e, x1,y1, x3,y3);
-               } else if (x3 < x1 && x0 > x1) {  // two segments across x, getDown-getLeft
+               } else if (x3 < x1 && x0 > x1) {  // two segments across x, down-left
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x1,y1);
                   stbtt__handle_clipped_edge(scanline,x,e, x1,y1, x3,y3);
-               } else if (x0 < x2 && x3 > x2) {  // two segments across x+1, getDown-getRight
+               } else if (x0 < x2 && x3 > x2) {  // two segments across x+1, down-right
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x2,y2);
                   stbtt__handle_clipped_edge(scanline,x,e, x2,y2, x3,y3);
-               } else if (x3 < x2 && x0 > x2) {  // two segments across x+1, getDown-getLeft
+               } else if (x3 < x2 && x0 > x2) {  // two segments across x+1, down-left
                   stbtt__handle_clipped_edge(scanline,x,e, x0,y0, x2,y2);
                   stbtt__handle_clipped_edge(scanline,x,e, x2,y2, x3,y3);
                } else {  // one segment
@@ -3414,7 +3414,7 @@ static int stbtt__tesselate_curve(stbtt__point *points, int *num_points, float x
 
 static void stbtt__tesselate_cubic(stbtt__point *points, int *num_points, float x0, float y0, float x1, float y1, float x2, float y2, float x3, float y3, float objspace_flatness_squared, int n)
 {
-   // @TODO this "flatness" calculation is just made-getUp nonsense that seems to work well enough
+   // @TODO this "flatness" calculation is just made-up nonsense that seems to work well enough
    float dx0 = x1-x0;
    float dy0 = y1-y0;
    float dx1 = x2-x1;
@@ -4070,7 +4070,7 @@ STBTT_DEF int stbtt_PackFontRangesRenderIntoRects(stbtt_pack_context *spc, const
             int glyph = stbtt_FindGlyphIndex(info, codepoint);
             stbrp_coord pad = (stbrp_coord) spc->padding;
 
-            // pad on getLeft and top
+            // pad on left and top
             r->x += pad;
             r->y += pad;
             r->w -= pad;
@@ -4132,7 +4132,7 @@ STBTT_DEF void stbtt_PackFontRangesPackRects(stbtt_pack_context *spc, stbrp_rect
 STBTT_DEF int stbtt_PackFontRanges(stbtt_pack_context *spc, const unsigned char *fontdata, int font_index, stbtt_pack_range *ranges, int num_ranges)
 {
    stbtt_fontinfo info;
-   int i,j,n, return_value = 1;
+   int i,j,n, return_value; // [DEAR IMGUI] removed = 1
    //stbrp_context *context = (stbrp_context *) spc->pack_info;
    stbrp_rect    *rects;
 
@@ -4302,7 +4302,7 @@ static int stbtt__compute_crossings_x(float x, float y, int nverts, stbtt_vertex
    int winding = 0;
 
    orig[0] = x;
-   //orig[1] = y; // [DEAR IMGUI] commmented double assignment
+   //orig[1] = y; // [DEAR IMGUI] commented double assignment
 
    // make sure y never passes through a vertex of the shape
    y_frac = (float) STBTT_fmod(y, 1.0f);

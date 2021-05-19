@@ -108,8 +108,14 @@
     <ClCompile Include="..\src\Plane.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp">
-      <Filter>IMGUI</Filter>
+    <ClCompile Include="..\src\ImGuiWindowFrame.cpp">
+      <Filter>Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Obstacle.cpp">
+      <Filter>Game Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Agent.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="..\include\IMGUI\imgui.cpp">
       <Filter>IMGUI</Filter>
@@ -120,17 +126,14 @@
     <ClCompile Include="..\include\IMGUI\imgui_draw.cpp">
       <Filter>IMGUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\include\IMGUI\imgui_tables.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
     <ClCompile Include="..\include\IMGUI\imgui_widgets.cpp">
       <Filter>IMGUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ImGuiWindowFrame.cpp">
-      <Filter>Singletons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Obstacle.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Agent.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp">
+      <Filter>IMGUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,8 +248,14 @@
     <ClInclude Include="..\src\SoundType.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h">
-      <Filter>IMGUI</Filter>
+    <ClInclude Include="..\src\ImGuiWindowFrame.h">
+      <Filter>Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Obstacle.h">
+      <Filter>Game Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Agent.h">
+      <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="..\include\IMGUI\imconfig.h">
       <Filter>IMGUI</Filter>
@@ -266,14 +275,8 @@
     <ClInclude Include="..\include\IMGUI\imstb_truetype.h">
       <Filter>IMGUI</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ImGuiWindowFrame.h">
-      <Filter>Singletons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Obstacle.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Agent.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h">
+      <Filter>IMGUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

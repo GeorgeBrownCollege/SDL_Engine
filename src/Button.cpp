@@ -1,5 +1,7 @@
 #include "Button.h"
 #include <utility>
+
+#include "EventManager.h"
 #include "TextureManager.h"
 
 
@@ -40,14 +42,18 @@ void Button::draw()
 
 void Button::update()
 {
-	//check if mouse is over the Button
-	onMouseOver();
+	if(EventManager::Instance().isMainWindowInFocus())
+	{
+		//check if mouse is over the Button
+		onMouseOver();
 
-	// check if mouse outside the Button
-	onMouseOut();
+		// check if mouse outside the Button
+		onMouseOut();
 
-	// check if left mouse is clicked
-	onLeftMouseButtonClick();
+		// check if left mouse is clicked
+		onLeftMouseButtonClick();
+	}
+	
 }
 
 void Button::clean()

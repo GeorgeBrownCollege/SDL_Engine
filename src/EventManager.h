@@ -39,7 +39,10 @@ public:
 	GameController* getGameController(int controller_number);
 
 	//IMGUI
-	bool isIMGUIActive();
+	bool isIMGUIActive() const;
+
+	// window focus
+	bool isMainWindowInFocus() const;
 
 private:
 	// Hide Constructor and Destructor 
@@ -85,6 +88,9 @@ private:
 
 	// is the Event Manager active
 	bool m_isActive;
+
+	// does the main waindow have focus
+	bool m_mainWindowHasFocus;
 };
 
 #endif /* defined (__EVENT_MANAGER__) */

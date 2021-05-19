@@ -40,7 +40,6 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 		ImGui::CreateContext();
 		ImGuiSDL::Initialize(getRenderer(), width, height);
 
-		//setGUIFunction(std::bind(&ImGuiWindowFrame::m_defaultGUIFunction, this));
 		setDefaultGUIFunction();
 
 	}

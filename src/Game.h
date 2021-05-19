@@ -55,6 +55,8 @@ public:
 	bool isRunning() const;
 	void changeSceneState(SceneState new_state);
 
+	SDL_Window* getWindow();
+
 private:
 	Game();
 	~Game();
