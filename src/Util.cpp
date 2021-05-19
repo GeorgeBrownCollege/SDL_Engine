@@ -310,14 +310,12 @@ float Util::signedAngle(const glm::vec2 from, const glm::vec2 to)
 	return unsigned_angle * sign;
 }
 
-void Util::DrawLine(const glm::vec2 start, const glm::vec2 end, const glm::vec4 colour)
+void Util::DrawLine(const glm::vec2 start, const glm::vec2 end, const glm::vec4 colour, SDL_Renderer* renderer)
 {
 	int r = floor(colour.r * 255.0f);
 	int g = floor(colour.g * 255.0f);
 	int b = floor(colour.b * 255.0f);
 	int a = floor(colour.a * 255.0f);
-
-	const auto renderer = /* TheGame::Instance()->getRenderer()*/ Renderer::Instance().getRenderer();
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	SDL_RenderDrawLine(renderer, start.x, start.y, end.x, end.y);
@@ -367,14 +365,12 @@ void Util::DrawFilledRect(const glm::vec2 position, const int width, const int h
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 colour, ShapeType type)
+void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 colour, const ShapeType type, SDL_Renderer* renderer)
 {
 	int r = floor(colour.r * 255.0f);
 	int g = floor(colour.g * 255.0f);
 	int b = floor(colour.b * 255.0f);
 	int a = floor(colour.a * 255.0f);
-
-	const auto renderer = Renderer::Instance().getRenderer();
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
 	const int diameter = floor(radius * 2.0f);
@@ -449,7 +445,7 @@ void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawCapsule(const glm::vec2 position, const int width, const int height, const glm::vec4 colour)
+void Util::DrawCapsule(const glm::vec2 position, const int width, const int height, const glm::vec4 colour, SDL_Renderer* renderer)
 {
 	int diameter;
 	int radius;
@@ -460,27 +456,27 @@ void Util::DrawCapsule(const glm::vec2 position, const int width, const int heig
 		// Horizontal Capsule
 		diameter = height;
 		radius = halfHeight * 0.5f;
-		DrawCircle(glm::vec2(position.x - halfWidth + halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_LEFT);
-		DrawCircle(glm::vec2(position.x + halfWidth - halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_RIGHT);
-		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y - halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y - halfHeight));
-		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y + halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y + halfHeight));
+		DrawCircle(glm::vec2(position.x - halfWidth + halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_LEFT, renderer);
+		DrawCircle(glm::vec2(position.x + halfWidth - halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_RIGHT, renderer);
+		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y - halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y - halfHeight), colour, renderer);
+		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y + halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y + halfHeight), colour, renderer);
 	}
 	else if (width < height)
 	{
 		// Vertical Capsule
 		diameter = width;
 		radius = halfWidth * 0.5f;
-		DrawCircle(glm::vec2(position.x, position.y - halfHeight + radius), radius, colour, SEMI_CIRCLE_TOP);
-		DrawCircle(glm::vec2(position.x, position.y + halfHeight - radius), radius, colour, SEMI_CIRCLE_BOTTOM);
-		DrawLine(glm::vec2(position.x - radius, position.y - halfHeight + radius), glm::vec2(position.x - halfWidth * 0.5f, position.y + halfHeight * 0.5f));
-		DrawLine(glm::vec2(position.x + radius, position.y - halfHeight + radius), glm::vec2(position.x + halfWidth * 0.5f, position.y + halfHeight * 0.5f));
+		DrawCircle(glm::vec2(position.x, position.y - halfHeight + radius), radius, colour, SEMI_CIRCLE_TOP, renderer);
+		DrawCircle(glm::vec2(position.x, position.y + halfHeight - radius), radius, colour, SEMI_CIRCLE_BOTTOM, renderer);
+		DrawLine(glm::vec2(position.x - radius, position.y - halfHeight + radius), glm::vec2(position.x - halfWidth * 0.5f, position.y + halfHeight * 0.5f), colour, renderer);
+		DrawLine(glm::vec2(position.x + radius, position.y - halfHeight + radius), glm::vec2(position.x + halfWidth * 0.5f, position.y + halfHeight * 0.5f), colour, renderer);
 	}
 	else
 	{
 		// Circle
 		diameter = floor(height * 2.0f);
 		radius = width;
-		DrawCircle(position, radius = halfWidth, colour);
+		DrawCircle(position, radius = halfWidth, colour, SYMMETRICAL, renderer);
 	}
 }
 

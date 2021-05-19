@@ -53,11 +53,11 @@ public:
 	static float signedAngle(glm::vec2 from, glm::vec2 to);
 
 	// debugging convenience functions
-	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), SDL_Renderer* renderer = Renderer::Instance().getRenderer());
 	static void DrawRect(glm::vec2 position, int width, int height, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), SDL_Renderer* renderer = Renderer::Instance().getRenderer());
 	static void DrawFilledRect(glm::vec2 position, int width, int height, glm::vec4 fill_colour = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), SDL_Renderer* renderer = Renderer::Instance().getRenderer());
-	static void DrawCircle(glm::vec2 centre, int radius, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), ShapeType type = SYMMETRICAL);
-	static void DrawCapsule(glm::vec2 position, int width, int height, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+	static void DrawCircle(glm::vec2 centre, int radius, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), ShapeType type = SYMMETRICAL, SDL_Renderer* renderer = Renderer::Instance().getRenderer());
+	static void DrawCapsule(glm::vec2 position, int width, int height, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), SDL_Renderer* renderer = Renderer::Instance().getRenderer());
 };
 
 
