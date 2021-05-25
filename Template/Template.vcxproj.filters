@@ -283,5 +283,8 @@
     <None Include="..\README.md">
       <Filter>DOCS</Filter>
     </None>
+    <None Include="API documentation.md">
+      <Filter>DOCS</Filter>
+    </None>
   </ItemGroup>
 </Project>

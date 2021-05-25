@@ -5,6 +5,16 @@
 #include <glm/vec4.hpp>
 #include "DisplayObject.h"
 
+
+/*
+* The agent class inherits from display object which inherits from GameObject.
+* The Agent class has variables which classes who inherit from it can use,
+* For example in decision trees Conditions are passed these variables using the
+* getters in this class. Through out your code you can set these variables
+* to change the AI character's decisions. Agent can be used for other things
+* in your game such as the player and tiles though.
+*/
+
 class Agent : public DisplayObject
 {
 public:
