@@ -4,10 +4,13 @@
 #include "Frame.h"
 #include <vector>
 
+/*
+ * A struct used by the Sprite Class to hold the data for one animation
+ */
 struct Animation
 {
-	std::string name;
-	std::vector<Frame> frames;
+	std::string name; //name 
+	std::vector<Frame> frames; // 
 	int current_frame = 0;
 };
 

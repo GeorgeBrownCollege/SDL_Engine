@@ -7,7 +7,7 @@
 
 
 /*
-* The agent class inherits from display object which inherits from GameObject.
+* The Agent class inherits from display object which inherits from GameObject.
 * The Agent class has variables which classes who inherit from it can use,
 * For example in decision trees Conditions are passed these variables using the
 * getters in this class. Through out your code you can set these variables

@@ -5,6 +5,23 @@
 #include "PlayerAnimationState.h"
 #include "Sprite.h"
 
+/*
+ *Player Class inherits from Sprite which inherits from Display Object 
+ *which inherits from GameObject. Player Class inherits from Sprite
+ *to access Sprites Animation functions. If Player Class is not animated
+ *then Player can inherit from DisplayObject which is used for non animated
+ *images. Player has the m_buildAnimations function which you
+ *can create animations in. First you must use the Singleton
+ *TextureManager Class function loadSpriteSheet to set the
+ *spritesheet .txt file which slices the the spritesheet .png which
+ *is also loaded along with the name you give the spritesheet. Next
+ *you call setSpriteSheet function from the Srite Class  in the constructor to
+ *set the spritesheet just created in the TextureManager using the
+ *TextureManager getter getSpriteSheet and pass it the name of the spritesheet.
+ *After that everything is set up to add new Animation Class objects the Sprite Class
+ *SpriteSheet object from the SpriteSheet Class.
+ */
+
 class Player final : public Sprite
 {
 public:

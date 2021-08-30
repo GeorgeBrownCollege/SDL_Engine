@@ -17,6 +17,11 @@ Animation& Sprite::getAnimation(const std::string& name)
 	return m_pAnimations[name];
 }
 
+/*
+ *
+ *
+ * 
+ */
 void Sprite::setSpriteSheet(SpriteSheet* sprite_sheet)
 {
 	m_pSpriteSheet = sprite_sheet;

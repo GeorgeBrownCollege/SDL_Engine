@@ -1,8 +1,21 @@
 #include "Player.h"
 #include "TextureManager.h"
 
+//see Player.h for Animation info
+/*
+ * Sets some variables from the Class GameObject as well. GameObject
+ * has a Rigidbody and also has a Transform. These are two structs
+ * that hold information about the player that you can use for collision
+ * and movement
+ */
 Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
 {
+	/*
+	 *atlas.txt and atlas.png are in the sprites folder and you
+	 *can add Existing item to add them to the Solution Explorer
+	 *to make them more accessible
+	 *
+	*/
 	TextureManager::Instance().loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
 		"../Assets/sprites/atlas.png", 
@@ -28,6 +41,7 @@ Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
 Player::~Player()
 = default;
 
+//draw player depending on m_currentAnimationState
 void Player::draw()
 {
 	// alias for x and y
@@ -72,6 +86,10 @@ void Player::setAnimationState(const PlayerAnimationState new_state)
 	m_currentAnimationState = new_state;
 }
 
+/*
+ * Build Animation Class objects and add them to the vector of Animation Class objects
+ * in the Sprite Class using the setAnimation function from Sprite Class
+ */
 void Player::m_buildAnimations()
 {
 	Animation idleAnimation = Animation();
