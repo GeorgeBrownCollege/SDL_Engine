@@ -16,7 +16,7 @@
  *TextureManager Class function loadSpriteSheet to set the
  *spritesheet .txt file which slices the the spritesheet .png which
  *is also loaded along with the name you give the spritesheet. Next
- *you call setSpriteSheet function from the Srite Class  in the constructor to
+ *you call setSpriteSheet function from the Sprite Class  in the constructor to
  *set the spritesheet just created in the TextureManager using the
  *TextureManager getter getSpriteSheet and pass it the name of the spritesheet.
  *After that everything is set up to add new Animation Class objects the Sprite Class

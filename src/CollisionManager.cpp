@@ -19,7 +19,8 @@ int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2)
 
 /*
  * Checks if the squaredDistance is less than the average diameter of the 2 objects squared.
- * Can be used for circle circle collision.
+ * Can be used for circle circle collision. You can also trigger sound using the SoundManager
+ * Class based on what the objectType from the base class GameObject of the object2 being collided with.
  */
 bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* object2)
 {
@@ -59,7 +60,8 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 }
 
 /*
- * Checks if 2 rectangular or square objects are colliding.
+ * Checks if 2 rectangular or square objects are colliding. You can also trigger sound using the SoundManager
+ * Class based on what the objectType is from the base class GameObject of the object2 being collided with.
  */
 bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 {
@@ -109,6 +111,7 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 	return false;
 }
 
+//Checks if 2 lines are intersecting. Used by lineRectCheck and lineRectEdgeCheck
 bool CollisionManager::lineLineCheck(const glm::vec2 line1_start, const glm::vec2 line1_end, const glm::vec2 line2_start, const glm::vec2 line2_end)
 {
 	const auto x1 = line1_start.x;
@@ -132,7 +135,10 @@ bool CollisionManager::lineLineCheck(const glm::vec2 line1_start, const glm::vec
 
 	return false;
 }
-
+/*
+ *Uses lineLineCheck to check if the line is intersecting any side of the rect.
+ *Used by lineRectCheck and lineRectEdgeCheck. This is used in the LOSCheck function.
+*/
 bool CollisionManager::lineRectCheck(const glm::vec2 line_start, const glm::vec2 line_end, const glm::vec2 rect_start, const float rect_width, const float rect_height)
 {
 	const auto x1 = line_start.x;
@@ -160,6 +166,11 @@ bool CollisionManager::lineRectCheck(const glm::vec2 line_start, const glm::vec2
 	return false;
 }
 
+/*
+ * Finds the midPoint of each edge of the rect and uses each midpoint as the end of the line for checking
+ * each side of the rect. It calls lineLineCheck to check if each line is intersecting any side of the rect.
+ * This is used in the LOSCheck function.
+ */
 bool CollisionManager::lineRectEdgeCheck(const glm::vec2 line_start, const glm::vec2 rect_start, const float rect_width, const float rect_height)
 {
 	bool state = false;
@@ -238,6 +249,12 @@ int CollisionManager::minSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec
 	return norm;
 }
 
+/*
+ * Creates a line coming from object1 from the direction that object1 is facing
+ * and uses a lineRectCheck to see if the line intersects object2. You
+ * can also trigger sound using the SoundManager Class based on what the objectType
+ * is from the base class GameObject of the object2 being collided with. 
+ */
 bool CollisionManager::lineAABBCheck(Ship* object1, GameObject* object2)
 {
 	const auto lineStart = object1->getTransform()->position;
@@ -268,6 +285,7 @@ bool CollisionManager::lineAABBCheck(Ship* object1, GameObject* object2)
 	return false;
 }
 
+//used in circleAABBCheck
 int CollisionManager::circleAABBsquaredDistance(const glm::vec2 circle_centre, int circle_radius, const glm::vec2 box_start, const int box_width, const int box_height)
 {
 	auto dx = std::max(box_start.x - circle_centre.x, 0.0f);
@@ -278,6 +296,9 @@ int CollisionManager::circleAABBsquaredDistance(const glm::vec2 circle_centre, i
 	return (dx * dx) + (dy * dy);
 }
 
+/*
+ * 
+ */
 bool CollisionManager::circleAABBCheck(GameObject* object1, GameObject* object2)
 {
 	// circle
