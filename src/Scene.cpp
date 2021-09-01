@@ -12,7 +12,11 @@ Scene::~Scene()
 	removeAllChildren();
 }
 
-
+/*
+ * Used to set to set each object added to a Scene as a child of the scene and the Scene as a
+ * parent of the child by setting m_pParentScene a variable in the DisplayObject Class. This function
+ * is also used to set the objects layer.
+ */
 void Scene::addChild(DisplayObject * child, uint32_t layer_index, std::optional<uint32_t> order_index)
 {
 	uint32_t index = 0;
@@ -31,12 +35,19 @@ void Scene::addChild(DisplayObject * child, uint32_t layer_index, std::optional<
 	m_displayList.push_back(child);
 }
 
+
+//Used to remove children of the Scene during runtime.
+ 
 void Scene::removeChild(DisplayObject * child)
 {
 	delete child;
 	m_displayList.erase(std::remove(m_displayList.begin(), m_displayList.end(), child), m_displayList.end());
 }
 
+/*
+ * Calls the destructor of every DisplayObject in the m_displayList then clears the vector
+ * of DisplayObject Class objects.
+ */
 void Scene::removeAllChildren()
 {
 	for (auto& count : m_displayList)
@@ -48,7 +59,7 @@ void Scene::removeAllChildren()
 	m_displayList.clear();
 }
 
-
+//gets the number of DisplayObjects in the scene
 int Scene::numberOfChildren() const
 {
 	return m_displayList.size();
@@ -72,6 +83,7 @@ bool Scene::sortObjects(DisplayObject * left, DisplayObject * right)
 		left->isEnabled();
 }
 
+//Calls the update function on every DisplayObject in the scene
 void Scene::updateDisplayList()
 {
 	std::sort(m_displayList.begin(), m_displayList.end(), sortObjects);
@@ -86,6 +98,7 @@ void Scene::updateDisplayList()
 	}
 }
 
+//Draws the every DisplayObject in the scene which include Sprite Class objects because they inherit from DisplayObject
 void Scene::drawDisplayList()
 {
 	std::sort(m_displayList.begin(), m_displayList.end(), sortObjects);
@@ -102,7 +115,7 @@ void Scene::drawDisplayList()
 	}
 
 }
-
+//Returns a vector of all the DisplayObjects in the Scene 
 std::vector<DisplayObject*> Scene::getDisplayList() const
 {
 	return m_displayList;

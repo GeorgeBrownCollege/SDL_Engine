@@ -310,6 +310,7 @@ float Util::signedAngle(const glm::vec2 from, const glm::vec2 to)
 	return unsigned_angle * sign;
 }
 
+//The rest of these functions are used to draw lines and shapes to debug things such as collision 
 void Util::DrawLine(const glm::vec2 start, const glm::vec2 end, const glm::vec4 colour, SDL_Renderer* renderer)
 {
 	int r = floor(colour.r * 255.0f);

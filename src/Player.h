@@ -10,7 +10,8 @@
  *which inherits from GameObject. Player Class inherits from Sprite
  *to access Sprites Animation functions. If Player Class is not animated
  *then Player can inherit from DisplayObject which is used for non animated
- *images. Player has the m_buildAnimations function which you
+ *images. In the DisplayObject Class you have to use the TextureManager to show a
+ *still image. Player has the m_buildAnimations function which you
  *can create animations in. First you must use the Singleton
  *TextureManager Class function loadSpriteSheet to set the
  *spritesheet .txt file which slices the the spritesheet .png which

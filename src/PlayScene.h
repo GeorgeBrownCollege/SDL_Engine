@@ -8,6 +8,15 @@
 #include "Button.h"
 #include "Label.h"
 
+/*
+ *PlayScene inherits from Scene which inherits from GameObject
+ *so it has a Transform struct and Rigidbody meaning you can do things
+ *like move the whole scene for shake. Everything to do with the Scene is coded in the PlayScene
+ *which lets you control all the objects in the Scene from PlayScene.cpp. The same goes
+ *for the StartScene, EndScene or any other children of Scene you Create.
+ */
+
+
 class PlayScene : public Scene
 {
 public:

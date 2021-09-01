@@ -6,7 +6,7 @@
  * Sets some variables from the Class GameObject as well. GameObject
  * has a Rigidbody and also has a Transform. These are two structs
  * that hold information about the player that you can use for collision
- * and movement
+ * and movement.
  */
 Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
 {

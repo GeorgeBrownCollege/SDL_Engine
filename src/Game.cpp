@@ -93,7 +93,7 @@ bool Game::init(const char* title, const int x, const int y, const int width, co
 
 	return true;
 }
-
+//Set what Scene the game starts in
 void Game::start()
 {
 	m_currentSceneState = NO_SCENE;
@@ -132,6 +132,9 @@ void Game::setDeltaTime(const float time)
 	m_deltaTime = time;
 }
 
+/*
+ *Called in handleEvents in a Scene to switch to another Scene 
+ */
 void Game::changeSceneState(const SceneState new_state)
 {
 	if (new_state != m_currentSceneState) {

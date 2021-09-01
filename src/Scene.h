@@ -6,7 +6,12 @@
 #include <optional>
 #include "GameObject.h"
 
-
+/*
+ *Scene Class inherits from GameObject and holds all the DisplayObject Class objects
+ *in the child Scene like PlayScene. You can add and remove the objects using the functions
+ *in this Class. This Class also calls draw and update for all the DisplayObject Class objects
+ *in the child Scene.
+ */
 class Scene : public GameObject
 {
 public:
@@ -33,7 +38,7 @@ public:
 	std::vector<DisplayObject*> getDisplayList() const;
 
 private:
-	uint32_t m_nextLayerIndex = 0;
+	uint32_t m_nextLayerIndex = 0; // keeps track of the last layer created
 	std::vector<DisplayObject*> m_displayList;
 
 	static bool sortObjects(DisplayObject* left, DisplayObject* right);

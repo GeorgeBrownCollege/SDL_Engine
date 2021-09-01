@@ -6,6 +6,7 @@
 
 /*
  * A struct used by the Sprite Class to hold the data for one animation
+ * such as run or walk.
  */
 struct Animation
 {

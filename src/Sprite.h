@@ -10,7 +10,8 @@
 /*
  *The Class Sprite is used to inherit from if the the child class needs animation.
  *If it doesn't need animation you can directly inherit from the DisplayObject Class
- *which inherits from the GameObject Class. The Class Sprite has getters and setters
+ *which inherits from the GameObject Class. If you do only use DisplayObject you must use the
+ *TextureManager directly to display the image. The Class Sprite has getters and setters
  *to set and get animations.
  */
 

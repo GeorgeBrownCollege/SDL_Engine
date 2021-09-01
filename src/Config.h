@@ -6,6 +6,11 @@
 #include <memory>
 #include "glm/vec2.hpp"
 
+/*
+ *Config Class is a static class that can be accessed
+ *publicly by other classes for important information pertaining
+ *to the configuration of the screen.
+ */
 class Config {
 public:
 	static const int SCREEN_WIDTH = 800;

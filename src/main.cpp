@@ -8,6 +8,11 @@
 const int FPS = 60;
 const int DELAY_TIME = 1000.0f / FPS;
 
+/*
+ * Runs the game loop by calling functions from TheGame which is a Type Definition
+ * or TypeDef for the Game Class. This also ensures that the game runs the same speed
+ * on computers of different speeds.
+ */
 int main(int argc, char* args[])
 {
 	Uint32 frameStart, frameTime;
@@ -26,7 +31,7 @@ int main(int argc, char* args[])
 		TheGame::Instance().handleEvents();
 		TheGame::Instance().update();
 		TheGame::Instance().render();
-
+		//Ensures that the game runs the same speed on computers of different speeds.
 		frameTime = SDL_GetTicks() - frameStart;
 		if (frameTime < DELAY_TIME)
 		{

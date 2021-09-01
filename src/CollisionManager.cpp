@@ -3,7 +3,11 @@
 #include <algorithm>
 
 
-
+/*
+ *Similar to how you get the hypotenuse or magnitude between 2 positions
+ *but stopping before you square root result to use the result in a different way
+ *like in the squaredRadiusCheck.
+ */
 int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2)
 {
 	const int diffOfXs = p2.x - p1.x;
@@ -13,14 +17,19 @@ int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2)
 	return result;
 }
 
+/*
+ * Checks if the squaredDistance is less than the average diameter of the 2 objects squared.
+ * Can be used for circle circle collision.
+ */
 bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* object2)
 {
 	glm::vec2 P1 = object1->getTransform()->position;
 	glm::vec2 P2 = object2->getTransform()->position;
+	//halfHeights gets the average diameter of the to objects 
 	const int halfHeights = (object1->getHeight() + object2->getHeight()) * 0.5f;
 
 	//if (glm::distance(P1, P2) < halfHeights) {
-
+	//checks if the squared distance is less than the average diameter meaning the 2 objects are colliding
 	if (CollisionManager::squaredDistance(P1, P2) < (halfHeights * halfHeights)) {
 		if (!object2->getRigidBody()->isColliding) {
 
@@ -49,6 +58,9 @@ bool CollisionManager::squaredRadiusCheck(GameObject* object1, GameObject* objec
 	}
 }
 
+/*
+ * Checks if 2 rectangular or square objects are colliding.
+ */
 bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 {
 	// prepare relevant variables

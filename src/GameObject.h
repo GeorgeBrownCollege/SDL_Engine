@@ -9,7 +9,14 @@
 // enums
 #include "GameObjectType.h"
 
-
+/*
+ *GameObject is the base Class for every object in the engine.
+ *It contains the draw, update and clean pure vuirtual functions that the
+ *child Classes use. It also contains the structs Rigidbody and Transform
+ *which are used for movement and collision by the child Classes such as Player.
+ *There is also variables for size, enabling the object or whether the object is
+ *visible or not.
+ */
 class GameObject {
 public:
 	GameObject();

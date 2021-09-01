@@ -16,22 +16,39 @@ PlayScene::PlayScene()
 PlayScene::~PlayScene()
 = default;
 
+/*
+ *Draws everything in the Scene Class vector of DisplayObject Class objects which
+ *includes Sprite Class objects because they inherit from the DisplayObject Class.
+ *Also renders the background colour using a builtin SDL function.
+ */
 void PlayScene::draw()
 {
 	drawDisplayList();
 	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
 }
 
+/*
+ * Calls the update function in every object that is in the vector of DisplayObject Class objects
+ * in the Scene Class.
+ */
 void PlayScene::update()
 {
 	updateDisplayList();
 }
 
+/*
+ *Calls a function from the inherited Scene Class which
+ *calls the destructor of every object in the vector of DisplayObject
+ *Class objects in the Scene Class and also clears the vector afterward.
+ */
 void PlayScene::clean()
 {
 	removeAllChildren();
 }
 
+/*
+ *Deal with Player input here 
+ */
 void PlayScene::handleEvents()
 {
 	EventManager::Instance().update();
@@ -109,7 +126,10 @@ void PlayScene::handleEvents()
 		TheGame::Instance().changeSceneState(END_SCENE);
 	}
 }
-
+/*
+ *Instantiates the new objects in the Scene and adds every object in the Scene to the vector of DisplayObject
+ *Class objects in the Scene Class. start also sets up IMGUI.
+ */
 void PlayScene::start()
 {
 	// Set GUI Title

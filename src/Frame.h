@@ -3,6 +3,11 @@
 #define __FRAME__
 #include <string>
 
+/*
+ * Frame is a struct that holds the needed data
+ * for one frame sliced out of a sprite sheet.
+ */
+
 struct Frame
 {
 	std::string name;
