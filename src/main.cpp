@@ -17,7 +17,7 @@ int main(int argc, char* args[])
 	AllocConsole();
 	freopen("CON", "w", stdout);
 
-	TheGame::Instance().init("SDLEngine v0.26", 100, 100, 800, 600, false);
+	TheGame::Instance().init("SDLEngine v0.27", 100, 100, 800, 600, false);
 
 	while (TheGame::Instance().isRunning())
 	{

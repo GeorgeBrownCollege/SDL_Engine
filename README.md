@@ -1,11 +1,9 @@
-# SDL Engine v0.26
+# SDL Engine v0.27
 
 Latest Changes
 ---------------
-- Upgraded ImGui to latest version (v1.82)
-- Modified Util class to allow drawing functions to work in any window
-- Fixed ImGui window not clearing bug with a hack
-- Fixed EventManger Bug that would allow a button events to trigger from the ImGui window
+- Added **keyPressed** and **keyReleased** functions for single-frame keyboard events 
+- Added **mousePressed** and **mouseReleased** for single-frame mouse events
 
 Known Bugs
 ---------------
@@ -13,6 +11,13 @@ Known Bugs
 - UIButton Events a little janky when being clicked
 
 ## Previous Versions
+
+### v0.26
+---------------
+- Upgraded ImGui to latest version (v1.82)
+- Modified Util class to allow drawing functions to work in any window
+- Fixed ImGui window not clearing bug with a hack
+- Fixed EventManger Bug that would allow a button events to trigger from the ImGui window
 
 ### v0.25
 ---------------
