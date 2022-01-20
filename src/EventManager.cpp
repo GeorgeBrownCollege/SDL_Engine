@@ -26,6 +26,10 @@ void EventManager::update()
         }
 
         SDL_Event event;
+
+        std::memcpy(m_keysLast, m_keysCurr, m_numKeys);
+        m_mouseLast = m_mouseCurr;
+
         while (SDL_PollEvent(&event))
         {
             switch (event.type)
@@ -138,6 +142,10 @@ void EventManager::update()
             }
         }
 
+        m_keysCurr = SDL_GetKeyboardState(&m_numKeys);
+        SDL_Point mousePos = { (int)m_mousePosition.x, (int)m_mousePosition.y };
+        m_mouseCurr = SDL_GetMouseState(&mousePos.x, &mousePos.y);
+
         m_io.DeltaTime = 1.0f / 60.0f;
         int mouseX, mouseY;
         const int buttons = SDL_GetMouseState(&mouseX, &mouseY);
@@ -208,6 +216,16 @@ void EventManager::onKeyUp()
     m_keyStates = SDL_GetKeyboardState(nullptr);
 }
 
+bool EventManager::keyPressed(const SDL_Scancode c)
+{
+    return (m_keysCurr[c] > m_keysLast[c]);
+}
+
+bool EventManager::keyReleased(const SDL_Scancode c)
+{
+    return (m_keysCurr[c] < m_keysLast[c]);
+}
+
 void EventManager::onMouseMove(SDL_Event& event)
 {
     m_mousePosition.x = event.motion.x;
@@ -253,6 +271,16 @@ void EventManager::onMouseButtonUp(SDL_Event& event)
 void EventManager::onMouseWheel(SDL_Event& event)
 {
     m_mouseWheel = event.wheel.y;
+}
+
+bool EventManager::mousePressed(const int b) const
+{
+    return ((m_mouseCurr & SDL_BUTTON(b)) > (m_mouseLast & SDL_BUTTON(b)));
+}
+
+bool EventManager::mouseReleased(const int b) const
+{
+    return ((m_mouseCurr & SDL_BUTTON(b)) < (m_mouseLast & SDL_BUTTON(b)));
 }
 
 void EventManager::m_initializeControllers()
@@ -339,6 +367,13 @@ EventManager::EventManager() :
     {
         mouseButtonState = false;
     }
+
+    m_keysCurr = SDL_GetKeyboardState(&m_numKeys);
+    m_keysLast = new Uint8[m_numKeys];
+    std::memcpy(m_keysLast, m_keysCurr, m_numKeys);
+    SDL_Point mousePos = { (int)m_mousePosition.x, (int)m_mousePosition.y };
+    m_mouseCurr = SDL_GetMouseState(&mousePos.x, &mousePos.y);
+    m_mouseLast = m_mouseCurr;
 
     m_initializeControllers();
 

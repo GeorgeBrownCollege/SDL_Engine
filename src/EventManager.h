@@ -30,10 +30,17 @@ public:
 	bool isKeyDown(SDL_Scancode key) const;
 	bool isKeyUp(SDL_Scancode key) const;
 
+	// one-shot keyboard events
+	bool keyPressed(const SDL_Scancode c);
+	bool keyReleased(const SDL_Scancode c);
+
 	// mouse events
 	bool getMouseButton(int button_number) const;
 	glm::vec2 getMousePosition() const;
 	int getMouseWheel() const;
+
+	bool mousePressed(const int b) const;
+	bool mouseReleased(const int b) const;
 
 	// gamecontroller events
 	GameController* getGameController(int controller_number);
@@ -78,10 +85,19 @@ private:
 	// keyboard states array
 	const Uint8* m_keyStates;
 
+	// keyboard state containers
+	const Uint8* m_keysCurr;
+	Uint8* m_keysLast;
+	int m_numKeys;
+
 	// mouse specific
 	bool m_mouseButtons[3];
 	glm::vec2 m_mousePosition;
 	int m_mouseWheel;
+
+	// mouse state containers
+	Uint32 m_mouseCurr;
+	Uint32 m_mouseLast;
 
 	// GameControllers
 	std::vector<GameController*> m_pGameControllers;
