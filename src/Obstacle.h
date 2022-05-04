@@ -10,7 +10,7 @@ public:
 	Obstacle();
 	
 	// destructor
-	~Obstacle();
+	~Obstacle() override;
 	
 	// life cycle functions
 	void Draw() override;

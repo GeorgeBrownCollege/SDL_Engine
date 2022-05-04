@@ -39,7 +39,7 @@ float Util::Clamp(float value, const float min, const float max)
 }
 
 /** This method confines a vector magnitude to the max_length parameter */
-glm::vec2 Util::Clamp(glm::vec2 vec, const float max_length)
+glm::vec2 Util::Clamp(const glm::vec2 vec, const float max_length)
 {
 	if (const auto sqr_magnitude = Util::SquaredMagnitude(vec); sqr_magnitude > max_length * max_length)
 	{
@@ -73,10 +73,10 @@ float Util::Clamp01(const float value)
 /**
 * Returns the Euclidean distance of vecA and vecB
 */
-float Util::Distance(const glm::vec2 vecA, const glm::vec2 vecB)
+float Util::Distance(const glm::vec2 vec_a, const glm::vec2 vec_b)
 {
-	const auto x = vecB.x - vecA.x;
-	const auto y = vecB.y - vecA.y;
+	const auto x = vec_b.x - vec_a.x;
+	const auto y = vec_b.y - vec_a.y;
 	return sqrt((x * x) + (y * y));
 }
 
@@ -84,10 +84,10 @@ float Util::Distance(const glm::vec2 vecA, const glm::vec2 vecB)
 * Returns the Squared Euclidean distance of vecA and vecB
 * No Square Root
 */
-float Util::SquaredDistance(const glm::vec2 vecA, const glm::vec2 vecB)
+float Util::SquaredDistance(const glm::vec2 vec_a, const glm::vec2 vec_b)
 {
-	const auto x = vecB.x - vecA.x;
-	const auto y = vecB.y - vecA.y;
+	const auto x = vec_b.x - vec_a.x;
+	const auto y = vec_b.y - vec_a.y;
 	return (x * x) + (y * y);
 }
 
@@ -106,7 +106,7 @@ float Util::Magnitude(const glm::vec2 vec)
 * Returns the squared Magnitude of a vec2
 * No Square Root
 */
-float Util::SquaredMagnitude(glm::vec2 vec)
+float Util::SquaredMagnitude(const glm::vec2 vec)
 {
 	const auto x = vec.x;
 	const auto y = vec.y;
@@ -203,12 +203,9 @@ float Util::Sanitize(float value)
 * and returns them in dest or returns the result in a new vec2
 *
 */
-glm::vec2 Util::Min(const glm::vec2 vecA, const glm::vec2 vecB)
+glm::vec2 Util::Min(const glm::vec2 vec_a, const glm::vec2 vec_b)
 {
-	glm::vec2 dest;
-	dest.x = glm::min(vecA.x, vecB.x);
-	dest.y = glm::min(vecA.y, vecB.y);
-	return dest;
+	return { glm::min(vec_a.x, vec_b.x) , glm::min(vec_a.y, vec_b.y) };
 }
 
 float Util::Min(const float a, const float b)
@@ -221,15 +218,12 @@ float Util::Min(const float a, const float b)
 * and returns the result in dest or returns the result as a new vec2
 *
 */
-glm::vec2 Util::Max(const glm::vec2 vecA, const glm::vec2 vecB)
+glm::vec2 Util::Max(const glm::vec2 vec_a, const glm::vec2 vec_b)
 {
-	glm::vec2  dest;
-	dest.x = glm::max(vecA.x, vecB.x);
-	dest.y = glm::max(vecA.y, vecB.y);
-	return dest;
+	return { glm::max(vec_a.x, vec_b.x), glm::max(vec_a.y, vec_b.y)};
 }
 
-float Util::Max(float a, float b)
+float Util::Max(const float a, const float b)
 {
 	return a > b ? a : b;
 }
@@ -240,10 +234,7 @@ float Util::Max(float a, float b)
 */
 glm::vec2 Util::Negate(const glm::vec2 vec)
 {
-	glm::vec2 dest;
-	dest.x = -vec.x;
-	dest.y = -vec.y;
-	return dest;
+	return { -vec.x, -vec.y };
 }
 
 /**
@@ -252,10 +243,7 @@ glm::vec2 Util::Negate(const glm::vec2 vec)
 */
 glm::vec2 Util::Inverse(const glm::vec2 vec)
 {
-	glm::vec2 dest;
-	dest.x = 1.0 / vec.x;
-	dest.y = 1.0 / vec.y;
-	return dest;
+	return {1.0f / vec.x, 1.0f / vec.y};
 }
 
 
@@ -268,8 +256,9 @@ glm::vec2 Util::Normalize(const glm::vec2 vec)
 	glm::vec2 dest;
 	const auto x = vec.x;
 	const auto y = vec.y;
-	if (auto length = (x * x) + (y * y); length > 0) {
-		length = 1.0 / sqrt(length);
+	if (auto length = (x * x) + (y * y); length > 0) 
+	{
+		length = 1.0f / sqrt(length);
 		dest.x = vec.x * length;
 		dest.y = vec.y * length;
 	}
@@ -281,7 +270,7 @@ glm::vec2 Util::Normalize(const glm::vec2 vec)
 */
 float Util::Angle(const glm::vec2 from, const glm::vec2 to)
 {
-	return acos(Util::Clamp(Util::Dot(Util::Normalize(from), Util::Normalize(to)), -1.0f, 1.0f)) * 57.29578f;
+	return acos(Clamp(Dot(Normalize(from), Normalize(to)), -1.0f, 1.0f)) * 57.29578f;
 }
 
 /**
@@ -301,117 +290,98 @@ float Util::SignedAngle(const glm::vec2 from, const glm::vec2 to)
 
 void Util::DrawLine(const glm::vec2 start, const glm::vec2 end, const glm::vec4 colour, SDL_Renderer* renderer)
 {
-	int r = floor(colour.r * 255.0f);
-	int g = floor(colour.g * 255.0f);
-	int b = floor(colour.b * 255.0f);
-	int a = floor(colour.a * 255.0f);
+	const auto [r, g, b, a] = ToSDLColour(colour);
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	SDL_RenderDrawLine(renderer, start.x, start.y, end.x, end.y);
+	SDL_RenderDrawLineF(renderer, start.x, start.y, end.x, end.y);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
 void Util::DrawRect(const glm::vec2 position, const int width, const int height, const glm::vec4 colour, SDL_Renderer* renderer)
 {
-	int r = floor(colour.r * 255.0f);
-	int g = floor(colour.g * 255.0f);
-	int b = floor(colour.b * 255.0f);
-	int a = floor(colour.a * 255.0f);
+	const auto [r, g, b, a] = ToSDLColour(colour);
 
-	SDL_Rect rectangle;
+	SDL_FRect rectangle{};
 	rectangle.x = position.x;
 	rectangle.y = position.y;
-	rectangle.w = width;
-	rectangle.h = height;
+	rectangle.w = static_cast<float>(width);
+	rectangle.h = static_cast<float>(height);
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	SDL_RenderDrawRect(renderer, &rectangle);
+	SDL_RenderDrawRectF(renderer, &rectangle);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
 void Util::DrawFilledRect(const glm::vec2 position, const int width, const int height, const glm::vec4 fill_colour, SDL_Renderer* renderer)
 {
-	int r = floor(fill_colour.r * 255.0f);
-	int g = floor(fill_colour.g * 255.0f);
-	int b = floor(fill_colour.b * 255.0f);
-	int a = floor(fill_colour.a * 255.0f);
+	const auto [r, g, b, a] = ToSDLColour(fill_colour);
 
-	SDL_Rect rectangle;
+	SDL_FRect rectangle{};
 	rectangle.x = position.x;
 	rectangle.y = position.y;
-	rectangle.w = width;
-	rectangle.h = height;
+	rectangle.w = static_cast<float>(width);
+	rectangle.h = static_cast<float>(height);
 
-	/* Declaring the surface. */
-	SDL_Surface* surface;
-
-	/* Creating the surface. */
-	surface = SDL_CreateRGBSurface(0, width, height, 32, 0, 0, 0, 0);
-		
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	SDL_FillRect(surface, nullptr, SDL_MapRGB(surface->format, r, g, b));
-	SDL_RenderDrawRect(renderer, &rectangle);
+	SDL_RenderFillRectF(renderer, &rectangle);
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 colour, const ShapeType type, SDL_Renderer* renderer)
+void Util::DrawCircle(const glm::vec2 centre, const float radius, const glm::vec4 colour, const ShapeType type, SDL_Renderer* renderer)
 {
-	int r = floor(colour.r * 255.0f);
-	int g = floor(colour.g * 255.0f);
-	int b = floor(colour.b * 255.0f);
-	int a = floor(colour.a * 255.0f);
+	const auto [r, g, b, a] = ToSDLColour(colour);
 
 	SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	const int diameter = floor(radius * 2.0f);
+	const float diameter = floor(radius * 2.0f);
 
-	int x = (radius - 1);
-	int y = 0;
-	int tx = 1;
-	int ty = 1;
-	int error = (tx - diameter);
+	float x = (radius - 1);
+	float y = 0.0f;
+	float tx = 1;
+	float ty = 1;
+	float error = (tx - diameter);
 
 	while (x >= y)
 	{
 		switch (type)
 		{
-		case SEMI_CIRCLE_TOP:
+		case ShapeType::SEMI_CIRCLE_TOP:
 			//  Each of the following renders an octant of the circle
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y - x);
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y - x);
 			break;
-		case SEMI_CIRCLE_BOTTOM:
+		case ShapeType::SEMI_CIRCLE_BOTTOM:
 			//  Each of the following renders an octant of the circle
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y + y); // bottom right
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y + y); // bottom left
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y + x); // bottom right
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y + x); // bottom left
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y + y); // bottom right
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y + y); // bottom left
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y + x); // bottom right
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y + x); // bottom left
 			break;
-		case SEMI_CIRCLE_LEFT:
+		case ShapeType::SEMI_CIRCLE_LEFT:
 			//  Each of the following renders an octant of the circle
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y + y);
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y - x);
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y + x);
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y + y);
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y + x);
 			break;
-		case SEMI_CIRCLE_RIGHT:
+		case ShapeType::SEMI_CIRCLE_RIGHT:
 			//  Each of the following renders an octant of the circle
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y + y);
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y - x);
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y + x);
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y + y);
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y + x);
 			break;
-		case SYMMETRICAL:
+		case ShapeType::SYMMETRICAL:
 			//  Each of the following renders an octant of the circle
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x + x, centre.y + y);
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y - y);
-			SDL_RenderDrawPoint(renderer, centre.x - x, centre.y + y);
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y - x);
-			SDL_RenderDrawPoint(renderer, centre.x + y, centre.y + x);
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y - x);
-			SDL_RenderDrawPoint(renderer, centre.x - y, centre.y + x);
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x + x, centre.y + y);
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y - y);
+			SDL_RenderDrawPointF(renderer, centre.x - x, centre.y + y);
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x + y, centre.y + x);
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y - x);
+			SDL_RenderDrawPointF(renderer, centre.x - y, centre.y + x);
 			break;
 		}
 
@@ -436,33 +406,60 @@ void Util::DrawCircle(const glm::vec2 centre, const int radius, const glm::vec4 
 
 void Util::DrawCapsule(const glm::vec2 position, const int width, const int height, const glm::vec4 colour, SDL_Renderer* renderer)
 {
-	int radius;
-	const int halfWidth = floor(width * 0.5f);
-	const int halfHeight = floor(height * 0.5f);
+	float radius;
+	const float half_width = floor(static_cast<float>(width) * 0.5f);
+	const float half_height = floor(static_cast<float>(height) * 0.5f);
 	if (width > height)
 	{
 		// Horizontal Capsule
-		radius = halfHeight * 0.5f;
-		DrawCircle(glm::vec2(position.x - halfWidth + halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_LEFT, renderer);
-		DrawCircle(glm::vec2(position.x + halfWidth - halfHeight, position.y), halfHeight, colour, SEMI_CIRCLE_RIGHT, renderer);
-		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y - halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y - halfHeight), colour, renderer);
-		DrawLine(glm::vec2(position.x - halfWidth + halfHeight, position.y + halfHeight), glm::vec2(position.x + halfWidth - halfHeight, position.y + halfHeight), colour, renderer);
+		DrawCircle(glm::vec2(position.x - half_width + half_height, position.y), half_height, colour, ShapeType::SEMI_CIRCLE_LEFT, renderer);
+		DrawCircle(glm::vec2(position.x + half_width - half_height, position.y), half_height, colour, ShapeType::SEMI_CIRCLE_RIGHT, renderer);
+		DrawLine(glm::vec2(position.x - half_width + half_height, position.y - half_height), glm::vec2(position.x + half_width - half_height, position.y - half_height), colour, renderer);
+		DrawLine(glm::vec2(position.x - half_width + half_height, position.y + half_height), glm::vec2(position.x + half_width - half_height, position.y + half_height), colour, renderer);
 	}
 	else if (width < height)
 	{
 		// Vertical Capsule
-		radius = halfWidth * 0.5f;
-		DrawCircle(glm::vec2(position.x, position.y - halfHeight + radius), radius, colour, SEMI_CIRCLE_TOP, renderer);
-		DrawCircle(glm::vec2(position.x, position.y + halfHeight - radius), radius, colour, SEMI_CIRCLE_BOTTOM, renderer);
-		DrawLine(glm::vec2(position.x - radius, position.y - halfHeight + radius), glm::vec2(position.x - halfWidth * 0.5f, position.y + halfHeight * 0.5f), colour, renderer);
-		DrawLine(glm::vec2(position.x + radius, position.y - halfHeight + radius), glm::vec2(position.x + halfWidth * 0.5f, position.y + halfHeight * 0.5f), colour, renderer);
+		radius = half_width * 0.5f;
+		DrawCircle(glm::vec2(position.x, position.y - half_height + radius), radius, colour, ShapeType::SEMI_CIRCLE_TOP, renderer);
+		DrawCircle(glm::vec2(position.x, position.y + half_height - radius), radius, colour, ShapeType::SEMI_CIRCLE_BOTTOM, renderer);
+		DrawLine(glm::vec2(position.x - radius, position.y - half_height + radius), glm::vec2(position.x - half_width * 0.5f, position.y + half_height * 0.5f), colour, renderer);
+		DrawLine(glm::vec2(position.x + radius, position.y - half_height + radius), glm::vec2(position.x + half_width * 0.5f, position.y + half_height * 0.5f), colour, renderer);
 	}
 	else
 	{
 		// Circle
-		radius = width;
-		DrawCircle(position, radius = halfWidth, colour, SYMMETRICAL, renderer);
+		DrawCircle(position, radius = half_width, colour, ShapeType::SYMMETRICAL, renderer);
 	}
 }
 
+float Util::GetClosestEdge(const glm::vec2 vec_a, GameObject* object)
+{
+	const auto width = static_cast<float>(object->GetWidth());
+	const auto height = static_cast<float>(object->GetHeight());
 
+	const auto target_offset = glm::vec2(width * 0.5f, height * 0.5f);
+	const auto target_top_left = object->GetTransform()->position - target_offset;
+	SDL_Rect rect = { static_cast<int>(target_top_left.x), static_cast<int>(target_top_left.y), object->GetWidth(), object->GetHeight() };
+
+	const glm::vec2 sides[4] = { { rect.x + rect.w / 2, rect.y }, // top
+						   { rect.x + rect.w / 2, rect.y + rect.h }, // bottom
+						   { rect.x, rect.y + rect.h / 2 }, // left
+						   { rect.x + rect.w, rect.y + rect.h / 2 } }; // right
+	float dist = Distance(vec_a, sides[0]);
+	for (int i = 1; i < 4; i++)
+	{
+		dist = Min(Distance(vec_a, sides[i]), dist);
+	}
+	return dist;
+}
+
+SDL_Color Util::ToSDLColour(const glm::vec4 colour)
+{
+	SDL_Color color{};
+	color.r = static_cast<Uint8>(floor(colour.r * 255.0f));
+	color.g = static_cast<Uint8>(floor(colour.g * 255.0f));
+	color.b = static_cast<Uint8>(floor(colour.b * 255.0f));
+	color.a = static_cast<Uint8>(floor(colour.a * 255.0f));
+	return color;
+}
