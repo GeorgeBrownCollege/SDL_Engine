@@ -43,6 +43,7 @@ public:
 	// animation functions
 	void AnimateFrames(int frame_width, int frame_height, int frame_number, int row_number, float speed_factor, int& current_frame, int& current_row) const;
 	void PlayAnimation(const std::string& sprite_sheet_name, Animation& animation, int x, int y, float speed_factor, double angle, int alpha, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void PlayAnimation(const std::string& sprite_sheet_name, Animation& animation, glm::vec2 position, float speed_factor, double angle, int alpha, bool centered = false, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	SpriteSheet* GetSpriteSheet(const std::string& name);
 
 	// texture utility functions

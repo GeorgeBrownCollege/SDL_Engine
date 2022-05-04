@@ -22,7 +22,7 @@ Plane::Plane()
 	GetRigidBody()->isColliding = false;
 	SetType(GameObjectType::PLANE);
 
-	m_buildAnimations();
+	BuildAnimations();
 }
 
 Plane::~Plane()
@@ -30,14 +30,9 @@ Plane::~Plane()
 
 void Plane::Draw()
 {
-	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
-
 	// draw the plane sprite with simple propeller animation
-	TextureManager::Instance().PlayAnimation(
-		"spritesheet", GetAnimation("plane"),
-		x, y, 0.5f, 0, 255, true);
+	TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("plane"),
+		GetTransform()->position, 0.5f, 0, 255, true);
 }
 
 void Plane::Update()
@@ -48,14 +43,14 @@ void Plane::Clean()
 {
 }
 
-void Plane::m_buildAnimations()
+void Plane::BuildAnimations()
 {
-	Animation planeAnimation = Animation();
+	auto plane_animation = Animation();
 
-	planeAnimation.name = "plane";
-	planeAnimation.frames.push_back(GetSpriteSheet()->GetFrame("plane1"));
-	planeAnimation.frames.push_back(GetSpriteSheet()->GetFrame("plane2"));
-	planeAnimation.frames.push_back(GetSpriteSheet()->GetFrame("plane3"));
+	plane_animation.name = "plane";
+	plane_animation.frames.push_back(GetSpriteSheet()->GetFrame("plane1"));
+	plane_animation.frames.push_back(GetSpriteSheet()->GetFrame("plane2"));
+	plane_animation.frames.push_back(GetSpriteSheet()->GetFrame("plane3"));
 
-	SetAnimation(planeAnimation);
+	SetAnimation(plane_animation);
 }
