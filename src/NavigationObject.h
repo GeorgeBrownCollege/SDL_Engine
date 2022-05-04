@@ -10,7 +10,7 @@ public:
 	NavigationObject();
 	
 	// Destructor
-	~NavigationObject();
+	~NavigationObject() override;
 
 	// Inherited from DisplayObject
 	void Draw() override = 0;

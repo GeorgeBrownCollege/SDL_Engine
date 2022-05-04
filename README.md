@@ -1,16 +1,27 @@
-# SDL Engine v0.27
+# SDL Engine v0.28
 
 Latest Changes
+---------------
+- Refactored all classes so that function names are now Upper Case
+- Added Convenience functions to TextureManager to make it easier to Draw and Animate
+- Added NavigationObject class
+- Converted all enums to enum classes
+- Updated to Current Version of SDL 2.0.22
+- Updated to Current Version of SDL_TTF 2.0.18
+- Upgraded ImGui to latest version (v1.87)
+
+
+Known Bugs
+---------------
+- UIButton Events still a little janky when being clicked
+
+## Previous Versions
+
+### v0.27
 ---------------
 - Added **keyPressed** and **keyReleased** functions for single-frame keyboard events 
 - Added **mousePressed** and **mouseReleased** for single-frame mouse events
 
-Known Bugs
----------------
-- When FontManager is converted to Magic Static Singleton type, it crashes app on exit
-- UIButton Events a little janky when being clicked
-
-## Previous Versions
 
 ### v0.26
 ---------------

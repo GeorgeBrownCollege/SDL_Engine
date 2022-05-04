@@ -12,7 +12,7 @@ class UIControl : public DisplayObject
 {
 public:
 	UIControl();
-	virtual ~UIControl();
+	~UIControl() override;
 	
 	virtual void Draw() = 0;
 	virtual void Update() = 0;

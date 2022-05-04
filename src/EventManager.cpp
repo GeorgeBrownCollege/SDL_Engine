@@ -21,7 +21,7 @@ void EventManager::Update()
         {
             if (SDL_GameControllerGetAttached(controller->handle))
             {
-                controller->update();
+                controller->Update();
             }
         }
 

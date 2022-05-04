@@ -6,10 +6,10 @@
 
 struct GameController
 {
-	GameController(SDL_GameController* controller);
+	explicit GameController(SDL_GameController* controller);
 	~GameController();
 
-	void update();
+	void Update();
 
 	SDL_GameController* handle;
 

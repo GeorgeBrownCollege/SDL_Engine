@@ -10,7 +10,7 @@ class SpriteSheet
 {
 public:
 	SpriteSheet(std::string name, SDL_Texture* texture);
-	SpriteSheet(std::string name);
+	explicit SpriteSheet(std::string name);
 	~SpriteSheet();
 
 	// getters

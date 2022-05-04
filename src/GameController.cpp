@@ -10,7 +10,7 @@ GameController::GameController(SDL_GameController* controller):
 GameController::~GameController()
 = default;
 
-void GameController::update()
+void GameController::Update()
 {
     // DPAD Buttons
     DPAD_UP = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_DPAD_UP);
