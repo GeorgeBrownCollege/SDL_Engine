@@ -2,7 +2,7 @@
 #ifndef __COLLISION_SHAPE__
 #define __COLLISION_SHAPE__
 
-enum CollisionShape
+enum class CollisionShape
 {
 	NO_COLLIDER,
 	CIRCLE,

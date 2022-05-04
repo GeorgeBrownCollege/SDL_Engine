@@ -3,4 +3,5 @@
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=IMGUI/@EntryIndexedValue">IMGUI</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=LOS/@EntryIndexedValue">LOS</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CppNaming/Abbreviations/=SDL/@EntryIndexedValue">SDL</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=Consolas/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=megaman/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

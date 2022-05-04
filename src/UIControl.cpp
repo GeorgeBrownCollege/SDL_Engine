@@ -38,15 +38,15 @@ void UIControl::OnMouseOver()
 		m_mouseOver = false;
 	}
 
-	if ((m_events[MOUSE_OVER]) && (!m_mouseOverActive))
+	if ((m_events[Event::MOUSE_OVER]) && (!m_mouseOverActive))
 	{
 		if (m_mouseOver)
 		{
-			m_events[MOUSE_OVER]();
+			m_events[Event::MOUSE_OVER]();
 			m_mouseOverActive = true;
 		}
 	}
-	else if ((m_events[MOUSE_OVER]) && (!m_mouseOver))
+	else if ((m_events[Event::MOUSE_OVER]) && (!m_mouseOver))
 	{
 		m_mouseOverActive = false;
 	}
@@ -54,12 +54,12 @@ void UIControl::OnMouseOver()
 
 void UIControl::OnMouseOut()
 {
-	if ((m_events[MOUSE_OUT]) && (m_mouseOutActive) && (!m_mouseOver))
+	if ((m_events[Event::MOUSE_OUT]) && (m_mouseOutActive) && (!m_mouseOver))
 	{
-		m_events[MOUSE_OUT]();
+		m_events[Event::MOUSE_OUT]();
 		m_mouseOutActive = false;
 	}
-	else if ((m_events[MOUSE_OUT]) && (m_mouseOver))
+	else if ((m_events[Event::MOUSE_OUT]) && (m_mouseOver))
 	{
 		m_mouseOutActive = true;
 	}
@@ -69,10 +69,10 @@ void UIControl::OnLeftMouseButtonClick()
 {
 	if (EventManager::Instance().GetMouseButton(static_cast<int>(MouseButtons::LEFT)))
 	{
-		if ((m_events[CLICK]) && (m_mouseOver) && !m_leftMouseButtonClicked)
+		if ((m_events[Event::CLICK]) && (m_mouseOver) && !m_leftMouseButtonClicked)
 		{
 			m_leftMouseButtonClicked = true;
-			m_events[CLICK](); // call click event
+			m_events[Event::CLICK](); // call click event
 		}
 	}
 	else
