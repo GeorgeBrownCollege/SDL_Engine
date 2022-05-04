@@ -96,17 +96,17 @@ void PlayScene::HandleEvents()
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance().Quit();
+		Game::Instance().Quit();
 	}
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
-		TheGame::Instance().ChangeSceneState(SceneState::START_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::START_SCENE);
 	}
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
 	{
-		TheGame::Instance().ChangeSceneState(SceneState::END_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::END_SCENE);
 	}
 }
 
@@ -130,7 +130,7 @@ void PlayScene::Start()
 	m_pBackButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pBackButton->setActive(false);
-		TheGame::Instance().ChangeSceneState(SceneState::START_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::START_SCENE);
 	});
 
 	m_pBackButton->AddEventListener(MOUSE_OVER, [&]()->void
@@ -150,7 +150,7 @@ void PlayScene::Start()
 	m_pNextButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pNextButton->setActive(false);
-		TheGame::Instance().ChangeSceneState(SceneState::END_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::END_SCENE);
 	});
 
 	m_pNextButton->AddEventListener(MOUSE_OVER, [&]()->void

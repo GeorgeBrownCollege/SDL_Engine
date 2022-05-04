@@ -31,23 +31,19 @@ bool TextureManager::Load(const std::string & file_name, const std::string & id)
 		return true;
 	}
 
-	const auto pTempSurface(Config::MakeResource(IMG_Load(file_name.c_str())));
-
-
-	if (pTempSurface == nullptr)
+	const auto temp_surface(Config::MakeResource(IMG_Load(file_name.c_str())));
+	if (temp_surface == nullptr)
 	{
 		return false;
 	}
 
-	const auto pTexture(Config::MakeResource(SDL_CreateTextureFromSurface(Renderer::Instance().GetRenderer(), pTempSurface.get())));
-
 	// everything went ok, add the texture to our list
-	if (pTexture != nullptr)
+	if (const auto texture(Config::MakeResource(SDL_CreateTextureFromSurface(Renderer::Instance().GetRenderer(), temp_surface.get()))); 
+		texture != nullptr)
 	{
-		m_textureMap[id] = pTexture;
+		m_textureMap[id] = texture;
 		return true;
 	}
-
 	return false;
 }
 
@@ -63,7 +59,7 @@ bool TextureManager::LoadSpriteSheet(
 	data_file.open(data_file_name, std::ios::in);
 
 	// create a new spritesheet object and allocate memory for it
-	auto spriteSheet = new SpriteSheet(sprite_sheet_name);
+	auto sprite_sheet = new SpriteSheet(sprite_sheet_name);
 
 	// if the file successfully opened
 	if (data_file)
@@ -90,7 +86,7 @@ bool TextureManager::LoadSpriteSheet(
 			frame.h = std::stoi(tokens[4]);
 
 			// add the new frame to the spritesheet
-			spriteSheet->AddFrame(frame);
+			sprite_sheet->AddFrame(frame);
 		}
 	}
 	else
@@ -105,13 +101,13 @@ bool TextureManager::LoadSpriteSheet(
 	Load(texture_file_name, sprite_sheet_name);
 
 	// get a pointer to the Texture and store it in the new spritesheet object
-	spriteSheet->SetTexture(GetTexture(sprite_sheet_name));
+	sprite_sheet->SetTexture(GetTexture(sprite_sheet_name));
 
 	// store the new spritesheet in the spriteSheetMap
-	m_spriteSheetMap[sprite_sheet_name] = spriteSheet;
+	m_spriteSheetMap[sprite_sheet_name] = sprite_sheet;
 
 	// cleanup
-	spriteSheet = nullptr;
+	sprite_sheet = nullptr;
 
 	return true;
 }
@@ -133,8 +129,8 @@ void TextureManager::Draw(const std::string & id, const int x, const int y, cons
 	src_rect.h = dest_rect.h = texture_height;
 
 	if (centered) {
-		const int x_offset = texture_width * 0.5;
-		const int y_offset = texture_height * 0.5;
+		const auto x_offset = static_cast<int>(texture_width * 0.5);
+		const auto y_offset = static_cast<int>(texture_height * 0.5);
 		dest_rect.x = x - x_offset;
 		dest_rect.y = y - y_offset;
 	}
@@ -143,7 +139,7 @@ void TextureManager::Draw(const std::string & id, const int x, const int y, cons
 		dest_rect.y = y;
 	}
 
-	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
+	SDL_SetTextureAlphaMod(m_textureMap[id].get(), static_cast<Uint8>(alpha));
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
@@ -159,17 +155,14 @@ void TextureManager::Draw(const std::string& id, const int x, const int y, const
 	SDL_Rect dest_rect{};
 
 	int texture_width, texture_height;
-
 	SDL_QueryTexture(m_textureMap[id].get(), nullptr, nullptr, &texture_width, &texture_height);
-
 	src_rect = { 0, 0, texture_width, texture_height };
-
 	dest_rect.w = go->GetWidth();
 	dest_rect.h = go->GetHeight();
 
 	if (centered) {
-		const int x_offset = dest_rect.w * 0.5;
-		const int y_offset = dest_rect.h * 0.5;
+		const int x_offset = static_cast<int>(dest_rect.w * 0.5);
+		const int y_offset = static_cast<int>(dest_rect.h * 0.5);
 		dest_rect.x = x - x_offset;
 		dest_rect.y = y - y_offset;
 	}
@@ -178,14 +171,14 @@ void TextureManager::Draw(const std::string& id, const int x, const int y, const
 		dest_rect.y = y;
 	}
 
-	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
+	SDL_SetTextureAlphaMod(m_textureMap[id].get(), static_cast<Uint8>(alpha));
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
 void TextureManager::DrawFrame(const std::string & id, const int x, const int y, const int frame_width,
                                const int frame_height, int& current_row,
-                               int& current_frame, int frame_number, int row_number,
-                               float speed_factor, const double angle,
+                               int& current_frame, const int frame_number, const int row_number,
+                               const float speed_factor, const double angle,
                                const int alpha, const bool centered, const SDL_RendererFlip flip)
 {
 	AnimateFrames(frame_width, frame_height, frame_number, row_number, speed_factor, current_frame, current_row);
@@ -211,8 +204,8 @@ void TextureManager::DrawFrame(const std::string & id, const int x, const int y,
 	dest_rect.h = texture_height;
 
 	if (centered) {
-		const int x_offset = texture_width * 0.5;
-		const int y_offset = texture_height * 0.5;
+		const int x_offset = static_cast<int>(dest_rect.w * 0.5);
+		const int y_offset = static_cast<int>(dest_rect.h * 0.5);
 		dest_rect.x = x - x_offset;
 		dest_rect.y = y - y_offset;
 	}
@@ -221,19 +214,18 @@ void TextureManager::DrawFrame(const std::string & id, const int x, const int y,
 		dest_rect.y = y;
 	}
 
-	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
+	SDL_SetTextureAlphaMod(m_textureMap[id].get(), static_cast<Uint8>(alpha));
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
-void TextureManager::AnimateFrames(int frame_width, int frame_height, const int frame_number, const int row_number, const float speed_factor, int& current_frame, int& current_row)
+void TextureManager::AnimateFrames(int frame_width, int frame_height, const int frame_number, const int row_number, const float speed_factor, int& current_frame, int& current_row) const
 {
 	const auto total_frames = static_cast<float>(frame_number * row_number);
 	const int animation_rate = static_cast<int>(round(total_frames / 2.0f / speed_factor));
 
-
 	if (frame_number > 1)
 	{
-		if (TheGame::Instance().GetFrames() % animation_rate == 0)
+		if (Game::Instance().GetFrames() % animation_rate == 0)
 		{
 			current_frame++;
 			if (current_frame > frame_number - 1)
@@ -260,10 +252,10 @@ void TextureManager::PlayAnimation(
 
 	if (total_frames > 1)
 	{
-		if (TheGame::Instance().GetFrames() % animation_rate == 0)
+		if (Game::Instance().GetFrames() % animation_rate == 0)
 		{
 			animation.current_frame++;
-			if (animation.current_frame > total_frames - 1)
+			if (static_cast<float>(animation.current_frame) > total_frames - 1)
 			{
 				animation.current_frame = 0;
 			}
@@ -291,8 +283,8 @@ void TextureManager::PlayAnimation(
 	dest_rect.h = texture_height;
 
 	if (centered) {
-		const int x_offset = texture_width * 0.5;
-		const int y_offset = texture_height * 0.5;
+		const int x_offset = static_cast<int>(dest_rect.w * 0.5);
+		const int y_offset = static_cast<int>(dest_rect.h * 0.5);
 		dest_rect.x = x - x_offset;
 		dest_rect.y = y - y_offset;
 	}
@@ -301,7 +293,7 @@ void TextureManager::PlayAnimation(
 		dest_rect.y = y;
 	}
 
-	SDL_SetTextureAlphaMod(m_textureMap[sprite_sheet_name].get(), alpha);
+	SDL_SetTextureAlphaMod(m_textureMap[sprite_sheet_name].get(), static_cast<Uint8>(alpha));
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[sprite_sheet_name].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
@@ -322,8 +314,8 @@ void TextureManager::DrawText(const std::string & id, const int x, const int y, 
 	src_rect.h = dest_rect.h = texture_height;
 
 	if (centered) {
-		const int x_offset = texture_width * 0.5;
-		const int y_offset = texture_height * 0.5;
+		const int x_offset = static_cast<int>(dest_rect.w * 0.5);
+		const int y_offset = static_cast<int>(dest_rect.h * 0.5);
 		dest_rect.x = x - x_offset;
 		dest_rect.y = y - y_offset;
 	}
@@ -332,7 +324,7 @@ void TextureManager::DrawText(const std::string & id, const int x, const int y, 
 		dest_rect.y = y;
 	}
 
-	SDL_SetTextureAlphaMod(m_textureMap[id].get(), alpha);
+	SDL_SetTextureAlphaMod(m_textureMap[id].get(), static_cast<Uint8>(alpha));
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
@@ -389,7 +381,7 @@ void TextureManager::RemoveTexture(const std::string & id)
 
 int TextureManager::GetTextureMapSize() const
 {
-	return m_textureMap.size();
+	return static_cast<int>(m_textureMap.size());
 }
 
 void TextureManager::Clean()

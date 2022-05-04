@@ -75,7 +75,6 @@ private:
 	std::shared_ptr<SDL_Window> m_pWindow;
 };
 
-typedef Game TheGame;
 
 #endif /* defined (__GAME__) */
 

@@ -35,7 +35,7 @@ void EventManager::Update()
             switch (event.type)
             {
             case SDL_QUIT:
-                TheGame::Instance().Quit();
+                Game::Instance().Quit();
                 break;
 
             case SDL_MOUSEMOTION:
@@ -125,7 +125,7 @@ void EventManager::Update()
                     }
                     else
                     {
-                        TheGame::Instance().Quit();
+                        Game::Instance().Quit();
                     }
                     break;
                 case SDL_WINDOWEVENT_FOCUS_GAINED:
