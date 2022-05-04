@@ -63,7 +63,7 @@
     <ClCompile Include="..\src\Label.cpp">
       <Filter>UI Objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\ship.cpp">
+    <ClCompile Include="..\src\Ship.cpp">
       <Filter>Game Objects</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Target.cpp">
@@ -188,7 +188,7 @@
     <ClInclude Include="..\src\Label.h">
       <Filter>UI Objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\ship.h">
+    <ClInclude Include="..\src\Ship.h">
       <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Target.h">

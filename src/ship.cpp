@@ -1,4 +1,4 @@
-#include "ship.h"
+#include "Ship.h"
 #include "glm/gtx/string_cast.hpp"
 #include "PlayScene.h"
 #include "TextureManager.h"
@@ -8,9 +8,9 @@ Ship::Ship() : m_maxSpeed(10.0f)
 {
 	TextureManager::Instance().Load("../Assets/textures/ship3.png", "ship");
 
-	auto size = TextureManager::Instance().GetTextureSize("ship");
-	SetWidth(size.x);
-	SetHeight(size.y);
+	const auto size = TextureManager::Instance().GetTextureSize("ship");
+	SetWidth(static_cast<int>(size.x));
+	SetHeight(static_cast<int>(size.y));
 
 	GetTransform()->position = glm::vec2(400.0f, 300.0f);
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
@@ -32,12 +32,8 @@ Ship::~Ship()
 
 void Ship::Draw()
 {
-	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
-
 	// draw the ship
-	TextureManager::Instance().Draw("ship", x, y, GetCurrentHeading(), 255, true);
+	TextureManager::Instance().Draw("ship", GetTransform()->position, GetCurrentHeading(), 255, true);
 
 	// draw LOS
 	Util::DrawLine(GetTransform()->position, GetTransform()->position + GetCurrentDirection() * GetLOSDistance(), GetLOSColour());
@@ -54,7 +50,7 @@ void Ship::Clean()
 {
 }
 
-void Ship::turnRight()
+void Ship::TurnRight()
 {
 	SetCurrentHeading(GetCurrentHeading() + m_turnRate);
 	if (GetCurrentHeading() >= 360)
@@ -63,7 +59,7 @@ void Ship::turnRight()
 	}
 }
 
-void Ship::turnLeft()
+void Ship::TurnLeft()
 {
 	SetCurrentHeading(GetCurrentHeading() - m_turnRate);
 	if (GetCurrentHeading() < 0)
@@ -72,33 +68,33 @@ void Ship::turnLeft()
 	}
 }
 
-void Ship::moveForward()
+void Ship::MoveForward()
 {
 	GetRigidBody()->velocity = GetCurrentDirection() * m_maxSpeed;
 }
 
-void Ship::moveBack()
+void Ship::MoveBack()
 {
 	GetRigidBody()->velocity = GetCurrentDirection() * -m_maxSpeed;
 }
 
-void Ship::move()
+void Ship::Move()
 {
 	GetTransform()->position += GetRigidBody()->velocity;
 	GetRigidBody()->velocity *= 0.9f;
 }
 
-float Ship::getMaxSpeed() const
+float Ship::GetMaxSpeed() const
 {
 	return m_maxSpeed;
 }
 
-void Ship::setMaxSpeed(float newSpeed)
+void Ship::SetMaxSpeed(const float new_speed)
 {
-	m_maxSpeed = newSpeed;
+	m_maxSpeed = new_speed;
 }
 
-void Ship::m_checkBounds()
+void Ship::CheckBounds()
 {
 
 	if (GetTransform()->position.x > Config::SCREEN_WIDTH)
@@ -123,12 +119,12 @@ void Ship::m_checkBounds()
 
 }
 
-void Ship::m_reset()
+void Ship::Reset()
 {
 	GetRigidBody()->isColliding = false;
-	const int halfWidth = GetWidth() * 0.5f;
-	const auto xComponent = rand() % (640 - GetWidth()) + halfWidth + 1;
-	const auto yComponent = -GetHeight();
-	GetTransform()->position = glm::vec2(xComponent, yComponent);
+	const int half_width = static_cast<int>(GetWidth() * 0.5);
+	const auto x_component = rand() % (640 - GetWidth()) + half_width + 1;
+	const auto y_component = -GetHeight();
+	GetTransform()->position = glm::vec2(x_component, y_component);
 }
 

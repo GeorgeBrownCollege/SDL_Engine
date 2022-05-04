@@ -4,7 +4,7 @@
 
 #include "Scene.h"
 #include "Label.h"
-#include "ship.h"
+#include "Ship.h"
 #include "Button.h"
 
 class StartScene final : public Scene

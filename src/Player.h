@@ -9,7 +9,7 @@ class Player final : public Sprite
 {
 public:
 	Player();
-	~Player();
+	~Player() override;
 
 	// Life Cycle Methods
 	virtual void Draw() override;

@@ -11,29 +11,29 @@ class Ship final : public Agent
 {
 public:
 	Ship();
-	~Ship();
+	~Ship() override;
 
 	// Inherited via GameObject
 	void Draw() override;
 	void Update() override;
 	void Clean() override;
 
-	void turnRight();
-	void turnLeft();
-	void moveForward();
-	void moveBack();
+	void TurnRight();
+	void TurnLeft();
+	void MoveForward();
+	void MoveBack();
 
-	void move();
+	void Move();
 
 	// getters
-	float getMaxSpeed() const;
+	[[nodiscard]] float GetMaxSpeed() const;
 
 	// setters
-	void setMaxSpeed(float newSpeed);
+	void SetMaxSpeed(float new_speed);
 
 private:
-	void m_checkBounds();
-	void m_reset();
+	void CheckBounds();
+	void Reset();
 
 	float m_maxSpeed;
 	float m_turnRate;

@@ -183,7 +183,7 @@
     <ClCompile Include="..\src\Player.cpp" />
     <ClCompile Include="..\src\Renderer.cpp" />
     <ClCompile Include="..\src\Scene.cpp" />
-    <ClCompile Include="..\src\ship.cpp" />
+    <ClCompile Include="..\src\Ship.cpp" />
     <ClCompile Include="..\src\SoundManager.cpp" />
     <ClCompile Include="..\src\EventManager.cpp" />
     <ClCompile Include="..\src\SpriteSheet.cpp" />
@@ -233,7 +233,7 @@
     <ClInclude Include="..\src\Scene.h" />
     <ClInclude Include="..\src\SceneState.h" />
     <ClInclude Include="..\src\ShapeType.h" />
-    <ClInclude Include="..\src\ship.h" />
+    <ClInclude Include="..\src\Ship.h" />
     <ClInclude Include="..\src\SoundManager.h" />
     <ClInclude Include="..\src\SpriteSheet.h" />
     <ClInclude Include="..\src\StartScene.h" />
