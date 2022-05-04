@@ -8,9 +8,9 @@ Obstacle::Obstacle()
 {
 	TextureManager::Instance().Load("../Assets/textures/obstacle.png", "obstacle");
 
-	auto size = TextureManager::Instance().GetTextureSize("obstacle");
-	SetWidth(size.x);
-	SetHeight(size.y);
+	const auto size = TextureManager::Instance().GetTextureSize("obstacle");
+	SetWidth(static_cast<int>(size.x));
+	SetHeight(static_cast<int>(size.y));
 
 	GetTransform()->position = glm::vec2(300.0f, 300.0f);
 
@@ -25,8 +25,7 @@ Obstacle::~Obstacle()
 
 void Obstacle::Draw()
 {
-	TextureManager::Instance().Draw("obstacle",
-		GetTransform()->position.x, GetTransform()->position.y, 0, 255, true);
+	TextureManager::Instance().Draw("obstacle", GetTransform()->position, 0, 255, true);
 }
 
 void Obstacle::Update()
