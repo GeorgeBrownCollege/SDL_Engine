@@ -5,9 +5,9 @@
 
 struct RigidBody
 {
-	float mass;
+	float mass = 0.0f;
 	glm::vec2 velocity;
 	glm::vec2 acceleration;
-	bool isColliding;
+	bool isColliding = false;
 };
 #endif /* defined (__RIGID_BODY__) */

@@ -6,67 +6,67 @@
 
 StartScene::StartScene()
 {
-	StartScene::start();
+	StartScene::Start();
 }
 
 StartScene::~StartScene()
 = default;
 
-void StartScene::draw()
+void StartScene::Draw()
 {
-	drawDisplayList();
+	DrawDisplayList();
 }
 
-void StartScene::update()
+void StartScene::Update()
 {
-	updateDisplayList();
+	UpdateDisplayList();
 }
 
-void StartScene::clean()
+void StartScene::Clean()
 {
-	removeAllChildren();
+	RemoveAllChildren();
 }
 
-void StartScene::handleEvents()
+void StartScene::HandleEvents()
 {
-	EventManager::Instance().update();
+	EventManager::Instance().Update();
 
 	// Keyboard Events
-	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
+	if(EventManager::Instance().IsKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance().quit();
+		TheGame::Instance().Quit();
 	}
 
-	if(EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
+	if(EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
-		TheGame::Instance().changeSceneState(PLAY_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
 	}
 }
 
-void StartScene::start()
+void StartScene::Start()
 {
 	const SDL_Color blue = { 0, 0, 255, 255 };
 	m_pStartLabel = new Label("START SCENE", "Consolas", 80, blue, glm::vec2(400.0f, 40.0f));
-	m_pStartLabel->setParent(this);
-	addChild(m_pStartLabel);
+	m_pStartLabel->SetParent(this);
+	AddChild(m_pStartLabel);
 
 	m_pInstructionsLabel = new Label("Press 1 to Play", "Consolas", 40, blue, glm::vec2(400.0f, 120.0f));
-	m_pInstructionsLabel->setParent(this);
-	addChild(m_pInstructionsLabel);
+	m_pInstructionsLabel->SetParent(this);
+	AddChild(m_pInstructionsLabel);
 
 
 	m_pShip = new Ship();
-	m_pShip->getTransform()->position = glm::vec2(400.0f, 300.0f); 
-	addChild(m_pShip); 
+	m_pShip->GetTransform()->position = glm::vec2(400.0f, 300.0f); 
+	AddChild(m_pShip); 
 
 	// Start Button
 	m_pStartButton = new Button();
-	m_pStartButton->getTransform()->position = glm::vec2(400.0f, 400.0f); 
+	m_pStartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f); 
 
 	m_pStartButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pStartButton->setActive(false);
-		TheGame::Instance().changeSceneState(PLAY_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
 	});
 	
 	m_pStartButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -78,8 +78,8 @@ void StartScene::start()
 	{
 		m_pStartButton->setAlpha(255);
 	});
-	addChild(m_pStartButton);
+	AddChild(m_pStartButton);
 
-	ImGuiWindowFrame::Instance().setDefaultGUIFunction();
+	ImGuiWindowFrame::Instance().SetDefaultGuiFunction();
 }
 

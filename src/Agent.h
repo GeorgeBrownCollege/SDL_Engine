@@ -12,28 +12,28 @@ public:
 	~Agent();
 
 	// Inherited via GameObject
-	void draw() override = 0;
-	void update() override = 0;
-	void clean() override = 0;
+	void Draw() override = 0;
+	void Update() override = 0;
+	void Clean() override = 0;
 
 	// getters
-	glm::vec2 getTargetPosition() const;
-	glm::vec2 getCurrentDirection() const;
-	float getLOSDistance() const;
-	bool hasLOS() const;
-	float getCurrentHeading() const;
-	glm::vec4 getLOSColour() const;
+	[[nodiscard]] glm::vec2 GetTargetPosition() const;
+	[[nodiscard]] glm::vec2 GetCurrentDirection() const;
+	[[nodiscard]] float GetLOSDistance() const;
+	[[nodiscard]] bool HasLOS() const;
+	[[nodiscard]] float GetCurrentHeading() const;
+	[[nodiscard]] glm::vec4 GetLOSColour() const;
 
 	// setters
-	void setTargetPosition(glm::vec2 new_position);
-	void setCurrentDirection(glm::vec2 new_direction);
-	void setLOSDistance(float distance);
-	void setHasLOS(bool state);
-	void setCurrentHeading(float heading);
-	void setLOSColour(glm::vec4 colour);
+	void SetTargetPosition(glm::vec2 new_position);
+	void SetCurrentDirection(glm::vec2 new_direction);
+	void SetLOSDistance(float distance);
+	void SetHasLOS(bool state);
+	void SetCurrentHeading(float heading);
+	void SetLOSColour(glm::vec4 colour);
 
 private:
-	void m_changeDirection();
+	void ChangeDirection();
 	float m_currentHeading;
 	glm::vec2 m_currentDirection;
 	glm::vec2 m_targetPosition;

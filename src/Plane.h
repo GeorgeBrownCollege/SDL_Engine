@@ -11,9 +11,9 @@ public:
 	~Plane();
 
 	// Life Cycle Functions
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
 
 private:
 	void m_buildAnimations();

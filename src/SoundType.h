@@ -2,7 +2,7 @@
 #ifndef __SOUND_TYPE__
 #define __SOUND_TYPE__
 
-enum SoundType
+enum class SoundType
 {
 	SOUND_MUSIC = 0,
 	SOUND_SFX = 1,

@@ -13,9 +13,9 @@ public:
 	~Obstacle();
 	
 	// life cycle functions
-	void draw() override;
-	void update() override;
-	void clean() override;
+	void Draw() override;
+	void Update() override;
+	void Clean() override;
 private:
 	
 };

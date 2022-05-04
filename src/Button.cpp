@@ -18,31 +18,31 @@ Button::Button(const std::string& image_path, std::string button_name, const Gam
                const glm::vec2 position, const bool is_centered):
 m_alpha(255), m_name(std::move(button_name)), m_isCentered(is_centered), m_active(true)
 {
-	TextureManager::Instance().load(image_path,m_name);
+	TextureManager::Instance().Load(image_path,m_name);
 
-	const auto size = TextureManager::Instance().getTextureSize(m_name);
-	setWidth(size.x);
-	setHeight(size.y);
-	getTransform()->position = position;
-	setType(type);
+	const auto size = TextureManager::Instance().GetTextureSize(m_name);
+	SetWidth(size.x);
+	SetHeight(size.y);
+	GetTransform()->position = position;
+	SetType(type);
 }
 
 Button::~Button()
 = default;
 
-void Button::draw()
+void Button::Draw()
 {
 	// alias for x and y
-	const auto x = getTransform()->position.x;
-	const auto y = getTransform()->position.y;
+	const auto x = GetTransform()->position.x;
+	const auto y = GetTransform()->position.y;
 
 	// draw the button
-	TextureManager::Instance().draw(m_name, x, y, 0, m_alpha, m_isCentered);
+	TextureManager::Instance().Draw(m_name, x, y, 0, m_alpha, m_isCentered);
 }
 
-void Button::update()
+void Button::Update()
 {
-	if(EventManager::Instance().isMainWindowInFocus())
+	if(EventManager::Instance().IsMainWindowInFocus())
 	{
 		//check if mouse is over the Button
 		onMouseOver();
@@ -56,7 +56,7 @@ void Button::update()
 	
 }
 
-void Button::clean()
+void Button::Clean()
 {
 }
 

@@ -28,9 +28,9 @@ UIControl::EventHandler UIControl::getEventHandler(Event event)
 
 void UIControl::onMouseOver()
 {
-	const auto mousePosition = EventManager::Instance().getMousePosition();
+	const auto mousePosition = EventManager::Instance().GetMousePosition();
 	
-	if (CollisionManager::pointRectCheck(mousePosition, getTransform()->position, getWidth(), getHeight()))
+	if (CollisionManager::PointRectCheck(mousePosition, GetTransform()->position, GetWidth(), GetHeight()))
 	{
 		m_mouseOver = true;
 	}
@@ -68,7 +68,7 @@ void UIControl::onMouseOut()
 
 void UIControl::onLeftMouseButtonClick()
 {
-	if (EventManager::Instance().getMouseButton(LEFT))
+	if (EventManager::Instance().GetMouseButton(LEFT))
 	{
 		if ((m_events[CLICK]) && (m_mouseOver) && !m_leftMouseButtonClicked)
 		{

@@ -14,9 +14,9 @@ public:
 	UIControl();
 	virtual ~UIControl();
 	
-	virtual void draw() = 0;
-	virtual void update() = 0;
-	virtual void clean() = 0;
+	virtual void Draw() = 0;
+	virtual void Update() = 0;
+	virtual void Clean() = 0;
 
 	typedef std::function<void()> EventHandler;
 	bool addEventListener(Event event, const EventHandler& handler);

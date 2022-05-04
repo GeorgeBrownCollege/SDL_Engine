@@ -14,9 +14,9 @@ public:
 	~Label();
 
 	// Inherited via GameObject
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
 
 	void setText(const std::string& new_text);
 	void setColour(SDL_Color new_colour) const;

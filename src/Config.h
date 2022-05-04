@@ -8,15 +8,15 @@
 
 class Config {
 public:
-	static const int SCREEN_WIDTH = 800;
-	static const int SCREEN_HEIGHT = 600;
-	static const int ROW_NUM = 15;
-	static const int COL_NUM = 20;
-	static const int TILE_SIZE = 40;
-	static const int TILE_COST = 1;
-	static const int MINE_NUM = 50;
-	static const int SCORE = 0;
-	static const int LIVES = 5;
+	static constexpr int SCREEN_WIDTH = 800;
+	static constexpr int SCREEN_HEIGHT = 600;
+	static constexpr int ROW_NUM = 15;
+	static constexpr int COL_NUM = 20;
+	static constexpr int TILE_SIZE = 40;
+	static constexpr int TILE_COST = 1;
+	static constexpr int MINE_NUM = 50;
+	static constexpr int SCORE = 0;
+	static constexpr int LIVES = 5;
 
 	// Define Custom Deleters for shared_ptr types
 	static void SDL_DelRes(SDL_Window* r) { SDL_DestroyWindow(r); }
@@ -27,7 +27,7 @@ public:
 
 	// template function to create and return shared_ptr instance
 	template <typename T>
-	static std::shared_ptr<T> make_resource(T* t) {
+	static std::shared_ptr<T> MakeResource(T* t) {
 		return std::shared_ptr<T>(t, [](T* t) { Config::SDL_DelRes(t); });
 	}
 

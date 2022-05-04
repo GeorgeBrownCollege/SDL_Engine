@@ -9,32 +9,32 @@ Label::Label(const std::string& text, const std::string& font_name, const int fo
 
 	m_buildFontID();
 
-	FontManager::Instance()->load(m_fontPath, m_fontID, font_size, font_style);
-	FontManager::Instance()->textToTexture(text, m_fontID, m_fontID, colour);
-	const auto size = TextureManager::Instance().getTextureSize(m_fontID);
-	setWidth(size.x);
-	setHeight(size.y);
-	getTransform()->position = position;
+	FontManager::Instance().Load(m_fontPath, m_fontID, font_size, font_style);
+	FontManager::Instance().TextToTexture(text, m_fontID, m_fontID, colour);
+	const auto size = TextureManager::Instance().GetTextureSize(m_fontID);
+	SetWidth(size.x);
+	SetHeight(size.y);
+	GetTransform()->position = position;
 }
 
 Label::~Label()
 = default;
 
-void Label::draw()
+void Label::Draw()
 {
 	// alias for x and y
-	const auto x = getTransform()->position.x;
-	const auto y = getTransform()->position.y;
+	const auto x = GetTransform()->position.x;
+	const auto y = GetTransform()->position.y;
 
 	// draw the label
-	TextureManager::Instance().drawText(m_fontID, x, y, 0, 255, m_isCentered);
+	TextureManager::Instance().DrawText(m_fontID, x, y, 0, 255, m_isCentered);
 }
 
-void Label::update()
+void Label::Update()
 {
 }
 
-void Label::clean()
+void Label::Clean()
 {
 
 }
@@ -46,17 +46,17 @@ void Label::setText(const std::string& new_text)
 
 	m_buildFontID();
 
-	FontManager::Instance()->load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);
-	FontManager::Instance()->textToTexture(new_text, m_fontID, m_fontID, m_fontColour);
-	const auto size = TextureManager::Instance().getTextureSize(m_fontID);
-	setWidth(size.x);
-	setHeight(size.y);
+	FontManager::Instance().Load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);
+	FontManager::Instance().TextToTexture(new_text, m_fontID, m_fontID, m_fontColour);
+	const auto size = TextureManager::Instance().GetTextureSize(m_fontID);
+	SetWidth(size.x);
+	SetHeight(size.y);
 }
 
 void Label::setColour(const SDL_Color new_colour) const
 {
-	FontManager::Instance()->load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);
-	FontManager::Instance()->textToTexture(m_text, m_fontID, m_fontID, new_colour);
+	FontManager::Instance().Load(m_fontPath, m_fontID, m_fontSize, m_fontStyle);
+	FontManager::Instance().TextToTexture(m_text, m_fontID, m_fontID, new_colour);
 }
 
 void Label::setSize(const int new_size)
@@ -65,11 +65,11 @@ void Label::setSize(const int new_size)
 
 	m_buildFontID();
 	
-	FontManager::Instance()->load(m_fontPath, m_fontID, m_fontSize, TTF_STYLE_NORMAL);
-	FontManager::Instance()->textToTexture(m_text, m_fontID, m_fontID, m_fontColour);
-	const auto size = TextureManager::Instance().getTextureSize(m_fontID);
-	setWidth(size.x);
-	setHeight(size.y);
+	FontManager::Instance().Load(m_fontPath, m_fontID, m_fontSize, TTF_STYLE_NORMAL);
+	FontManager::Instance().TextToTexture(m_text, m_fontID, m_fontID, m_fontColour);
+	const auto size = TextureManager::Instance().GetTextureSize(m_fontID);
+	SetWidth(size.x);
+	SetHeight(size.y);
 }
 
 void Label::m_buildFontID()

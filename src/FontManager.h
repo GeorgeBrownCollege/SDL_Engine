@@ -17,27 +17,24 @@
 class FontManager
 {
 public:
-	static FontManager* Instance()
+	static FontManager& Instance()
 	{
-		if (s_pInstance == nullptr)
-		{
-			s_pInstance = new FontManager();
-		}
-		return s_pInstance;
+		static FontManager instance; // Magic statics
+		return instance;
 	}
 
-	bool load(const std::string& file_name, const std::string& id, int size, int style = TTF_STYLE_NORMAL);
-	bool textToTexture(const std::string& text, const std::string& font_id, const std::string& texture_id, SDL_Color colour = { 0, 0, 0, 255 });
-	TTF_Font* getFont(const std::string& id);
-	void clean();
+	bool Load(const std::string& file_name, const std::string& id, int size, int style = TTF_STYLE_NORMAL);
+	bool TextToTexture(const std::string& text, const std::string& font_id, const std::string& texture_id, SDL_Color colour = { 0, 0, 0, 255 });
+	TTF_Font* GetFont(const std::string& id);
+	void Clean();
 
-	void displayFontMap();
+	void DisplayFontMap();
 
 private:
 	FontManager();
 	~FontManager();
 
-	bool m_exists(const std::string& id);
+	bool CheckIfFontExists(const std::string& id);
 
 	std::unordered_map<std::string, std::shared_ptr<TTF_Font>> m_fontMap;
 

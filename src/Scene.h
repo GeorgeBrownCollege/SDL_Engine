@@ -15,28 +15,28 @@ public:
 	virtual ~Scene();
 
 	// Inherited via GameObject
-	virtual void draw() override = 0;
-	virtual void update() override = 0;
-	virtual void clean() override = 0;
-	virtual void handleEvents() = 0;
-	virtual void start() = 0;
+	virtual void Draw() override = 0;
+	virtual void Update() override = 0;
+	virtual void Clean() override = 0;
+	virtual void HandleEvents() = 0;
+	virtual void Start() = 0;
 
-	void addChild(DisplayObject* child, uint32_t layer_index = 0, std::optional<uint32_t> order_index = std::nullopt);
-	void removeChild(DisplayObject* child);
+	void AddChild(DisplayObject* child, uint32_t layer_index = 0, std::optional<uint32_t> order_index = std::nullopt);
+	void RemoveChild(DisplayObject* child);
 
-	void removeAllChildren();
-	int numberOfChildren() const;
+	void RemoveAllChildren();
+	[[nodiscard]] int NumberOfChildren() const;
 
-	void updateDisplayList();
-	void drawDisplayList();
+	void UpdateDisplayList();
+	void DrawDisplayList();
 
-	std::vector<DisplayObject*> getDisplayList() const;
+	[[nodiscard]] std::vector<DisplayObject*> GetDisplayList() const;
 
 private:
 	uint32_t m_nextLayerIndex = 0;
 	std::vector<DisplayObject*> m_displayList;
 
-	static bool sortObjects(DisplayObject* left, DisplayObject* right);
+	static bool SortObjects(DisplayObject* left, DisplayObject* right);
 };
 
 #endif /* defined (__SCENE__) */

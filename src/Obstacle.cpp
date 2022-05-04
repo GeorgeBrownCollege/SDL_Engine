@@ -6,33 +6,33 @@
 
 Obstacle::Obstacle()
 {
-	TextureManager::Instance().load("../Assets/textures/obstacle.png", "obstacle");
+	TextureManager::Instance().Load("../Assets/textures/obstacle.png", "obstacle");
 
-	auto size = TextureManager::Instance().getTextureSize("obstacle");
-	setWidth(size.x);
-	setHeight(size.y);
+	auto size = TextureManager::Instance().GetTextureSize("obstacle");
+	SetWidth(size.x);
+	SetHeight(size.y);
 
-	getTransform()->position = glm::vec2(300.0f, 300.0f);
+	GetTransform()->position = glm::vec2(300.0f, 300.0f);
 
-	setType(OBSTACLE);
-	getRigidBody()->isColliding = false;
+	SetType(OBSTACLE);
+	GetRigidBody()->isColliding = false;
 
-	SoundManager::Instance().load("../Assets/audio/yay.ogg", "yay", SOUND_SFX);
+	SoundManager::Instance().Load("../Assets/audio/yay.ogg", "yay", SoundType::SOUND_SFX);
 }
 
 Obstacle::~Obstacle()
 = default;
 
-void Obstacle::draw()
+void Obstacle::Draw()
 {
-	TextureManager::Instance().draw("obstacle",
-		getTransform()->position.x, getTransform()->position.y, 0, 255, true);
+	TextureManager::Instance().Draw("obstacle",
+		GetTransform()->position.x, GetTransform()->position.y, 0, 255, true);
 }
 
-void Obstacle::update()
+void Obstacle::Update()
 {
 }
 
-void Obstacle::clean()
+void Obstacle::Clean()
 {
 }

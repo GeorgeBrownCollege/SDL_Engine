@@ -4,52 +4,52 @@
 SoundManager::SoundManager()
 {
 	Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048);
-	panReset();
+	PanReset();
 }
 
 SoundManager::~SoundManager()
 = default;
 
-void SoundManager::allocateChannels(const int channels) const
+void SoundManager::AllocateChannels(const int channels) const
 {
 	Mix_AllocateChannels(channels);
 }
 
-bool SoundManager::load(const std::string & file_name, const std::string & id, const SoundType type)
+bool SoundManager::Load(const std::string & file_name, const std::string & id, const SoundType type)
 {
-	if (type == SOUND_MUSIC)
+	if (type == SoundType::SOUND_MUSIC)
 	{
-		Mix_Music* pMusic = Mix_LoadMUS(file_name.c_str());
-		if (pMusic == nullptr)
+		Mix_Music* music = Mix_LoadMUS(file_name.c_str());
+		if (music == nullptr)
 		{
 			std::cout << "Could not load music: ERROR - " << Mix_GetError() << std::endl;
 			return false;
 		}
-		m_music[id] = pMusic;
+		m_music[id] = music;
 		return true;
 	}
-	else if (type == SOUND_SFX)
+	else if (type == SoundType::SOUND_SFX)
 	{
-		Mix_Chunk* pChunk = Mix_LoadWAV(file_name.c_str());
-		if (pChunk == nullptr)
+		Mix_Chunk* chunk = Mix_LoadWAV(file_name.c_str());
+		if (chunk == nullptr)
 		{
 			std::cout << "Could not load SFX: ERROR - " << Mix_GetError() << std::endl;
 			return false;
 		}
-		m_sfxs[id] = pChunk;
+		m_sfxs[id] = chunk;
 		return true;
 	}
 	return false;
 }
 
-void SoundManager::unload(const std::string & id, const SoundType type)
+void SoundManager::Unload(const std::string & id, const SoundType type)
 {
-	if (type == SOUND_MUSIC && m_music.find(id) != m_music.end())
+	if (type == SoundType::SOUND_MUSIC && m_music.find(id) != m_music.end())
 	{
 		Mix_FreeMusic(m_music[id]);
 		m_music.erase(id);
 	}
-	else if (type == SOUND_SFX && m_sfxs.find(id) != m_sfxs.end())
+	else if (type == SoundType::SOUND_SFX && m_sfxs.find(id) != m_sfxs.end())
 	{
 		Mix_FreeChunk(m_sfxs[id]);
 		m_sfxs.erase(id);
@@ -60,7 +60,7 @@ void SoundManager::unload(const std::string & id, const SoundType type)
 	}
 }
 
-void SoundManager::playMusic(const std::string & id, const int loop/* = -1 */, const int fade_in/* = 0 */)
+void SoundManager::PlayMusic(const std::string & id, const int loop/* = -1 */, const int fade_in/* = 0 */)
 {
 	std::cout << "Playing music..." << fade_in << std::endl;
 	if (Mix_FadeInMusic(m_music[id], loop, fade_in) == -1)
@@ -69,7 +69,7 @@ void SoundManager::playMusic(const std::string & id, const int loop/* = -1 */, c
 	}
 }
 
-void SoundManager::stopMusic(const int fade_out/* = 0 */) const
+void SoundManager::StopMusic(const int fade_out/* = 0 */) const
 {
 	if (Mix_PlayingMusic())
 	{
@@ -77,7 +77,7 @@ void SoundManager::stopMusic(const int fade_out/* = 0 */) const
 	}
 }
 
-void SoundManager::pauseMusic() const
+void SoundManager::PauseMusic() const
 {
 	if (Mix_PlayingMusic())
 	{
@@ -85,7 +85,7 @@ void SoundManager::pauseMusic() const
 	}
 }
 
-void SoundManager::resumeMusic() const
+void SoundManager::ResumeMusic() const
 {
 	if (Mix_PausedMusic())
 	{
@@ -93,7 +93,7 @@ void SoundManager::resumeMusic() const
 	}
 }
 
-void SoundManager::playSound(const std::string & id, const int loop/* = 0 */, const int channel/* = -1 */)
+void SoundManager::PlaySound(const std::string & id, const int loop/* = 0 */, const int channel/* = -1 */)
 {
 	if (Mix_PlayChannel(channel, m_sfxs[id], loop) == -1)
 	{
@@ -101,7 +101,7 @@ void SoundManager::playSound(const std::string & id, const int loop/* = 0 */, co
 	}
 }
 
-void SoundManager::setMusicVolume(const int vol) const
+void SoundManager::SetMusicVolume(const int vol) const
 {
 	if (vol >= 0 && vol <= 128)
 	{
@@ -109,7 +109,7 @@ void SoundManager::setMusicVolume(const int vol) const
 	}
 }
 
-void SoundManager::setSoundVolume(const int vol) const
+void SoundManager::SetSoundVolume(const int vol) const
 {
 	if (vol >= 0 && vol <= 128)
 	{
@@ -117,28 +117,28 @@ void SoundManager::setSoundVolume(const int vol) const
 	}
 }
 
-void SoundManager::setAllVolume(const int vol) const
+void SoundManager::SetAllVolume(const int vol) const
 {
-	setMusicVolume(vol);
-	setSoundVolume(vol);
+	SetMusicVolume(vol);
+	SetSoundVolume(vol);
 }
 
-void SoundManager::panLeft(const unsigned increment, const int channel)
+void SoundManager::PanLeft(const unsigned increment, const int channel)
 {
-	panSet(m_pan - increment, channel);
+	PanSet(m_pan - increment, channel);
 }
 
-void SoundManager::panRight(const unsigned increment, const int channel)
+void SoundManager::PanRight(const unsigned increment, const int channel)
 {
-	panSet(m_pan + increment, channel);
+	PanSet(m_pan + increment, channel);
 }
 
-void SoundManager::panReset(const int channel)
+void SoundManager::PanReset(const int channel)
 {
-	panSet(75, channel);
+	PanSet(75, channel);
 }
 
-void SoundManager::panSet(const int amount, const int channel)
+void SoundManager::PanSet(const int amount, const int channel)
 {
 	std::cout << "Pan:" << amount << std::endl;
 	m_pan = std::max(0, std::min(amount, 100)); // Old clamp.
@@ -150,7 +150,7 @@ void SoundManager::panSet(const int amount, const int channel)
 	Mix_SetPanning(channel, leftVol, rightVol);
 }
 
-void SoundManager::quit()
+void SoundManager::Quit()
 {
 	// Clean up sound effects.
 	if (Mix_Playing(-1))

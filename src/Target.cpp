@@ -4,44 +4,44 @@
 
 Target::Target()
 {
-	TextureManager::Instance().load("../Assets/textures/Circle.png","circle");
+	TextureManager::Instance().Load("../Assets/textures/Circle.png","circle");
 
-	const auto size = TextureManager::Instance().getTextureSize("circle");
-	setWidth(size.x);
-	setHeight(size.y);
-	getTransform()->position = glm::vec2(100.0f, 100.0f);
-	getRigidBody()->velocity = glm::vec2(0, 0);
-	getRigidBody()->isColliding = false;
+	const auto size = TextureManager::Instance().GetTextureSize("circle");
+	SetWidth(size.x);
+	SetHeight(size.y);
+	GetTransform()->position = glm::vec2(100.0f, 100.0f);
+	GetRigidBody()->velocity = glm::vec2(0, 0);
+	GetRigidBody()->isColliding = false;
 
-	setType(TARGET);
+	SetType(TARGET);
 }
 
 Target::~Target()
 = default;
 
-void Target::draw()
+void Target::Draw()
 {
 	// alias for x and y
-	const auto x = getTransform()->position.x;
-	const auto y = getTransform()->position.y;
+	const auto x = GetTransform()->position.x;
+	const auto y = GetTransform()->position.y;
 
 	// draw the target
-	TextureManager::Instance().draw("circle", x, y, 0, 255, true);
+	TextureManager::Instance().Draw("circle", x, y, 0, 255, true);
 }
 
-void Target::update()
+void Target::Update()
 {
 	m_move();
 	m_checkBounds();
 }
 
-void Target::clean()
+void Target::Clean()
 {
 }
 
 void Target::m_move()
 {
-	getTransform()->position = getTransform()->position + getRigidBody()->velocity * 5.0f;
+	GetTransform()->position = GetTransform()->position + GetRigidBody()->velocity * 5.0f;
 }
 
 void Target::m_checkBounds()

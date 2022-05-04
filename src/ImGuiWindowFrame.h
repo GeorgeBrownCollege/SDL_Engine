@@ -21,21 +21,21 @@ public:
 	void Clean();
 
 	// getters and setters
-	SDL_Renderer* getRenderer() const;
-	SDL_Window* getWindow() const;
-	Uint32 getWindowID() const;
+	[[nodiscard]] SDL_Renderer* GetRenderer() const;
+	[[nodiscard]] SDL_Window* GetWindow() const;
+	[[nodiscard]] Uint32 GetWindowId() const;
 
 	typedef std::function<void()> Callback;
-	void setGUIFunction(const Callback& callback);
-	void setDefaultGUIFunction();
-	void clearWindow() const;
+	void SetGuiFunction(const Callback& callback);
+	void SetDefaultGuiFunction();
+	void ClearWindow() const;
 	
 
 private:
 	ImGuiWindowFrame();
 	~ImGuiWindowFrame();
 
-	void m_defaultGUIFunction();
+	void DefaultGuiFunction();
 	
 	std::shared_ptr<SDL_Window> m_pWindow;
 	std::shared_ptr<SDL_Renderer> m_pRenderer;

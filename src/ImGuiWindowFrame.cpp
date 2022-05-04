@@ -16,7 +16,7 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 
 	// if succeeded create our window
 
-	m_pWindow = (Config::make_resource(SDL_CreateWindow(title, x, y, width, height, flags)));
+	m_pWindow = (Config::MakeResource(SDL_CreateWindow(title, x, y, width, height, flags)));
 	m_windowID = SDL_GetWindowID(m_pWindow.get());
 
 	// if window creation successful create our renderer
@@ -25,12 +25,12 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 		std::cout << "ImGui window creation success" << std::endl;
 
 		// create a new SDL Renderer and store it in the Singleton
-		m_pRenderer = (Config::make_resource(SDL_CreateRenderer(m_pWindow.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
+		m_pRenderer = (Config::MakeResource(SDL_CreateRenderer(m_pWindow.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
 
-		if (getRenderer() != nullptr) // render init success
+		if (GetRenderer() != nullptr) // render init success
 		{
 			std::cout << "ImGui Renderer creation success" << std::endl;
-			SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
 		}
 		else
 		{
@@ -39,9 +39,9 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 
 		// IMGUI 
 		ImGui::CreateContext();
-		ImGuiSDL::Initialize(getRenderer(), width, height);
+		ImGuiSDL::Initialize(GetRenderer(), width, height);
 
-		setDefaultGUIFunction();
+		SetDefaultGuiFunction();
 
 	}
 	else
@@ -52,34 +52,34 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 
 void ImGuiWindowFrame::Render()
 {
-	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
-	SDL_RenderClear(getRenderer()); // clear the renderer to the draw colour
+	SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
+	SDL_RenderClear(GetRenderer()); // clear the renderer to the draw colour
 
 	Start();
 
-	SDL_RenderPresent(getRenderer()); // draw to the screen
+	SDL_RenderPresent(GetRenderer()); // draw to the screen
 }
 
-void ImGuiWindowFrame::setGUIFunction(const Callback& callback)
+void ImGuiWindowFrame::SetGuiFunction(const Callback& callback)
 {
-	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
-	SDL_RenderClear(getRenderer());
+	SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
+	SDL_RenderClear(GetRenderer());
 	
 	m_callback = callback;
 }
 
-void ImGuiWindowFrame::setDefaultGUIFunction()
+void ImGuiWindowFrame::SetDefaultGuiFunction()
 {
-	setGUIFunction(std::bind(&ImGuiWindowFrame::m_defaultGUIFunction, this));
+	SetGuiFunction(std::bind(&ImGuiWindowFrame::DefaultGuiFunction, this));
 }
 
-void ImGuiWindowFrame::clearWindow() const
+void ImGuiWindowFrame::ClearWindow() const
 {
-	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
-	SDL_RenderClear(getRenderer());
+	SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
+	SDL_RenderClear(GetRenderer());
 }
 
-void ImGuiWindowFrame::m_defaultGUIFunction()
+void ImGuiWindowFrame::DefaultGuiFunction()
 {
 	// Always open with a NewFrame
 	ImGui::NewFrame();
@@ -101,13 +101,13 @@ void ImGuiWindowFrame::Start()
 	// Don't Remove this
 	
 	ImGui::Render();
-	SDL_SetRenderDrawColor(getRenderer(), 255, 255, 255, 255);
-	SDL_RenderClear(getRenderer());
+	SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
+	SDL_RenderClear(GetRenderer());
 	ImGuiSDL::Render(ImGui::GetDrawData());
 	ImGui::StyleColorsDark();
 
 	// Hack to remove ghost window error - do not remove
-	Util::DrawRect(glm::vec2(0, 0), 1, 1, glm::vec4(1, 1, 1, 1), getRenderer());
+	Util::DrawRect(glm::vec2(0, 0), 1, 1, glm::vec4(1, 1, 1, 1), GetRenderer());
 }
 
 void ImGuiWindowFrame::Clean()
@@ -116,17 +116,17 @@ void ImGuiWindowFrame::Clean()
 	ImGui::DestroyContext();
 }
 
-SDL_Renderer* ImGuiWindowFrame::getRenderer() const
+SDL_Renderer* ImGuiWindowFrame::GetRenderer() const
 {
 	return m_pRenderer.get();
 }
 
-SDL_Window* ImGuiWindowFrame::getWindow() const
+SDL_Window* ImGuiWindowFrame::GetWindow() const
 {
 	return m_pWindow.get();
 }
 
-Uint32 ImGuiWindowFrame::getWindowID() const
+Uint32 ImGuiWindowFrame::GetWindowId() const
 {
 	return m_windowID;
 }

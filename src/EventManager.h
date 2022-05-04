@@ -8,7 +8,6 @@
 #include "MouseButtons.h"
 #include "GameController.h"
 #include "imgui.h"
-#include "imgui.h"
 
 /* singleton with magic static */
 class EventManager
@@ -20,36 +19,36 @@ public:
 		return instance;
 	}
 
-	void reset();
+	void Reset();
 
 	// update and clean the input handler
-	void update();
-	void clean();
+	void Update();
+	void Clean();
 
 	// keyboard events
-	bool isKeyDown(SDL_Scancode key) const;
-	bool isKeyUp(SDL_Scancode key) const;
+	[[nodiscard]] bool IsKeyDown(SDL_Scancode key) const;
+	[[nodiscard]] bool IsKeyUp(SDL_Scancode key) const;
 
 	// one-shot keyboard events
-	bool keyPressed(const SDL_Scancode c);
-	bool keyReleased(const SDL_Scancode c);
+	bool KeyPressed(const SDL_Scancode c);
+	bool KeyReleased(const SDL_Scancode c);
 
 	// mouse events
-	bool getMouseButton(int button_number) const;
-	glm::vec2 getMousePosition() const;
-	int getMouseWheel() const;
+	[[nodiscard]] bool GetMouseButton(int button_number) const;
+	[[nodiscard]] glm::vec2 GetMousePosition() const;
+	[[nodiscard]] int GetMouseWheel() const;
 
-	bool mousePressed(const int b) const;
-	bool mouseReleased(const int b) const;
+	[[nodiscard]] bool MousePressed(const int b) const;
+	[[nodiscard]] bool MouseReleased(const int b) const;
 
 	// gamecontroller events
-	GameController* getGameController(int controller_number);
+	GameController* GetGameController(int controller_number);
 
 	//IMGUI
-	bool isIMGUIActive() const;
+	[[nodiscard]] bool IsIMGUIActive() const;
 
 	// window focus
-	bool isMainWindowInFocus() const;
+	[[nodiscard]] bool IsMainWindowInFocus() const;
 
 private:
 	// Hide Constructor and Destructor 
@@ -61,20 +60,20 @@ private:
 	/*------- PRIVATE MEMBER FUNCTIONS -------*/
 
 	// handle keyboard events
-	void onKeyDown();
-	void onKeyUp();
+	void OnKeyDown();
+	void OnKeyUp();
 
 	// handle mouse events
-	void onMouseMove(SDL_Event& event);
-	void onMouseButtonDown(SDL_Event& event);
-	void onMouseButtonUp(SDL_Event& event);
-	void onMouseWheel(SDL_Event& event);
+	void OnMouseMove(SDL_Event& event);
+	void OnMouseButtonDown(SDL_Event& event);
+	void OnMouseButtonUp(SDL_Event& event);
+	void OnMouseWheel(SDL_Event& event);
 
 	// game controller functions
-	void m_initializeControllers();
+	void InitializeControllers();
 
 	// IMGUI IO
-	void m_IMGUI_Keymap();
+	void IMGUIKeymap();
 
 	/*------- PRIVATE MEMBER VARIABLES -------*/
 
@@ -96,7 +95,7 @@ private:
 	int m_mouseWheel;
 
 	// mouse state containers
-	Uint32 m_mouseCurr;
+	Uint32 m_mouseCurrent;
 	Uint32 m_mouseLast;
 
 	// GameControllers

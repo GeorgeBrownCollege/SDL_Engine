@@ -20,29 +20,29 @@ struct GameController
 	bool DPAD_RIGHT;
 
 	// control buttons
-	bool START_BUTTON;
-	bool BACK_BUTTON;
-	bool GUIDE_BUTTON;
+	bool BUTTON_START;
+	bool BUTTON_BACK;
+	bool BUTTON_GUIDE;
 
 	// shoulder buttons
-	bool LEFT_SHOULDER;
-	bool RIGHT_SHOULDER;
+	bool BUTTON_SHOULDER_LEFT;
+	bool BUTTON_SHOULDER_RIGHT;
 
 	// face buttons
-	bool A_BUTTON;
-	bool B_BUTTON;
-	bool X_BUTTON;
-	bool Y_BUTTON;
+	bool BUTTON_A;
+	bool BUTTON_B;
+	bool BUTTON_X;
+	bool BUTTON_Y;
 
 	// left stick
-	Sint16 LEFT_STICK_X;
-	Sint16 LEFT_STICK_Y;
-	bool LEFT_STICK_BUTTON;
+	Sint16 STICK_LEFT_HORIZONTAL;
+	Sint16 STICK_LEFT_VERTICAL;
+	bool STICK_LEFT_BUTTON;
 
 	// right stick
-	Sint16 RIGHT_STICK_X;
-	Sint16 RIGHT_STICK_Y;
-	bool RIGHT_STICK_BUTTON;
+	Sint16 STICK_RIGHT_HORIZONTAL;
+	Sint16 STICK_RIGHT_VERTICAL;
+	bool STICK_RIGHT_BUTTON;
 };
 
 #endif /* defined (__GAME_CONTROLLER__) */

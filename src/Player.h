@@ -12,9 +12,9 @@ public:
 	~Player();
 
 	// Life Cycle Methods
-	virtual void draw() override;
-	virtual void update() override;
-	virtual void clean() override;
+	virtual void Draw() override;
+	virtual void Update() override;
+	virtual void Clean() override;
 
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);

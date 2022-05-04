@@ -1,0 +1,8 @@
+fired1 1 1 64 64
+fired2 65 1 64 64
+fired3 129 1 64 64
+fired4 193 1 64 64
+fired5 257 1 64 64
+fired6 321 1 64 64
+fired7 385 1 64 64
+fired8 449 1 64 64

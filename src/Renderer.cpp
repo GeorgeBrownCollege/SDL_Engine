@@ -2,12 +2,12 @@
 
 #include <utility>
 
-SDL_Renderer* Renderer::getRenderer()
+SDL_Renderer* Renderer::GetRenderer()
 {
 	return m_pRenderer.get();
 }
 
-void Renderer::setRenderer(std::shared_ptr<SDL_Renderer> renderer)
+void Renderer::SetRenderer(std::shared_ptr<SDL_Renderer> renderer)
 {
 	m_pRenderer = std::move(renderer);
 }

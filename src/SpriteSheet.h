@@ -14,19 +14,19 @@ public:
 	~SpriteSheet();
 
 	// getters
-	Frame getFrame(const std::string& frame_name);
-	SDL_Texture* getTexture() const;
+	Frame GetFrame(const std::string& frame_name);
+	[[nodiscard]] SDL_Texture* GetTexture() const;
 
 	// setters
-	void addFrame(const Frame& frame);
-	void setTexture(SDL_Texture* texture);
+	void AddFrame(const Frame& frame);
+	void SetTexture(SDL_Texture* texture);
 	
 private:
 	std::string m_name;
 
 	std::unordered_map<std::string, Frame> m_frames;
 
-	SDL_Texture* m_texture;
+	SDL_Texture* m_pTexture;
 };
 
 #endif /* defined (__SPRITE_SHEET__) */

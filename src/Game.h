@@ -32,30 +32,30 @@ public:
 	}
 
 	// simply set the isRunning variable to true
-	void init();
-	bool init(const char* title, int x, int y, int width, int height, bool fullscreen);
+	void Init();
+	bool Init(const char* title, int x, int y, int width, int height, bool fullscreen);
 
 	// public life cycle functions
-	void render() const;
-	void update() const;
-	void handleEvents() const;
-	void clean() const;
-	void start();
-	void quit();
+	void Render() const;
+	void Update() const;
+	void HandleEvents() const;
+	void Clean() const;
+	void Start();
+	void Quit();
 
 	// getter and setter functions
-	glm::vec2 getMousePosition() const;
+	[[nodiscard]] glm::vec2 GetMousePosition() const;
 
-	void setFrames(Uint32 frames);
-	Uint32 getFrames() const;
+	void SetFrames(Uint32 frames);
+	[[nodiscard]] Uint32 GetFrames() const;
 
-	float getDeltaTime() const;
-	void setDeltaTime(float time);
+	[[nodiscard]] float GetDeltaTime() const;
+	void SetDeltaTime(float time);
 
-	bool isRunning() const;
-	void changeSceneState(SceneState new_state);
+	[[nodiscard]] bool IsRunning() const;
+	void ChangeSceneState(SceneState new_state);
 
-	SDL_Window* getWindow();
+	[[nodiscard]] SDL_Window* GetWindow() const;
 
 private:
 	Game();
@@ -64,11 +64,11 @@ private:
 	// game properties
 	bool m_bRunning;
 	Uint32 m_frames;
-	float m_deltaTime;
+	float m_deltaTime{};
 	glm::vec2 m_mousePosition;
 
 	// scene variables
-	Scene* m_currentScene;
+	Scene* m_pCurrentScene;
 	SceneState m_currentSceneState;
 
 	// storage structures

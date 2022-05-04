@@ -15,8 +15,8 @@ public:
 	}
 
 	// getters and setters
-	SDL_Renderer* getRenderer();
-	void setRenderer(std::shared_ptr<SDL_Renderer> renderer);
+	SDL_Renderer* GetRenderer();
+	void SetRenderer(std::shared_ptr<SDL_Renderer> renderer);
 
 private:
 	Renderer();

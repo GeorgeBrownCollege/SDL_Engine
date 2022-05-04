@@ -10,44 +10,44 @@
 
 PlayScene::PlayScene()
 {
-	PlayScene::start();
+	PlayScene::Start();
 }
 
 PlayScene::~PlayScene()
 = default;
 
-void PlayScene::draw()
+void PlayScene::Draw()
 {
-	drawDisplayList();
-	SDL_SetRenderDrawColor(Renderer::Instance().getRenderer(), 255, 255, 255, 255);
+	DrawDisplayList();
+	SDL_SetRenderDrawColor(Renderer::Instance().GetRenderer(), 255, 255, 255, 255);
 }
 
-void PlayScene::update()
+void PlayScene::Update()
 {
-	updateDisplayList();
+	UpdateDisplayList();
 }
 
-void PlayScene::clean()
+void PlayScene::Clean()
 {
-	removeAllChildren();
+	RemoveAllChildren();
 }
 
-void PlayScene::handleEvents()
+void PlayScene::HandleEvents()
 {
-	EventManager::Instance().update();
+	EventManager::Instance().Update();
 
 	// handle player movement with GameController
 	if (SDL_NumJoysticks() > 0)
 	{
-		if (EventManager::Instance().getGameController(0) != nullptr)
+		if (EventManager::Instance().GetGameController(0) != nullptr)
 		{
 			const auto deadZone = 10000;
-			if (EventManager::Instance().getGameController(0)->LEFT_STICK_X > deadZone)
+			if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL > deadZone)
 			{
 				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 				m_playerFacingRight = true;
 			}
-			else if (EventManager::Instance().getGameController(0)->LEFT_STICK_X < -deadZone)
+			else if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL < -deadZone)
 			{
 				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
@@ -70,12 +70,12 @@ void PlayScene::handleEvents()
 	// handle player movement if no Game Controllers found
 	if (SDL_NumJoysticks() < 1)
 	{
-		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_A))
+		if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_A))
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 			m_playerFacingRight = false;
 		}
-		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
+		else if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_D))
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 			m_playerFacingRight = true;
@@ -94,43 +94,43 @@ void PlayScene::handleEvents()
 	}
 	
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_ESCAPE))
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance().quit();
+		TheGame::Instance().Quit();
 	}
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
-		TheGame::Instance().changeSceneState(START_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::START_SCENE);
 	}
 
-	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_2))
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
 	{
-		TheGame::Instance().changeSceneState(END_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::END_SCENE);
 	}
 }
 
-void PlayScene::start()
+void PlayScene::Start()
 {
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
 	
 	// Plane Sprite
 	m_pPlaneSprite = new Plane();
-	addChild(m_pPlaneSprite);
+	AddChild(m_pPlaneSprite);
 
 	// Player Sprite
 	m_pPlayer = new Player();
-	addChild(m_pPlayer);
+	AddChild(m_pPlayer);
 	m_playerFacingRight = true;
 
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", BACK_BUTTON);
-	m_pBackButton->getTransform()->position = glm::vec2(300.0f, 400.0f);
+	m_pBackButton->GetTransform()->position = glm::vec2(300.0f, 400.0f);
 	m_pBackButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pBackButton->setActive(false);
-		TheGame::Instance().changeSceneState(START_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::START_SCENE);
 	});
 
 	m_pBackButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -142,15 +142,15 @@ void PlayScene::start()
 	{
 		m_pBackButton->setAlpha(255);
 	});
-	addChild(m_pBackButton);
+	AddChild(m_pBackButton);
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", NEXT_BUTTON);
-	m_pNextButton->getTransform()->position = glm::vec2(500.0f, 400.0f);
+	m_pNextButton->GetTransform()->position = glm::vec2(500.0f, 400.0f);
 	m_pNextButton->addEventListener(CLICK, [&]()-> void
 	{
 		m_pNextButton->setActive(false);
-		TheGame::Instance().changeSceneState(END_SCENE);
+		TheGame::Instance().ChangeSceneState(SceneState::END_SCENE);
 	});
 
 	m_pNextButton->addEventListener(MOUSE_OVER, [&]()->void
@@ -163,15 +163,15 @@ void PlayScene::start()
 		m_pNextButton->setAlpha(255);
 	});
 
-	addChild(m_pNextButton);
+	AddChild(m_pNextButton);
 
 	/* Instructions Label */
 	m_pInstructionsLabel = new Label("Press the backtick (`) character to toggle Debug View", "Consolas");
-	m_pInstructionsLabel->getTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
+	m_pInstructionsLabel->GetTransform()->position = glm::vec2(Config::SCREEN_WIDTH * 0.5f, 500.0f);
 
-	addChild(m_pInstructionsLabel);
+	AddChild(m_pInstructionsLabel);
 
-	ImGuiWindowFrame::Instance().setGUIFunction(std::bind(&PlayScene::GUI_Function, this));
+	ImGuiWindowFrame::Instance().SetGuiFunction(std::bind(&PlayScene::GUI_Function, this));
 }
 
 void PlayScene::GUI_Function() const
