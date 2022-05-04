@@ -336,6 +336,12 @@ void TextureManager::DrawText(const std::string & id, const int x, const int y, 
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
+void TextureManager::DrawText(const std::string& id, const glm::vec2 position, const double angle, const int alpha, const bool centered,
+                              const SDL_RendererFlip flip)
+{
+	DrawText(id, static_cast<int>(position.x), static_cast<int>(position.y), angle, alpha, centered, flip);
+}
+
 glm::vec2 TextureManager::GetTextureSize(const std::string & id)
 {
 	int width;

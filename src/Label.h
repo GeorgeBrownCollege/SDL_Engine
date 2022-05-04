@@ -11,16 +11,16 @@ class Label final : public UIControl
 {
 public:
 	explicit Label(const std::string& text = "Default Label Text", const std::string& font_name = "lazy", int size = 20, SDL_Color colour = {0, 0, 0, 255}, glm::vec2 position = glm::vec2(), int font_style = TTF_STYLE_NORMAL, bool is_centered = true);
-	~Label();
+	~Label() override;
 
 	// Inherited via GameObject
 	virtual void Draw() override;
 	virtual void Update() override;
 	virtual void Clean() override;
 
-	void setText(const std::string& new_text);
-	void setColour(SDL_Color new_colour) const;
-	void setSize(int new_size);
+	void SetText(const std::string& new_text);
+	void SetColour(SDL_Color new_colour) const;
+	void SetSize(int new_size);
 
 private:
 	std::string m_fontPath;
@@ -32,7 +32,7 @@ private:
 	int m_fontSize;
 	int m_fontStyle;
 
-	void m_buildFontID();
+	void BuildFontID();
 };
 
 #endif /* defined (__LABEL__) */
