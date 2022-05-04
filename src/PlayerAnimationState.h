@@ -2,7 +2,7 @@
 #ifndef __PLAYER_ANIMATION_STATE__
 #define __PLAYER_ANIMATION_STATE__
 
-enum PlayerAnimationState
+enum class PlayerAnimationState
 {
 	PLAYER_IDLE_RIGHT,
 	PLAYER_IDLE_LEFT,

@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "TextureManager.h"
 
-Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
+Player::Player(): m_currentAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT)
 {
 	TextureManager::Instance().LoadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
@@ -37,19 +37,19 @@ void Player::Draw()
 	// draw the player according to animation state
 	switch(m_currentAnimationState)
 	{
-	case PLAYER_IDLE_RIGHT:
+	case PlayerAnimationState::PLAYER_IDLE_RIGHT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("idle"),
 			x, y, 0.12f, 0, 255, true);
 		break;
-	case PLAYER_IDLE_LEFT:
+	case PlayerAnimationState::PLAYER_IDLE_LEFT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("idle"),
 			x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
-	case PLAYER_RUN_RIGHT:
+	case PlayerAnimationState::PLAYER_RUN_RIGHT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("run"),
 			x, y, 0.25f, 0, 255, true);
 		break;
-	case PLAYER_RUN_LEFT:
+	case PlayerAnimationState::PLAYER_RUN_LEFT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("run"),
 			x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
