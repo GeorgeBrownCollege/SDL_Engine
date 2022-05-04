@@ -143,11 +143,11 @@ void SoundManager::PanSet(const int amount, const int channel)
 	std::cout << "Pan:" << amount << std::endl;
 	m_pan = std::max(0, std::min(amount, 100)); // Old clamp.
 	std::cout << "Pan:" << m_pan << std::endl;
-	const int leftVol = (255 * std::min((m_pan - 100.0) / (50.0 - 100.0), 1.0)); // z-min/max-min
-	std::cout << "Left:" << leftVol << std::endl;
-	const int rightVol = (255 * std::min(m_pan / 50.0, 1.0));
-	std::cout << "Right:" << rightVol << std::endl;
-	Mix_SetPanning(channel, leftVol, rightVol);
+	const auto left_vol = static_cast<Uint8>(255 * std::min((m_pan - 100.0) / (50.0 - 100.0), 1.0)); // z-min/max-min
+	std::cout << "Left:" << left_vol << std::endl;
+	const auto right_vol = static_cast<Uint8>(255 * std::min(m_pan / 50.0, 1.0));
+	std::cout << "Right:" << right_vol << std::endl;
+	Mix_SetPanning(channel, left_vol, right_vol);
 }
 
 void SoundManager::Quit()
@@ -158,9 +158,9 @@ void SoundManager::Quit()
 		Mix_HaltChannel(-1); // Halt all channels.
 	}
 
-	for (auto const& i : m_sfxs)
+	for (const auto& [fst, snd] : m_sfxs)
 	{
-		Mix_FreeChunk(m_sfxs[i.first]);
+		Mix_FreeChunk(m_sfxs[fst]);
 	}
 	m_sfxs.clear();
 
@@ -170,9 +170,9 @@ void SoundManager::Quit()
 		Mix_HaltMusic();
 	}
 
-	for (auto const& i : m_music)
+	for (const auto& [fst, snd] : m_music)
 	{
-		Mix_FreeMusic(m_music[i.first]);
+		Mix_FreeMusic(m_music[fst]);
 	}
 	m_music.clear();
 

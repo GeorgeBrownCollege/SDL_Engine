@@ -8,7 +8,7 @@ class Plane final : public Sprite
 {
 public:
 	Plane();
-	~Plane();
+	~Plane() override;
 
 	// Life Cycle Functions
 	virtual void Draw() override;
