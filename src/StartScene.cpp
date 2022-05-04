@@ -39,7 +39,7 @@ void StartScene::HandleEvents()
 
 	if(EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
-		Game::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::PLAY);
 	}
 }
 
@@ -65,18 +65,18 @@ void StartScene::Start()
 
 	m_pStartButton->AddEventListener(CLICK, [&]()-> void
 	{
-		m_pStartButton->setActive(false);
-		Game::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
+		m_pStartButton->SetActive(false);
+		Game::Instance().ChangeSceneState(SceneState::PLAY);
 	});
 	
 	m_pStartButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
-		m_pStartButton->setAlpha(128);
+		m_pStartButton->SetAlpha(128);
 	});
 
 	m_pStartButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
-		m_pStartButton->setAlpha(255);
+		m_pStartButton->SetAlpha(255);
 	});
 	AddChild(m_pStartButton);
 

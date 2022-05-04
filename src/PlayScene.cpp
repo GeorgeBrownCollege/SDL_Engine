@@ -101,12 +101,12 @@ void PlayScene::HandleEvents()
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
-		Game::Instance().ChangeSceneState(SceneState::START_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::START);
 	}
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
 	{
-		Game::Instance().ChangeSceneState(SceneState::END_SCENE);
+		Game::Instance().ChangeSceneState(SceneState::END);
 	}
 }
 
@@ -127,40 +127,40 @@ void PlayScene::Start()
 	// Back Button
 	m_pBackButton = new Button("../Assets/textures/backButton.png", "backButton", GameObjectType::BACK_BUTTON);
 	m_pBackButton->GetTransform()->position = glm::vec2(300.0f, 400.0f);
-	m_pBackButton->AddEventListener(CLICK, [&]()-> void
+	m_pBackButton->AddEventListener(Event::CLICK, [&]()-> void
 	{
-		m_pBackButton->setActive(false);
-		Game::Instance().ChangeSceneState(SceneState::START_SCENE);
+		m_pBackButton->SetActive(false);
+		Game::Instance().ChangeSceneState(SceneState::START);
 	});
 
-	m_pBackButton->AddEventListener(MOUSE_OVER, [&]()->void
+	m_pBackButton->AddEventListener(Event::MOUSE_OVER, [&]()->void
 	{
-		m_pBackButton->setAlpha(128);
+		m_pBackButton->SetAlpha(128);
 	});
 
-	m_pBackButton->AddEventListener(MOUSE_OUT, [&]()->void
+	m_pBackButton->AddEventListener(Event::MOUSE_OUT, [&]()->void
 	{
-		m_pBackButton->setAlpha(255);
+		m_pBackButton->SetAlpha(255);
 	});
 	AddChild(m_pBackButton);
 
 	// Next Button
 	m_pNextButton = new Button("../Assets/textures/nextButton.png", "nextButton", GameObjectType::NEXT_BUTTON);
 	m_pNextButton->GetTransform()->position = glm::vec2(500.0f, 400.0f);
-	m_pNextButton->AddEventListener(CLICK, [&]()-> void
+	m_pNextButton->AddEventListener(Event::CLICK, [&]()-> void
 	{
-		m_pNextButton->setActive(false);
-		Game::Instance().ChangeSceneState(SceneState::END_SCENE);
+		m_pNextButton->SetActive(false);
+		Game::Instance().ChangeSceneState(SceneState::END);
 	});
 
-	m_pNextButton->AddEventListener(MOUSE_OVER, [&]()->void
+	m_pNextButton->AddEventListener(Event::MOUSE_OVER, [&]()->void
 	{
-		m_pNextButton->setAlpha(128);
+		m_pNextButton->SetAlpha(128);
 	});
 
-	m_pNextButton->AddEventListener(MOUSE_OUT, [&]()->void
+	m_pNextButton->AddEventListener(Event::MOUSE_OUT, [&]()->void
 	{
-		m_pNextButton->setAlpha(255);
+		m_pNextButton->SetAlpha(255);
 	});
 
 	AddChild(m_pNextButton);

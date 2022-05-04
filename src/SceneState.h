@@ -4,9 +4,9 @@
 enum class SceneState
 {
 	NO_SCENE = -1,
-	START_SCENE,
-	PLAY_SCENE,
-	END_SCENE,
+	START,
+	PLAY,
+	END,
 	NUM_OF_SCENES
 };
 #endif /* defined (__SCENE_STATE__) */

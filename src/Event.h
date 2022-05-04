@@ -2,7 +2,7 @@
 #ifndef __EVENT__
 #define __EVENT__
 
-enum Event
+enum class Event
 {
 	CLICK,
 	MOUSE_OVER,

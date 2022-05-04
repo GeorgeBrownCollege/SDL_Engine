@@ -14,7 +14,7 @@ public:
 	                GameObjectType type = GameObjectType::START_BUTTON, 
 	                glm::vec2 position = glm::vec2(0.0f, 0.0f), bool is_centered = true);
 	
-	~Button();
+	~Button() override;
 
 	// Life Cycle Events
 	void Draw() override;
@@ -22,8 +22,8 @@ public:
 	void Clean() override;
 
 	// button setters
-	void setAlpha(Uint8 alpha);
-	void setActive(bool value);
+	void SetAlpha(Uint8 alpha);
+	void SetActive(bool value);
 	
 private:
 	Uint8 m_alpha;

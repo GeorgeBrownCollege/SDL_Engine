@@ -10,7 +10,7 @@ class EndScene final : public Scene
 {
 public:
 	EndScene();
-	~EndScene();
+	~EndScene() override;
 
 	// Inherited via Scene
 	virtual void Draw() override;

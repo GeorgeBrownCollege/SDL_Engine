@@ -11,7 +11,7 @@ class StartScene final : public Scene
 {
 public:
 	StartScene();
-	~StartScene();
+	~StartScene() override;
 
 	// Inherited via Scene
 	virtual void Draw() override;

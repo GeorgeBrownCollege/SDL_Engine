@@ -61,7 +61,7 @@ void Button::Clean()
  * @param alpha
  * @return void
  */
-void Button::setAlpha(const Uint8 alpha)
+void Button::SetAlpha(const Uint8 alpha)
 {
 	m_alpha = alpha;
 }
@@ -70,7 +70,7 @@ void Button::setAlpha(const Uint8 alpha)
  * @brief sets the button active boolean
  * @return void
  */
-void Button::setActive(const bool value)
+void Button::SetActive(const bool value)
 {
 	m_active = value;
 }

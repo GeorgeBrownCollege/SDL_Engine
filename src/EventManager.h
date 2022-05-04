@@ -42,7 +42,7 @@ public:
 	[[nodiscard]] bool MouseReleased(const int b) const;
 
 	// gamecontroller events
-	GameController* GetGameController(int controller_number) const;
+	[[nodiscard]] GameController* GetGameController(int controller_number) const;
 
 	//IMGUI
 	[[nodiscard]] bool IsIMGUIActive() const;

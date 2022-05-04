@@ -12,7 +12,7 @@ class PlayScene : public Scene
 {
 public:
 	PlayScene();
-	~PlayScene();
+	~PlayScene() override;
 
 	// Scene LifeCycle Functions
 	virtual void Draw() override;
