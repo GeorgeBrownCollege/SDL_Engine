@@ -2,7 +2,7 @@
 
 GameController::GameController(SDL_GameController* controller):
 	handle(controller), DPAD_UP(false), DPAD_DOWN(false), DPAD_LEFT(false), DPAD_RIGHT(false),
-	START_BUTTON(false), BACK_BUTTON(false), LEFT_SHOULDER(false), RIGHT_SHOULDER(false),
+	BUTTON_START(false), BUTTON_BACK(false), BUTTON_SHOULDER_LEFT(false), BUTTON_SHOULDER_RIGHT(false),
 	BUTTON_A(false), BUTTON_B(false), BUTTON_X(false), BUTTON_Y(false),
 	STICK_LEFT_HORIZONTAL(false), STICK_LEFT_VERTICAL(false), STICK_RIGHT_HORIZONTAL(false), STICK_RIGHT_VERTICAL(false)
 {}
@@ -19,13 +19,13 @@ void GameController::update()
     DPAD_RIGHT = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
 
     // control buttons
-    START_BUTTON = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_START);
-    BACK_BUTTON = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_BACK);
-    GUIDE_BUTTON = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_GUIDE);
+    BUTTON_START = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_START);
+    BUTTON_BACK = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_BACK);
+    BUTTON_GUIDE = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_GUIDE);
 
     // shoulders
-    LEFT_SHOULDER = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
-    RIGHT_SHOULDER = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
+    BUTTON_SHOULDER_LEFT = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_LEFTSHOULDER);
+    BUTTON_SHOULDER_RIGHT = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_RIGHTSHOULDER);
 
     // face buttons
     BUTTON_A = SDL_GameControllerGetButton(handle, SDL_CONTROLLER_BUTTON_A);
