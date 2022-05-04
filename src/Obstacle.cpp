@@ -14,7 +14,7 @@ Obstacle::Obstacle()
 
 	GetTransform()->position = glm::vec2(300.0f, 300.0f);
 
-	SetType(OBSTACLE);
+	SetType(GameObjectType::OBSTACLE);
 	GetRigidBody()->isColliding = false;
 
 	SoundManager::Instance().Load("../Assets/audio/yay.ogg", "yay", SoundType::SOUND_SFX);

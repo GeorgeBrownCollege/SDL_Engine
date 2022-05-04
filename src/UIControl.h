@@ -19,17 +19,17 @@ public:
 	virtual void Clean() = 0;
 
 	typedef std::function<void()> EventHandler;
-	bool addEventListener(Event event, const EventHandler& handler);
+	bool AddEventListener(Event event, const EventHandler& handler);
 
-	EventHandler getEventHandler(Event event);
+	EventHandler GetEventHandler(Event event);
 	
 protected:
-	void onMouseOver();
-	void onMouseOut();
-	void onLeftMouseButtonClick();
+	void OnMouseOver();
+	void OnMouseOut();
+	void OnLeftMouseButtonClick();
 
 private:
-	bool m_eventExists(Event id);
+	bool CheckIfEventExists(Event id);
 
 	// mouse events
 	bool m_mouseOver;

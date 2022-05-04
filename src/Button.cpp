@@ -21,8 +21,8 @@ m_alpha(255), m_name(std::move(button_name)), m_isCentered(is_centered), m_activ
 	TextureManager::Instance().Load(image_path,m_name);
 
 	const auto size = TextureManager::Instance().GetTextureSize(m_name);
-	SetWidth(size.x);
-	SetHeight(size.y);
+	SetWidth(static_cast<int>(size.x));
+	SetHeight(static_cast<int>(size.y));
 	GetTransform()->position = position;
 	SetType(type);
 }
@@ -32,12 +32,8 @@ Button::~Button()
 
 void Button::Draw()
 {
-	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
-
 	// draw the button
-	TextureManager::Instance().Draw(m_name, x, y, 0, m_alpha, m_isCentered);
+	TextureManager::Instance().Draw(m_name, GetTransform()->position, 0, m_alpha, m_isCentered);
 }
 
 void Button::Update()
@@ -45,13 +41,13 @@ void Button::Update()
 	if(EventManager::Instance().IsMainWindowInFocus())
 	{
 		//check if mouse is over the Button
-		onMouseOver();
+		OnMouseOver();
 
 		// check if mouse outside the Button
-		onMouseOut();
+		OnMouseOut();
 
 		// check if left mouse is clicked
-		onLeftMouseButtonClick();
+		OnLeftMouseButtonClick();
 	}
 	
 }

@@ -20,7 +20,7 @@ Plane::Plane()
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
-	SetType(PLANE);
+	SetType(GameObjectType::PLANE);
 
 	m_buildAnimations();
 }

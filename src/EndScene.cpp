@@ -54,20 +54,20 @@ void EndScene::Start()
 	AddChild(m_label);
 
 	// Restart Button
-	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", RESTART_BUTTON);
+	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", GameObjectType::RESTART_BUTTON);
 	m_pRestartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f);
-	m_pRestartButton->addEventListener(CLICK, [&]()-> void
+	m_pRestartButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pRestartButton->setActive(false);
 		TheGame::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
 	});
 
-	m_pRestartButton->addEventListener(MOUSE_OVER, [&]()->void
+	m_pRestartButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
 		m_pRestartButton->setAlpha(128);
 	});
 
-	m_pRestartButton->addEventListener(MOUSE_OUT, [&]()->void
+	m_pRestartButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
 		m_pRestartButton->setAlpha(255);
 	});

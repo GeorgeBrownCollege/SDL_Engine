@@ -147,6 +147,12 @@ void TextureManager::Draw(const std::string & id, const int x, const int y, cons
 	SDL_RenderCopyEx(Renderer::Instance().GetRenderer(), m_textureMap[id].get(), &src_rect, &dest_rect, angle, nullptr, flip);
 }
 
+void TextureManager::Draw(const std::string& id, const glm::vec2 position, const double angle, const int alpha, const bool centered,
+                          const SDL_RendererFlip flip)
+{
+	Draw(id, static_cast<int>(position.x), static_cast<int>(position.y), angle, alpha, centered, flip);
+}
+
 void TextureManager::Draw(const std::string& id, const int x, const int y, const GameObject* go, const double angle, const int alpha, const bool centered, const SDL_RendererFlip flip)
 {
 	SDL_Rect src_rect{};
@@ -335,12 +341,8 @@ glm::vec2 TextureManager::GetTextureSize(const std::string & id)
 	int width;
 	int height;
 	SDL_QueryTexture(m_textureMap[id].get(), nullptr, nullptr, &width, &height);
-	glm::vec2 size;
 
-	size.x = width;
-	size.y = height;
-
-	return size;
+	return { static_cast<float>(width), static_cast<float>(height) };
 }
 
 void TextureManager::SetAlpha(const std::string & id, const Uint8 new_alpha)

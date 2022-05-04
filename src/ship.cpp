@@ -16,7 +16,7 @@ Ship::Ship() : m_maxSpeed(10.0f)
 	GetRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
 	GetRigidBody()->isColliding = false;
-	SetType(AGENT);
+	SetType(GameObjectType::AGENT);
 
 	SetCurrentHeading(0.0f);// current facing angle
 	SetCurrentDirection(glm::vec2(1.0f, 0.0f)); // facing right

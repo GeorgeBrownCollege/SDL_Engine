@@ -13,7 +13,7 @@ Target::Target()
 	GetRigidBody()->velocity = glm::vec2(0, 0);
 	GetRigidBody()->isColliding = false;
 
-	SetType(TARGET);
+	SetType(GameObjectType::TARGET);
 }
 
 Target::~Target()

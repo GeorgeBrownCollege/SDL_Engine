@@ -63,18 +63,18 @@ void StartScene::Start()
 	m_pStartButton = new Button();
 	m_pStartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f); 
 
-	m_pStartButton->addEventListener(CLICK, [&]()-> void
+	m_pStartButton->AddEventListener(CLICK, [&]()-> void
 	{
 		m_pStartButton->setActive(false);
 		TheGame::Instance().ChangeSceneState(SceneState::PLAY_SCENE);
 	});
 	
-	m_pStartButton->addEventListener(MOUSE_OVER, [&]()->void
+	m_pStartButton->AddEventListener(MOUSE_OVER, [&]()->void
 	{
 		m_pStartButton->setAlpha(128);
 	});
 
-	m_pStartButton->addEventListener(MOUSE_OUT, [&]()->void
+	m_pStartButton->AddEventListener(MOUSE_OUT, [&]()->void
 	{
 		m_pStartButton->setAlpha(255);
 	});

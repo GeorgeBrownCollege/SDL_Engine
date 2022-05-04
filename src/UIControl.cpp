@@ -10,9 +10,9 @@ UIControl::UIControl():
 UIControl::~UIControl()
 = default;
 
-bool UIControl::addEventListener(const Event event, const EventHandler& handler)
+bool UIControl::AddEventListener(const Event event, const EventHandler& handler)
 {
-	if (m_eventExists(event))
+	if (CheckIfEventExists(event))
 	{
 		return false;
 	}
@@ -21,16 +21,15 @@ bool UIControl::addEventListener(const Event event, const EventHandler& handler)
 	return true;
 }
 
-UIControl::EventHandler UIControl::getEventHandler(Event event)
+UIControl::EventHandler UIControl::GetEventHandler(const Event event)
 {
 	return m_events[event];
 }
 
-void UIControl::onMouseOver()
+void UIControl::OnMouseOver()
 {
-	const auto mousePosition = EventManager::Instance().GetMousePosition();
-	
-	if (CollisionManager::PointRectCheck(mousePosition, GetTransform()->position, GetWidth(), GetHeight()))
+	if (const auto mouse_position = EventManager::Instance().GetMousePosition(); 
+		CollisionManager::PointRectCheck( mouse_position, GetTransform()->position, static_cast<float>(GetWidth()), static_cast<float>(GetHeight()) ))
 	{
 		m_mouseOver = true;
 	}
@@ -53,7 +52,7 @@ void UIControl::onMouseOver()
 	}
 }
 
-void UIControl::onMouseOut()
+void UIControl::OnMouseOut()
 {
 	if ((m_events[MOUSE_OUT]) && (m_mouseOutActive) && (!m_mouseOver))
 	{
@@ -66,9 +65,9 @@ void UIControl::onMouseOut()
 	}
 }
 
-void UIControl::onLeftMouseButtonClick()
+void UIControl::OnLeftMouseButtonClick()
 {
-	if (EventManager::Instance().GetMouseButton(LEFT))
+	if (EventManager::Instance().GetMouseButton(static_cast<int>(MouseButtons::LEFT)))
 	{
 		if ((m_events[CLICK]) && (m_mouseOver) && !m_leftMouseButtonClicked)
 		{
@@ -82,7 +81,7 @@ void UIControl::onLeftMouseButtonClick()
 	}
 }
 
-bool UIControl::m_eventExists(Event id)
+bool UIControl::CheckIfEventExists(const Event id)
 {
 	return m_events.find(id) != m_events.end();
 }

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __MOUSE_BUTTONS__
 #define __MOUSE_BUTTONS__
-enum MouseButtons
+enum class MouseButtons
 {
     LEFT,
     MIDDLE,

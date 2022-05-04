@@ -221,17 +221,17 @@ void EventManager::OnMouseButtonDown(const SDL_Event& event)
 {
     if (event.button.button == SDL_BUTTON_LEFT)
     {
-        m_mouseButtons[LEFT] = true;
+        m_mouseButtons[static_cast<int>(MouseButtons::LEFT)] = true;
     }
 
     if (event.button.button == SDL_BUTTON_MIDDLE)
     {
-        m_mouseButtons[MIDDLE] = true;
+        m_mouseButtons[static_cast<int>(MouseButtons::MIDDLE)] = true;
     }
 
     if (event.button.button == SDL_BUTTON_RIGHT)
     {
-        m_mouseButtons[RIGHT] = true;
+        m_mouseButtons[static_cast<int>(MouseButtons::RIGHT)] = true;
     }
 }
 
@@ -239,17 +239,17 @@ void EventManager::OnMouseButtonUp(const SDL_Event& event)
 {
     if (event.button.button == SDL_BUTTON_LEFT)
     {
-        m_mouseButtons[LEFT] = false;
+        m_mouseButtons[static_cast<int>(MouseButtons::LEFT)] = false;
     }
 
     if (event.button.button == SDL_BUTTON_MIDDLE)
     {
-        m_mouseButtons[MIDDLE] = false;
+        m_mouseButtons[static_cast<int>(MouseButtons::MIDDLE)] = false;
     }
 
     if (event.button.button == SDL_BUTTON_RIGHT)
     {
-        m_mouseButtons[RIGHT] = false;
+        m_mouseButtons[static_cast<int>(MouseButtons::RIGHT)] = false;
     }
 }
 
