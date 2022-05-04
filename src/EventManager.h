@@ -30,8 +30,8 @@ public:
 	[[nodiscard]] bool IsKeyUp(SDL_Scancode key) const;
 
 	// one-shot keyboard events
-	bool KeyPressed(const SDL_Scancode c);
-	bool KeyReleased(const SDL_Scancode c);
+	bool KeyPressed(const SDL_Scancode c) const;
+	bool KeyReleased(const SDL_Scancode c) const;
 
 	// mouse events
 	[[nodiscard]] bool GetMouseButton(int button_number) const;
@@ -42,7 +42,7 @@ public:
 	[[nodiscard]] bool MouseReleased(const int b) const;
 
 	// gamecontroller events
-	GameController* GetGameController(int controller_number);
+	GameController* GetGameController(int controller_number) const;
 
 	//IMGUI
 	[[nodiscard]] bool IsIMGUIActive() const;
@@ -64,16 +64,16 @@ private:
 	void OnKeyUp();
 
 	// handle mouse events
-	void OnMouseMove(SDL_Event& event);
-	void OnMouseButtonDown(SDL_Event& event);
-	void OnMouseButtonUp(SDL_Event& event);
-	void OnMouseWheel(SDL_Event& event);
+	void OnMouseMove(const SDL_Event& event);
+	void OnMouseButtonDown(const SDL_Event& event);
+	void OnMouseButtonUp(const SDL_Event& event);
+	void OnMouseWheel(const SDL_Event& event);
 
 	// game controller functions
 	void InitializeControllers();
 
 	// IMGUI IO
-	void IMGUIKeymap();
+	void IMGUIKeymap() const;
 
 	/*------- PRIVATE MEMBER VARIABLES -------*/
 
@@ -87,10 +87,10 @@ private:
 	// keyboard state containers
 	const Uint8* m_keysCurr;
 	Uint8* m_keysLast;
-	int m_numKeys;
+	int m_numKeys{};
 
 	// mouse specific
-	bool m_mouseButtons[3];
+	bool m_mouseButtons[3]{};
 	glm::vec2 m_mousePosition;
 	int m_mouseWheel;
 

@@ -22,7 +22,7 @@ Player::Player(): m_currentAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGH
 	GetRigidBody()->isColliding = false;
 	SetType(PLAYER);
 
-	m_buildAnimations();
+	BuildAnimations();
 }
 
 Player::~Player()
@@ -31,8 +31,8 @@ Player::~Player()
 void Player::Draw()
 {
 	// alias for x and y
-	const auto x = GetTransform()->position.x;
-	const auto y = GetTransform()->position.y;
+	const auto x = static_cast<int>(GetTransform()->position.x);
+	const auto y = static_cast<int>(GetTransform()->position.y);
 
 	// draw the player according to animation state
 	switch(m_currentAnimationState)
@@ -67,30 +67,30 @@ void Player::Clean()
 {
 }
 
-void Player::setAnimationState(const PlayerAnimationState new_state)
+void Player::SetAnimationState(const PlayerAnimationState new_state)
 {
 	m_currentAnimationState = new_state;
 }
 
-void Player::m_buildAnimations()
+void Player::BuildAnimations()
 {
-	Animation idleAnimation = Animation();
+	auto idle_animation = Animation();
 
-	idleAnimation.name = "idle";
-	idleAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-0"));
-	idleAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-1"));
-	idleAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-2"));
-	idleAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-3"));
+	idle_animation.name = "idle";
+	idle_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-0"));
+	idle_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-1"));
+	idle_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-2"));
+	idle_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-idle-3"));
 
-	SetAnimation(idleAnimation);
+	SetAnimation(idle_animation);
 
-	Animation runAnimation = Animation();
+	auto run_animation = Animation();
 
-	runAnimation.name = "run";
-	runAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-0"));
-	runAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-1"));
-	runAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-2"));
-	runAnimation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-3"));
+	run_animation.name = "run";
+	run_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-0"));
+	run_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-1"));
+	run_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-2"));
+	run_animation.frames.push_back(GetSpriteSheet()->GetFrame("megaman-run-3"));
 
-	SetAnimation(runAnimation);
+	SetAnimation(run_animation);
 }

@@ -44,23 +44,23 @@ void PlayScene::HandleEvents()
 			const auto deadZone = 10000;
 			if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL > deadZone)
 			{
-				m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
 				m_playerFacingRight = true;
 			}
 			else if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL < -deadZone)
 			{
-				m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
 			}
 			else
 			{
 				if (m_playerFacingRight)
 				{
-					m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
 				}
 				else
 				{
-					m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
 				}
 			}
 		}
@@ -72,23 +72,23 @@ void PlayScene::HandleEvents()
 	{
 		if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_A))
 		{
-			m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
+			m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
 			m_playerFacingRight = false;
 		}
 		else if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_D))
 		{
-			m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
+			m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
 			m_playerFacingRight = true;
 		}
 		else
 		{
 			if (m_playerFacingRight)
 			{
-				m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
 			}
 			else
 			{
-				m_pPlayer->setAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
 			}
 		}
 	}

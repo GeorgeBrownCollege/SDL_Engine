@@ -17,10 +17,10 @@ public:
 	virtual void Clean() override;
 
 	// setters
-	void setAnimationState(PlayerAnimationState new_state);
+	void SetAnimationState(PlayerAnimationState new_state);
 
 private:
-	void m_buildAnimations();
+	void BuildAnimations();
 
 	PlayerAnimationState m_currentAnimationState;
 };

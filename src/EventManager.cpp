@@ -17,7 +17,7 @@ void EventManager::Update()
         m_mouseWheel = 0;
 
 
-        for (auto controller : m_pGameControllers)
+        for (const auto controller : m_pGameControllers)
         {
             if (SDL_GameControllerGetAttached(controller->handle))
             {
@@ -143,13 +143,14 @@ void EventManager::Update()
         }
 
         m_keysCurr = SDL_GetKeyboardState(&m_numKeys);
-        SDL_Point mousePos = { (int)m_mousePosition.x, (int)m_mousePosition.y };
-        m_mouseCurrent = SDL_GetMouseState(&mousePos.x, &mousePos.y);
+        SDL_Point mouse_pos = { static_cast<int>(m_mousePosition.x), static_cast<int>(m_mousePosition.y) };
+        m_mouseCurrent = SDL_GetMouseState(&mouse_pos.x, &mouse_pos.y);
 
         m_io.DeltaTime = 1.0f / 60.0f;
-        int mouseX, mouseY;
-        const int buttons = SDL_GetMouseState(&mouseX, &mouseY);
-        m_io.MousePos = ImVec2(static_cast<float>(mouseX), static_cast<float>(mouseY));
+        int mouse_x;
+        int mouse_y;
+        const int buttons = static_cast<int>(SDL_GetMouseState(&mouse_x, &mouse_y));
+        m_io.MousePos = ImVec2(static_cast<float>(mouse_x), static_cast<float>(mouse_y));
         m_io.MouseDown[0] = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
         m_io.MouseDown[1] = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
         m_io.MouseWheel = static_cast<float>(m_mouseWheel);
@@ -161,11 +162,11 @@ void EventManager::Update()
 
 void EventManager::Clean()
 {
-    for (auto count = 0; count < m_pGameControllers.size(); ++count)
+    for (const auto& game_controller : m_pGameControllers)
     {
-        if (m_pGameControllers[count] != nullptr)
+        if (game_controller != nullptr)
         {
-            SDL_GameControllerClose(m_pGameControllers[count]->handle);
+            SDL_GameControllerClose(game_controller->handle);
         }
     }
 
@@ -176,16 +177,8 @@ bool EventManager::IsKeyDown(const SDL_Scancode key) const
 {
     if (m_keyStates != nullptr)
     {
-        if (m_keyStates[key] == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (m_keyStates[key] == 1) return true;
     }
-
     return false;
 }
 
@@ -193,16 +186,8 @@ bool EventManager::IsKeyUp(const SDL_Scancode key) const
 {
     if (m_keyStates != nullptr)
     {
-        if (m_keyStates[key] == 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (m_keyStates[key] == 0) return true;
     }
-
     return false;
 }
 
@@ -216,23 +201,23 @@ void EventManager::OnKeyUp()
     m_keyStates = SDL_GetKeyboardState(nullptr);
 }
 
-bool EventManager::KeyPressed(const SDL_Scancode c)
+bool EventManager::KeyPressed(const SDL_Scancode c) const
 {
     return (m_keysCurr[c] > m_keysLast[c]);
 }
 
-bool EventManager::KeyReleased(const SDL_Scancode c)
+bool EventManager::KeyReleased(const SDL_Scancode c) const
 {
     return (m_keysCurr[c] < m_keysLast[c]);
 }
 
-void EventManager::OnMouseMove(SDL_Event& event)
+void EventManager::OnMouseMove(const SDL_Event& event)
 {
-    m_mousePosition.x = event.motion.x;
-    m_mousePosition.y = event.motion.y;
+    m_mousePosition.x = static_cast<float>(event.motion.x);
+    m_mousePosition.y = static_cast<float>(event.motion.y);
 }
 
-void EventManager::OnMouseButtonDown(SDL_Event& event)
+void EventManager::OnMouseButtonDown(const SDL_Event& event)
 {
     if (event.button.button == SDL_BUTTON_LEFT)
     {
@@ -250,7 +235,7 @@ void EventManager::OnMouseButtonDown(SDL_Event& event)
     }
 }
 
-void EventManager::OnMouseButtonUp(SDL_Event& event)
+void EventManager::OnMouseButtonUp(const SDL_Event& event)
 {
     if (event.button.button == SDL_BUTTON_LEFT)
     {
@@ -268,7 +253,7 @@ void EventManager::OnMouseButtonUp(SDL_Event& event)
     }
 }
 
-void EventManager::OnMouseWheel(SDL_Event& event)
+void EventManager::OnMouseWheel(const SDL_Event& event)
 {
     m_mouseWheel = event.wheel.y;
 }
@@ -294,7 +279,7 @@ void EventManager::InitializeControllers()
     }
 }
 
-void EventManager::IMGUIKeymap()
+void EventManager::IMGUIKeymap() const
 {
     // Keyboard mapping. ImGui will use those indices to peek into the m_io.KeysDown[] array.
     m_io.KeyMap[ImGuiKey_Tab] = SDL_SCANCODE_TAB;
@@ -336,7 +321,7 @@ int EventManager::GetMouseWheel() const
     return m_mouseWheel;
 }
 
-GameController* EventManager::GetGameController(const int controller_number)
+GameController* EventManager::GetGameController(const int controller_number) const
 {
     if (SDL_GameControllerGetAttached(m_pGameControllers[controller_number]->handle))
     {
@@ -363,16 +348,16 @@ EventManager::EventManager() :
     m_mousePosition = glm::vec2(0.0f, 0.0f);
 
     // initialize button states for the mouse
-    for (auto& mouseButtonState : m_mouseButtons)
+    for (auto& mouse_button_state : m_mouseButtons)
     {
-        mouseButtonState = false;
+        mouse_button_state = false;
     }
 
     m_keysCurr = SDL_GetKeyboardState(&m_numKeys);
     m_keysLast = new Uint8[m_numKeys];
     std::memcpy(m_keysLast, m_keysCurr, m_numKeys);
-    SDL_Point mousePos = { (int)m_mousePosition.x, (int)m_mousePosition.y };
-    m_mouseCurrent = SDL_GetMouseState(&mousePos.x, &mousePos.y);
+    SDL_Point mouse_pos = { static_cast<int>(m_mousePosition.x), static_cast<int>(m_mousePosition.y) };
+    m_mouseCurrent = SDL_GetMouseState(&mouse_pos.x, &mouse_pos.y);
     m_mouseLast = m_mouseCurrent;
 
     InitializeControllers();
