@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PlayScene" Collapsed="true">
+    <Position X="2.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAYgCAAEADARAhAEAAAwAAAACACAAAAAAAIAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\PlayScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQIAAAAACAAEgAAoAgQCAAAQAYAAAAAQAAAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAIAIIAAAIEgABEAFAAAhAAAQBAAGQAAAAAEIAQIQ=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartScene" Collapsed="true">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQACBAAAiAAAgBAACAQAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\StartScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndScene" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAiAgAAAQAAAAAAAAAAAABAEAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\EndScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Button" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEQAAAEAAAAAAgAAAAAAAAACAAAAABAAAAAAAIGAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Button.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Label" Collapsed="true">
+    <Position X="13.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAEEAIAgAABIAIAAAAABAAAAABAAAAAACAQgA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Label.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIControl" Collapsed="true">
+    <Position X="12.25" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Typedef Name="UIControl::EventHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\UIControl.h</NewMemberFileName>
+        </TypeIdentifier>
+      </Typedef>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAQgAAAgACAgAIAgAAAAAAAEAAAAASQYQ=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\UIControl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisplayObject" Collapsed="true">
+    <Position X="15.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAABkAAAAAAgAAAAAAABAABAEAEAAQAQBA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\DisplayObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Agent" Collapsed="true">
+    <Position X="18" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQJIIAAAAAQgwCAAAEgAAAAAAkAACEAACAAAgIBxAE=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Agent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavigationObject" Collapsed="true">
+    <Position X="18" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAAAgAAAAAAAAAAAiAAAAAEAABAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\NavigationObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sprite" Collapsed="true">
+    <Position X="21.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAgAAAQAAAgAAAABAAAQQAAAAAABgQAI=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Sprite.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Obstacle" Collapsed="true">
+    <Position X="9" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAACAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Obstacle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plane" Collapsed="true">
+    <Position X="20.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAIAAAAARAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Plane.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="22.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAACAAAAAAgAAAAAAQAARBA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ship" Collapsed="true">
+    <Position X="18" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAIAAEAIACBgAAAAAAAAAAAUGAAMAAAAAAAAEAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Ship.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Target" Collapsed="true">
+    <Position X="15.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAIAABiAAAAAAACAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Target.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Transform" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAIAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\tsili\OneDrive\Desktop\GBC\GAME3001\SDL_Engine\src\Transform.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

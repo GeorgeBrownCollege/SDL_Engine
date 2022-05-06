@@ -7,6 +7,9 @@
 #include "UIControl.h"
 #include "FontManager.h"
 
+/**
+ * \brief Label Class - Inherits from UIControl
+ */
 class Label final : public UIControl
 {
 public:
@@ -18,11 +21,13 @@ public:
 	virtual void Update() override;
 	virtual void Clean() override;
 
+	// Mutator Functions 
 	void SetText(const std::string& new_text);
 	void SetColour(SDL_Color new_colour) const;
 	void SetSize(int new_size);
 
 private:
+	// private data members
 	std::string m_fontPath;
 	std::string m_fontID;
 	SDL_Color m_fontColour;
@@ -32,6 +37,7 @@ private:
 	int m_fontSize;
 	int m_fontStyle;
 
+	// private functions
 	void BuildFontID();
 };
 

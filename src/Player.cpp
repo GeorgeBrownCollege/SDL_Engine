@@ -30,33 +30,28 @@ Player::~Player()
 
 void Player::Draw()
 {
-	// alias for x and y
-	const auto x = static_cast<int>(GetTransform()->position.x);
-	const auto y = static_cast<int>(GetTransform()->position.y);
-
 	// draw the player according to animation state
 	switch(m_currentAnimationState)
 	{
 	case PlayerAnimationState::PLAYER_IDLE_RIGHT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("idle"),
-			x, y, 0.12f, 0, 255, true);
+			GetTransform()->position, 0.12f, 0, 255, true);
 		break;
 	case PlayerAnimationState::PLAYER_IDLE_LEFT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("idle"),
-			x, y, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
+			GetTransform()->position, 0.12f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
 	case PlayerAnimationState::PLAYER_RUN_RIGHT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("run"),
-			x, y, 0.25f, 0, 255, true);
+			GetTransform()->position, 0.25f, 0, 255, true);
 		break;
 	case PlayerAnimationState::PLAYER_RUN_LEFT:
 		TextureManager::Instance().PlayAnimation("spritesheet", GetAnimation("run"),
-			x, y, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
+			GetTransform()->position, 0.25f, 0, 255, true, SDL_FLIP_HORIZONTAL);
 		break;
 	default:
 		break;
 	}
-	
 }
 
 void Player::Update()
