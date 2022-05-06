@@ -8,18 +8,23 @@
 constexpr float FPS = 60.0f;
 constexpr float DELAY_TIME = 1000.0f / FPS;
 
+/**
+ * \brief Program Entry Point
+ */
 int main(int argc, char* args[])
 {
 	Uint32 frames = 0;
 
-	// show and position console
+	// show and position the application console
 	AllocConsole();
 	auto console = freopen("CON", "w", stdout);
-	const HWND window_handle = GetConsoleWindow();
-	MoveWindow(window_handle, 100, 700, 1280, 200, TRUE);
+	const auto window_handle = GetConsoleWindow();
+	MoveWindow(window_handle, 100, 700, 800, 200, TRUE);
 
+	// Display Main SDL Window
 	Game::Instance().Init("SDL_Engine v0.28", 100, 100, 800, 600, false);
 
+	// Main Game Loop
 	while (Game::Instance().IsRunning())
 	{
 		const auto frame_start = static_cast<float>(SDL_GetTicks());
