@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "Game.h"
 #include "EventManager.h"
+#include "InputType.h"
 
 // required for IMGUI
 #include "imgui.h"
@@ -32,44 +33,56 @@ void PlayScene::Clean()
 	RemoveAllChildren();
 }
 
+
 void PlayScene::HandleEvents()
 {
 	EventManager::Instance().Update();
 
-	// handle player movement with GameController
-	if (SDL_NumJoysticks() > 0)
+	GetPlayerInput();
+
+	GetKeyboardInput();
+}
+
+void PlayScene::GetPlayerInput()
+{
+	switch (m_pCurrentInputType)
 	{
-		if (EventManager::Instance().GetGameController(0) != nullptr)
+	case static_cast<int>(InputType::GAME_CONTROLLER):
+	{
+		// handle player movement with GameController
+		if (SDL_NumJoysticks() > 0)
 		{
-			const auto deadZone = 10000;
-			if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL > deadZone)
+			if (EventManager::Instance().GetGameController(0) != nullptr)
 			{
-				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
-				m_playerFacingRight = true;
-			}
-			else if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL < -deadZone)
-			{
-				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
-				m_playerFacingRight = false;
-			}
-			else
-			{
-				if (m_playerFacingRight)
+				constexpr auto dead_zone = 10000;
+				if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL > dead_zone)
 				{
-					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
+					m_playerFacingRight = true;
+				}
+				else if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL < -dead_zone)
+				{
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
+					m_playerFacingRight = false;
 				}
 				else
 				{
-					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+					if (m_playerFacingRight)
+					{
+						m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+					}
+					else
+					{
+						m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+					}
 				}
 			}
 		}
 	}
-
-
-	// handle player movement if no Game Controllers found
-	if (SDL_NumJoysticks() < 1)
+	break;
+	case static_cast<int>(InputType::KEYBOARD_MOUSE):
 	{
+		// handle player movement with mouse and keyboard
 		if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_A))
 		{
 			m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
@@ -92,8 +105,67 @@ void PlayScene::HandleEvents()
 			}
 		}
 	}
-	
+	break;
+	case static_cast<int>(InputType::ALL):
+	{
+		if (SDL_NumJoysticks() > 0)
+		{
+			if (EventManager::Instance().GetGameController(0) != nullptr)
+			{
+				constexpr auto dead_zone = 10000;
+				if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL > dead_zone
+					|| EventManager::Instance().IsKeyDown(SDL_SCANCODE_D))
+				{
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
+					m_playerFacingRight = true;
+				}
+				else if (EventManager::Instance().GetGameController(0)->STICK_LEFT_HORIZONTAL < -dead_zone
+					|| EventManager::Instance().IsKeyDown(SDL_SCANCODE_A))
+				{
+					m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
+					m_playerFacingRight = false;
+				}
+				else
+				{
+					if (m_playerFacingRight)
+					{
+						m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+					}
+					else
+					{
+						m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+					}
+				}
+			}
+		}
+		else if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_A))
+		{
+			m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_LEFT);
+			m_playerFacingRight = false;
+		}
+		else if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_D))
+		{
+			m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_RUN_RIGHT);
+			m_playerFacingRight = true;
+		}
+		else
+		{
+			if (m_playerFacingRight)
+			{
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_RIGHT);
+			}
+			else
+			{
+				m_pPlayer->SetAnimationState(PlayerAnimationState::PLAYER_IDLE_LEFT);
+			}
+		}
+	}
+	break;
+	}
+}
 
+void PlayScene::GetKeyboardInput()
+{
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_ESCAPE))
 	{
 		Game::Instance().Quit();
@@ -114,6 +186,9 @@ void PlayScene::Start()
 {
 	// Set GUI Title
 	m_guiTitle = "Play Scene";
+
+	// Set Input Type
+	m_pCurrentInputType = static_cast<int>(InputType::KEYBOARD_MOUSE);
 	
 	// Plane Sprite
 	m_pPlaneSprite = new Plane();
@@ -171,10 +246,11 @@ void PlayScene::Start()
 
 	AddChild(m_pInstructionsLabel);
 
-	ImGuiWindowFrame::Instance().SetGuiFunction(std::bind(&PlayScene::GUI_Function, this));
+	/* DO NOT REMOVE */
+	ImGuiWindowFrame::Instance().SetGuiFunction([this] { GUI_Function(); });
 }
 
-void PlayScene::GUI_Function() const
+void PlayScene::GUI_Function() 
 {
 	// Always open with a NewFrame
 	ImGui::NewFrame();
@@ -182,7 +258,14 @@ void PlayScene::GUI_Function() const
 	// See examples by uncommenting the following - also look at imgui_demo.cpp in the IMGUI filter
 	//ImGui::ShowDemoWindow();
 	
-	ImGui::Begin("Your Window Title Goes Here", NULL, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
+	ImGui::Begin("Your Window Title Goes Here", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
+
+	ImGui::Text("Player Input");
+	ImGui::RadioButton("Keyboard / Mouse", &m_pCurrentInputType, static_cast<int>(InputType::KEYBOARD_MOUSE)); ImGui::SameLine();
+	ImGui::RadioButton("Game Controller", &m_pCurrentInputType, static_cast<int>(InputType::GAME_CONTROLLER)); ImGui::SameLine();
+	ImGui::RadioButton("Both", &m_pCurrentInputType, static_cast<int>(InputType::ALL));
+
+	ImGui::Separator();
 
 	if(ImGui::Button("My Button"))
 	{
