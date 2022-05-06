@@ -284,6 +284,9 @@
     <ClInclude Include="..\src\NavigationObject.h">
       <Filter>Core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\WindowName.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">

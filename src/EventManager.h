@@ -104,7 +104,7 @@ private:
 	// is the Event Manager active
 	bool m_isActive;
 
-	// does the main waindow have focus
+	// does the main window have focus
 	bool m_mainWindowHasFocus;
 };
 

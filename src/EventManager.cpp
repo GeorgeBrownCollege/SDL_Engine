@@ -1,6 +1,7 @@
 #include "EventManager.h"
 #include <iostream>
 #include "Game.h"
+#include "WindowName.h"
 
 void EventManager::Reset()
 {
@@ -133,7 +134,11 @@ void EventManager::Update()
                     m_mainWindowHasFocus = (ImGuiWindowFrame::Instance().GetWindowId() == event.window.windowID) ? false : true;
 
                     break;
-                }
+
+	            case SDL_WINDOWEVENT_ENTER:
+            		SDL_RaiseWindow((event.window.windowID == static_cast<int>(WindowName::MAIN)) ? Game::Instance().GetWindow() : ImGuiWindowFrame::Instance().GetWindow());
+	                    break;
+	                }
                 break;
 
 
@@ -150,13 +155,17 @@ void EventManager::Update()
         int mouse_x;
         int mouse_y;
         const int buttons = static_cast<int>(SDL_GetMouseState(&mouse_x, &mouse_y));
-        m_io.MousePos = ImVec2(static_cast<float>(mouse_x), static_cast<float>(mouse_y));
-        m_io.MouseDown[0] = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
-        m_io.MouseDown[1] = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
-        m_io.MouseWheel = static_cast<float>(m_mouseWheel);
+        if(!m_mainWindowHasFocus)
+        {
+            m_io.MousePos = ImVec2(static_cast<float>(mouse_x), static_cast<float>(mouse_y));
+            m_io.MouseDown[0] = buttons & SDL_BUTTON(SDL_BUTTON_LEFT);
+            m_io.MouseDown[1] = buttons & SDL_BUTTON(SDL_BUTTON_RIGHT);
+            m_io.MouseWheel = static_cast<float>(m_mouseWheel);
 
-        m_io.DisplaySize.x = Config::SCREEN_WIDTH;
-        m_io.DisplaySize.y = Config::SCREEN_HEIGHT;
+            m_io.DisplaySize.x = Config::SCREEN_WIDTH;
+            m_io.DisplaySize.y = Config::SCREEN_HEIGHT;
+        }
+        
     }
 }
 
