@@ -33,14 +33,14 @@ int main(int argc, char* args[])
 		Game::Instance().Update();
 		Game::Instance().Render();
 
-		if (const float frame_time = static_cast<float>(SDL_GetTicks()) - frame_start; 
+		if (const float frame_time = static_cast<float>(SDL_GetTicks() - frame_start); 
 			frame_time < DELAY_TIME)
 		{
 			SDL_Delay(static_cast<int>(DELAY_TIME - frame_time));
 		}
 
 		// delta time
-		const auto delta_time = static_cast<float>(SDL_GetTicks()) - frame_start / 1000.0f;
+		const auto delta_time = static_cast<float>(SDL_GetTicks() - frame_start) / 1000.0f;
 		Game::Instance().SetDeltaTime(delta_time);
 
 		frames++;
