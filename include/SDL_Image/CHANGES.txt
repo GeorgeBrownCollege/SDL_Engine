@@ -1,3 +1,43 @@
+2.6.2:
+ * Updated autotools to use ax_compute_relative_paths, fixing homebrew on macOS
+
+2.6.1:
+ * Fixed loading grayscale PNGs when using stb_image
+
+2.6.0:
+ * Added support for building with CMake
+ * Added stb_image as the default backend for JPG and PNG images loading.
+   To use libpng and libjpg instead, configure using --disable-stb-image
+ * Added IMG_LoadSizedSVG_RW()
+ * Added support for AVIF images (https://github.com/AOMediaCodec/libavif)
+ * Added IMG_ReadXPMFromArrayToRGB888()
+ * Added support for JXL images (https://jpegxl.info/)
+ * Added support for QOI images (https://qoiformat.org/)
+ * Fixed XCF regression introduced in 2.0.5
+ * Added support for loading animated GIFs
+ * LoadBMP() now loads files using SDL2
+ * Allow using libwebpdecoder instead libwebp
+
+2.0.5:
+Sam Lantinga - Wed Jun 19 07:30:51 PDT 2019
+ * Updated external libraries libpng-1.6.32, libwebp-1.0.2
+Sam Lantinga - Tue Jun 11 00:17:01 PDT 2019
+ * Fixed a number of security issues:
+   TALOS-2019-0820
+   TALOS-2019-0821
+   TALOS-2019-0841
+   TALOS-2019-0842
+   TALOS-2019-0843
+   TALOS-2019-0844
+Sathyanarayanan Gunasekaran, Brian Palmer, Charlie Birks, Amadeus - Mon Jun 10 16:48:20 PDT 2019
+ * Ported SDL_image to emscripten
+
+2.0.4:
+Michał Janiszewski - Fri Sept 28 22:00:26 PST 2018
+ * Fixed memory issues in the XCF loader
+Ryan Gordon - Wed Sept 26 14:58:31 PST 2018
+ * Fixed a number of security issues, including TALOS-2018-0645
+
 2.0.3:
 Ryan Gordon - Sun Jan 28 21:28:16 PST 2018
  * Fixed a number of security issues:

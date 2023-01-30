@@ -1,6 +1,28 @@
-# SDL Engine v0.28
+# SDL Engine v0.29
 
 Latest Changes
+---------------
+- Fixed DeltaTime bug in main.cpp
+- Added RotateAABB in CollisionManager to show an expanding Bounding Box when Game Object is rotated
+- Added RotetePoint in static Util class to support RotateAABB
+- Added bounds to RigidBody to support RotateAABB
+- Added isCentered boolean to GameObject class to support RotateAABB
+- Adjusted sizes for ImGui Window, Main Window and Console Window.
+- Fixed bug that produced Mouse events in ImGUI Window when moving or clicking mouse in Main Window.
+- Updated to Current Version of SDL 2.26.2
+- Updated to Current Version of SDL_mixer 2.6.2
+- Updated to Current Version of SDL_image 2.6.2
+- Updated to Current Version of SDL_TTF 2.20.1
+- updated to Current Version of SDL_net 2.2.0
+- Upgraded ImGui to latest version (v1.89.2)
+
+Known Bugs
+---------------
+- UIButton Events remain a little janky when being clicked, especially when moving from to a new Scene
+
+## Previous Versions
+
+### v0.28
 ---------------
 - Refactored all classes so that function names are now Upper Case
 - Added Convenience functions to TextureManager to make it easier to Draw and Animate
@@ -9,13 +31,6 @@ Latest Changes
 - Updated to Current Version of SDL 2.0.22
 - Updated to Current Version of SDL_TTF 2.0.18
 - Upgraded ImGui to latest version (v1.87)
-
-
-Known Bugs
----------------
-- UIButton Events still a little janky when being clicked
-
-## Previous Versions
 
 ### v0.27
 ---------------

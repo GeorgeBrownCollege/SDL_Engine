@@ -463,3 +463,22 @@ SDL_Color Util::ToSDLColour(const glm::vec4 colour)
 	color.a = static_cast<Uint8>(floor(colour.a * 255.0f));
 	return color;
 }
+
+glm::vec2 Util::RotatePoint(glm::vec2 point, const float angle, const glm::vec2 pivot)
+{
+	const float s = sin(angle * Deg2Rad);
+	const float c = cos(angle * Deg2Rad);
+
+	// translate point back to origin:
+	point.x -= pivot.x;
+	point.y -= pivot.y;
+
+	// rotate point
+	const float new_x = point.x * c - point.y * s;
+	const float new_y = point.x * s + point.y * c;
+
+	// translate point back:
+	point.x = new_x + pivot.x;
+	point.y = new_y + pivot.y;
+	return point;
+}

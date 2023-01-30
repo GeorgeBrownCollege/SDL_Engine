@@ -67,3 +67,13 @@ bool GameObject::IsVisible() const
 {
 	return m_visible;
 }
+
+void GameObject::setIsCentered(const bool state)
+{
+	m_isCentered = state;
+}
+
+bool GameObject::isCentered() const
+{
+	return m_isCentered;
+}

@@ -23,7 +23,6 @@ public:
 	static bool LineRectCheck(glm::vec2 line_start, glm::vec2 line_end, glm::vec2 rect_start, float rect_width, float rect_height);
 	static bool LineRectEdgeCheck(glm::vec2 line_start, glm::vec2 rect_start, float rect_width, float rect_height);
 
-
 	static int MinSquaredDistanceLineLine(glm::vec2 line1_start, glm::vec2 line1_end, glm::vec2 line2_start, glm::vec2 line2_end);
 	static bool LineAABBCheck(Ship* object1, GameObject* object2);
 
@@ -33,6 +32,8 @@ public:
 	static bool PointRectCheck(glm::vec2 point, glm::vec2 rect_start, float rect_width, float rect_height);
 
 	static bool LOSCheck(Agent* agent, glm::vec2 end_point, const std::vector<DisplayObject*>& objects, DisplayObject* target);
+
+	static void RotateAABB(GameObject* object1, float angle);
 
 private:
 	CollisionManager();

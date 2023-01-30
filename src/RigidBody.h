@@ -6,6 +6,8 @@
 struct RigidBody
 {
 	float mass = 0.0f;
+	glm::vec2 bounds;
+
 	glm::vec2 velocity;
 	glm::vec2 acceleration;
 	bool isColliding = false;

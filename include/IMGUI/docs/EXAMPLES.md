@@ -17,56 +17,60 @@ You can find Windows binaries for some of those example applications at:
 
 Integration in a typical existing application, should take <20 lines when using standard backends.
 
-    At initialization:
-      call ImGui::CreateContext()
-      call ImGui_ImplXXXX_Init() for each backend.
+```cpp
+At initialization:
+  call ImGui::CreateContext()
+  call ImGui_ImplXXXX_Init() for each backend.
 
-    At the beginning of your frame:
-      call ImGui_ImplXXXX_NewFrame() for each backend.
-      call ImGui::NewFrame()
+At the beginning of your frame:
+  call ImGui_ImplXXXX_NewFrame() for each backend.
+  call ImGui::NewFrame()
 
-    At the end of your frame:
-      call ImGui::Render()
-      call ImGui_ImplXXXX_RenderDrawData() for your Renderer backend.
+At the end of your frame:
+  call ImGui::Render()
+  call ImGui_ImplXXXX_RenderDrawData() for your Renderer backend.
 
-    At shutdown:
-      call ImGui_ImplXXXX_Shutdown() for each backend.
-      call ImGui::DestroyContext()
+At shutdown:
+  call ImGui_ImplXXXX_Shutdown() for each backend.
+  call ImGui::DestroyContext()
+```
 
 Example (using [backends/imgui_impl_win32.cpp](https://github.com/ocornut/imgui/blob/master/backends/imgui_impl_win32.cpp) + [backends/imgui_impl_dx11.cpp](https://github.com/ocornut/imgui/blob/master/backends/imgui_impl_dx11.cpp)):
 
-    // Create a Dear ImGui context, setup some options
-    ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO();
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable some options
+```cpp
+// Create a Dear ImGui context, setup some options
+ImGui::CreateContext();
+ImGuiIO& io = ImGui::GetIO();
+io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable some options
 
-    // Initialize Platform + Renderer backends (here: using imgui_impl_win32.cpp + imgui_impl_dx11.cpp)
-    ImGui_ImplWin32_Init(my_hwnd);
-    ImGui_ImplDX11_Init(my_d3d_device, my_d3d_device_context);
+// Initialize Platform + Renderer backends (here: using imgui_impl_win32.cpp + imgui_impl_dx11.cpp)
+ImGui_ImplWin32_Init(my_hwnd);
+ImGui_ImplDX11_Init(my_d3d_device, my_d3d_device_context);
 
-    // Application main loop
-    while (true)
-    {
-        // Beginning of frame: update Renderer + Platform backend, start Dear ImGui frame
-        ImGui_ImplDX11_NewFrame();
-        ImGui_ImplWin32_NewFrame();
-        ImGui::NewFrame();
+// Application main loop
+while (true)
+{
+    // Beginning of frame: update Renderer + Platform backend, start Dear ImGui frame
+    ImGui_ImplDX11_NewFrame();
+    ImGui_ImplWin32_NewFrame();
+    ImGui::NewFrame();
 
-        // Any application code here
-        ImGui::Text("Hello, world!");
+    // Any application code here
+    ImGui::Text("Hello, world!");
 
-        // End of frame: render Dear ImGui
-        ImGui::Render();
-        ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+    // End of frame: render Dear ImGui
+    ImGui::Render();
+    ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
-        // Swap
-        g_pSwapChain->Present(1, 0);
-    }
+    // Swap
+    g_pSwapChain->Present(1, 0);
+}
 
-    // Shutdown
-    ImGui_ImplDX11_Shutdown();
-    ImGui_ImplWin32_Shutdown();
-    ImGui::DestroyContext();
+// Shutdown
+ImGui_ImplDX11_Shutdown();
+ImGui_ImplWin32_Shutdown();
+ImGui::DestroyContext();
+```
 
 Please read 'PROGRAMMER GUIDE' in imgui.cpp for notes on how to setup Dear ImGui in your codebase.
 Please read the comments and instruction at the top of each file.
@@ -174,7 +178,7 @@ This may actually also work with OpenGL 2.x contexts! <BR>
 [example_sdl_sdlrenderer/](https://github.com/ocornut/imgui/blob/master/examples/example_sdl_sdlrenderer/) <BR>
 SDL2 (Win32, Mac, Linux, etc.) + SDL_Renderer (most graphics backends are supported underneath) <BR>
 = main.cpp + imgui_impl_sdl.cpp + imgui_impl_sdlrenderer.cpp <BR>
-This requires SDL 2.0.17+ (expected to release November 2021) <BR>
+This requires SDL 2.0.18+ (released November 2021) <BR>
 We do not really recommend using SDL_Renderer as it is a rather primitive API.
 
 [example_sdl_vulkan/](https://github.com/ocornut/imgui/blob/master/examples/example_sdl_vulkan/) <BR>
@@ -201,7 +205,7 @@ DirectX12 example, Windows only. <BR>
 This is quite long and tedious, because: DirectX12.
 
 
-### Miscallaneous
+### Miscellaneous
 
 **Building**
 

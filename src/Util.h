@@ -62,6 +62,8 @@ public:
 
 	static SDL_Color ToSDLColour(glm::vec4 colour);
 
+	static glm::vec2 RotatePoint(glm::vec2 point, float angle, glm::vec2 pivot);
+
 private:
 	Util();
 	~Util();
