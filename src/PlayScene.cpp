@@ -20,6 +20,9 @@ PlayScene::~PlayScene()
 void PlayScene::Draw()
 {
 	DrawDisplayList();
+	// Blend test
+	Util::DrawFilledRect(glm::vec2(400.0f, 300.0f), 80, 60,
+		glm::vec4(1.0f, 0.0f, 0.0f, 0.5f));
 	SDL_SetRenderDrawColor(Renderer::Instance().GetRenderer(), 255, 255, 255, 255);
 }
 
