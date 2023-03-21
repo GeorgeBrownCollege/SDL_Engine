@@ -93,8 +93,8 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;FREEGLUT_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;$(SolutionDir)include\IMGUI\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\;$(SolutionDir)include\GLM\;$(SolutionDir)include\SDL\include\;$(SolutionDir)include\SDL_Image\include\;$(SolutionDir)include\SDL_Mixer\include\;$(SolutionDir)include\SDL2_ttf\include\;$(SolutionDir)include\SDL_net\include\;$(SolutionDir)include\IMGUI_SDL\;$(SolutionDir)include\IMGUI\;$(SolutionDir)include\IMGUI_Nodes\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,11 +162,13 @@
     <ClCompile Include="..\include\IMGUI\imgui_tables.cpp" />
     <ClCompile Include="..\include\IMGUI\imgui_widgets.cpp" />
     <ClCompile Include="..\include\IMGUI_SDL\imgui_sdl.cpp" />
+    <ClCompile Include="..\include\SDL_Nodes\imnodes.cpp" />
     <ClCompile Include="..\src\Agent.cpp" />
     <ClCompile Include="..\src\Button.cpp" />
     <ClCompile Include="..\src\CollisionManager.cpp" />
     <ClCompile Include="..\src\ImGuiWindowFrame.cpp" />
     <ClCompile Include="..\src\NavigationObject.cpp" />
+    <ClCompile Include="..\src\NodeScene.cpp" />
     <ClCompile Include="..\src\Obstacle.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\UIControl.cpp" />
@@ -200,15 +202,20 @@
     <ClInclude Include="..\include\IMGUI\imstb_textedit.h" />
     <ClInclude Include="..\include\IMGUI\imstb_truetype.h" />
     <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h" />
+    <ClInclude Include="..\include\SDL_Nodes\imnodes.h" />
     <ClInclude Include="..\src\Agent.h" />
     <ClInclude Include="..\src\Animation.h" />
     <ClInclude Include="..\src\Button.h" />
     <ClInclude Include="..\src\CollisionManager.h" />
     <ClInclude Include="..\src\CollisionShape.h" />
     <ClInclude Include="..\src\Config.h" />
+    <ClInclude Include="..\src\EditorNode.h" />
     <ClInclude Include="..\src\ImGuiWindowFrame.h" />
     <ClInclude Include="..\src\InputType.h" />
     <ClInclude Include="..\src\NavigationObject.h" />
+    <ClInclude Include="..\src\EditorNodeType.h" />
+    <ClInclude Include="..\src\NodeLink.h" />
+    <ClInclude Include="..\src\NodeScene.h" />
     <ClInclude Include="..\src\Obstacle.h" />
     <ClInclude Include="..\src\SoundType.h" />
     <ClInclude Include="..\src\Sprite.h" />

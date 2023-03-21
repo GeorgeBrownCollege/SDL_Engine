@@ -7,6 +7,7 @@
 #include "EventManager.h"
 
 
+
 // Game functions - DO NOT REMOVE ***********************************************
 
 Game::Game() :
@@ -163,6 +164,10 @@ void Game::ChangeSceneState(const SceneState new_state)
 		case SceneState::PLAY:
 			m_pCurrentScene = new PlayScene();
 			std::cout << "play scene activated" << std::endl;
+			break;
+		case SceneState::NODE:
+			m_pCurrentScene = new NodeScene();
+			std::cout << "node scene activated" << std::endl;
 			break;
 		case SceneState::END:
 			m_pCurrentScene = new EndScene();

@@ -3,6 +3,7 @@
 #include "imgui.h"
 #include "imgui_sdl.h"
 #include "Util.h"
+#include "SDL_Nodes/imnodes.h"
 
 ImGuiWindowFrame::ImGuiWindowFrame()
 = default;
@@ -31,6 +32,7 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 		{
 			std::cout << "ImGui Renderer creation success" << std::endl;
 			SDL_SetRenderDrawColor(GetRenderer(), 255, 255, 255, 255);
+			SDL_SetRenderDrawBlendMode(Renderer::Instance().GetRenderer(), SDL_BLENDMODE_BLEND);
 		}
 		else
 		{
@@ -39,6 +41,7 @@ void ImGuiWindowFrame::Init(const char* title, const int x, const int y, const i
 
 		// IMGUI 
 		ImGui::CreateContext();
+		ImNodes::CreateContext();
 		ImGuiSDL::Initialize(GetRenderer(), width, height);
 
 		SetDefaultGuiFunction();
@@ -113,6 +116,7 @@ void ImGuiWindowFrame::Start()
 void ImGuiWindowFrame::Clean()
 {
 	// Clean Up for IMGUI
+	ImNodes::DestroyContext();
 	ImGui::DestroyContext();
 }
 

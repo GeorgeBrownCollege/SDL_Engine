@@ -37,9 +37,24 @@ void StartScene::HandleEvents()
 		Game::Instance().Quit();
 	}
 
-	if(EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
+	{
+		Game::Instance().ChangeSceneState(SceneState::START);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
 	{
 		Game::Instance().ChangeSceneState(SceneState::PLAY);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_3))
+	{
+		Game::Instance().ChangeSceneState(SceneState::NODE);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_4))
+	{
+		Game::Instance().ChangeSceneState(SceneState::END);
 	}
 }
 
@@ -50,7 +65,7 @@ void StartScene::Start()
 	m_pStartLabel->SetParent(this);
 	AddChild(m_pStartLabel);
 
-	m_pInstructionsLabel = new Label("Press 1 to Play", "Consolas", 40, blue, glm::vec2(400.0f, 120.0f));
+	m_pInstructionsLabel = new Label("Press 2 to Play", "Consolas", 40, blue, glm::vec2(400.0f, 120.0f));
 	m_pInstructionsLabel->SetParent(this);
 	AddChild(m_pInstructionsLabel);
 

@@ -31,6 +31,9 @@
     <Filter Include="DOCS">
       <UniqueIdentifier>{a44d29c3-2835-4901-a310-0039121b84b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="NodeEditor">
+      <UniqueIdentifier>{47c4afa2-5904-4359-ae06-070a35605c0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\StartScene.cpp">
@@ -137,6 +140,12 @@
     </ClCompile>
     <ClCompile Include="..\src\NavigationObject.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\SDL_Nodes\imnodes.cpp">
+      <Filter>IMGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\NodeScene.cpp">
+      <Filter>Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +298,21 @@
     </ClInclude>
     <ClInclude Include="..\src\InputType.h">
       <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\SDL_Nodes\imnodes.h">
+      <Filter>IMGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EditorNodeType.h">
+      <Filter>NodeEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EditorNode.h">
+      <Filter>NodeEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\NodeLink.h">
+      <Filter>NodeEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\NodeScene.h">
+      <Filter>Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -42,7 +42,22 @@ void EndScene::HandleEvents()
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_1))
 	{
+		Game::Instance().ChangeSceneState(SceneState::START);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
+	{
 		Game::Instance().ChangeSceneState(SceneState::PLAY);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_3))
+	{
+		Game::Instance().ChangeSceneState(SceneState::NODE);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_4))
+	{
+		Game::Instance().ChangeSceneState(SceneState::END);
 	}
 }
 
@@ -54,12 +69,12 @@ void EndScene::Start()
 	AddChild(m_label);
 
 	// Restart Button
-	m_pRestartButton = new Button("../Assets/textures/restartButton.png", "restartButton", GameObjectType::RESTART_BUTTON);
+	m_pRestartButton = new Button("../Assets/textures/backButton.png", "backButton", GameObjectType::BACK_BUTTON);
 	m_pRestartButton->GetTransform()->position = glm::vec2(400.0f, 400.0f);
 	m_pRestartButton->AddEventListener(Event::CLICK, [&]()-> void
 	{
 		m_pRestartButton->SetActive(false);
-		Game::Instance().ChangeSceneState(SceneState::PLAY);
+		Game::Instance().ChangeSceneState(SceneState::NODE);
 	});
 
 	m_pRestartButton->AddEventListener(Event::MOUSE_OVER, [&]()->void

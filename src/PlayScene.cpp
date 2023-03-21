@@ -8,6 +8,7 @@
 #include "imgui_sdl.h"
 #include "Renderer.h"
 #include "Util.h"
+#include "SDL_Nodes/imnodes.h"
 
 PlayScene::PlayScene()
 {
@@ -20,9 +21,6 @@ PlayScene::~PlayScene()
 void PlayScene::Draw()
 {
 	DrawDisplayList();
-	// Blend test
-	Util::DrawFilledRect(glm::vec2(400.0f, 300.0f), 80, 60,
-		glm::vec4(1.0f, 0.0f, 0.0f, 0.5f));
 	SDL_SetRenderDrawColor(Renderer::Instance().GetRenderer(), 255, 255, 255, 255);
 }
 
@@ -181,6 +179,16 @@ void PlayScene::GetKeyboardInput()
 
 	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_2))
 	{
+		Game::Instance().ChangeSceneState(SceneState::PLAY);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_3))
+	{
+		Game::Instance().ChangeSceneState(SceneState::NODE);
+	}
+
+	if (EventManager::Instance().IsKeyDown(SDL_SCANCODE_4))
+	{
 		Game::Instance().ChangeSceneState(SceneState::END);
 	}
 }
@@ -228,7 +236,7 @@ void PlayScene::Start()
 	m_pNextButton->AddEventListener(Event::CLICK, [&]()-> void
 	{
 		m_pNextButton->SetActive(false);
-		Game::Instance().ChangeSceneState(SceneState::END);
+		Game::Instance().ChangeSceneState(SceneState::NODE);
 	});
 
 	m_pNextButton->AddEventListener(Event::MOUSE_OVER, [&]()->void
@@ -260,8 +268,11 @@ void PlayScene::GUI_Function()
 
 	// See examples by uncommenting the following - also look at imgui_demo.cpp in the IMGUI filter
 	//ImGui::ShowDemoWindow();
-	
-	ImGui::Begin("Your Window Title Goes Here", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
+
+	ImGui::SetNextWindowSize(ImVec2(400.0f, 800.0f));
+	ImGui::SetNextWindowContentSize(ImVec2(400.0f, 740.0f));
+
+	ImGui::Begin("Your Window Title Goes Here", nullptr, ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove);
 
 	ImGui::Text("Player Input");
 	ImGui::RadioButton("Keyboard / Mouse", &m_pCurrentInputType, static_cast<int>(InputType::KEYBOARD_MOUSE)); ImGui::SameLine();
@@ -285,6 +296,8 @@ void PlayScene::GUI_Function()
 		std::cout << float3[2] << std::endl;
 		std::cout << "---------------------------\n";
 	}
+
+	ImGui::Separator();
 	
 	ImGui::End();
 }
