@@ -2,8 +2,10 @@
 #ifndef __NODE_SCENE__
 #define __NODE_SCENE__
 
+#include "ActionType.h"
 #include "Scene.h"
 #include "Button.h"
+#include "ConditionType.h"
 #include "EditorNode.h"
 #include "Label.h"
 #include "NodeLink.h"
@@ -40,6 +42,12 @@ private:
 	std::vector<EditorNode*> m_editorNodes;
 	std::vector<NodeLink> m_nodeLinks;
 	int m_currentID = 0;
+
+	// Decision Tree Stuff
+	std::string m_conditions[static_cast<int>(ConditionType::NUM_OF_CONDITIONS)];
+	std::string m_actions[static_cast<int>(ActionType::NUM_OF_ACTIONS)];
+	void m_buildConditionArray();
+	void m_buildActionArray();
 };
 
 #endif /* defined (__NODE_SCENE__) */

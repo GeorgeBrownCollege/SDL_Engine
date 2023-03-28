@@ -314,6 +314,12 @@
     <ClInclude Include="..\src\NodeScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\ActionType.h">
+      <Filter>NodeEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ConditionType.h">
+      <Filter>NodeEditor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">

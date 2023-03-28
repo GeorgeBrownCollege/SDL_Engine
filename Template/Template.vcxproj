@@ -203,11 +203,13 @@
     <ClInclude Include="..\include\IMGUI\imstb_truetype.h" />
     <ClInclude Include="..\include\IMGUI_SDL\imgui_sdl.h" />
     <ClInclude Include="..\include\SDL_Nodes\imnodes.h" />
+    <ClInclude Include="..\src\ActionType.h" />
     <ClInclude Include="..\src\Agent.h" />
     <ClInclude Include="..\src\Animation.h" />
     <ClInclude Include="..\src\Button.h" />
     <ClInclude Include="..\src\CollisionManager.h" />
     <ClInclude Include="..\src\CollisionShape.h" />
+    <ClInclude Include="..\src\ConditionType.h" />
     <ClInclude Include="..\src\Config.h" />
     <ClInclude Include="..\src\EditorNode.h" />
     <ClInclude Include="..\src\ImGuiWindowFrame.h" />

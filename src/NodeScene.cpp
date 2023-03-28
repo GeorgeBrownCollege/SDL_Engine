@@ -50,6 +50,44 @@ void NodeScene::GetKeyboardInput()
 	}
 }
 
+void NodeScene::m_buildConditionArray()
+{
+	for (int i = 0; i < static_cast<int>(ConditionType::NUM_OF_CONDITIONS); ++i)
+	{
+		switch(static_cast<ConditionType>(i))
+		{
+		case ConditionType::HAS_LOS: m_conditions[i] = "Has LOS"; break;
+		case ConditionType::LOW_HEALTH: m_conditions[i] = "Health < 25%";  break;
+		case ConditionType::TARGET_DETECTED: m_conditions[i] = "Target Detected";  break;
+		case ConditionType::WITHIN_RADIUS: m_conditions[i] = "Within Radius";  break;
+		case ConditionType::WITHIN_RANGE: m_conditions[i] = "Within Range";  break;
+		default: break;
+		}
+		
+	}
+}
+
+void NodeScene::m_buildActionArray()
+{
+	for (int i = 0; i < static_cast<int>(ActionType::NUM_OF_ACTIONS); ++i)
+	{
+		switch (static_cast<ActionType>(i))
+		{
+		case ActionType::FLEE: m_actions[i] = "Flee"; break;
+		case ActionType::MELEE_ATTACK:  m_actions[i] = "Melee Attack"; break;
+		case ActionType::MOVE_TO_COVER:  m_actions[i] = "Move To Cover"; break;
+		case ActionType::MOVE_TO_LOS:  m_actions[i] = "Move To LOS"; break;
+		case ActionType::MOVE_TO_RANGE:  m_actions[i] = "Move To Range"; break;
+		case ActionType::MOVE_TO_TARGET:  m_actions[i] = "Move To Target"; break;
+		case ActionType::PATROL:  m_actions[i] = "Patrol"; break;
+		case ActionType::RANGED_ATTACK:  m_actions[i] = "Ranged Attack"; break;
+		case ActionType::WAIT_IN_COVER:  m_actions[i] = "Wait In Cover"; break;
+		default: break;
+		}
+
+	}
+}
+
 void NodeScene::Start()
 {
 	// Set GUI Title
@@ -112,6 +150,12 @@ void NodeScene::Start()
 
 	AddChild(m_pInstructionsLabel);
 
+	// Nodes
+
+	m_buildActionArray();
+	m_buildConditionArray();
+
+
 	/* DO NOT REMOVE */
 	ImGuiWindowFrame::Instance().SetGuiFunction([this] { GUI_Function(); });
 }
@@ -132,6 +176,26 @@ void NodeScene::GUI_Function()
 	ImGui::Text("Decision Tree Node Graph");
 	ImGui::Text("A -- add node");
 	ImGui::Text("X -- delete selected node or link");
+
+	if(ImGui::Button("Load Graph"))
+	{
+		
+	}
+
+	ImGui::SameLine();
+
+	if (ImGui::Button("Save Graph"))
+	{
+
+	}
+
+	ImGui::SameLine();
+
+	if (ImGui::Button("Reset Graph"))
+	{
+
+	}
+
 
 	ImGui::Separator();
 
@@ -183,7 +247,19 @@ void NodeScene::GUI_Function()
 			ImGui::Text("Root Node");
 			ImGui::SetNextItemWidth(100.0f);
 			ImGui::InputText("", node->name, 64);
+
+			int i = 0;
+			int current_item = -1;
+			const char* items[static_cast<int>(ConditionType::NUM_OF_CONDITIONS)];
+			for (auto const& condition_string : m_conditions) {
+				const char* str = condition_string.c_str();
+				items[i++] = str;
+			}
+
 			ImNodes::EndNodeTitleBar();
+
+			ImGui::SetNextItemWidth(100.0f);
+			ImGui::Combo("Root", &current_item, items, IM_ARRAYSIZE(items));
 
 			const int left_child_id = node->pins[1];
 			const int right_child_id = node->pins[2];
