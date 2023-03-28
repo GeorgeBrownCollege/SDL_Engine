@@ -59,6 +59,7 @@ void NodeScene::m_buildConditionArray()
 		case ConditionType::HAS_LOS: m_conditions[i] = "Has LOS"; break;
 		case ConditionType::LOW_HEALTH: m_conditions[i] = "Health < 25%";  break;
 		case ConditionType::TARGET_DETECTED: m_conditions[i] = "Target Detected";  break;
+		case ConditionType::WITHIN_MELEE: m_conditions[i] = "Within Melee";  break;
 		case ConditionType::WITHIN_RADIUS: m_conditions[i] = "Within Radius";  break;
 		case ConditionType::WITHIN_RANGE: m_conditions[i] = "Within Range";  break;
 		default: break;
@@ -245,34 +246,33 @@ void NodeScene::GUI_Function()
 
 			ImNodes::BeginNodeTitleBar();
 			ImGui::Text("Root Node");
-			ImGui::SetNextItemWidth(100.0f);
-			ImGui::InputText("", node->name, 64);
+			ImNodes::EndNodeTitleBar();
 
 			int i = 0;
-			int current_item = -1;
+			int current_item = (node->specificType > -1) ? node->specificType : -1;
 			const char* items[static_cast<int>(ConditionType::NUM_OF_CONDITIONS)];
-			for (auto const& condition_string : m_conditions) {
+			for (auto const& condition_string : m_conditions)
+			{
 				const char* str = condition_string.c_str();
 				items[i++] = str;
 			}
 
-			ImNodes::EndNodeTitleBar();
-
-			ImGui::SetNextItemWidth(100.0f);
-			ImGui::Combo("Root", &current_item, items, IM_ARRAYSIZE(items));
+			ImGui::SetNextItemWidth(120.0f);
+			ImGui::Combo("##Root Node", &current_item, items, IM_ARRAYSIZE(items));
+			node->specificType = current_item;
 
 			const int left_child_id = node->pins[1];
 			const int right_child_id = node->pins[2];
 
 			ImNodes::BeginOutputAttribute(left_child_id);
-			ImGui::Indent(60.0f);
+			ImGui::Indent(80.0f);
 			ImGui::Text("True");
 			ImNodes::EndOutputAttribute();
 
 			ImGui::Spacing();
 
 			ImNodes::BeginOutputAttribute(right_child_id);
-			ImGui::Indent(60.0f);
+			ImGui::Indent(80.0f);
 			ImGui::Text("False");
 			ImNodes::EndOutputAttribute();
 
@@ -285,10 +285,21 @@ void NodeScene::GUI_Function()
 
 			ImNodes::BeginNodeTitleBar();
 			ImGui::Text("Condition Node");
-			ImGui::SetNextItemWidth(100.0f);
-			ImGui::InputText("", node->name, 64);
-
 			ImNodes::EndNodeTitleBar();
+
+			int i = 0;
+			int current_item = (node->specificType > -1) ? node->specificType : -1;
+			const char* items[static_cast<int>(ConditionType::NUM_OF_CONDITIONS)];
+			for (auto const& condition_string : m_conditions)
+			{
+				const char* str = condition_string.c_str();
+				items[i++] = str;
+			}
+
+			ImGui::SetNextItemWidth(120.0f);
+			std::string label = "##Condition Node " + std::to_string(node->id);
+			ImGui::Combo(label.c_str(), &current_item, items, IM_ARRAYSIZE(items));
+			node->specificType = current_item;
 
 			const int parent_id = node->pins[0];
 			const int left_child_id = node->pins[1];
@@ -296,7 +307,7 @@ void NodeScene::GUI_Function()
 
 
 			ImNodes::BeginOutputAttribute(left_child_id);
-			ImGui::Indent(60.0f);
+			ImGui::Indent(80.0f);
 			ImGui::Text("True");
 			ImNodes::EndOutputAttribute();
 
@@ -308,7 +319,7 @@ void NodeScene::GUI_Function()
 
 
 			ImNodes::BeginOutputAttribute(right_child_id);
-			ImGui::Indent(60.0f);
+			ImGui::Indent(80.0f);
 			ImGui::Text("False");
 			ImNodes::EndOutputAttribute();
 
@@ -322,9 +333,21 @@ void NodeScene::GUI_Function()
 
 			ImNodes::BeginNodeTitleBar();
 			ImGui::Text("Action Node");
-			ImGui::SetNextItemWidth(100.0f);
-			ImGui::InputText("", node->name, 64);
 			ImNodes::EndNodeTitleBar();
+
+			int i = 0;
+			int current_item = (node->specificType > -1) ? node->specificType : -1;
+			const char* items[static_cast<int>(ActionType::NUM_OF_ACTIONS)];
+			for (auto const& action_string : m_actions)
+			{
+				const char* str = action_string.c_str();
+				items[i++] = str;
+			}
+
+			ImGui::SetNextItemWidth(120.0f);
+			std::string label = "##Action Node " + std::to_string(node->id);
+			ImGui::Combo(label.c_str(), &current_item, items, IM_ARRAYSIZE(items));
+			node->specificType = current_item;
 
 			const int parent_id = node->pins[0];
 

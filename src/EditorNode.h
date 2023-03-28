@@ -11,7 +11,7 @@ struct EditorNode
 	int id;
 	EditorNodeType type;
 	int pins[3];
-	char name[64] = "";
+	int specificType = -1;
 
 	EditorNode(const EditorNodeType type): type(type)
 	{
