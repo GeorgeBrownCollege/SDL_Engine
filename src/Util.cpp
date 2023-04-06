@@ -281,10 +281,15 @@ float Util::Dot(const glm::vec2 lhs, const glm::vec2 rhs)
 	return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
+float Util::Cross(glm::vec2 lhs, glm::vec2 rhs)
+{
+	return lhs.x * rhs.y - lhs.y * rhs.x;
+}
+
 float Util::SignedAngle(const glm::vec2 from, const glm::vec2 to)
 {
 	const auto unsigned_angle = Util::Angle(from, to);
-	const auto sign = Util::Sign(from.x * to.y - from.y * to.x);
+	const auto sign = Sign(Cross(from, to));
 	return unsigned_angle * sign;
 }
 
@@ -481,4 +486,10 @@ glm::vec2 Util::RotatePoint(glm::vec2 point, const float angle, const glm::vec2 
 	point.x = new_x + pivot.x;
 	point.y = new_y + pivot.y;
 	return point;
+}
+
+glm::vec2 Util::RotateTowards(glm::vec2 from, glm::vec2 to, float maxRadians)
+{
+	float deltaRadians = Angle(from, to);
+	return RotatePoint(from, fminf(deltaRadians, fabsf(maxRadians)) * Sign(Cross(from, to)));
 }

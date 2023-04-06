@@ -48,8 +48,9 @@ public:
 	static glm::vec2 Inverse(glm::vec2 vec);
 	static glm::vec2 Normalize(glm::vec2 vec);
 	static float Angle(glm::vec2 from, glm::vec2 to);
-	static float Dot(glm::vec2 lhs, glm::vec2 rhs);
 	static float SignedAngle(glm::vec2 from, glm::vec2 to);
+	static float Dot(glm::vec2 lhs, glm::vec2 rhs);
+	static float Cross(glm::vec2 lhs, glm::vec2 rhs);
 
 	// debugging convenience functions
 	static void DrawLine(glm::vec2 start, glm::vec2 end, glm::vec4 colour = glm::vec4(0.0f, 1.0f, 0.0f, 1.0f), SDL_Renderer* renderer = Renderer::Instance().GetRenderer());
@@ -62,7 +63,9 @@ public:
 
 	static SDL_Color ToSDLColour(glm::vec4 colour);
 
-	static glm::vec2 RotatePoint(glm::vec2 point, float angle, glm::vec2 pivot);
+	// rotate about the origin by default
+	static glm::vec2 RotatePoint(glm::vec2 point, float angle, glm::vec2 pivot = {});
+	static glm::vec2 RotateTowards(glm::vec2 from, glm::vec2 to, float maxRadians);
 
 private:
 	Util();
